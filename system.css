@@ -1,0 +1,497 @@
+/* $Id */
+
+/**
+** Tabs
+*/
+.tabs {
+  margin: 20px 0;
+}
+.tabs ul.tabs {
+  margin-left: 0;
+}
+.tabs ul.tabs li {
+  display: inline-block;
+  padding: 0;
+  margin-right: 1px;
+  background-image: none;
+}
+.tabs ul.tabs li a {
+  display: block;
+  padding: 5px 16px;
+  color: #444444;
+  border: 1px solid #d1cbb5;
+  background-color: #f2f2e2;
+}
+.tabs ul.tabs li.active a {
+  background-color: #fbf9f8;
+}
+.tabs ul.tabs li a:active,
+.tabs ul.tabs li a:focus {
+  background-color: #ffffff;
+  outline: none;
+}
+.tabs ul.tabs li a:hover {
+  background-color: #ffffff;
+}
+
+.tabs ul.secondary {
+  margin-top: -14px;
+}
+.tabs ul.secondary li {
+}
+.tabs ul.secondary li a {
+  font-size: 12px;
+  padding: 2px 12px ;
+}
+/**
+** Vertical tabs
+*/
+.vertical-tabs {
+  border: 1px solid #D1CBB5;
+}
+.vertical-tabs .form-item:first-of-type {
+  margin-top: 6px;
+}
+ul.vertical-tabs-list {
+  width: 165px;
+  margin: 0;
+  float: left;
+}
+ul.vertical-tabs-list li {
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+ul.vertical-tabs-list li a {
+  background-color: #F2F2E2;
+  border-right: 1px solid #D1CBB5;
+  border-bottom: 1px solid #D1CBB5;
+  color: #444444;
+  display: block;
+  padding: 7px 12px;
+}
+ul.vertical-tabs-list li a:focus {
+  outline: none;
+}
+ul.vertical-tabs-list li.selected a {
+  background-color: inherit;
+  border-right: none;
+}
+.vertical-tabs-panes {
+  margin-left: 165px;
+}
+fieldset.vertical-tabs-pane {
+  margin: 0;
+  padding: 10px 15px;
+  border: none;
+}
+fieldset.vertical-tabs-pane legend,
+ul.vertical-tabs-list small.summary {
+  display: none;
+}
+
+/**
+** Pagers
+*/
+ul.pager {
+  height: 100%;
+  margin-left: 0;
+  margin: 25px 0 30px 0;
+}
+ul.pager li {
+  padding-left: 0;
+  border-right: 1px solid #B79F87;
+  display: inline-block;
+  line-height: 1;
+  background: none;
+}
+ul.pager li.last {
+  border-right: none;
+}
+ul.pager li a {
+  padding: 0.3em 0.7em;
+  line-height: 1.7;
+}
+ul.pager li.pager-current,
+ul.pager li.pager-ellipsis {
+  padding: 0.3em 0.7em;
+}
+
+/**
+** Breadcrumbs
+*/
+#breadcrumb {
+  margin: 20px 0;
+}
+.breadcrumb {
+}
+.breadcrumb a {
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/**
+** Action links
+*/
+ul.action-links {
+  margin-left: 0;
+}
+ul.action-links li {
+  padding: 0;
+  background: none;
+}
+
+/**
+** Messages
+*/
+#messages {
+  margin: 10px 0;
+}
+.messages {
+  padding: 10px;
+}
+.messages.status {
+  background-color: #f3fcdb;
+  border: 1px solid #b8e643;
+}
+.messages.warning {
+  background-color: #fffee9;
+  border: 1px solid #eeec93;
+}
+.messages.error {
+  background-color: #fef7f3;
+  border: 1px solid #f7b488;
+}
+
+/**
+**  Admin pages
+*/
+body.page-admin #header,
+body.page-admin #main-menu,
+body.page-admin #footer,
+body.page-admin #closure,
+body.page-admin #sidebar-first,
+body.page-admin #sidebar-second,
+body.page-admin #sidebar-third {
+  display: none;
+}
+body.page-admin #content {
+  width: 100%!important;
+}
+body.page-admin #content > .inner {
+  margin-left 25px;
+  margin-right: 25px;
+}
+body.page-admin input {
+  width: auto;
+}
+#block-system-help .inner {
+  background-color: #EEFAD6;
+  border: 1px solid #B1DC5B;
+  padding: 9px 14px;
+}
+dl.admin-list dd {
+  margin: 0;
+}
+table#permissions td.module {
+  background-color: #F8F8EF;
+}
+table#permissions th {
+  text-transform: capitalize;
+}
+td.block {
+  background: inherit;
+  border: none;
+  margin: 0;
+}
+tr.region-title {
+  background-color: #F2F2E2;
+}
+dl.multiselect label {
+  text-transform: capitalize;
+}
+dl.multiselect dd {
+  line-height: normal;
+  margin-left: 0;
+}
+ul.links.inline li {
+  background: none;
+  padding-left: 0;
+}
+div.warning {
+  background-color: #F6F8D5;
+  border: 1px solid #e1e797;
+  padding: 10px 11px;
+  margin: 10px 0;
+}
+#poll-choices {
+  margin-bottom: 8px;
+}
+#edit-actions {
+  margin-top: 8px;
+}
+tr.draggable .form-item {
+  display: inline;
+}
+.theme-selector {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #D1CBB5;
+}
+.theme-selector:last-child {
+  border-bottom: none;
+}
+.theme-selector img,
+.theme-selector .no-screenshot {
+  float: left;
+  margin-right: 20px;
+}
+.theme-selector .theme-info {
+}
+.no-screenshot {
+  width: 291px;
+  height: 220px;
+  color: #F8F8EF;
+  border: 1px solid #E9E9CE;
+  background-color: #F8F8EF;
+}
+.theme-info h3 {
+  margin-bottom: 15px;
+}
+.theme-info ul {
+  margin: 5px 0 0 0;
+}
+.theme-info li {
+  background: none;
+  padding: 0 10px 0 0;
+  display: inline;
+}
+.admin .left {
+  width: 49%;
+  float: left;
+}
+.admin .right {
+  width: 49%;
+  float: right;
+}
+.admin-panel {
+  margin-bottom: 25px;
+}
+.description {
+  margin-bottom: 3px;
+}
+th a img {
+  margin-left: 5px;
+}
+
+/**
+ * Autocompletion list
+ */
+#autocomplete {
+  position: absolute;
+  border: 1px solid;
+  overflow: hidden;
+  z-index: 100;
+}
+#autocomplete ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-image: none;
+}
+#autocomplete li {
+  background: #ffffff;
+  color: #000000;
+  white-space: pre;
+  cursor: default;
+}
+#autocomplete li.selected {
+  background: #0072b9;
+  color: #ffffff;
+}
+
+/**
+ * Collapsing fieldsets
+ */
+html.js fieldset.collapsed {
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  margin-bottom: 0;
+  height: 1em;
+}
+html.js fieldset.collapsed * {
+  display: none;
+}
+html.js fieldset.collapsed legend,
+html.js fieldset.collapsed legend a span.element-invisible {
+  display: block;
+  overflow: hidden;
+}
+html.js fieldset.collapsible  {
+}
+html.js fieldset.collapsible legend a {
+  display: inline;
+  background: url("images/menu-expanded.png") no-repeat right 7px;
+  padding-right: 15px;
+  padding-left: 0;
+}
+html.js fieldset.collapsible legend span.summary {
+  display: inline;
+  font-size: 0.9em;
+  color: #999;
+  margin-left: 0.5em;
+}
+html.js fieldset.collapsed legend a {
+  background: url(images/menu-collapsed.png) no-repeat right 7px;
+  padding-right: 15px;
+  padding-left: 0;
+}
+
+/**
+ * Table drag and drop
+ */
+body.drag {
+  cursor: move;
+}
+tr.drag {
+  background-color: #f6f8d5;
+}
+tr.drag-previous {
+  background-color: #f6f8d5;
+}
+td.choice-flag {
+  padding: 11px 0px 11px 12px;
+}
+span.tabledrag-changed {
+  font-size: 15px;
+  margin-left: 3px;
+  color: red;
+  font-weight: 700;
+} 
+a.tabledrag-handle {
+  cursor: move;
+  display: inline-block;
+}
+a.tabledrag-handle:hover {
+  text-decoration: none;
+}
+a.tabledrag-handle .handle {
+  height: 13px;
+  width: 13px;
+  margin-right: 14px;
+  background: url(images/draggable.png) no-repeat 0 0;
+}
+a.tabledrag-handle-hover .handle {
+  background-position: 0 -20px;
+}
+.indentation {
+  width: 20px;
+  float: left;
+}
+
+/**
+ * Progress bar
+ */
+.progress {
+  font-weight: bold;
+}
+.progress .bar {
+  background: #ccc;
+  border: 1px solid #666;
+  margin: 0 0.2em;
+}
+.progress .filled {
+  background: #0072b9 url(../../misc/progress.gif);
+  height: 1.5em;
+  width: 5px;
+}
+.progress .percentage {
+  float: right; /* LTR */
+}
+.progress-disabled {
+  float: left; /* LTR */
+}
+.ajax-progress {
+  float: left; /* LTR */
+}
+.ajax-progress-bar {
+  width: 16em;
+}
+
+/**
+ * Password strength indicator
+ */
+#password-strength {
+  width: 17em;
+  float: right;  /* LTR */
+  margin-top: 1.4em;
+}
+.password-strength-title {
+  display: inline;
+}
+#password-strength-text {
+  float: right; /* LTR */
+  font-weight: bold;
+}
+#password-indicator {
+  background-color: #C4C4C4;
+  height: 0.3em;
+  width: 100%;
+}
+#password-indicator div {
+  height: 100%;
+  width: 0%;
+  background-color: #47C965;
+}
+input.password-confirm, input.password-field {
+  width: 16em;
+  margin-bottom: 0.4em;
+}
+.password-confirm {
+  display: inline;
+  padding-left: 1em;
+}
+.form-item .password-suggestions {
+  padding: 0.2em 0.5em;
+  margin: 0.7em 0;
+  width: 38.5em;
+  border: 1px solid #B4B4B4;
+}
+.password-suggestions ul {
+  margin-bottom: 0;
+}
+#edit-pass-pass1 {
+}
+.password-parent {
+  margin: 0;
+  width: 34.3em;
+}
+
+/**
+ * Utility classes
+ */
+.element-hidden {
+  display: none;
+}
+.element-invisible {
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+}
+html.js .js-hide {
+  display: none;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+

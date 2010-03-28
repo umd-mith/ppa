@@ -1,0 +1,33 @@
+; $Id$ 
+
+name = Corolla
+description = Corolla theme
+version = 1.0-beta1
+core = 7.x
+engine = phptemplate
+
+stylesheets[all][]   = elements.css
+stylesheets[all][]   = modules.css
+stylesheets[all][]   = page.css
+stylesheets[all][]   = system.css
+stylesheets[all][]   = color.css
+stylesheets[print][] = print.css
+
+regions[sidebar_first]  = First sidebar
+regions[sidebar_second] = Second sidebar
+regions[content]        = Content
+regions[footer_column_first]  = Footer first column
+regions[footer_column_second] = Footer second column
+regions[footer_column_third]  = Footer third column
+regions[footer_column_fourth] = Footer fourth column
+regions[help] = Help
+
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = favicon
+
+settings[color_scheme] = 'green'
+

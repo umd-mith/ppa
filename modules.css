@@ -1,0 +1,524 @@
+/* $Id$ */
+
+/**
+ * Aggregator module
+ */
+#content a.feed-icon {
+  float: right; /* LTR */
+}
+
+/**
+ * Block module
+ */
+.block ul {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+.block ul li {
+  padding-left: 0;
+  background: none;
+  margin: 0;
+  list-style: none;
+  line-height: 18px;
+  margin-bottom: 8px;
+}
+.block ul li:first-child {
+  margin-top: -2px;
+}
+.block ul li:last-child {
+  border-bottom: none;
+}
+.block ul li a {
+  text-decoration: none;
+}
+.block ul li a:hover {
+}
+.block ul > li.expanded > ul {
+  margin-top: 10px;
+  margin-left: 12px;
+}
+.block table th,
+.block table td {
+  padding-left: 0;
+  padding-right: 0;
+}
+.block a {
+}
+.block .more-link {
+  text-align: right;
+  margin-top: 16px;
+  margin-bottom: -17px;
+}
+.block table tr {
+}
+.block {
+  margin-bottom: 20px;
+  background-color: #fafaf2;
+  border: 1px solid #e9e9ce;
+}
+.block > .inner {
+  padding: 20px;
+}
+.block h2 {
+  font-size: 1.667em;
+  font-weight: 700;
+  margin: 0 0 22px 0;
+}
+.block .content {
+}
+.block input.form-text {
+  width: 93%;
+}
+
+/**
+ * Book module
+ */
+.page-links {
+  position: relative;
+  margin-top: 20px;
+  border-top: 1px solid #DFDAD5;
+  padding: 13px 0;
+}
+.page-links a.page-previous {
+  float: left;
+}
+.page-links a.page-up {
+  position: absolute;
+  left: 50%;
+}
+.page-links a.page-next {
+  float: right;
+}
+
+/**
+ * Comment module
+ */
+#comments-wrapper {
+  margin-top: 21px;
+}
+#comments {
+}
+#comments h2 {
+}
+.comment {
+  margin-bottom: 20px;
+  border-top: 1px solid #EFEAE4;
+  padding: 20px 0 0 0;
+}
+#comments-wrapper .indented {
+  margin-left: 35px;
+}
+.comment .info {
+  display: block;
+  float: left; /* LTR */
+}
+.comment .info a.username {
+  display: block;
+  font-size: 1.417em;
+  color: #A2C32F;
+}
+.comment .date {
+  margin-top: 4px;
+  text-transform: none;
+  color: #917D69;
+  background: none;
+  padding-left: 0;
+  font-size: 0.917em;
+  margin-bottom: 8px;
+}
+.comment .username-and-date {
+  float: left;
+}
+.comment .info .user-picture {
+  display: block;
+}
+.comment .info .user-picture img {
+  max-width: 80px;
+  float: none;
+}
+.comment .content {
+  margin: 0 0 0 135px; /* LTR */
+}
+.comment .content .inner {
+}
+.comment .content h3 {
+  display: inline-block;
+  font-size: 1.083em;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.comment .content h3 a {
+  font-weight: 700;
+}
+.comment .field {
+}
+.comment ul.links {
+  margin-top: 10px;
+}
+.comment ul.links li {
+}
+body .comment ul.links li a {
+  text-transform: capitalize;
+  font-size: 0.917em;
+  padding: 3px 14px;
+}
+h2#add-comment-form {
+  margin-top: 30px;
+  border-top: 1px solid #EFEAE4;
+  color: #555555;
+  margin: 15px 0 30px 0;
+  padding: 12px 0 0;
+}
+
+/**
+ * Contexutal links module
+ */
+.contextual-links-wrapper {
+  display: none;
+}
+.contextual-links-region:hover .contextual-links-wrapper {
+  display: block;
+}
+.contextual-links-region {
+  position: relative;
+}
+.contextual-links-region-active {
+  outline: 1px dashed #7e7e7e;  
+}
+.contextual-links-wrapper {
+  position: absolute;
+  right: 0px;
+  top: -1px;
+}
+a.contextual-links-trigger {
+  display: block;
+  background: #404040 url(images/contextual.png) no-repeat top center;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  outline: none;
+  text-indent: 50px;
+}
+a.contextual-links-trigger:hover {
+  background-color: #000000;
+}
+ul.contextual-links {
+  display: none;
+  position: absolute;
+  top: 25px;
+  right: 0px;
+  white-space: nowrap;   
+}
+ul.contextual-links.active {
+  display: block;
+}
+ul.contextual-links li {
+  list-style: none;
+  margin: 0;
+  padding-left: 0px;
+  background-image: none;
+}
+ul.contextual-links li a {
+  color: #ffffff;
+  background-color: #666666;
+  display: block;
+  font-weight: 300;
+  padding: 2px 11px 2px 12px;
+  text-align: right;
+  line-height: 24px;
+}
+ul.contextual-links li a:hover,
+ul.contextual-links li a:focus,
+ul.contextual-links li a:active {
+  background-color: #000000;
+  outline: none;
+}
+
+/**
+ * Field, Field UI and File modules
+ */
+/* Taxonomy terms */
+.field-type-taxonomy-term-reference {
+}
+.field-type-taxonomy-term-reference .field-label {
+  display: inline-block;
+}
+.field-type-taxonomy-term-reference .field-items {
+  display: inline-block;
+}
+.field-type-taxonomy-term-reference .field-item {
+  display: inline-block;
+  margin-right: 5px;
+}
+.field-type-taxonomy-term-reference .field-item:after {
+	content: ",";
+}
+.field-type-taxonomy-term-reference .field-item:last-child:after {
+  content: none;
+}
+
+/**
+ * Filter module
+ */
+fieldset.filter-wrapper {
+  margin-top: 13px;
+  border-top: none;
+}
+fieldset.filter-wrapper .form-type-select {
+}
+.filter-help {
+  margin-top: 10px;
+}
+.filter-guidelines ul {
+  margin: 3px 0 0 3px;
+}
+.filter-guidelines ul li {
+  background-position: 0 6px;
+  padding: 0 0 0 15px;
+  line-height: 20px;
+}
+
+/**
+ * Forum module
+ */
+body.page-forum ul.action-links {
+  margin: 9px 0;
+}
+#forum {
+}
+#forum table {
+}
+#forum tbody tr {
+}
+#forum .indent {
+}
+#forum td.container {
+  background-color: #F8F8EF;
+}
+#forum .name {
+  margin-bottom: 4px;
+}
+#forum td {
+  padding: 18px 14px;
+  vertical-align: top;
+}
+#forum td.icon {
+}
+#forum .description {
+}
+#forum td.container .name a {
+}
+#forum td.container .description {
+}
+
+/**
+ * Node module
+ */
+.node + .node {
+  margin-top: 18px;
+}
+.node {
+  margin-bottom: 27px;
+}
+.node-header {
+  margin-bottom: 16px;
+}
+.node h1.node-title,
+.node h2.node-title {
+  margin: 0;
+  font-size: 2em;
+  line-height: 1.1em;
+}
+.node h1.node-title a,
+.node h2.node-title a {
+  color: #4f4f4f;
+  font-family: "Arial", "Helvetica", sans-serif;
+  text-decoration: none;
+  font-weight: 700;
+}
+.node h1.node-title a:hover,
+.node h2.node-title a:hover {
+}
+.node h1.node-title a:focus,
+.node h2.node-title a:focus {
+}
+.node .meta,
+.node .meta .submitted {
+  font-size: 1.083em;
+  font-weight: 700;
+  color: #8d8d8d;
+  margin-top: 3px;
+}
+.node .meta a {
+}
+.node .user-picture {
+}
+.node .user-picture img {
+}
+.node .field-name-body {
+}
+.node a {
+}
+.node a:hover {
+}
+.node img {
+  margin: 5px 10px 10px 0; /* LTR */
+  float: left; /* LTR */
+}
+.node .field {
+  margin: 5px 0;
+}
+.node .field-name-body {
+  margin-bottom: 12px;
+}
+.node .field-name-body a {
+}
+.node .field-name-body a:hover {
+}
+.node .field-type-taxonomy-term-reference {
+}
+.node .links {
+  margin: 5px 0;
+}
+.node ul.links {
+}
+.node ul.links li {
+  background: url("images/PostCom.png") no-repeat scroll left center transparent;
+}
+
+/* "Read more" and "X comments" links */
+.node .links-wrapper {
+  margin: 4px 0;
+}
+.node ul.links {
+  display: inline-block;
+  margin-left: 0;
+}
+.node ul.links li {
+  padding: 0;
+  margin-right: 8px; /* LTR */
+}
+.node ul.links li a {
+  background-color: #A2C32F;
+  padding: 5px 14px;
+  display: inline-block;
+  color: #ffffff;
+}
+.node ul.links li a:hover {
+  background-color: #2C98B9;
+}
+.node ul.links li.comment_comments,
+.node ul.links li.comment_add {
+}
+
+/**
+ * OpenID module
+ */
+#edit-openid-identifier  {
+  background-position: 3% 49%;
+  padding-left: 25px;
+}
+.form-item-openid-identifier {
+  margin: 10px 0;
+}
+.form-item-openid-identifier label {
+  margin-top: 8px;
+}
+
+/**
+ * Poll module
+ */
+.poll {
+}
+.poll .bar-wrapper {
+  margin-bottom: 14px;
+}
+.poll .text {
+  float: left;
+  margin-bottom: 3px;
+}
+.poll .percent {
+  float: right;
+  margin-bottom: 3px;
+}
+.poll .bar {
+  background-color: #FAFAF2;
+  border: 1px solid #cfcf9a;
+}
+.poll .bar .foreground {
+  background-color: #cfcf9a;
+  height: 18px;
+}
+.vote-form label {
+}
+.vote-form .form-item-choice {
+  margin: 8px 0;
+  padding: 0;
+}
+.vote-form .title {
+  font-weight: 700;
+}
+.vote-form .form-radios {
+  margin: 13px 0 9px 0;
+}
+
+/**
+ * Profile and User modules
+ */
+.profile dd {
+  margin-left: 0;
+}
+.profile .user-picture {
+  float: right;
+}
+body.page-profile .profile {
+  padding-bottom: 12px;
+}
+body.page-profile .profile .user-picture {
+  margin-top: 4px;
+}
+
+/**
+ * Search module
+ */
+.search-form {
+}
+.search-form input {
+}
+.search-results p {
+  margin-top: 0;
+}
+.search-results dt {
+}
+.search-results dd {
+  margin-left: 0;
+  margin-bottom: 19px;
+}
+.search-results .search-info {
+  margin-top: 10px;
+}
+.search-snippet strong {
+  background-color: #f5540d;
+  color: #ffffff;
+  padding: 0 2px;
+}
+.search-advanced .criterion {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 25px;
+}
+.search-advanced .action {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/**
+ * Tooblar module
+ */
+#toolbar ul li {
+  background: none;
+}
+#toolbar ul li a {
+  font-weight: 300;
+}
+

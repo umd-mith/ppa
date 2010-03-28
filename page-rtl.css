@@ -1,0 +1,10 @@
+/* $Id$ */
+
+#branding a#logo  {
+  float:right;
+  margin-right: 0px;
+  margin-left: 16px;
+}
+ul#info li {
+  margin: 0 0 0 3px; /* LTR */
+}

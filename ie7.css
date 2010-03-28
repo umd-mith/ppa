@@ -1,0 +1,50 @@
+/* $Id$ */
+
+/* Clearfix */
+.clearfix {
+  zoom: 1;
+}
+/* Bug: sidebars are collapsing on window resize */
+body.columns-4 #content {
+  width: 39.8%;
+}
+body.columns-3 #content {
+  width: 49.8%;
+}
+body.columns-2 #content {
+  width: 69.8%;
+}
+/* Fix display:inline-block property */
+#footer-columns > .column,
+#main-menu ul.links li,
+.node ul.links,
+.field-type-taxonomy-term-reference .field-items,
+.field-type-taxonomy-term-reference .field-item,
+.field-type-taxonomy-term-reference .field-label,
+ul.pager li,
+.tabs ul.tabs li,
+ul#info li {
+  hasLayout: true;
+  display: inline;
+}
+/* Fix misaligned menus in blocks */
+.block ul.menu,
+.block ul.links,
+.block .item-list ul {
+  list-style-position: outside;
+}
+/* Padding on list items with bullets is too big */
+ul li {
+  padding-left: 0;
+}
+/* Buttons are too big */
+input.form-button, input.form-submit  {
+  padding: 6px 5px;
+}
+/* Copied from system-behavior.css, is it required? */
+html.js fieldset.collapsed legend,
+html.js fieldset.collapsed legend *,
+html.js fieldset.collapsed table * {
+  display: inline;
+}
+
