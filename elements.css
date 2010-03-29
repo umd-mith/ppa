@@ -332,7 +332,7 @@ input.form-file {
 }
 textarea {
   width: 98%;
-  min-height: 230px;
+  height: 230px;
 }
 /* Choice inputs */
 input.form-checkbox,

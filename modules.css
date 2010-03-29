@@ -22,9 +22,6 @@
   line-height: 18px;
   margin-bottom: 8px;
 }
-.block ul li:first-child {
-  margin-top: -2px;
-}
 .block ul li:last-child {
   border-bottom: none;
 }
@@ -52,12 +49,10 @@
 .block table tr {
 }
 .block {
+  padding: 20px;
   margin-bottom: 20px;
   background-color: #fafaf2;
   border: 1px solid #e9e9ce;
-}
-.block > .inner {
-  padding: 20px;
 }
 .block h2 {
   font-size: 1.667em;
@@ -173,65 +168,9 @@ h2#add-comment-form {
 /**
  * Contexutal links module
  */
-.contextual-links-wrapper {
-  display: none;
-}
-.contextual-links-region:hover .contextual-links-wrapper {
-  display: block;
-}
-.contextual-links-region {
-  position: relative;
-}
-.contextual-links-region-active {
-  outline: 1px dashed #7e7e7e;  
-}
-.contextual-links-wrapper {
-  position: absolute;
-  right: 0px;
-  top: -1px;
-}
-a.contextual-links-trigger {
-  display: block;
-  background: #404040 url(images/contextual.png) no-repeat top center;
-  width: 25px;
-  height: 25px;
-  overflow: hidden;
-  outline: none;
-  text-indent: 50px;
-}
-a.contextual-links-trigger:hover {
-  background-color: #000000;
-}
-ul.contextual-links {
-  display: none;
-  position: absolute;
-  top: 25px;
-  right: 0px;
-  white-space: nowrap;   
-}
-ul.contextual-links.active {
-  display: block;
-}
 ul.contextual-links li {
-  list-style: none;
-  margin: 0;
-  padding-left: 0px;
   background-image: none;
-}
-ul.contextual-links li a {
-  color: #ffffff;
-  background-color: #666666;
-  display: block;
-  font-weight: 300;
-  padding: 2px 11px 2px 12px;
-  text-align: right;
-  line-height: 24px;
-}
-ul.contextual-links li a:hover,
-ul.contextual-links li a:focus,
-ul.contextual-links li a:active {
-  background-color: #000000;
-  outline: none;
+  margin: 0;
 }
 
 /**

@@ -59,15 +59,6 @@ function corolla_preprocess_block(&$variables) {
 }
 
 /**
- * Override or insert variables into the comment template.
- */
-function corolla_preprocess_comment(&$variables) {
-  // Change permalink text from "#" to "permalink"
-  $comment = $variables['elements']['#comment'];
-  $variables['permalink'] = l('permalink', 'comment/' . $comment->cid, array('fragment' => "comment-$comment->cid"));
-}
-
-/**
  * Disable core stylesheets
  */
 function corolla_css_alter(&$css) {
@@ -77,7 +68,6 @@ function corolla_css_alter(&$css) {
   unset($css[drupal_get_path('module', 'system') . '/admin.css']);
   unset($css['misc/vertical-tabs.css']);
   unset($css[drupal_get_path('module', 'system') . '/system-menus.css']);
-  unset($css[drupal_get_path('module', 'contextual') . '/contextual.css']);
   unset($css[drupal_get_path('module', 'node') . '/node.css']);
   unset($css[drupal_get_path('module', 'user') . '/user.css']);
   unset($css[drupal_get_path('module', 'poll') . '/poll.css']);
@@ -89,14 +79,6 @@ function corolla_css_alter(&$css) {
   unset($css[drupal_get_path('module', 'field') . '/theme/field.css']);
   unset($css[drupal_get_path('module', 'filter') . '/filter.css']);
 }
-
-/**
- * Disable core scripts
- */
-function corolla_js_alter(&$js) {
-  unset($js['misc/textarea.js']);
-}
-
 
 /**
  * Override of theme_more_link().

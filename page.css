@@ -66,6 +66,12 @@ body {
   font-size: 12px;
 }
 
+#skip-link {
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
 /*
 ** Header (row)
 */
@@ -251,11 +257,14 @@ body {
 #footer-columns .region {
   margin: 20px;
 }
+#footer-columns .block {
+  padding: 0;
+}
 #footer-columns .column.first .region {
-  margin-left: 0px;
+  margin-left: 15px;
 }
 #footer-columns .column.last .region {
-  margin-right: 0px;
+  margin-right: 15px;
 }
 
 /*
