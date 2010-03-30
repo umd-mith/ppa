@@ -317,6 +317,7 @@ body.page-forum ul.action-links {
 .node .field-type-taxonomy-term-reference {
 }
 .node .links {
+  clear: both;
   margin: 5px 0;
 }
 .node ul.links {
