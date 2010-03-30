@@ -67,8 +67,8 @@
  */
 ?>
 
-<div id="header" class="row">
-  <div class="inner">
+<div id="header-wrapper">
+  <div id="header">
     <div id="branding" class="clearfix <?php if (!$site_name): ?> site-name-disabled<?php endif; ?><?php if (!$site_slogan): ?> site-slogan-disabled<?php endif; ?>">
 
       <?php if ($logo): ?>
@@ -94,74 +94,64 @@
           <div id="site-slogan"><?php print $site_slogan; ?></div>
         <?php endif; ?>
       </div> <!-- /#name-and-slogan -->
+
     </div> <!-- /#branding -->
-  </div> <!-- /.inner -->
-</div> <!-- /#header -->
+  </div> <!-- /#header -->
+</div> <!-- /#header-wrapper -->
 
 
 <?php if ($main_menu): ?>
-  <div id="main-menu" class="row">
-      <div class="inner">
+  <div id="main-menu-wrapper">
+      <div id="main-menu">
         <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('class' => array('links', 'clearfix')), 'heading' => t('Main menu'))); ?>
-      </div> <!-- /.inner -->
-  </div> <!-- /#main-menu -->
+      </div> <!-- /#main-menu -->
+  </div> <!-- /#main-menu-wrapper -->
 <?php endif; ?>
 
 
-<div id="main" class="row">
-  <div class="inner">
+<div id="main-wrapper">
+  <div id="main">
 
     <div id="main-columns" class="clearfix">
-
-      <div id="content" class="column first<?php if (!$page['sidebar_first'] && !$page['sidebar_second']): ?> last<?php endif; ?>">
-        <div class="inner">
+      <div id="content-wrapper">
+        <div id="content">
           <?php if ($breadcrumb): ?><div id="breadcrumb" class="clearfix"><?php print $breadcrumb; ?></div><?php endif; ?>
           <?php if ($messages): ?><div id="messages"><?php print $messages; ?></div><?php endif; ?>
           <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
 
-          <a id="main-content-skip-link"></a>
+          <a id="main-content"></a>
           <?php print $feed_icons; ?>
 
           <?php print render($page['help']); ?>
           <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
           <?php print render($page['content']); ?>
-        </div> <!-- /.inner -->
-      </div> <!-- /#content -->
+        </div> <!-- /#content -->
+      </div> <!-- /#content-wrapper -->
 
       <?php if ($page['sidebar_first']): ?>
-        <div id="sidebar-first" class="column sidebar<?php if (!$page['sidebar_second']): ?> last<?php endif; ?>">
-          <div class="inner">
+        <div id="sidebar-first-wrapper">
+          <div id="sidebar-first">
             <?php print render($page['sidebar_first']); ?>
-          </div> <!-- /.inner -->
-        </div> <!-- /#sidebar-first -->
+          </div> <!-- /#sidebar-first -->
+        </div> <!-- /#sidebar-first-wrapper -->
       <?php endif; ?>
 
       <?php if ($page['sidebar_second']): ?>
-        <div id="sidebar-second" class="column sidebar last">
-          <div class="inner">
+        <div id="sidebar-second-wrapper">
+          <div id="sidebar-second">
             <?php print render($page['sidebar_second']); ?>
-          </div> <!-- /.inner -->
-        </div> <!-- /#sidebar-second -->
+          </div> <!-- /#sidebar-second -->
+        </div> <!-- /#sidebar-second-wrapper -->
       <?php endif; ?>
-
-
-
-
-
-
-
-
-
-
     </div> <!-- /#main-columns -->
 
     <div id="shadow"><div class="inner"></div></div>
-  </div> <!-- /.inner -->
-</div> <!-- /#main -->
+  </div> <!-- /#main -->
+</div> <!-- /#main-warpper -->
 
 <?php if ($page['footer_column_first'] || $page['footer_column_second'] || $page['footer_column_third'] || $page['footer_column_fourth']): ?>
-  <div id="footer" class="row">
-    <div class="inner">
+  <div id="footer-wrapper">
+    <div id="footer">
       <h2 class="element-invisible"><?php print t('Footer'); ?></h2>
 
       <div id="footer-columns" class="columns-<?php print $footer_columns_number; ?>">
@@ -190,13 +180,13 @@
         <?php endif; ?>
       </div><!-- /#footer-columns -->
 
-    </div> <!-- /.inner -->
-  </div> <!-- /#footer -->
+    </div> <!-- /#footer -->
+  </div> <!-- /#footer-wrapper -->
 <?php endif; ?>
 
 <?php if($secondary_menu): ?>
-  <div id="closure" class="row">
-    <div class="inner clearfix">
+  <div id="closure-wrapper">
+    <div id="closure" class="clearfix">
       <?php if ($secondary_menu): ?>
         <div id="secondary-menu">
           <?php print theme('links__system_secondary_menu', array('links' => $secondary_menu, 'attributes' => array('class' => array('links', 'clearfix')), 'heading' => t('Secondary menu'))); ?>
