@@ -23,3 +23,6 @@ body.no-sidebars #closure {
   width: 780px;
 }
 
+p {
+  margin-bottom: 12px;
+}

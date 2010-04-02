@@ -13,11 +13,15 @@ h6 {
 }
 h1 {
   margin: 20px 0 10px 0;
-  font-size: 2.583em;
+  font-size: 2em;
+}
+h1.page-title {
+  font-size:2em;
+  line-height:1.1em;
 }
 h2 {
   margin: 18px 0 11px 0;
-  font-size: 2em;
+  font-size: 1.8em;
 }
 h3 {
   margin: 14px 0 6px 0;
@@ -176,8 +180,6 @@ a {
 a:hover {
   color: #a2c32f;
 }
-a:active {
-}
 a:focus {
   outline: 1px dashed #a2c32f;
   color: #a2c32f;
@@ -310,6 +312,7 @@ textarea {
 }
 input.form-text,
 input.form-password,
+input.form-file,
 textarea {
   color: #404040;
   border: 1px solid #D6D1CC;
@@ -353,6 +356,7 @@ input.form-submit {
   font-family: "Arial", "Helvetica", sans-serif;
   background-color: #2C98B9;
   color: #ffffff;
+  font-size: 12px;
   font-weight: 700;
   border: none;
   padding: 8px 14px;
@@ -372,5 +376,4 @@ input.form-button::-moz-focus-inner,
 input.form-submit::-moz-focus-inner {
   border: 0;
 }
-
 

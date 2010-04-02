@@ -1,2 +1,14 @@
 /* $Id */
 
+a.tabledrag-handle .handle {
+  margin: 0 0 0 14px;
+}
+html.js fieldset.collapsible legend a {
+  background-position: left 7px;
+  padding: 0 0 0 15px;
+}
+html.js fieldset.collapsed legend a {
+  background-image: url(images/menu-collapsed-rtl.png);
+  background-position: left 5px;
+  padding: 0 0 0 15px;
+}

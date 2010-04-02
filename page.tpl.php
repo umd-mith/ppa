@@ -124,28 +124,28 @@
 
           <?php print render($page['help']); ?>
           <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
+
+          <?php if ($title && !isset($node)): ?>
+            <h1 class="page-title"><?php print $title ?></h1>
+          <?php endif; ?>
+
           <?php print render($page['content']); ?>
         </div> <!-- /#content -->
       </div> <!-- /#content-wrapper -->
 
       <?php if ($page['sidebar_first']): ?>
         <div id="sidebar-first-wrapper">
-          <div id="sidebar-first">
             <?php print render($page['sidebar_first']); ?>
-          </div> <!-- /#sidebar-first -->
         </div> <!-- /#sidebar-first-wrapper -->
       <?php endif; ?>
 
       <?php if ($page['sidebar_second']): ?>
         <div id="sidebar-second-wrapper">
-          <div id="sidebar-second">
             <?php print render($page['sidebar_second']); ?>
-          </div> <!-- /#sidebar-second -->
         </div> <!-- /#sidebar-second-wrapper -->
       <?php endif; ?>
     </div> <!-- /#main-columns -->
 
-    <div id="shadow"><div class="inner"></div></div>
   </div> <!-- /#main -->
 </div> <!-- /#main-warpper -->
 

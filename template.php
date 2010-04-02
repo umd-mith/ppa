@@ -7,28 +7,17 @@
 function corolla_preprocess_html(&$variables) {
   // Add reset CSS
   drupal_add_css($data = path_to_theme() . '/reset.css', $options['type'] = 'file', $options['weight'] = CSS_SYSTEM - 1);
-  
-  // Add "has-footer" class to body element. This classed is used for styling page closure
-  if (!empty($variables['page']['footer_column_first']) || !empty($variables['page']['footer_column_second']) || !empty($variables['page']['footer_column_third']) || !empty($variables['page']['footer_column_fourth'])) {
-    $variables['classes_array'][] = 'has-footer';
-  }
-
-  // Add body classes with information about color scheme
-  $color_scheme = theme_get_setting('color_scheme');
-  switch($color_scheme) {
-    case 'blue':
-      $variables['classes_array'][] = 'blue';
-      break;
-    case 'black':
-      $variables['classes_array'][] = 'black';
-      break;
-  }
 }
 
 /**
  * Override or insert variables into the html template.
  */
 function corolla_process_html(&$variables) {
+  // Hook into color.module
+  if (module_exists('color')) {
+    _color_html_alter($variables);
+  }
+
   // Add conditional stylesheets for IE
   $variables['styles'] .= "\n<!--[if lte IE 8]>\n" . '<link type="text/css" rel="stylesheet" media="all" href="' . file_create_url(path_to_theme() . '/ie8.css') . '" />' . "\n" . "<![endif]-->\n";
   $variables['styles'] .= "\n<!--[if lte IE 7]>\n" . '<link type="text/css" rel="stylesheet" media="all" href="' . file_create_url(path_to_theme() . '/ie7.css') . '" />' . "\n" . "<![endif]-->\n";
@@ -39,6 +28,11 @@ function corolla_process_html(&$variables) {
  * Override or insert variables into the page template.
  */
 function corolla_process_page(&$variables) {
+  // Hook into color.module 
+  if (module_exists('color')) {
+    _color_page_alter($variables);
+  }
+
   // Add $footer_columns_number variable to page.tpl.php file
   $columns = 0;
   foreach (array('first', 'second', 'third', 'fourth') as $n) {
@@ -64,21 +58,37 @@ function corolla_preprocess_block(&$variables) {
  */
 function corolla_css_alter(&$css) {
   unset($css[drupal_get_path('module', 'system') . '/defaults.css']);
+  unset($css[drupal_get_path('module', 'system') . '/defaults-rtl.css']);
   unset($css[drupal_get_path('module', 'system') . '/system.css']);
+  unset($css[drupal_get_path('module', 'system') . '/system-rtl.css']);
   unset($css[drupal_get_path('module', 'system') . '/system-behavior.css']);
-  unset($css[drupal_get_path('module', 'system') . '/admin.css']);
-  unset($css['misc/vertical-tabs.css']);
+  unset($css[drupal_get_path('module', 'system') . '/system-behavior-rtl.css']);
   unset($css[drupal_get_path('module', 'system') . '/system-menus.css']);
+  unset($css[drupal_get_path('module', 'system') . '/system-menus-rtl.css']);
+  unset($css[drupal_get_path('module', 'system') . '/admin.css']);
+  unset($css[drupal_get_path('module', 'system') . '/admin-rtl.css']);
   unset($css[drupal_get_path('module', 'node') . '/node.css']);
+  unset($css[drupal_get_path('module', 'node') . '/node-rtl.css']);
   unset($css[drupal_get_path('module', 'user') . '/user.css']);
+  unset($css[drupal_get_path('module', 'user') . '/user-rtl.css']);
   unset($css[drupal_get_path('module', 'poll') . '/poll.css']);
+  unset($css[drupal_get_path('module', 'poll') . '/poll-rtl.css']);
   unset($css[drupal_get_path('module', 'search') . '/search.css']);
+  unset($css[drupal_get_path('module', 'search') . '/search-rtl.css']);
   unset($css[drupal_get_path('module', 'comment') . '/comment.css']);
+  unset($css[drupal_get_path('module', 'comment') . '/comment-rtl.css']);
   unset($css[drupal_get_path('module', 'forum') . '/forum.css']);
+  unset($css[drupal_get_path('module', 'forum') . '/forum-rtl.css']);
   unset($css[drupal_get_path('module', 'book') . '/book.css']);
+  unset($css[drupal_get_path('module', 'book') . '/book-rtl.css']);
   unset($css[drupal_get_path('module', 'aggregator') . '/aggregator.css']);
+  unset($css[drupal_get_path('module', 'aggregator') . '/aggregator-rtl.css']);
   unset($css[drupal_get_path('module', 'field') . '/theme/field.css']);
+  unset($css[drupal_get_path('module', 'field') . '/theme/field-rtl.css']);
   unset($css[drupal_get_path('module', 'filter') . '/filter.css']);
+  unset($css[drupal_get_path('module', 'filter') . '/filter-rtl.css']);
+  unset($css['misc/vertical-tabs.css']);
+  unset($css['misc/vertical-tabs-rtl.css']);
 }
 
 /**
@@ -93,7 +103,7 @@ function corolla_more_link($variables) {
 /**
  * Override of theme_field().
  *
- * Remove "clearfix" class from top-level DIV. This class causes problems on IE6/7 (impsible to disable hasLayout)
+ * Remove "clearfix" class from top-level DIV. This class causes problems on IE6/7 (can't disable hasLayout)
  */
 function corolla_field($variables) {
   $output = '';
@@ -149,15 +159,22 @@ function corolla_messages($variables) {
  * Make output for "Recent content" block consistent with other blocks
  */
 function corolla_node_recent_block($variables) {
-  $rows = array();
-  $output = '';
+  $l_options = array('query' => drupal_get_destination());
+
   foreach ($variables['nodes'] as $node) {
+    if (node_access('delete', $node) && node_access('update', $node)) { 
+      $items[] = theme('node_recent_content', array('node' => $node)) . " (" . l(t('edit'), 'node/' . $node->nid . '/edit', $l_options) . " | " . l(t('delete'), 'node/' . $node->nid . '/delete', $l_options) . ")";
+    }
+    else
     $items[] = theme('node_recent_content', array('node' => $node));
   }
+
   if (user_access('access content overview')) {
     $items[] = theme('more_link', array('url' => url('admin/content'), 'title' => t('Show more content')));
   }
+
   return theme('item_list', array('items' => $items));
+
 }
 function corolla_node_recent_content($variables) {
   $node = $variables['node'];

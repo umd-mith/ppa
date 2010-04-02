@@ -15,12 +15,11 @@
   margin-bottom: 0;
 }
 .block ul li {
-  padding-left: 0;
   background: none;
-  margin: 0;
+  margin: 0 0 8px 0;
+  padding: 0;
   list-style: none;
   line-height: 18px;
-  margin-bottom: 8px;
 }
 .block ul li:last-child {
   border-bottom: none;
@@ -110,7 +109,6 @@
 .comment .info a.username {
   display: block;
   font-size: 1.417em;
-  color: #A2C32F;
 }
 .comment .date {
   margin-top: 4px;
@@ -174,6 +172,18 @@ ul.contextual-links li {
 }
 
 /**
+ * Dashboard module
+ */
+#dashboard #disabled-blocks h2 {
+  font-size: 1.55em;
+  padding-left: 20px;
+  color: #ffffff;
+}
+#dashboard .ui-sortable .block h2 {
+  padding-left: 0;
+}
+
+/**
  * Field, Field UI and File modules
  */
 /* Taxonomy terms */
@@ -215,6 +225,17 @@ fieldset.filter-wrapper .form-type-select {
   background-position: 0 6px;
   padding: 0 0 0 15px;
   line-height: 20px;
+}
+body.page-filter-tips ul {
+  margin-left: 0;
+}
+body.page-filter-tips ul li {
+  padding-left: 0;
+  background: none;
+  margin: 10px 0;
+}
+body.page-filter-tips table {
+  margin: 10px 0;
 }
 
 /**
@@ -280,10 +301,10 @@ body.page-forum ul.action-links {
 }
 .node h1.node-title a:focus,
 .node h2.node-title a:focus {
+  outline-color: #63565F;
 }
-.node .meta,
 .node .meta .submitted {
-  font-size: 1.083em;
+  font-size: 14px; /* can't use em's because of the Chrome bug */
   font-weight: 700;
   color: #8d8d8d;
   margin-top: 3px;
@@ -366,6 +387,137 @@ body.page-forum ul.action-links {
 }
 
 /**
+ * Overlay module and admin pages
+ */
+body.no-sidebars.overlay {
+  background-color: #ffffff;
+}
+body.no-sidebars.overlay #main {
+  max-width:none;
+  min-width:300px;
+  border: none;
+  width:100%;
+} 
+
+body.page-admin #content-wrapper {
+  width: 100%!important;
+}
+body.page-admin #content > .inner {
+  margin-left 25px;
+  margin-right: 25px;
+}
+body.page-admin input {
+  width: auto;
+}
+#block-system-help .inner {
+  background-color: #EEFAD6;
+  border: 1px solid #B1DC5B;
+  padding: 9px 14px;
+}
+dl.admin-list dd {
+  margin: 0;
+}
+table#permissions td.module {
+  background-color: #F8F8EF;
+}
+table#permissions th {
+  text-transform: capitalize;
+}
+td.block {
+  background: inherit;
+  border: none;
+  margin: 0;
+}
+tr.region-title {
+  background-color: #F2F2E2;
+}
+dl.multiselect label {
+  text-transform: capitalize;
+}
+dl.multiselect dd {
+  line-height: normal;
+  margin-left: 0;
+}
+ul.links.inline li {
+  background: none;
+  padding-left: 0;
+}
+div.warning {
+  background-color: #F6F8D5;
+  border: 1px solid #e1e797;
+  padding: 10px 11px;
+  margin: 10px 0;
+}
+#poll-choices {
+  margin-bottom: 8px;
+}
+#edit-actions {
+  margin-top: 8px;
+}
+tr.draggable .form-item {
+  display: inline;
+}
+.theme-selector {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #D1CBB5;
+}
+.theme-selector:last-child {
+  border-bottom: none;
+}
+.theme-selector img,
+.theme-selector .no-screenshot {
+  float: left;
+  margin-right: 20px;
+}
+.theme-selector .theme-info {
+}
+#preview {
+  position:relative;
+}
+.no-screenshot {
+  width: 291px;
+  height: 220px;
+  color: #F8F8EF;
+  border: 1px solid #D1CBB5;
+}
+.theme-info h3 {
+  margin-bottom: 15px;
+}
+.theme-info ul {
+  margin: 5px 0 0 0;
+}
+.theme-info li {
+  background: none;
+  padding: 0 10px 0 0;
+  display: inline;
+}
+.admin .left {
+  width: 49%;
+  float: left;
+}
+.admin .right {
+  width: 49%;
+  float: right;
+}
+.admin-panel {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #635656;
+}
+.description {
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+th a img {
+  margin-left: 5px;
+}
+#block-system-help {
+  border: 1px solid #c9df7c;
+  background-color: #f7fbe7;
+}
+
+/**
  * Poll module
  */
 .poll {
@@ -445,7 +597,7 @@ body.page-profile .profile .user-picture {
 .search-advanced .criterion {
   display: inline-block;
   vertical-align: top;
-  margin-right: 25px;
+  margin: 0 25px 0 0;
 }
 .search-advanced .action {
   display: inline-block;

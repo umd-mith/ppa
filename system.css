@@ -23,7 +23,7 @@
   background-color: #f2f2e2;
 }
 .tabs ul.tabs li.active a {
-  background-color: #fbf9f8;
+  background-color: #FBFBFB;
 }
 .tabs ul.tabs li a:active,
 .tabs ul.tabs li a:focus {
@@ -150,6 +150,7 @@ ul.action-links li {
 }
 .messages {
   padding: 10px;
+  margin: 10px 0;
 }
 .messages.status {
   background-color: #f3fcdb;
@@ -162,127 +163,6 @@ ul.action-links li {
 .messages.error {
   background-color: #fef7f3;
   border: 1px solid #f7b488;
-}
-
-/**
-**  Admin pages
-*/
-body.page-admin #header,
-body.page-admin #main-menu,
-body.page-admin #footer,
-body.page-admin #closure,
-body.page-admin #sidebar-first,
-body.page-admin #sidebar-second,
-body.page-admin #sidebar-third {
-  display: none;
-}
-body.page-admin #content {
-  width: 100%!important;
-}
-body.page-admin #content > .inner {
-  margin-left 25px;
-  margin-right: 25px;
-}
-body.page-admin input {
-  width: auto;
-}
-#block-system-help .inner {
-  background-color: #EEFAD6;
-  border: 1px solid #B1DC5B;
-  padding: 9px 14px;
-}
-dl.admin-list dd {
-  margin: 0;
-}
-table#permissions td.module {
-  background-color: #F8F8EF;
-}
-table#permissions th {
-  text-transform: capitalize;
-}
-td.block {
-  background: inherit;
-  border: none;
-  margin: 0;
-}
-tr.region-title {
-  background-color: #F2F2E2;
-}
-dl.multiselect label {
-  text-transform: capitalize;
-}
-dl.multiselect dd {
-  line-height: normal;
-  margin-left: 0;
-}
-ul.links.inline li {
-  background: none;
-  padding-left: 0;
-}
-div.warning {
-  background-color: #F6F8D5;
-  border: 1px solid #e1e797;
-  padding: 10px 11px;
-  margin: 10px 0;
-}
-#poll-choices {
-  margin-bottom: 8px;
-}
-#edit-actions {
-  margin-top: 8px;
-}
-tr.draggable .form-item {
-  display: inline;
-}
-.theme-selector {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid #D1CBB5;
-}
-.theme-selector:last-child {
-  border-bottom: none;
-}
-.theme-selector img,
-.theme-selector .no-screenshot {
-  float: left;
-  margin-right: 20px;
-}
-.theme-selector .theme-info {
-}
-.no-screenshot {
-  width: 291px;
-  height: 220px;
-  color: #F8F8EF;
-  border: 1px solid #E9E9CE;
-  background-color: #F8F8EF;
-}
-.theme-info h3 {
-  margin-bottom: 15px;
-}
-.theme-info ul {
-  margin: 5px 0 0 0;
-}
-.theme-info li {
-  background: none;
-  padding: 0 10px 0 0;
-  display: inline;
-}
-.admin .left {
-  width: 49%;
-  float: left;
-}
-.admin .right {
-  width: 49%;
-  float: right;
-}
-.admin-panel {
-  margin-bottom: 25px;
-}
-.description {
-  margin-bottom: 3px;
-}
-th a img {
-  margin-left: 5px;
 }
 
 /**
@@ -329,7 +209,6 @@ th a img {
   margin-top: -1px;
 }
 
-
 /**
  * Collapsing fieldsets
  */
@@ -353,8 +232,7 @@ html.js fieldset.collapsible  {
 html.js fieldset.collapsible legend a {
   display: inline;
   background: url("images/menu-expanded.png") no-repeat right 7px;
-  padding-right: 15px;
-  padding-left: 0;
+  padding: 0 15px 0 0;
 }
 html.js fieldset.collapsible legend span.summary {
   display: inline;
@@ -363,9 +241,8 @@ html.js fieldset.collapsible legend span.summary {
   margin-left: 0.5em;
 }
 html.js fieldset.collapsed legend a {
-  background: url(images/menu-collapsed.png) no-repeat right 7px;
-  padding-right: 15px;
-  padding-left: 0;
+  background: url(images/menu-collapsed.png) no-repeat right 5px;
+  padding: 0 15px 0 0;
 }
 
 /**
@@ -399,7 +276,7 @@ a.tabledrag-handle:hover {
 a.tabledrag-handle .handle {
   height: 13px;
   width: 13px;
-  margin-right: 14px;
+  margin: 0 14px 0 0; /* RTL */
   background: url(images/draggable.png) no-repeat 0 0;
 }
 a.tabledrag-handle-hover .handle {
@@ -443,9 +320,9 @@ a.tabledrag-handle-hover .handle {
  * Password strength indicator
  */
 #password-strength {
-  width: 17em;
+  width: 175px;
   float: right;  /* LTR */
-  margin-top: 1.4em;
+  margin-top: 20px;
 }
 .password-strength-title {
   display: inline;
@@ -453,6 +330,9 @@ a.tabledrag-handle-hover .handle {
 #password-strength-text {
   float: right; /* LTR */
   font-weight: bold;
+}
+.password-confirm {
+  margin-left: 20px;
 }
 #password-indicator {
   background-color: #C4C4C4;

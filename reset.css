@@ -67,7 +67,8 @@ tfoot,
 thead,
 tr,
 th, 
-td {
+td,
+input {
   background: transparent;
   border: 0;
   font-family: "Arial", "Helvetica", sans-serif;
