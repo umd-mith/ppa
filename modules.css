@@ -346,9 +346,6 @@ body.page-forum ul.action-links {
 }
 .node ul.links {
 }
-.node ul.links li {
-  background: url("images/PostCom.png") no-repeat scroll left center transparent;
-}
 
 /* "Read more" and "X comments" links */
 .node .links-wrapper {
