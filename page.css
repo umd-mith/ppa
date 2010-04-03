@@ -74,8 +74,6 @@ html {
   height: 100%;
 }
 body {
-  background-color: #f8f8ef; /* @color */
-  color: #63565F; /* @color */
   font-size: 12px;
 }
 #skip-link {
@@ -91,8 +89,6 @@ body {
   border-bottom:10px solid #c6e263;
   margin-bottom:-70px;
   padding-bottom:60px;
-}
-#header {
 }
 /* Branding */
 #branding {
@@ -205,22 +201,6 @@ body {
   z-index: 10;
   position: relative;
 }
-/* Content (column) */
-#content {
-}
-#content-inner {
-}
-/* Sidebar first (column) */
-#sidebar-first {
-}
-#sidebar-first .inner {
-}
-
-/* Sidebar second (column) */
-#sidebar-second {
-}
-#sidebar-second .inner {
-}
 
 /*
 ** Footer
@@ -239,7 +219,6 @@ body {
 }
 /* Footer columns */
 #footer-columns {
-  margin-bottom: 5px;
 }
 #footer-columns .column {
   display: inline-block;
@@ -258,7 +237,7 @@ body {
   width: 24%;
 }
 #footer-columns .region {
-  margin: 20px;
+  margin: 24px 20px;
 }
 #footer-columns .block {
   padding: 0;

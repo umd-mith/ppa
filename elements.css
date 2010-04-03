@@ -12,7 +12,7 @@ h6 {
   color: #000000;
 }
 h1 {
-  margin: 20px 0 10px 0;
+  margin: 20px 0 12px 0;
   font-size: 2em;
 }
 h1.page-title {
@@ -128,7 +128,9 @@ ol,
 dl {
   list-style-position:  inside;
 }
-
+p + ul {
+  margin-top: 5px;
+}
 ul li,
 ol li,
 dl dt,
@@ -271,7 +273,7 @@ legend {
 .form-radios .form-item,
 .form-checkboxes .form-item,
 .form-item.form-type-checkbox {
-  margin: 5px 0;
+  margin: 9px 0;
 }
 .form-radios .form-item label,
 .form-checkboxes .form-item label,
@@ -286,6 +288,8 @@ legend {
 }
 .form-item .description {
   margin-top: 6px;
+  font-style: italic;
+  color: #868686;
 }
 label {
   vertical-align: middle;
@@ -309,11 +313,6 @@ textarea {
   padding: 6px;
   font-family: "Arial", sans-serif;
   font-size: inherit;
-}
-input.form-text,
-input.form-password,
-input.form-file,
-textarea {
   color: #404040;
   border: 1px solid #D6D1CC;
   background-color: #FFFFFF;
@@ -334,8 +333,9 @@ input.form-file {
   background: none;
 }
 textarea {
-  width: 98%;
+  width: 100%;
   height: 230px;
+  padding: 0;
 }
 /* Choice inputs */
 input.form-checkbox,

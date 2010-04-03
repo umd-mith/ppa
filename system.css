@@ -67,6 +67,7 @@ ul.vertical-tabs-list li a {
   border-right: 1px solid #D1CBB5;
   border-bottom: 1px solid #D1CBB5;
   color: #444444;
+  font-size: 0.917em;
   display: block;
   padding: 7px 12px;
 }
@@ -194,18 +195,13 @@ ul.action-links li {
 /**
  * Resizable textareas
  */
-.resizable-textarea textarea {
-  width: 98%;
-}
 .resizable-textarea .grippie {
   height: 9px;
   overflow: hidden;
-  background: #eee url(../../misc/grippie.png) no-repeat center 2px;
+  background: #eee url(images/grippie.png) no-repeat center 2px;
   border: 1px solid #ddd;
   border-top-width: 0;
   cursor: s-resize;
-  width: 98%; 
-  padding: 0 6px;
   margin-top: -1px;
 }
 

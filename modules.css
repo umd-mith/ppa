@@ -169,6 +169,7 @@ h2#add-comment-form {
 ul.contextual-links li {
   background-image: none;
   margin: 0;
+  line-height: normal;
 }
 
 /**
@@ -303,11 +304,13 @@ body.page-forum ul.action-links {
 .node h2.node-title a:focus {
   outline-color: #63565F;
 }
+.node .meta {
+ margin-top: 3px;
+}
 .node .meta .submitted {
   font-size: 14px; /* can't use em's because of the Chrome bug */
   font-weight: 700;
   color: #8d8d8d;
-  margin-top: 3px;
 }
 .node .meta a {
 }
@@ -542,13 +545,15 @@ th a img {
   height: 18px;
 }
 .vote-form label {
+  margin-left: 4px;
 }
 .vote-form .form-item-choice {
-  margin: 8px 0;
+  margin: 13px 0;
   padding: 0;
 }
 .vote-form .title {
   font-weight: 700;
+  line-height: 1.3;
 }
 .vote-form .form-radios {
   margin: 13px 0 9px 0;
