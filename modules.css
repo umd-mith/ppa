@@ -18,11 +18,11 @@
   margin: 0 0 15px 0;
 }
 .block h2::selection {
-	background-color: #779125;
+  background-color: #779125;
   color: #ffffff;
 }
 .block h2::-moz-selection {
-	background-color: #779125;
+  background-color: #779125;
   color: #ffffff;
 }
 .block .content {
@@ -105,11 +105,11 @@
   color: inherit;
 }
 .node-title a::-moz-selection {
-	background-color: #2E2E2E;
+  background-color: #2E2E2E;
   color: #ffffff;
 }
 .node-title a::selection {
-	background-color: #2E2E2E;
+  background-color: #2E2E2E;
   color: #ffffff;
 }
 .node h1.node-title a:hover,
@@ -281,7 +281,7 @@ form#comment-form #edit-actions {
   margin-right: 5px;
 }
 .field-type-taxonomy-term-reference .field-item:after {
-	content: ",";
+  content: ",";
 }
 .field-type-taxonomy-term-reference .field-item:last-child:after {
   content: normal;

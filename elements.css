@@ -147,11 +147,11 @@ i {
   font-style: italic;
 }
 *::selection {
-	background-color: #2E2E2E;
+  background-color: #2E2E2E;
   color: #ffffff;
 }
 *::-moz-selection {
-	background-color: #2E2E2E;
+  background-color: #2E2E2E;
   color: #ffffff;
 }
 
@@ -210,11 +210,11 @@ a:focus {
   border-bottom-color: #E25401;
 }
 a::selection {
-	background-color: #086782;
+  background-color: #086782;
   color: #ffffff;
 }
 a::-moz-selection {
-	background-color: #086782;
+  background-color: #086782;
   color: #ffffff;
 }
 
@@ -398,6 +398,13 @@ input.form-submit::-moz-focus-inner {
 /* Disabled inputs */
 input[disabled="disabled"] {
   background-color: #eaeaea;
+}
+/* Higlight required form items if user has forgotten to fill them */
+input.error,
+textarea.error,
+select.error {
+  border: 1px solid #d43308;
+  background-color: #fef7f5;
 }
 
 /*
