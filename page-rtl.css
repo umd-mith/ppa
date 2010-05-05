@@ -1,0 +1,40 @@
+/* $Id$ */
+
+#branding {
+  padding: 50px 30px 47px 20px;
+  margin-bottom: 7px;
+}
+a#logo {
+  padding: 6px 0 0 15px;
+}
+#main-links > ul > li.expanded {
+  background:url("images/main-links-expanded-white-rtl.png") no-repeat scroll left 14px transparent;
+}
+#main-links > ul > li.expanded > a {
+  padding: 8px 15px 11px 24px;
+}
+#main-links > ul > li.expanded > a.active {
+  background-image: url(images/main-links-expanded-rtl.png);
+  background-position: left 14px;
+}
+#main-links li.expanded ul {
+  right: 0;
+}
+#main-links li.expanded ul ul {
+  right: 183px;
+}
+#main-links li.expanded li.expanded {
+  background: url("images/arrow-left-white.png") no-repeat 6% 12px;
+}
+#theme-info {
+  padding: 0 0 0 7px;
+  text-align: left;
+}
+#secondary-menu {
+  padding: 0 7px 0 0;
+}
+#secondary-menu ul li {
+  margin: 0 0 0 9px;
+}
+
+

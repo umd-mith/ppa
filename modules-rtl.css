@@ -1,0 +1,39 @@
+/* $Id$ */
+
+.block li.expanded ul {
+  margin-left: 0;
+  margin-right: 12px;
+}
+#content a.feed-icon {
+  float: left;
+}
+.filter-help {
+  float: left;
+}
+.node ul.links.inline li {
+  margin: 0 0 0 8px;
+}
+#comments-wrapper .indented {
+  margin: 0 30px 0 0;
+}
+.user-picture {
+  margin: 0 10px 10px 0;
+}
+.comment .user-picture {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+.node .user-picture {
+  float: left;
+}
+.node img {
+  margin: 5px 0 9px 15px;
+  float: right;
+}
+.page-links .page-next {
+  text-align: left;
+}
+.profile .user-picture {
+  float: left;
+}
+

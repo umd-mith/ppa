@@ -1,0 +1,643 @@
+/* $Id */
+
+/**
+ * Utility classes
+ */
+.element-hidden {
+  display: none;
+}
+.element-invisible {
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  padding: 0;
+}
+html.js .js-hide {
+  display: none;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/**
+** Tabs
+*/
+.tabs {
+  margin: 12px 0;
+}
+.tabs ul.tabs li {
+  display: inline-block;
+}
+.tabs ul.tabs li a {
+  background-color: #F5F4F3;
+  border: 1px solid #CCCCCC;
+  color: inherit;
+  display: block;
+  padding: 5px 16px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.tabs ul.tabs li.active a {
+  background-color: #ffffff;
+}
+.tabs ul.tabs li a:hover,
+.tabs ul.tabs li a:active,
+.tabs ul.tabs li a:focus {
+  outline: none;
+  opacity: 0.8;
+  border-color: #666666;
+}
+.tabs ul.tabs li a:hover {
+  opacity: 0.8;
+}
+.tabs ul.primary {
+  margin: 0;
+}
+.tabs ul.primary li {
+  margin: 3px 3px 3px 0;
+}
+.tabs ul.secondary {
+  margin: 0;
+}
+.tabs ul.secondary li {
+  margin: 3px 3px 3px 0;
+}
+.tabs ul.secondary li a {
+  font-size: 11px;
+  padding: 3px 12px;
+}
+
+/**
+** Vertical tabs
+*/
+.vertical-tabs {
+  border: 1px solid #CCCCCC;
+  margin: 18px 0;
+}
+.vertical-tabs fieldset {
+  background-color: inherit;
+}
+.vertical-tabs .form-item:first-of-type {
+  margin-top: 6px;
+}
+ul.vertical-tabs-list {
+  display: table-cell;
+  vertical-align: top;
+  width: 165px;
+  margin: 0;
+}
+ul.vertical-tabs-list li {
+}
+ul.vertical-tabs-list li a {
+  background-color: #F5F4F3;
+  font-size: 11px;
+  display: block;
+  padding: 7px 12px;
+  color: inherit;
+  border-right: 1px solid #CCCCCC; /* LTR */
+  border-bottom: 1px solid #CCCCCC;
+}
+ul.vertical-tabs-list li a strong {
+  font-weight: 300;
+}
+ul.vertical-tabs-list li a:focus {
+  outline: none;
+}
+ul.vertical-tabs-list li.selected a {
+  background-color: #ffffff;
+  border-right: none; /* LTR */
+}
+.vertical-tabs-panes {
+  display: table-cell;
+  vertical-align: top;
+  padding: 10px 0;
+}
+fieldset.vertical-tabs-pane {
+  margin: 0;
+  padding: 0px 15px 10px 15px;
+  border: none;
+  background-color: inherit;
+}
+fieldset.vertical-tabs-pane legend,
+ul.vertical-tabs-list small.summary {
+  display: none;
+}
+
+/**
+** Pagers
+*/
+ul.pager {
+  margin: 10px 0 2px 0;
+}
+ul.pager li {
+  display: table-cell;
+}
+ul.pager li.last {
+  border-right: none;
+}
+ul.pager li a,
+ul.pager li.pager-current,
+ul.pager li.pager-ellipsis {
+  padding: 0px 8px;
+}
+ul.pager li:first-child {
+  padding-left: 4px;
+}
+ul.pager li.pager-previous {
+  padding-right: 8px;
+}
+ul.pager li.pager-next {
+  padding-left: 8px;
+}
+
+/**
+** Breadcrumbs
+*/
+#breadcrumb {
+  margin: 0 0 10px 0;
+}
+#breadcrumb .separator {
+  margin: 0 5px;
+}
+
+/**
+** Markers (e.g. "new", "updated")
+*/
+.marker {
+  color: #E25401;
+  text-transform: capitalize;
+  margin-left: 3px;
+}
+.marker:before {
+  content: "(";
+}
+.marker:after {
+  content: ")";
+}
+
+/**
+** Action links (e.g. "Add new Forum topic")
+*/
+ul.action-links {
+  margin: 6px 0;
+}
+ul.action-links li {
+  list-style: none;
+}
+
+/**
+** Messages
+*/
+#messages {
+  margin: 10px 0;
+}
+#messages:first-child {
+  margin-top: 0;
+}
+.messages {
+  padding: 10px 15px;
+  margin: 0 0 15px 0;
+  color: #ffffff;
+}
+.messages em {
+  font-weight: 300;
+}
+.messages.status {
+  color: #ffffff;
+  background-color: #779125;
+}
+.messages.status a {
+  color: #e5f5bd;
+  border-bottom: 1px solid #e5f5bd!important;
+}
+.messages.warning {
+  color: #ffffff;
+  background-color: #e58f08;
+}
+.messages.warning a {
+  color: #fde8c8;
+  border-bottom: 1px solid #fde8c8!important;
+}
+.messages.error {
+  color: #ffffff;
+  background-color: #C42805;
+}
+.messages.error a {
+  color: #FECFC5;
+  border-bottom: 1px solid #FECFC5!important;
+}
+.messages a:hover,
+.messages a:active,
+.messages a:focus {
+  color: #ffffff;
+  background: none;
+  border-bottom-color: #ffffff;
+}
+
+/**
+ * Autocompletion list
+ */
+#autocomplete {
+  position: absolute;
+  border: 1px solid;
+  overflow: hidden;
+  z-index: 100;
+}
+#autocomplete ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-image: none;
+}
+#autocomplete li {
+  background: #ffffff;
+  color: #000000;
+  white-space: pre;
+  cursor: default;
+}
+#autocomplete li.selected {
+  background: #0072b9;
+  color: #ffffff;
+}
+
+/**
+ * Collapsing fieldsets
+ */
+html.js fieldset.collapsible legend a {
+  padding: 0 15px 0 0; /* LTR */
+  margin: 0 2px 0 0;
+  color: #ffffff;
+  background: url("images/arrow-down-white.png") no-repeat right 4px; /* LTR */
+}
+html.js fieldset.collapsed legend a {
+  background: url(images/arrow-right-white.png) no-repeat right 4px; /* LTR */
+}
+html.js fieldset.collapsed .fieldset-wrapper,
+html.js fieldset.collapsed .action {
+  display: none;
+}
+html.js fieldset.collapsed {
+  padding: 5px 20px;
+}
+
+/*
+ * Resizable textareas
+ */
+.resizable-textarea .grippie {
+  height: 9px;
+  width: 100%;
+  background: #CCCCCC url(images/grippie.png) no-repeat center 2px;
+  border: 1px solid #CCCCCC;
+  border-top-width: 0;
+  cursor: s-resize;
+  margin-top: -6px;
+  position: relative; /* required in RTL mode */
+  margin-right: 0!important; /* textarea.js sets unncessary margin here */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/**
+* Table drag and drop
+ */
+body.drag {
+  cursor: move;
+}
+tr.draggable .form-item {
+  display: inline;
+}
+/* handle */
+a.tabledrag-handle {
+  height: 30px;
+  width: 30px;
+  text-decoration: none;
+  cursor: move;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 10px 0 0; /* LTR */
+}
+.tabledrag-handle .handle {
+  height: 30px;
+  width: 30px;
+  margin: 0 14px 0 0; /* LTR */
+  background: url(images/draggable.png) no-repeat 7px -40px;
+}
+/* handle - hovered */
+a.tabledrag-handle-hover .handle {
+  background-position: 7px -90px;
+}
+/* handle - mousedown */
+tr.drag {
+  background-color: #f8fdfe;
+}
+/* handle - released */
+tr.drag-previous {
+  background-color: #f3fbfe;
+}
+/* change indicator (red star) */
+span.tabledrag-changed {
+  font-size: 13px;
+  margin-left: 3px;
+  color: red;
+}
+
+/**
+* Table sort
+ */
+th a,
+thead a {
+  color: #ffffff!important;
+}
+th a:hover,
+thead a:hover {
+  color: #ffffff;
+}
+table img {
+  margin: 0 0 0 7px; /* LTR */
+}
+
+/**
+ * Progress bar
+ */
+.progress {
+  font-weight: bold;
+}
+.progress .bar {
+  background: #cccccc;
+  border: 1px solid #666;
+  margin: 0 3px;
+}
+.progress .filled {
+  height: 16px;
+  width: 5px;
+}
+.progress .percentage {
+  float: right;
+}
+.progress-disabled {
+  float: left;
+}
+.ajax-progress {
+  float: left;
+}
+.ajax-progress-bar {
+  width: 180px;
+}
+
+/**
+ * Password strength indicator
+ */
+.password-parent {
+  width: 379px;
+}
+#password-strength {
+  width: 175px;
+  float: right; /* LTR */
+  margin-top: 16px;
+}
+#password-strength-text {
+  float: right;
+  font-weight: bold;
+}
+div.password-confirm {
+  visibility: hidden;
+}
+#password-indicator {
+  border: 1px solid #989898;
+  margin-top: 3px;
+  background-color: #F5F5F5;
+  height: 8px;
+}
+#password-indicator div {
+  height: 100%;
+  width: 0%;
+  background-color: #9EB42C;
+}
+input.password-confirm, input.password-field {
+  width: 16em;
+  margin-bottom: 0.4em;
+}
+.password-confirm {
+  display: inline;
+  padding-left: 1em;
+}
+.form-item .password-suggestions {
+  padding: 8px 9px;
+  margin: 10px 0;
+  background-color: #f3fcdb;
+  border: 1px solid #b8e643;
+}
+.password-suggestions ul {
+  margin: 8px 0 0 9px;
+}
+
+/*
+** Admin pages
+*/
+/* admin/appearance */
+.theme-selector {
+  margin: 0 25px 20px 0; /* LTR */
+  display: inline-block;
+  vertical-align: top;
+}
+.theme-selector:last-child {
+  border-bottom: none;
+}
+.theme-selector .no-screenshot,
+.theme-selector img {
+  margin: 6px 0 3px 0;
+}
+.theme-selector .theme-info {
+  width: 220px;
+}
+.system-themes-list-disabled img {
+  width: 220px;
+}
+.system-themes-list-disabled .theme-selector {
+}
+.system-themes-list h2 {
+  margin-bottom: 12px;
+}
+#preview {
+  position:relative;
+}
+.theme-description {
+  line-height: 1.5;
+}
+.no-screenshot {
+  width: 291px;
+  height: 220px;
+  color: #F8F8EF;
+  border: 1px solid #D1CBB5;
+}
+.system-themes-list-disabled .no-screenshot {
+  width: 220px;
+  height: 163px;
+  background-color: #F8F8F2;
+  border: 1px solid #E8E6D5;
+}
+.theme-info h3 {
+  margin: 5px 0 7px;
+}
+.theme-info ul {
+  margin: 5px 0 0 0;
+}
+.theme-info li {
+  padding: 0 10px 0 0; /* LTR */
+  display: inline;
+}
+/* admin/appearance/settings/<theme_name> */
+#palette {
+  width: 450px;
+  margin: 18px 0 18px 10px;
+}
+#palette .form-item {
+  display: inline-block;
+  margin: 4px 5px 9px 3px;
+}
+#placeholder {
+  display: inline-block;
+  vertical-align: top;
+}
+.form-item-scheme {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+#palette {
+  display: inline-block;
+  vertical-align: top;
+}
+/* admin/structure/block and admin/people/permissions*/
+tr.region-title td,
+table#permissions td.module {
+  border-bottom: 1px solid #2E2E2E;
+  border-top: 1px solid #2E2E2E;
+  color: #779125;
+  font-family: "Trebuchet MS";
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+tr.region-populated {
+  display: none;
+}
+/* admin/config */
+.admin .left {
+  width: 48.5%;
+  float: left; /* LTR */
+}
+.admin .right {
+  width: 48.5%;
+  float: right; /* LTR */
+}
+.admin-panel {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed black;
+}
+.admin-panel:last-child {
+  border-bottom: none;
+}
+/* admin/help/ */
+body.page-admin-help dd {
+  margin-bottom: 12px;
+}
+/* user/<blah>/edit */
+fieldset#edit-picture img {
+}
+/* admin/config/regional/date-time */
+td .form-item {
+  margin: 4px 0;
+}
+/* admin/<blah>/fields */
+.label-add-new-field,
+.label-add-existing-field {
+  display: inline-block;
+  vertical-align: middle;
+}
+/* admin/config/people/ip-blocking */
+form#system-ip-blocking-form {
+  margin-bottom: 15px;
+}
+/* forms */
+#edit-actions {
+  vertical-align: top;
+  margin: 10px 0;
+}
+.fieldset-description {
+  margin-bottom: 6px;
+}
+body.page-admin input {
+  width: auto;
+}
+.description {
+  line-height: 1.5;
+  margin-top: 4px;
+}
+.multiselect .form-item {
+  display: inline-block;
+  margin: 0 10px 0 0;
+}
+form#system-actions-manage-form {
+  margin-top: 30px;
+}
+table + input {
+  margin-top: 10px!important;
+}
+legend + .fieldset-wrapper {
+  margin-top: 0;
+}
+/* tables */
+td.block {
+  background: inherit;
+  border: none;
+  margin: 0;
+}
+/* other */
+dl.admin-list dd {
+  margin: 0 0 11px 0;
+}
+dl.multiselect label {
+  text-transform: capitalize;
+}
+dl.multiselect dd {
+  line-height: normal;
+  margin-left: 0;
+}
+#block-system-help {
+  background-color: #F5F9FA;
+  border: 1px solid #B3CFD4;
+  margin: 15px 0;
+  padding: 12px 16px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+#user-admin-buttons,
+#node-admin-buttons {
+  margin-top: 10px;
+}
+.compact-link {
+  margin-bottom: 5px;
+}
+.node-type-list dt {
+  margin-top: 11px;
+}
+body.page-admin .block {
+  font-size: inherit;
+}
+

@@ -1,0 +1,11 @@
+/* $Id$ */
+
+/* Don't show transparent PNGs */
+body {
+  background-image: none;
+}
+#main-menu li a:hover,
+#main-menu li a:active,
+#main-menu li a:focus {
+  background: none;
+}

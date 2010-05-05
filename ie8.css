@@ -1,0 +1,23 @@
+/* $Id$ */
+
+textarea {
+  overflow: auto;
+}
+legend {
+  margin-bottom: 15px;
+  margin-top: -20px;
+}
+select {
+  padding: 0;
+}
+html.js fieldset.collapsed legend {
+  margin-top: -10px;
+}
+fieldset.filter-wrapper {
+  margin-top: -14px;
+}
+
+.node ul.links {
+  display: inline;
+}
+
