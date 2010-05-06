@@ -25,10 +25,6 @@
   background-color: #779125;
   color: #ffffff;
 }
-.block .content {
-}
-.block ul {
-}
 .block li {
   margin-top: 8px;
 }
@@ -37,11 +33,6 @@
 }
 .block li:last-child {
   border-bottom: none;
-}
-.block li a {
-  text-decoration: none;
-}
-.block li a:hover {
 }
 .block li.expanded ul {
   margin-left: 12px; /* LTR */
@@ -63,12 +54,6 @@
 .block input.form-file {
   width: 100%;
   max-width: 400px;
-}
-/* footer blocks */
-#footer .block {
-  margin-bottom: 10px;
-}
-#footer .block h2 {
 }
 
 /**
@@ -457,8 +442,6 @@ body.page-profile .name {
  */
 .search-results p {
   margin-top: 0;
-}
-.search-results dt {
 }
 .search-results dd {
   margin: 5px 0 20px 0;

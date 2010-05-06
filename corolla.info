@@ -1,7 +1,7 @@
 ; $Id$ 
 
 name = Corolla
-description = Corolla theme. Please visit <a href="http://www.google.com">project page</a> for extended version of this theme.
+description = Corolla theme.
 version = VERSION
 core = 7.x
 engine = phptemplate

@@ -1,23 +1,7 @@
 /* $Id$ */
 
-
-/* Bug: layout breaks in RTL mode */
-#content-wrapper,
-#sidebar-first-wrapper,
-#sidebar-second-wrapper {
-  position: relative;
-}
-/* Bug: sidebar links not clickable in RTL mode */
-#sidebar-first-wrapper a,
-#sidebar-second-wrapper a {
-  zoom: 1;
-}
-/* Bug: IE not displaying borders on tr elements */
-td, th {
-  border-bottom: 1px solid #CCCCCC;
-}
 /*
-* Reimplement the layout using fixed values
+* Reimplement the layout using fixed units
 */
 /*  3-column layout */
 body.columns-3 #main-links,
@@ -59,12 +43,26 @@ body.page-admin #content-wrapper {
   width: 100%;
 }
 
-/* Clearfix */
-.clearfix {
-  zoom: 1;
+/* Bug: layout breaks in RTL mode */
+#content-wrapper,
+#sidebar-first-wrapper,
+#sidebar-second-wrapper {
+  position: relative;
 }
-
-/* Fix misaligned menus in blocks */
+/* Bug: sidebar links not clickable in RTL mode */
+#sidebar-first-wrapper a,
+#sidebar-second-wrapper a {
+  hasLayout: true;
+}
+/* Bug: no borders on tr elements */
+td, th {
+  border-bottom: 1px solid #CCCCCC;
+}
+/* Bug: clearfix not working */
+.clearfix {
+  hasLayout: true;
+}
+/* Bug: misalignd menus in blocks */
 .block ul.menu,
 .block ul.links,
 .block .item-list ul {
@@ -80,19 +78,24 @@ body.page-admin #content-wrapper {
 #main-links li.expanded ul {
   background-color: #000000;
 }
+#main-links li.expanded li {
+  hasLayout: true;
+  display: inline;
+  width: 100%;
+}
 #main-links * {
   z-index: 999;
 }
 
 /*
-* Fix issues caused by last-child pseudoclass
+* Fix issues caused by lack of support for last-child pseudoclass
 */
 fieldset.filter-wrapper {
   margin-top: -14px;
 }
 
 /*
-* Fix issues caused by display:inline-block property
+* Fix issues caused by lack of support for display: inline-block property
 */
 #main-links li,
 .field-type-taxonomy-term-reference .field-label,
@@ -104,7 +107,7 @@ fieldset.filter-wrapper {
 }
 
 /*
-* Fix issues caused by border box model
+* Fix issues caused by lack of support for border box model
 */
 textarea {
   padding: 0;
@@ -114,7 +117,7 @@ input {
 }
 
 /*
-* Fix issues caused by CSS tables
+* Fix issues caused by lack of support for CSS tables
 */
 /* pager */
 ul.pager li {
@@ -138,5 +141,4 @@ a#logo {
 #secondary-menu ul {
   display: inline;
 }
-
 

@@ -1,11 +1,12 @@
 /* $Id$ */
 
-/* Don't show transparent PNGs */
+/* Hide transparent PNGs */
 body {
   background-image: none;
 }
-#main-menu li a:hover,
-#main-menu li a:active,
-#main-menu li a:focus {
+#main-links li a:hover,
+#main-links li a:active,
+#main-links li a:focus {
   background: none;
 }
+
