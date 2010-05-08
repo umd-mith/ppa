@@ -9,6 +9,10 @@ blockquote {
 ul {
   margin: 0 15px 0 0;
 }
+li.expanded ul {
+  margin-left: 0;
+  margin-right: 12px;
+}
 ol {
   margin: 0 15px 0 0;
 }

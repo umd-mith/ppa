@@ -5,7 +5,7 @@
 */
 body {
   line-height: 1.5;
-  font-size: 76%;
+  font-size: 12px;
   font-family: "Arial", sans-serif;
   word-wrap: break-word;
 }
@@ -14,22 +14,22 @@ body {
 * Headers
 */
 h1 {
-  font-family: "Trebuchet MS", sans-serif;
   margin: 9px 0 9px;
-  line-height: 1.1;
   font-size: 2em;
+  font-family: "Trebuchet MS", sans-serif;
+  line-height: 1.1;
 }
 h2 {
+  margin: 17px 0 7px;
+  padding: 0 0 4px 0;
   font-family: "Trebuchet MS", sans-serif;
-  color: #7da618;
-  border-bottom: 1px dashed #2e2e2e;
   font-size: 1.333em;
   font-weight: 700;
+  line-height: 1.3;
   letter-spacing: -0.6px;
   text-transform: uppercase;
-  margin: 17px 0 7px;
-  line-height: 1.3;
-  padding: 0 0 4px 0;
+  color: #7da618;
+  border-bottom: 1px dashed #2e2e2e;
 }
 h3 {
   font-family: "Trebuchet MS", sans-serif;
@@ -64,27 +64,29 @@ h6 + * {
 * Block elements
 */
 p {
+  margin: 14px 0;
 }
-p + p,
-ul + p,
-ol + p {
-  margin-top: 16px;
+p:first-child {
+  margin-top: 0;
+}
+p:last-child {
+  margin-bottom: 0;
 }
 pre {
+  margin: 10px 0;
+  padding: 15px;
   background-color: #FAFAFA;
   border: 1px solid #E5E5E5;
-  padding: 15px;
-  margin: 10px 0;
-  white-space: pre-wrap;
   font-family: "Courier", "Courier New", monospace;
+  white-space: pre-wrap;
   overflow: hidden;
 }
 blockquote {
-  quotes: none;
-  color: #808080;
   margin: 20px 0 20px 20px; /* LTR */
   padding: 0 0 0 15px; /* LTR */
+  color: #808080;
   border-left: 7px solid #E25401; /* LTR */
+  quotes: none;
 }
 img {
 }
@@ -187,6 +189,9 @@ li.expanded a {
   display: block;
   margin-bottom: 8px;
 }
+li.expanded ul {
+  margin-left: 12px; /* LTR */
+}
 ol {
   list-style: decimal inside none;
   margin: 0 0 0 15px; /* LTR */
@@ -245,10 +250,6 @@ caption {
   margin-bottom: 5px;
   text-align: left; /* LTR */
 }
-.indentation {
-  width: 20px;
-  float: left;
-}
 
 /**
 * Forms
@@ -258,22 +259,22 @@ caption {
   margin: 10px 0;
 }
 fieldset {
+  margin: 15px 0;
+  padding: 13px 20px;
   background-color: #FBFBFB;
   border: 1px solid #E1E1E1;
-  padding: 13px 20px;
-  margin: 15px 0;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
 legend {
+  margin-left: -8px;
+  padding: 1px 8px 1px 9px;
+  background-color: #086782;
+  color: #ffffff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  background-color: #086782;
-  color: #ffffff;
-  margin-left: -8px;
-  padding: 1px 8px 1px 9px;
 }
 .form-item {
   margin: 14px 0;
@@ -289,7 +290,7 @@ fieldset .form-item:first-child {
 }
 .form-item .description {
   background-color: #F5F9FA;
-  border: 1px solid #B3CFD4;
+  border: 1px solid #deeaec;
   font-size: 0.917em;
   margin: 9px 0 21px;
   padding: 2px 6px;
@@ -314,11 +315,12 @@ input.form-password,
 input.form-file,
 textarea {
   padding: 6px;
-  background-color: #FAFAFA;
-  border: 1px solid #CCCCCC;
-  line-height: inherit;
   font-family: inherit;
   font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background-color: #FAFAFA;
+  border: 1px solid #CCCCCC;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -374,14 +376,15 @@ input.form-radio {
 /* Buttons */
 input.form-button,
 input.form-submit {
+  margin: 0 5px 0 0; /* LTR */
+  padding: 5px 11px;
   background: url(images/button.png) repeat-x top left;
+  color: #414141;
+  border: 1px solid #CCCCCC;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
-  border: 1px solid #CCCCCC;
+  border-radius: 8px;
   cursor: pointer;
-  padding: 5px 11px;
-  margin: 0 5px 0 0; /* LTR */
-  color: #414141;
 }
 input.form-button:hover,
 input.form-submit:hover,
@@ -389,22 +392,22 @@ input.form-button:focus,
 input.form-submit:focus {
    border-color: #666666!important;
 }
-input.form-button:focus,
-input.form-submit:focus {
-}
-input.form-button::-moz-focus-inner,
-input.form-submit::-moz-focus-inner {
-}
 /* Disabled inputs */
 input[disabled="disabled"] {
   background-color: #eaeaea;
 }
-/* Higlight required form items if user has forgotten to fill them */
+/* Higlight required form item if user has forgotten to fill it */
 input.error,
 textarea.error,
 select.error {
-  border: 1px solid #d43308;
+  background-color: #fefaf8;
+  border: 1px solid #f4b09e;
+}
+input.error:focus,
+textarea.error:focus,
+select.error:focus {
   background-color: #fef7f5;
+  border: 1px solid #d43308!important;
 }
 
 /*
@@ -436,7 +439,7 @@ thead a,
 #forum td.container .name a,
 a.tabledrag-handle,
 ul.contextual-links li a,
-.overlay .ui-dialog-titlebar a  {
+.overlay .ui-dialog-titlebar a {
   border-bottom: none;
 }
 /* ul { list-style: disc inside none; } */

@@ -317,6 +317,10 @@ body.drag {
 tr.draggable .form-item {
   display: inline;
 }
+tr .indentation {
+  width: 20px;
+  float: left;
+}
 /* handle */
 a.tabledrag-handle {
   height: 30px;
@@ -399,7 +403,7 @@ table img {
  * Password strength indicator
  */
 .password-parent {
-  width: 379px;
+  width: 420px;
 }
 #password-strength {
   width: 175px;
@@ -555,9 +559,6 @@ tr.region-populated {
 /* admin/help/ */
 body.page-admin-help dd {
   margin-bottom: 12px;
-}
-/* user/<blah>/edit */
-fieldset#edit-picture img {
 }
 /* admin/config/regional/date-time */
 td .form-item {

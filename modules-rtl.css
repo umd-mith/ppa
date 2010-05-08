@@ -1,9 +1,5 @@
 /* $Id$ */
 
-.block li.expanded ul {
-  margin-left: 0;
-  margin-right: 12px;
-}
 #content a.feed-icon {
   float: left;
 }

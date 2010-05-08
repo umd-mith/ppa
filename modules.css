@@ -34,15 +34,8 @@
 .block li:last-child {
   border-bottom: none;
 }
-.block li.expanded ul {
-  margin-left: 12px; /* LTR */
-}
 .block .more-link {
   margin: 6px 0;
-}
-.block .more-link a {
-  border: none;
-  text-decoration: underline;
 }
 .block th,
 .block td {
@@ -223,14 +216,18 @@ form#comment-form #edit-actions {
 .page-links .page-previous {
   display: table-cell;
   vertical-align: top;
+  width: 40%;
 }
 .page-links .page-up {
   display: table-cell;
   vertical-align: top;
+  width: 20%;
+  text-align: center;
 }
 .page-links .page-next {
   display: table-cell;
   vertical-align: top;
+  width: 40%;
   text-align: right; /* LTR */
 }
 
@@ -250,9 +247,12 @@ form#comment-form #edit-actions {
 /**
  * Field module
  */
-/* Taxonomy terms */
-.field-type-taxonomy-term-reference {
+.field,
+.field + *,
+.field-items {
+  clear: both;
 }
+/* Taxonomy terms */
 .field-type-taxonomy-term-reference .field-label {
   color: #808080;
   display: inline-block;
@@ -276,9 +276,8 @@ form#comment-form #edit-actions {
  * Filter module
  */
 fieldset.filter-wrapper {
+  margin: 0 0 12px 0;
   border-top: none;
-  margin-top: 0;
-  margin-bottom: 12px;
 }
 fieldset.filter-wrapper .form-type-select {
   display: inline-block;
@@ -358,8 +357,6 @@ html.js #user-login li.openid-link {
   margin-bottom: 10px;
 }
 /* user profile tab */
-#edit-openid-identifier  {
-}
 .form-item-openid-identifier {
   margin: 10px 0;
   display: block;
@@ -573,7 +570,11 @@ ul.contextual-links {
   position: absolute;
   top: 25px;
   right: 0px;
-  white-space: nowrap;   
+  white-space: nowrap;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #666666;
 }
 .node ul.contextual-links {
   top: 24px;
@@ -582,15 +583,15 @@ ul.contextual-links.active {
   display: block;
 }
 ul.contextual-links li {
-  margin: 0;
+  margin: 0!important;
   padding-left: 0px;
   background-image: none;
 }
 ul.contextual-links li a {
   color: #ffffff;
-  background-color: #666666;
+
   display: block;
-  font-size: 0.975em;
+  font-size: 11.7px;
   padding: 2px 11px 2px 12px;
   text-align: right;
   font-family: "Arial", sans-serif;
@@ -600,6 +601,9 @@ ul.contextual-links li a:hover,
 ul.contextual-links li a:focus,
 ul.contextual-links li a:active {
   background-color: #000000;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
   outline: none;
 }
 

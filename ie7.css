@@ -60,7 +60,7 @@ td, th {
 }
 /* Bug: clearfix not working */
 .clearfix {
-  hasLayout: true;
+  zoom: 1;
 }
 /* Bug: misalignd menus in blocks */
 .block ul.menu,

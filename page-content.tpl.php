@@ -78,11 +78,11 @@
 
         <a id="main-content" class="element-invisible"></a>
         <?php print render($title_prefix); ?>
-        
+
         <?php if ($title && !isset($node)): ?>
           <h1 class="page-title"><?php print $title ?></h1>
         <?php endif; ?>
-        
+
         <?php print render($title_suffix); ?>
 
         <?php print render($page['help']); ?>
@@ -97,10 +97,10 @@
             <?php print theme('links__system_secondary_menu', array('links' => $secondary_menu, 'attributes' => array('class' => array('links', 'clearfix')), 'heading' => t('Secondary menu'))); ?>
           </div> <!-- /#secondary-menu -->
         <?php endif; ?>
-        
+
         <div id="theme-info">
           Theme by <a href="http://www.kiwi-themes.com">Jarosław Foksa</a>
-        </div>  
+        </div>
       </div>
 
     </div> <!-- /#content -->

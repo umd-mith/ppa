@@ -33,7 +33,8 @@ function corolla_process_html(&$variables) {
   if (module_exists('color')) {
     _color_html_alter($variables);
   }
-  // Add conditional stylesheet for IEs. TODO: move this to info file when this patch gets into core http://drupal.org/node/522006
+
+  // Add conditional stylesheets for IEs. TODO: move this to info file when this patch gets into core http://drupal.org/node/522006
   $variables['styles'] .= "\n<!--[if lte IE 8]>\n" . '<link type="text/css" rel="stylesheet" media="all" href="' . file_create_url(path_to_theme() . '/ie8.css') . '" />' . "\n" . "<![endif]-->\n";
   $variables['styles'] .= "\n<!--[if lte IE 7]>\n" . '<link type="text/css" rel="stylesheet" media="all" href="' . file_create_url(path_to_theme() . '/ie7.css') . '" />' . "\n" . "<![endif]-->\n";
   $variables['styles'] .= "\n<!--[if lte IE 6]>\n" . '<link type="text/css" rel="stylesheet" media="all" href="' . file_create_url(path_to_theme() . '/ie6.css') . '" />' . "\n" . "<![endif]-->\n";
@@ -51,16 +52,7 @@ function corolla_preprocess_page(&$variables) {
   } else {
     $variables['main_links'] = FALSE;
   }
-}
 
-/**
- * Override or insert variables into the page template.
- */
-function corolla_process_page(&$variables) {
-  // Hook into color.module 
-  if (module_exists('color')) {
-    _color_page_alter($variables);
-  }
   // Add variables with weight value for each main column
   $variables['weight']['content'] = 0;
   $variables['weight']['sidebar-first'] = 'disabled';
@@ -80,6 +72,16 @@ function corolla_process_page(&$variables) {
     }
   }
   $variables['main_columns_number'] = $columns;  
+}
+
+/**
+ * Override or insert variables into the page template.
+ */
+function corolla_process_page(&$variables) {
+  // Hook into color.module 
+  if (module_exists('color')) {
+    _color_page_alter($variables);
+  }
 }
 
 /**
@@ -178,33 +180,6 @@ function corolla_messages($variables) {
 }
 
 /**
- * Override of theme_field().
- *
- * Remove "clearfix" class from top-level DIV. This class causes problems on IE6/7 (impsible to disable hasLayout)
- */
-function corolla_field($variables) {
-  $output = '';
-
-  // Render the label, if it's not hidden.
-  if (!$variables['label_hidden']) {
-    $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
-  }
-
-  // Render the items.
-  $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
-  foreach ($variables['items'] as $delta => $item) {
-    $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
-    $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
-  }
-  $output .= '</div>';
-
-  // Render the top-level DIV.
-  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
-
-  return $output;
-}
-
-/**
  * Override of theme_node_recent_block() and theme_node_recent_content().
  *
  * Make output for "Recent content" block consistent with other blocks
@@ -229,24 +204,6 @@ function corolla_node_recent_content($variables) {
 }
 
 /**
- * Override of theme_breadcrumb().
- *
- * Wrap separator with span element
- */
-function corolla_breadcrumb($variables) {
-  $breadcrumb = $variables['breadcrumb'];
-
-  if (!empty($breadcrumb)) {
-    // Provide a navigational heading to give context for breadcrumb links to
-    // screen-reader users. Make the heading invisible with .element-invisible.
-    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
-
-    $output .= '<div class="breadcrumb">' . implode('<span class="separator">»</span>', $breadcrumb) . '</div>';
-    return $output;
-  }
-}
-
-/**
  * Override of theme_tablesort_indicator().
  *
  * Use custom arrow images
@@ -267,6 +224,24 @@ function corolla_tablesort_indicator($variables) {
  */
 function corolla_more_link($variables) {
   return '<div class="more-link">' . t('<a href="@link" title="@title">more ›</a>', array('@link' => check_url($variables['url']), '@title' => $variables['title'])) . '</div>';
+}
+
+/**
+ * Override of theme_breadcrumb().
+ *
+ * Wrap separator with span element
+ */
+function corolla_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+
+  if (!empty($breadcrumb)) {
+    // Provide a navigational heading to give context for breadcrumb links to
+    // screen-reader users. Make the heading invisible with .element-invisible.
+    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+
+    $output .= '<div class="breadcrumb">' . implode('<span class="separator">»</span>', $breadcrumb) . '</div>';
+    return $output;
+  }
 }
 
 /**
