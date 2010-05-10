@@ -192,6 +192,11 @@ ul.action-links {
 }
 ul.action-links li {
   list-style: none;
+  display: block;
+}
+ul.action-links li a {
+  padding-left: 15px;
+  background: url(images/action-link.png) no-repeat left center;
 }
 
 /**
@@ -574,6 +579,23 @@ td .form-item {
 form#system-ip-blocking-form {
   margin-bottom: 15px;
 }
+/* admin/reports/updates */
+table.version tr {
+  margin: 10px 0;
+}
+td.version-links li {
+  display: inline;
+  margin: 0 0 0 10px;
+}
+table.update tr,
+table.update td {
+  border-top: 1px solid #2E2E2E;
+  border-bottom: 1px solid #2E2E2E;
+}
+body.page-admin-reports-updates h3 {
+  margin-bottom: 0;
+}
+
 /* forms */
 #edit-actions {
   vertical-align: top;

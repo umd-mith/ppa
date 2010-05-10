@@ -68,13 +68,13 @@
       <?php print render($title_suffix); ?>
 
       <div class="meta">
-        <?php print t('by') . " " . $author . " " . t('on') . " " . $created; ?>
+        <?php print t('by !author on !date', array('!author' => $author, '!date' => $created)); ?>
       </div>
 
   </div>
 
   <?php
-    // We hide the comments and links now so that we can render them later.
+    // Hide the links now so they can be rendered later.
     hide($content['links']);
     print render($content);
   ?>

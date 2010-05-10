@@ -13,6 +13,9 @@ li.expanded ul {
   margin-left: 0;
   margin-right: 12px;
 }
+ul.inline li {
+  margin: 0 0 0 10px;
+}
 ol {
   margin: 0 15px 0 0;
 }

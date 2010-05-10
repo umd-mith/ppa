@@ -35,13 +35,7 @@
     <?php if ($node->type != 'forum' && !empty($content['comments'])): ?>
 
       <h2 class="comments">
-        <?php print $node->comment_count; ?>
-        <?php if ($node->comment_count == 1): ?> 
-          <?php print t(' comment'); ?>
-        <?php endif; ?>
-        <?php if ($node->comment_count > 1): ?> 
-          <?php print t(' comments'); ?>
-        <?php endif; ?>
+        <?php print format_plural($node->comment_count, '1 comment', '@count comments'); ?>
       </h2>
     <?php endif; ?>
 

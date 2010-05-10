@@ -184,6 +184,7 @@ li > ul {
 }
 ul.inline li {
   display: inline;
+  margin: 0 10px 0 0; /* LTR */
 }
 li.expanded a {
   display: block;
@@ -433,6 +434,7 @@ ul.pager li a,
 a.feed-icon,
 .comment h3.title a,
 .user-picture a,
+ul.action-links li a,
 legend a,
 th a,
 thead a,
@@ -444,6 +446,7 @@ ul.contextual-links li a,
 }
 /* ul { list-style: disc inside none; } */
 .block ul,
+ul.links,
 ul.vertical-tabs-list,
 ul.contextual-links li,
 .admin-panel li.leaf,
