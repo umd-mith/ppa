@@ -4,9 +4,11 @@
 * Wrappers
 */
 body,
+#main-wrapper,
 #main,
-#page,
-#content-wrapper {
+#content-wrapper,
+#content,
+#page {
   margin: 0!important;
   padding: 0!important;
   min-width: 0!important;
@@ -53,15 +55,15 @@ a {
 * Hidden
 */
 #toolbar,
-#main-links-wrapper,
+#navigation-wrapper,
 #header-wrapper,
 .breadcrumb,
 ul.links,
 .messages,
 .tabs,
-#sidebar-first-wrapper,
-#sidebar-second-wrapper,
-#closure,
+#sidebar-first,
+#sidebar-second,
+#secondary-menu,
 ul.pager,
 a.feed-icon,
 h2#add-comment-form,
