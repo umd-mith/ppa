@@ -1,0 +1,109 @@
+/* $Id$ */
+
+#content-wrapper,
+#sidebar-first,
+#sidebar-second {
+  float: right;
+}
+body.two-sidebars #content {
+  margin: 0 0 0 20px;
+}
+body.two-sidebars .region-sidebar-first {
+  margin: 0 0 0 20px;
+}
+body.one-sidebar #content,
+body.one-sidebar.sidebar-first .region-sidebar-first
+body.one-sidebar.sidebar-second .region-sidebar-second {
+  margin: 0 0 0 20px;
+}
+#branding {
+  padding: 50px 30px 47px 20px;
+  margin-bottom: 7px;
+}
+a#logo {
+  padding: 0 0 0 15px;
+}
+#content a.feed-icon {
+  float: left;
+}
+.node ul.links.inline li {
+  margin: 0 0 0 8px;
+}
+#comments-wrapper .indented {
+  margin: 0 30px 0 0;
+}
+.user-picture {
+  margin: 0 10px 10px 0;
+}
+.comment .user-picture {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+.node .user-picture {
+  float: left;
+}
+.node img {
+  margin: 5px 0 9px 15px;
+  float: right;
+}
+.page-links .page-next {
+  float: left;
+  text-align: left;
+}
+.book-navigation .page-previous  {
+  text-align: right;
+}
+.poll .vote-form {
+  text-align: right;
+}
+.profile .user-picture {
+  float: left;
+}
+#password-strength {
+  float: left;
+}
+.password-strength-title {
+  float: none;
+}
+#password-strength-text {
+  float: left;
+}
+a.tabledrag-handle {
+  margin: 0 0 0 10px;
+}
+a.tabledrag-handle .handle {
+  margin: 0 0 0 14px;
+}
+table img {
+  margin: 0 7px 0 0;
+}
+html.js input.form-autocomplete {
+  background-position: 2% 6px;
+}
+html.js input.throbbing {
+  background-position: 2% -14px;
+}
+html.js fieldset.collapsible legend {
+  padding: 2px 14px 2px 0;
+}
+html.js fieldset.collapsible legend a {
+  padding: 0 0 0 15px;
+  background: url("images/arrow-down-white.png") no-repeat left 4px;
+}
+html.js fieldset.collapsed legend a {
+  background: url(images/arrow-left-white.png) no-repeat left 4px;
+}
+.theme-selector {
+  margin: 0 0 20px 25px;
+}
+.theme-info li {
+  padding: 0 0 0 10px;
+}
+.admin .left {
+  float: right;
+}
+.admin .right {
+  float: left;
+}
+
+

@@ -1,0 +1,51 @@
+/* $Id$ */
+
+/* background */
+body {
+  background-color: #f8f8f8;
+}
+#navigation li a.active,
+#main-links > ul > li > a.active {
+  background-color: #f8f8f8;
+}
+/* text (black) */
+body {
+  color: #2e2e2e;
+}
+/* link (blue) */
+a {
+  color: #086782;
+}
+/* link hovered (orange) */
+a:hover,
+a:focus {
+  color: #e25401;
+}
+/* navigation (black) */
+#navigation-wrapper {
+  background-color: #2e2e2d;
+}
+#main-links li.expanded ul {
+  background-color: #2e2e2d;
+}
+/* slogan (orange) */
+#site-slogan {
+  color: #e25400;
+}
+#site-slogan::selection {
+  background-color:  #e25400;
+}
+#site-slogan::-moz-selection {
+  background-color:  #e25400;
+}
+/* border (gray) */
+#page {
+  border: 1px solid #e1e1e1;
+}
+/* border strong (dark gray) */
+#sidebar-first input,
+#sidebar-second input {
+  border: 1px solid #c4c4c4;
+}
+
+

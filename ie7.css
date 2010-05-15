@@ -1,0 +1,91 @@
+/* $Id$ */
+
+/*
+* Reimplement the layout using fixed units
+*/
+/*  3-column layout */
+body.two-sidebars #navigation,
+body.two-sidebars #header,
+body.two-sidebars #main {
+  width: 980px!important;
+}
+/* 2-column layout */
+body.one-sidebar #navigation,
+body.one-sidebar #header,
+body.one-sidebar #main {
+  width: 960px;
+}
+/* 1 column layout */
+body.no-sidebars #navigation,
+body.no-sidebars #header,
+body.no-sidebars #main {
+  width: 800px;
+}
+/* Admin layout */
+body.page-admin #main {
+  width: 960px;
+}
+
+
+/* Bug: layout breaks in RTL mode */
+#content-wrapper,
+#sidebar-first-wrapper,
+#sidebar-second-wrapper {
+  position: relative;
+}
+/* Bug: sidebar links not clickable in RTL mode */
+#sidebar-first-wrapper a,
+#sidebar-second-wrapper a {
+  hasLayout: true;
+}
+/* Bug: no borders on tr elements */
+td, th {
+  border-bottom: 1px solid #CCCCCC;
+}
+/* Bug: misalignd menus in blocks */
+.block ul.menu,
+.block ul.links,
+.block .item-list ul {
+  list-style-position: outside;
+}
+
+/*
+* Fix issues caused by lack of support for last-child pseudoclass
+*/
+fieldset.filter-wrapper {
+  margin-top: -14px;
+}
+
+/*
+* Fix issues caused by lack of support for display: inline-block property
+*/
+#navigation li,
+.field-type-taxonomy-term-reference .field-label,
+.field-type-taxonomy-term-reference .field-item,
+.field-type-taxonomy-term-reference .field-items,
+.tabs ul.tabs li {
+  hasLayout: true;
+  display: inline;
+}
+
+/*
+* Fix issues caused by lack of support for border box model
+*/
+textarea {
+  padding: 0;
+}
+input {
+  padding: 5px 0!important;
+}
+
+/*
+* Fix issues caused by lack of support for CSS tables
+*/
+/* branding */
+a#logo {
+  float: left;
+}
+#name-and-slogan {
+  float: left;
+}
+
