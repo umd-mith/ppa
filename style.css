@@ -61,14 +61,28 @@ body.no-sidebars #main {
   width: 65%;
 }
 /* Admin layout */
-body.page-admin #main {
+body.page-admin #main,
+body.overlay #main {
   margin: 0 auto;
   width: 90%;
   max-width: 1200px;
   min-width: 300px;
 }
-body.page-admin #content-wrapper {
+body.page-admin #content-wrapper,
+body.overlay #content-wrapper {
   width: 100%;
+}
+body.page-admin #sidebar-first,
+body.page-admin #sidebar-second,
+body.page-admin #navigation-wrapper,
+body.page-admin #header-wrapper,
+body.page-admin #secondary-menu,
+body.overlay #sidebar-first,
+body.overlay #sidebar-second,
+body.overlay #navigation-wrapper,
+body.overlay #header-wrapper,
+body.overlay #secondary-menu {
+  display: none;
 }
 /* Mobile */
 @media only screen and (max-device-width: 480px) {
