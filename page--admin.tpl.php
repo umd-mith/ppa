@@ -76,7 +76,7 @@
 <div id="main-wrapper">
   <div id="main">
 
-      <div id="main-columns">
+      <div id="main-columns" class="clearfix">
         <?php if ($page['content']): ?>
           <div id="content-wrapper">
             <div id="content">
