@@ -4,8 +4,7 @@
 body {
   background-color: #f8f8f8;
 }
-#navigation li a.active,
-#main-links > ul > li > a.active {
+#navigation li.active {
   background-color: #f8f8f8;
 }
 /* text (black) */

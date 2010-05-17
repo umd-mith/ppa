@@ -7,7 +7,7 @@
   width: 500px;
   height: 300px;
   background-color: #f8f8f8;
-  border: 1px solid #E1E1E1;
+  border: 1px solid #e1e1e1;
 }
 #wrapper-p * {
   margin: 0;
@@ -60,7 +60,7 @@
   height: 184px;
   padding: 15px;
   background: #ffffff;
-  border: 1px solid #E1E1E1;
+  border: 1px solid #e1e1e1;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -102,5 +102,4 @@
 #sidebar-p p {
   line-height: 11px;
 }
-
 

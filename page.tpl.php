@@ -122,7 +122,7 @@
 <div id="main-wrapper">
   <div id="main">
 
-    <div id="main-columns" class="clearfix">
+    <div id="main-columns">
 
       <?php if ($page['content']): ?>
         <div id="content-wrapper">
@@ -136,7 +136,7 @@
               <a id="main-content" class="element-invisible"></a>
               <?php print render($title_prefix); ?>
 
-              <?php if ($title && !isset($node)): ?>
+              <?php if ($title): ?>
                 <h1 class="page-title"><?php print $title ?></h1>
               <?php endif; ?>
 

@@ -4,7 +4,7 @@
 body {
   background-image: none;
 }
-#main-links li a:hover,
+#navigation li a:hover,
 #main-links li a:active,
 #main-links li a:focus {
   background: none;

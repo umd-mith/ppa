@@ -7,7 +7,7 @@
 body.two-sidebars #navigation,
 body.two-sidebars #header,
 body.two-sidebars #main {
-  width: 980px!important;
+  width: 980px;
 }
 /* 2-column layout */
 body.one-sidebar #navigation,
@@ -40,7 +40,7 @@ body.page-admin #main {
 }
 /* Bug: no borders on tr elements */
 td, th {
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #cccccc;
 }
 /* Bug: misalignd menus in blocks */
 .block ul.menu,
@@ -76,6 +76,14 @@ textarea {
 }
 input {
   padding: 5px 0!important;
+}
+
+/*
+* Fix issues caused by lack of support for inherit value
+*/
+#navigation li a.active,
+#site-name a {
+  color: #2e2e2e;
 }
 
 /*

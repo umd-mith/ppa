@@ -2,16 +2,26 @@
 // $Id$
 
 /**
- * Override or insert variables into the html template.
+ * @file
+ * Theme callbacks for the corolla theme.
  */
-function corolla_preprocess_html(&$variables) {
+
+/**
+ * Implements hook_css_alter().
+ */
+function corolla_css_alter(&$css) {
+
+  // Remove core stylesheets.
+  // unset($css[drupal_get_path('module', 'system') . '/system-menus.css']);
+  // unset($css[drupal_get_path('module', 'system') . '/system-menus-rtl.css']);
 }
 
 /**
- * Override or insert variables into the html template.
+ * Implements template_process_html().
  */
 function corolla_process_html(&$variables) {
-  // Hook into color.module
+
+  // Hook into color module
   if (module_exists('color')) {
     _color_html_alter($variables);
   }
@@ -23,97 +33,99 @@ function corolla_process_html(&$variables) {
 }
 
 /**
- * Override or insert variables into the page template.
+ * Implements template_process_page().
  */
 function corolla_process_page(&$variables) {
-  // Hook into color.module 
-  if (module_exists('color')) {
-    _color_page_alter($variables);
+
+  // Since the title and the shortcut link are both block level elements,
+  // positioning them next to each other is much simpler with a wrapper div.
+  if (!empty($variables['title_suffix']['add_or_remove_shortcut']) ) {
+    // Add a wrapper div using the title_prefix and title_suffix render elements.
+    $variables['title_prefix']['shortcut_wrapper'] = array(
+      '#markup' => '<div class="shortcut-wrapper clearfix">',
+      '#weight' => 100,
+    );
+    $variables['title_suffix']['shortcut_wrapper'] = array(
+      '#markup' => '</div>',
+      '#weight' => -99,
+    );
+    // Make sure the shortcut link is the first item in title_suffix.
+    $variables['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
   }
 }
 
+
 /**
- * Override or insert variables into the block template.
+ * Implements template_preprocess_block().
  */
 function corolla_preprocess_block(&$variables) {
+
   // Remove "block" class from "Main page content" block
-  if ( $variables['block']->module == 'system' && $variables['block']->delta == 'main') {
+  if ($variables['block']->module == 'system' && $variables['block']->delta == 'main') {
     unset($variables['classes_array']['0']);
   }
 }
 
 /**
- * Disable core stylesheets
+ * Overrides theme_breadcrumb().
  */
-function corolla_css_alter(&$css) {
-  unset($css[drupal_get_path('module', 'system') . '/system-menus.css']);
-  unset($css[drupal_get_path('module', 'system') . '/system-menus-rtl.css']);
-}
+function corolla_breadcrumb($variables) {
 
-/**
- * Override of theme_tablesort_indicator().
- *
- * Use custom arrow images
- */
-function corolla_tablesort_indicator($variables) {
-  if ($variables['style'] == "asc") {
-    return theme('image', array('path' => path_to_theme() . '/images/tablesort-ascending.png', 'alt' => t('sort ascending'), 'title' => t('sort ascending')));
-  }
-  else {
-    return theme('image', array('path' => path_to_theme() . '/images/tablesort-descending.png', 'alt' => t('sort descending'), 'title' => t('sort descending')));
+  // Wrap separator with span element.
+  if (!empty($variables['breadcrumb'])) {
+    // Provide a navigational heading to give context for breadcrumb links to
+    // screen-reader users. Make the heading invisible with .element-invisible.
+    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+    $output .= '<div class="breadcrumb">' . implode('<span class="separator">»</span>', $variables['breadcrumb']) . '</div>';
+    return $output;
   }
 }
 
 /**
- * Override of theme_messages().
- *
- * If there are serveral messages, print them in separate divs.
+ * Overrides theme_more_link().
  */
-function corolla_messages($variables) {
-  $display = $variables['display'];
+function corolla_more_link($variables) {
+
+  return '<div class="more-link">' . t('<a href="@link" title="@title">more ›</a>', array('@link' => check_url($variables['url']), '@title' => $variables['title'])) . '</div>';
+}
+
+/**
+ * Overrides theme_status_messages().
+ */
+function corolla_status_messages($variables) {
+
   $output = '';
   $status_heading = array(
     'status' => t('Status message'),
     'error' => t('Error message'),
     'warning' => t('Warning message'),
   );
-  foreach (drupal_get_messages($display) as $type => $messages) {
+
+  // Print serveral messages in separate divs.
+  foreach (drupal_get_messages($variables['display']) as $type => $messages) {
     if (!empty($status_heading[$type])) {
       $output .= '<h2 class="element-invisible">' . $status_heading[$type] . "</h2>\n";
     }
     foreach ($messages as $message) {
-      $output .= "<div class=\"messages message-$type\">\n";
+      $output .= '<div class="messages message ' . $type . '">';
       $output .= $message;
       $output .= "</div>\n";
     }
   }
+
   return $output;
 }
 
 /**
- * Override of theme_more_link().
- *
- * Append arrow.
+ * Overrides theme_tablesort_indicator().
  */
-function corolla_more_link($variables) {
-  return '<div class="more-link">' . t('<a href="@link" title="@title">more ›</a>', array('@link' => check_url($variables['url']), '@title' => $variables['title'])) . '</div>';
-}
+function corolla_tablesort_indicator($variables) {
 
-/**
- * Override of theme_breadcrumb().
- *
- * Wrap separator with span element
- */
-function corolla_breadcrumb($variables) {
-  $breadcrumb = $variables['breadcrumb'];
-
-  if (!empty($breadcrumb)) {
-    // Provide a navigational heading to give context for breadcrumb links to
-    // screen-reader users. Make the heading invisible with .element-invisible.
-    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
-
-    $output .= '<div class="breadcrumb">' . implode('<span class="separator">»</span>', $breadcrumb) . '</div>';
-    return $output;
+  // Use custom arrow images.
+  if ($variables['style'] == 'asc') {
+    return theme('image', array('path' => path_to_theme() . '/images/tablesort-ascending.png', 'alt' => t('sort ascending'), 'title' => t('sort ascending')));
+  }
+  else {
+    return theme('image', array('path' => path_to_theme() . '/images/tablesort-descending.png', 'alt' => t('sort descending'), 'title' => t('sort descending')));
   }
 }
-
