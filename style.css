@@ -162,7 +162,7 @@ a#logo img {
 }
 #site-name a {
   color: inherit;
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Trebuchet MS", "Bitstream Vera Sans", "FreeSans", sans-serif;
   letter-spacing: -3px;
 }
 #site-name a::-moz-selection {
@@ -174,7 +174,7 @@ a#logo img {
   color: #ffffff;
 }
 #site-slogan {
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Trebuchet MS", "FreeSans", sans-serif;
   font-size: 1.167em;
   font-weight: 700;
   margin-top: 2px;
@@ -550,7 +550,7 @@ body.page-forum ul.action-links {
   border-bottom: 1px solid #2E2E2E;
 }
 #forum td.container .name a {
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Trebuchet MS", "Bitstream Vera Sans", "FreeSans", sans-serif;
   font-size: 1.25em;
   text-transform: uppercase;
   line-height: 1.3;
@@ -1155,7 +1155,7 @@ table#permissions td.module {
   border-bottom: 1px solid #2E2E2E;
   border-top: 1px solid #2E2E2E;
   color: #779125;
-  font-family: "Trebuchet MS";
+  font-family: "Trebuchet MS", "Bitstream Vera Sans", "FreeSans", sans-serif;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;

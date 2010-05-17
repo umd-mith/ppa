@@ -6,7 +6,7 @@
 html {
   line-height: 1.5;
   font-size: 0.75em;
-  font-family: "Arial", sans-serif;
+  font-family: "Arial", "FreeSans", sans-serif;
   word-wrap: break-word;
 }
 
@@ -16,23 +16,23 @@ html {
 h1 {
   margin: 9px 0 9px;
   font-size: 2em;
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Trebuchet MS", "FreeSans", sans-serif;
   line-height: 1.1;
 }
 h2 {
   margin: 17px 0 7px;
   padding: 0 0 4px 0;
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Trebuchet MS", "FreeSans", sans-serif;
   font-size: 1.333em;
   font-weight: 700;
   line-height: 1.3;
-  letter-spacing: -0.6px;
+  letter-spacing: -0.4px;
   text-transform: uppercase;
   color: #779125;
   border-bottom: 1px dashed #2e2e2e;
 }
 h3 {
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Trebuchet MS", "FreeSans", sans-serif;
   margin: 20px 0 12px;
   font-size: 1.333em;
 }
@@ -46,7 +46,7 @@ h5 {
   font-weight: 700;
 }
 h6 {
-  font-family: "Verdana", "Helvetica", "Arial", sans-serif;
+  font-family: "Verdana", "Helvetica", "Arial", "FreeSans", sans-serif;
   margin: 12px 0 8px 0;
   font-size: 0.833em;
   font-weight: 700;
@@ -140,7 +140,7 @@ sup {
   vertical-align: super
 }
 tt {
-  font-family: monospace;
+  font-family: "Courier", "Courier New", monospace;
 }
 b {
   font-weight: 700;
