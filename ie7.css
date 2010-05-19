@@ -1,43 +1,9 @@
 /* $Id$ */
 
-/*
-* Reimplement the layout using fixed units
-*/
-/*  3-column layout */
-body.two-sidebars #navigation,
-body.two-sidebars #header,
-body.two-sidebars #main {
-  width: 980px;
-}
-/* 2-column layout */
-body.one-sidebar #navigation,
-body.one-sidebar #header,
-body.one-sidebar #main {
-  width: 960px;
-}
-/* 1 column layout */
-body.no-sidebars #navigation,
-body.no-sidebars #header,
-body.no-sidebars #main {
-  width: 800px;
-}
-/* Admin layout */
-body.page-admin #main {
-  width: 960px;
+a {
+  zoom: 1; /* brutal assult on IE for RTL */
 }
 
-
-/* Bug: layout breaks in RTL mode */
-#content-wrapper,
-#sidebar-first-wrapper,
-#sidebar-second-wrapper {
-  position: relative;
-}
-/* Bug: sidebar links not clickable in RTL mode */
-#sidebar-first-wrapper a,
-#sidebar-second-wrapper a {
-  hasLayout: true;
-}
 /* Bug: no borders on tr elements */
 td, th {
   border-bottom: 1px solid #cccccc;

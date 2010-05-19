@@ -66,13 +66,12 @@
  * @see template_process()
  */
 ?>
-
 <?php if ($main_menu): ?>
-  <div id="navigation-wrapper">
+  <div id="navigation">
     <?php print theme('links__system_main_menu', array(
       'links' => $main_menu,
       'attributes' => array(
-        'id' => 'navigation',
+        'id' => 'main-menu',
         'class' => array('links'),
       ),
       'heading' => array(
@@ -81,13 +80,12 @@
         'class' => array('element-invisible'),
       ),
     )); ?>
-  </div> <!-- /#navigation-wrapper -->
-
+  </div> <!-- /#navigation -->
 <?php endif; ?>
 
-<div id="header-wrapper">
-  <div id="header">
+<div id="page">
 
+  <div id="header">
     <div id="branding" class="clearfix">
       <?php if ($logo): ?>
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
@@ -115,72 +113,64 @@
         </div> <!-- /#name-and-slogan -->
       <?php endif; ?>
     </div> <!-- /#branding -->
-
   </div> <!-- /#header -->
-</div> <!-- /#header-wrapper -->
 
-<div id="main-wrapper">
-  <div id="main">
-
-    <div id="main-columns">
-
-      <?php if ($page['content']): ?>
-        <div id="content-wrapper">
-          <div id="content">
-
-            <div id="page" class="clearfix">
-              <?php if ($breadcrumb): ?><div id="breadcrumb" class="clearfix"><?php print $breadcrumb; ?></div><?php endif; ?>
-              <?php if ($messages): ?><div id="messages"><?php print $messages; ?></div><?php endif; ?>
-              <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
-
-              <a id="main-content" class="element-invisible"></a>
-              <?php print render($title_prefix); ?>
-
-              <?php if ($title): ?>
-                <h1 class="page-title"><?php print $title ?></h1>
-              <?php endif; ?>
-
-              <?php print render($title_suffix); ?>
-
-              <?php print render($page['help']); ?>
-              <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
-              <?php print render($page['content']); ?>
-              <?php print $feed_icons; ?>
-            </div> <!-- /#page -->
-
-          <?php if ($secondary_menu): ?>
-            <div id="secondary-menu">
-              <?php print theme('links__system_secondary_menu', array(
-                'links' => $secondary_menu,
-                'attributes' => array(
-                  'class' => array('links'),
-                ),
-                'heading' => array(
-                  'text' => t('Secondary menu'),
-                  'level' => 'h2',
-                  'class' => array('element-invisible'),
-                ),
-              )); ?>
-            </div> <!-- /#secondary-menu -->
+  <div id="main-columns"><div id="main-columns-inner" class="clearfix">
+    <div id="main-wrapper"><div id="main">
+      <div id="main-content">
+        <?php if ($page['highlight']): ?>
+          <div id="highlight"><?php print render($page['highlight']); ?></div>
+        <?php endif; ?>
+        <div id="content">
+          <?php if ($breadcrumb): ?><div id="breadcrumb" class="clearfix"><?php print $breadcrumb; ?></div><?php endif; ?>
+          <?php if ($messages): ?><div id="messages"><?php print $messages; ?></div><?php endif; ?>
+          <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
+          <?php print render($title_prefix); ?>
+          <?php if ($title): ?>
+            <h1 class="page-title"><?php print $title ?></h1>
           <?php endif; ?>
+          <?php print render($title_suffix); ?>
+          <?php print render($page['help']); ?>
+          <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
+          <?php print render($page['content']); ?>
+          <?php print $feed_icons; ?>
+        </div> <!-- /#content -->
+        <?php if ($secondary_menu): ?>
+          <div id="secondary-menu">
+            <?php print theme('links__system_secondary_menu', array(
+              'links' => $secondary_menu,
+              'attributes' => array(
+                 'class' => array('links'),
+              ),
+              'heading' => array(
+                'text' => t('Secondary menu'),
+                'level' => 'h2',
+                'class' => array('element-invisible'),
+              ),
+            )); ?>
+          </div> <!-- /#secondary-menu -->
+        <?php endif; ?>
+      </div> <!-- /#main-content -->
+    </div></div> <!-- /#main-wrapper /#main -->
 
-          </div> <!-- /#content -->
-        </div> <!-- /#content-wrapper -->
-      <?php endif; ?>
+    <?php if ($page['sidebar_first']): ?>
+      <div id="sidebar-first" class="clearfix">
+        <?php print render($page['sidebar_first']); ?>
+      </div> <!-- /#sidebar-first -->
+    <?php endif; ?>
 
-      <?php if ($page['sidebar_first']): ?>
-          <div id="sidebar-first" class="clearfix">
-              <?php print render($page['sidebar_first']); ?>
-          </div> <!-- /#sidebar-first -->
-      <?php endif; ?>
+    <?php if ($page['sidebar_second']): ?>
+      <div id="sidebar-second" class="clearfix">
+        <?php print render($page['sidebar_second']); ?>
+      </div> <!-- /#sidebar-second -->
+     <?php endif; ?>
 
-      <?php if ($page['sidebar_second']): ?>
-          <div id="sidebar-second" class="clearfix">
-              <?php print render($page['sidebar_second']); ?>
-          </div> <!-- /#sidebar-second -->
-      <?php endif; ?>
+  </div></div> <!-- /#main-columns-inner /#main-columns -->
 
-    </div> <!-- /#main-columns -->
-  </div> <!-- /#main -->
-</div> <!-- /#main-wrapper -->
+</div> <!-- /#page -->
 
+<?php if ($page['footer']): ?>
+  <div id="footer-wrapper"><div id="footer" class="clearfix">
+    <?php print render($page['footer']); ?>
+  </div></div><!-- /#footer-wrapper /#footer -->
+<?php endif; ?>

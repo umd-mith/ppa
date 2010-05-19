@@ -21,7 +21,7 @@ a:focus {
   color: #e25401;
 }
 /* navigation (black) */
-#navigation-wrapper {
+#navigation {
   background-color: #2e2e2d;
 }
 #main-links li.expanded ul {
@@ -38,7 +38,7 @@ a:focus {
   background-color:  #e25400;
 }
 /* border (gray) */
-#page {
+#content {
   border: 1px solid #e1e1e1;
 }
 /* border strong (dark gray) */

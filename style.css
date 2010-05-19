@@ -1,87 +1,59 @@
 /* $Id$ */
 
 /*
-** Layout
+** Jeffs Layout - this is pretty much plucke strait out of Genesis and modified class names to suit.
 */
-#content-wrapper,
+#main-menu,
+#page,
+#footer {
+  margin: 0 auto;
+  width: 85%;
+  min-width: 960px;
+  max-width: 1260px;
+  position: relative;
+}
+#main-wrapper,
 #sidebar-first,
 #sidebar-second {
-  float: left; /* LTR */
+  float: left;
 }
-/*  3-column layout */
-body.two-sidebars #navigation,
-body.two-sidebars #header,
-body.two-sidebars #main {
-  margin: 0 auto;
-  max-width: 1200px;
-  min-width: 850px;
-  width: 83%;
+.two-sidebars #main {
+  margin-right: 50.5%;
 }
-body.two-sidebars #content-wrapper {
-  width: 52%;
+.sidebar-first #main {
+  margin-right: 25.25%;
 }
-body.two-sidebars #sidebar-first,
-body.two-sidebars #sidebar-second {
-  width: 24%;
+.sidebar-second #main {
+  margin-right: 25.25%;
 }
-body.two-sidebars .region-sidebar-first,
-body.two-sidebars .region-sidebar-second {
-  margin: 1px 1px 0 23px;
+#sidebar-first {
+  width: 24.25%;
+  margin-left: -49.5%;
 }
-/* 2-column layout */
-body.one-sidebar #navigation,
-body.one-sidebar #header,
-body.one-sidebar #main {
-  margin: 0 auto;
-  max-width: 1000px;
-  min-width: 700px;
-  width: 75%;
+#sidebar-second {
+  width: 24.25%;
+  margin-left: -24.25%;
 }
-body.one-sidebar #content-wrapper {
-  width: 71.5%;
+.sidebar-first #sidebar-first {
+  width: 24.25%;
+  margin-left: -24.25%;
 }
-body.one-sidebar #sidebar-first,
-body.one-sidebar #sidebar-second {
-  width: 28%;
+/* Tricky hasLayout trigger I learned some years ago... */
+#main-columns {
+  display: inline-block;
 }
-body.one-sidebar.sidebar-first .region-sidebar-first,
-body.one-sidebar.sidebar-second .region-sidebar-second {
-  margin: 1px 1px 0 23px; /* LTR */
+#page > #main-columns {
+  display: block;
 }
-/* 1 column layout */
-body.no-sidebars #navigation,
-body.no-sidebars #header,
-body.no-sidebars #main {
-  margin: 0 auto;
-  max-width: 900px;
-  min-width: 300px;
-  width: 65%;
+#main-columns-inner,
+#main-wrapper {
+  width:100%;
 }
-/* Admin layout */
-body.page-admin #main,
-body.overlay #main {
-  margin: 0 auto;
-  width: 90%;
-  max-width: 1200px;
-  min-width: 300px;
+#sidebar-first .region,
+#sidebar-second .region {
+  padding: 0 5px;
 }
-body.page-admin #content-wrapper,
-body.overlay #content-wrapper {
-  width: 100%;
-  float: none;
-}
-body.page-admin #sidebar-first,
-body.page-admin #sidebar-second,
-body.page-admin #navigation-wrapper,
-body.page-admin #header-wrapper,
-body.page-admin #secondary-menu,
-body.overlay #sidebar-first,
-body.overlay #sidebar-second,
-body.overlay #navigation-wrapper,
-body.overlay #header-wrapper,
-body.overlay #secondary-menu {
-  display: none;
-}
+
 /* Mobile */
 @media only screen and (max-device-width: 480px) {
   #navigation,
@@ -90,12 +62,7 @@ body.overlay #secondary-menu {
     width: 100%!important;
   }
 }
-/* Prevent collision with browser chrome */
-#navigation-wrapper,
-#header-wrapper,
-#main-wrapper {
-  padding: 0 15px;
-}
+
 /* Prevent big images from overflowing the containers */
 #content,
 #sidebar-first,
@@ -112,10 +79,12 @@ html {
 body {
   background: url(images/noise.png) repeat top left;
 }
+/*
 #main {
   min-height: 300px;
 }
-#page {
+*/
+#content {
   background-color: #ffffff;
   border-radius: 6px;
   margin-bottom: 7px;
@@ -185,29 +154,29 @@ a#logo img {
 * Menus
 */
 /* Navigation */
-#navigation {
+#main-menu {
   padding: 3px 0 0 6px; /* LTR */
 }
-#navigation ul {
+#main-menu ul {
   margin: 0;
 }
-#navigation li {
+#main-menu li {
   display: inline-block;
 }
-#navigation li a {
+#main-menu li a {
   color: #ffffff;
   display: block;
   margin: 0;
   padding: 8px 15px 11px;
   opacity: 0.95;
 }
-#navigation li a:hover,
-#navigation li a:active,
-#navigation li a:focus {
+#main-menu li a:hover,
+#main-menu li a:active,
+#main-menu li a:focus {
   background: url(images/menu-hover.png) repeat top left;
   outline: none;
 }
-#navigation li.active {
+#main-menu li.active {
   -webkit-border-top-left-radius: 6px;
   -webkit-border-top-right-radius: 6px;
   -moz-border-radius-topleft: 6px;
@@ -215,7 +184,7 @@ a#logo img {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
-#navigation li.active a {
+#main-menu li.active a {
   color: inherit;
   font-weight: 700;
   opacity: 1;

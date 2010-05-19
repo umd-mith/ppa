@@ -1,15 +1,50 @@
 /* $Id$ */
 
-#content-wrapper,
+#main-wrapper,
 #sidebar-first,
 #sidebar-second {
   float: right;
 }
-body.two-sidebars .region-sidebar-first,
-body.two-sidebars .region-sidebar-second {
-  margin: 1px 23px 0 1px;
+.two-sidebars #main {
+  margin-left: 50.5%;
+  margin-right:0;
 }
-#navigation {
+.sidebar-first #main{
+  margin-left: 25.25%;
+  margin-right: 0;
+}
+.sidebar-second #main {
+  margin-left: 25.25%;
+  margin-right: 0;
+}
+#sidebar-first {
+  width: 24.25%;
+  margin-right: -49.5%;
+}
+#sidebar-second {
+  width: 24.25%;
+  margin-right: -24.25%;
+}
+.sidebar-first #sidebar-first{
+  width: 24.25%;
+  margin-right: -24.25%;
+}
+/* Containers and helpers. */
+#main-wrapper,
+.block {
+  zoom: 1;
+}
+#main-wrapper,
+#content {
+  position: relative;
+}
+#sidebar-first,
+#sidebar-second {
+  position: relative;
+  z-index: 1000;
+}
+
+#main-menu {
   padding: 3px 6px 0 0;
 }
 #branding {
