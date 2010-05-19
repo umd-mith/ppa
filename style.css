@@ -1,7 +1,9 @@
 /* $Id$ */
 
 /*
-** Layout - fluid layout with min and max widths.
+* Layout - fluid layout with min and max widths.
+* You can overide the min, max and width with a single fixed value to 
+* create a fixed-width theme.
 */
 #main-menu,
 #page,
@@ -27,7 +29,7 @@
   margin-right: 25.25%;  /* LTR */
 }
 #sidebar-first {
-  width: 24.25%;  /* LTR */
+  width: 24.25%;
   margin-left: -49.5%;  /* LTR */
 }
 #sidebar-second {

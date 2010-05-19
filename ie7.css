@@ -1,7 +1,8 @@
 /* $Id$ */
 
+/* Ensure links are always clickable in RTL for IE6 and 7. */
 a {
-  zoom: 1; /* brutal assult on IE for RTL */
+  zoom: 1;
 }
 
 /* Bug: no borders on tr elements */
