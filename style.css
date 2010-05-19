@@ -1,44 +1,44 @@
 /* $Id$ */
 
 /*
-** Jeffs Layout - this is pretty much plucke strait out of Genesis and modified class names to suit.
+** Layout - fluid layout with min and max widths.
 */
 #main-menu,
 #page,
 #footer {
   margin: 0 auto;
-  width: 85%;
   min-width: 960px;
   max-width: 1260px;
+  width: 85%;
   position: relative;
 }
 #main-wrapper,
 #sidebar-first,
 #sidebar-second {
-  float: left;
+  float: left; /* LTR */
 }
 .two-sidebars #main {
-  margin-right: 50.5%;
+  margin-right: 50.5%;  /* LTR */
 }
 .sidebar-first #main {
-  margin-right: 25.25%;
+  margin-right: 25.25%;  /* LTR */
 }
 .sidebar-second #main {
-  margin-right: 25.25%;
+  margin-right: 25.25%;  /* LTR */
 }
 #sidebar-first {
-  width: 24.25%;
-  margin-left: -49.5%;
+  width: 24.25%;  /* LTR */
+  margin-left: -49.5%;  /* LTR */
 }
 #sidebar-second {
   width: 24.25%;
-  margin-left: -24.25%;
+  margin-left: -24.25%;  /* LTR */
 }
 .sidebar-first #sidebar-first {
   width: 24.25%;
-  margin-left: -24.25%;
+  margin-left: -24.25%;  /* LTR */
 }
-/* Tricky hasLayout trigger I learned some years ago... */
+/* hasLayout trigger */
 #main-columns {
   display: inline-block;
 }
@@ -53,7 +53,6 @@
 #sidebar-second .region {
   padding: 0 5px;
 }
-
 /* Mobile */
 @media only screen and (max-device-width: 480px) {
   #navigation,
@@ -62,7 +61,6 @@
     width: 100%!important;
   }
 }
-
 /* Prevent big images from overflowing the containers */
 #content,
 #sidebar-first,
@@ -79,6 +77,7 @@ html {
 body {
   background: url(images/noise.png) repeat top left;
 }
+
 /*
 #main {
   min-height: 300px;

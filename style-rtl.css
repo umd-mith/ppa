@@ -43,7 +43,6 @@
   position: relative;
   z-index: 1000;
 }
-
 #main-menu {
   padding: 3px 6px 0 0;
 }
@@ -133,4 +132,3 @@ html.js fieldset.collapsed legend a {
 .admin .right {
   float: left;
 }
-
