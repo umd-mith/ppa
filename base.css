@@ -26,10 +26,7 @@ h2 {
   font-size: 1.333em;
   font-weight: 700;
   line-height: 1.3;
-  letter-spacing: -0.4px;
-  text-transform: uppercase;
-  color: #779125;
-  border-bottom: 1px dashed #2e2e2e;
+  /* color: #779125; */
 }
 h3 {
   font-family: "Trebuchet MS", "FreeSans", sans-serif;
@@ -38,7 +35,7 @@ h3 {
 }
 h4 {
   margin: 7px 0 10px 0;
-  font-size: 1.5em;
+  font-size: 1.167em;
 }
 h5 {
   font-size: 1em;
