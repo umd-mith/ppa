@@ -53,7 +53,7 @@
 }
 #sidebar-first .region,
 #sidebar-second .region {
-  padding: 0 5px;
+  padding: 0 10px;
 }
 /* Mobile */
 @media only screen and (max-device-width: 480px) {
@@ -696,6 +696,9 @@ body.overlay #page {
   border: none;
   padding-bottom: 0;
   padding-top: 15px;
+  min-width: inherit;
+  max-width: inherit;
+  width: 95%;
 }
 /* Hide elements when in the Overlay */
 body.overlay h1.page-title,
