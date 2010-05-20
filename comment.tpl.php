@@ -59,17 +59,18 @@
 <div class="<?php print $classes; ?> <?php print $zebra; ?>"<?php print $attributes; ?>>
 
   <div class="header">
+
     <?php print $picture; ?>
 
-      <?php print render($title_prefix); ?>
-      <?php if ($title): ?>
-        <h3 class="title" <?php print $title_attributes; ?>><?php print $title ?></h3>
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
+    <?php print render($title_prefix); ?>
+    <?php if ($title): ?>
+      <h3 class="title" <?php print $title_attributes; ?>><?php print $title ?></h3>
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
 
-      <div class="meta">
-        <?php print t('by !author on @date', array('!author' => $author, '@date' => $created)); ?>
-      </div>
+    <div class="meta">
+      <?php print t('by !author on !date', array('!author' =>  $author, '!date' => $created)); ?>
+    </div>
 
   </div>
 
@@ -78,11 +79,13 @@
     hide($content['links']);
     print render($content);
   ?>
+
   <?php if ($signature): ?>
-  <div class="user-signature clearfix">
-    <?php print $signature ?>
-  </div>
+    <div class="user-signature clearfix">
+      <?php print $signature ?>
+    </div>
   <?php endif; ?>
+
   <?php print render($content['links']) ?>
 
 </div>
