@@ -2,41 +2,23 @@
 // $Id$
 
 /**
- * @file
- * Theme callbacks for the corolla theme.
- */
-
-/**
- * Implements hook_css_alter().
- */
-function corolla_css_alter(&$css) {
-
-  // Remove core stylesheets.
-  // unset($css[drupal_get_path('module', 'system') . '/system-menus.css']);
-  // unset($css[drupal_get_path('module', 'system') . '/system-menus-rtl.css']);
-}
-
-/**
- * Implements template_process_html().
+ * Override or insert variables into the html template.
  */
 function corolla_process_html(&$variables) {
-
   // Hook into color module
   if (module_exists('color')) {
     _color_html_alter($variables);
   }
-
-  // Add conditional stylesheets for IEs. TODO: move this to info file when this patch gets into core http://drupal.org/node/522006
+  // Add conditional stylesheets for IEs. TODO: move this to the info file if http://drupal.org/node/522006 gets into core.
   $variables['styles'] .= "\n<!--[if lte IE 8]>\n" . '<link type="text/css" rel="stylesheet" media="all" href="' . file_create_url(path_to_theme() . '/ie8.css') . '" />' . "\n" . "<![endif]-->\n";
   $variables['styles'] .= "\n<!--[if lte IE 7]>\n" . '<link type="text/css" rel="stylesheet" media="all" href="' . file_create_url(path_to_theme() . '/ie7.css') . '" />' . "\n" . "<![endif]-->\n";
   $variables['styles'] .= "\n<!--[if lte IE 6]>\n" . '<link type="text/css" rel="stylesheet" media="all" href="' . file_create_url(path_to_theme() . '/ie6.css') . '" />' . "\n" . "<![endif]-->\n";
 }
 
 /**
- * Implements template_process_page().
+ * Override or insert variables into the page template.
  */
 function corolla_process_page(&$variables) {
-
   // Since the title and the shortcut link are both block level elements,
   // positioning them next to each other is much simpler with a wrapper div.
   if (!empty($variables['title_suffix']['add_or_remove_shortcut']) ) {
@@ -54,12 +36,10 @@ function corolla_process_page(&$variables) {
   }
 }
 
-
 /**
- * Implements template_preprocess_block().
+ * Override or insert variables into the block template.
  */
 function corolla_preprocess_block(&$variables) {
-
   // Remove "block" class from "Main page content" block
   if ($variables['block']->module == 'system' && $variables['block']->delta == 'main') {
     unset($variables['classes_array']['0']);
@@ -67,10 +47,13 @@ function corolla_preprocess_block(&$variables) {
 }
 
 /**
- * Overrides theme_breadcrumb().
+ * Return a themed breadcrumb trail.
+ *
+ * @param $breadcrumb
+ *   An array containing the breadcrumb links.
+ * @return a string containing the breadcrumb output.
  */
 function corolla_breadcrumb($variables) {
-
   // Wrap separator with span element.
   if (!empty($variables['breadcrumb'])) {
     // Provide a navigational heading to give context for breadcrumb links to
@@ -82,25 +65,36 @@ function corolla_breadcrumb($variables) {
 }
 
 /**
- * Overrides theme_more_link().
+ * Returns HTML for a "more" link, like those used in blocks.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - url: The url of the main page.
+ *   - title: A descriptive verb for the link, like 'Read more'.
  */
 function corolla_more_link($variables) {
-
   return '<div class="more-link">' . t('<a href="@link" title="@title">more ›</a>', array('@link' => check_url($variables['url']), '@title' => $variables['title'])) . '</div>';
 }
 
 /**
- * Overrides theme_status_messages().
+ * Returns HTML for status and/or error messages, grouped by type.
+ *
+ * An invisible heading identifies the messages for assistive technology.
+ * Sighted users see a colored box. See http://www.w3.org/TR/WCAG-TECHS/H69.html
+ * for info.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - display: (optional) Set to 'status' or 'error' to display only messages
+ *     of that type.
  */
 function corolla_status_messages($variables) {
-
   $output = '';
   $status_heading = array(
     'status' => t('Status message'),
     'error' => t('Error message'),
     'warning' => t('Warning message'),
   );
-
   // Print serveral messages in separate divs.
   foreach (drupal_get_messages($variables['display']) as $type => $messages) {
     if (!empty($status_heading[$type])) {
@@ -117,10 +111,13 @@ function corolla_status_messages($variables) {
 }
 
 /**
- * Overrides theme_tablesort_indicator().
+ * Returns HTML for a sort icon.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - style: Set to either 'asc' or 'desc', this determines which icon to show.
  */
 function corolla_tablesort_indicator($variables) {
-
   // Use custom arrow images.
   if ($variables['style'] == 'asc') {
     return theme('image', array('path' => path_to_theme() . '/images/tablesort-ascending.png', 'alt' => t('sort ascending'), 'title' => t('sort ascending')));
