@@ -47,11 +47,20 @@
   padding: 3px 6px 0 0;
 }
 #branding {
-  padding: 50px 30px 47px 20px;
+  float: right;
   margin-bottom: 7px;
+  padding: 50px 2% 47px 1%;
 }
 a#logo {
+  float: right;
   padding: 0 0 0 15px;
+}
+#name-and-slogan  {
+  float: right;
+}
+.region-header {
+  float: left;
+  padding: 20px 1% 20px 2%;
 }
 #content a.feed-icon {
   float: left;

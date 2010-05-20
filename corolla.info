@@ -12,14 +12,15 @@ stylesheets[all][]   = style.css
 stylesheets[all][]   = colors.css
 stylesheets[print][] = print.css
 
-regions[sidebar_first]        = First sidebar
-regions[sidebar_second]       = Second sidebar
-regions[highlight]            = Highlighted
-regions[content]              = Content
-regions[help]                 = Help
-regions[footer]               = Footer
-regions[page_top]             = Page top
-regions[page_bottom]          = Page bottom
+regions[header]         = Header blocks
+regions[sidebar_first]  = First sidebar
+regions[sidebar_second] = Second sidebar
+regions[highlight]      = Highlighted
+regions[content]        = Content
+regions[help]           = Help
+regions[footer]         = Footer
+regions[page_top]       = Page top
+regions[page_bottom]    = Page bottom
 
 settings[shortcut_module_link] = 1
 

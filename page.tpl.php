@@ -85,7 +85,8 @@
 
 <div id="page">
 
-  <div id="header">
+  <div id="header" class="clearfix">
+
     <div id="branding" class="clearfix">
       <?php if ($logo): ?>
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
@@ -113,6 +114,9 @@
         </div> <!-- /#name-and-slogan -->
       <?php endif; ?>
     </div> <!-- /#branding -->
+
+    <?php print render($page['header']); ?>
+
   </div> <!-- /#header -->
 
   <div id="main-columns"><div id="main-columns-inner" class="clearfix">
@@ -121,7 +125,7 @@
         <?php if ($page['highlight']): ?>
           <div id="highlight"><?php print render($page['highlight']); ?></div>
         <?php endif; ?>
-        <div id="content">
+        <div id="content" class="clearfix">
           <?php if ($breadcrumb): ?><div id="breadcrumb" class="clearfix"><?php print $breadcrumb; ?></div><?php endif; ?>
           <?php if ($messages): ?><div id="messages"><?php print $messages; ?></div><?php endif; ?>
           <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
