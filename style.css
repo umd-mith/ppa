@@ -63,12 +63,6 @@
     width: 100%!important;
   }
 }
-/* Prevent big images from overflowing the containers */
-#content,
-#sidebar-first,
-#sidebar-second {
-  overflow: hidden;
-}
 
 /*
 ** Wrappers
@@ -79,12 +73,6 @@ html {
 body {
   background: url(images/noise.png) repeat top left;
 }
-
-/*
-#main {
-  min-height: 300px;
-}
-*/
 #content {
   background-color: #ffffff;
   border-radius: 6px;
@@ -92,6 +80,8 @@ body {
   padding: 25px 30px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
 }
 
 /*
@@ -680,10 +670,12 @@ body.overlay {
 #overlay-container {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
   border-radius: 5px;
-  -webkit-border-top-right-radius: 0px;
-  -moz-border-radius-topright: 0px;
-  border-top-right-radius: 0px;
+  -webkit-border-top-right-radius: 0;
+  -moz-border-radius-topright: 0;
+  -khtml-border-radius-topright: 0;
+  border-top-right-radius: 0;
 }
 body.overlay #main-wrapper,
 body.overlay #main {
@@ -697,8 +689,13 @@ body.overlay #main {
 body.overlay #page {
   border: none;
   padding-bottom: 0;
+  padding-top: 15px;
 }
-body.overlay h1.page-title {
+/* Hide elements when in the Overlay */
+body.overlay h1.page-title,
+body.overlay #navigation,
+body.overlay #header,
+body.overlay #secondary-menu {
   display: none;
 }
 .overlay .ui-dialog-title {
@@ -845,6 +842,7 @@ a.contextual-links-trigger {
   margin: 0;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
   border-radius: 3px;
 }
 .tabs ul.tabs li.active a {
@@ -969,6 +967,7 @@ div.messages {
   color: #ffffff;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
   border-radius: 3px;
 }
 .messages em {
@@ -1273,6 +1272,7 @@ dl.multiselect dd {
   padding: 12px 16px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
   border-radius: 3px;
 }
 #block-system-help .contextual-links-wrapper a.contextual-links-trigger {
@@ -1297,4 +1297,3 @@ fieldset .action {
 #dashboard #disabled-blocks h2 {
   color: #ffffff;
 }
-
