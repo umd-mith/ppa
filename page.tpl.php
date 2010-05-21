@@ -66,7 +66,7 @@
  * @see template_process()
  */
 ?>
-<?php if ($main_menu): ?>
+<?php if ($main_menu && !$in_overlay): ?>
   <div id="navigation" class="clearfix">
     <?php print theme('links__system_main_menu', array(
       'links' => $main_menu,
@@ -85,46 +85,48 @@
 
 <div id="page">
 
-  <div id="header" class="clearfix<?php if ($page['header']): ?> with-blocks<?php endif; ?>">
+  <?php if (!$in_overlay): ?>
+    <div id="header" class="clearfix<?php if ($page['header']): ?> with-blocks<?php endif; ?>">
 
-    <div id="branding">
+      <div id="branding">
 
-      <?php if ($logo): ?>
-        <div id="logo"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
-          <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-        </a></div>
-      <?php endif; ?>
+        <?php if ($logo): ?>
+          <div id="logo"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
+            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+          </a></div>
+        <?php endif; ?>
 
-      <?php if ($site_name || $site_slogan): ?>
-        <div id="name-and-slogan">
-          <?php if ($site_name): ?>
-            <?php if ($title): ?>
-              <div id="site-name">
-                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-              </div>
-            <?php else: /* Use h1 when the content title is empty */ ?>
-              <h1 id="site-name">
-                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-              </h1>
+        <?php if ($site_name || $site_slogan): ?>
+          <div id="name-and-slogan">
+            <?php if ($site_name): ?>
+              <?php if ($title): ?>
+                <div id="site-name">
+                  <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
+                </div>
+              <?php else: /* Use h1 when the content title is empty */ ?>
+                <h1 id="site-name">
+                  <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
+                </h1>
+              <?php endif; ?>
             <?php endif; ?>
-          <?php endif; ?>
 
-          <?php if ($site_slogan): ?>
-            <div id="site-slogan"><?php print $site_slogan; ?></div>
-          <?php endif; ?>
-        </div> <!-- /#name-and-slogan -->
-      <?php endif; ?>
+            <?php if ($site_slogan): ?>
+              <div id="site-slogan"><?php print $site_slogan; ?></div>
+            <?php endif; ?>
+          </div> <!-- /#name-and-slogan -->
+        <?php endif; ?>
 
-    </div> <!-- /#branding -->
+      </div> <!-- /#branding -->
 
-    <?php print render($page['header']); ?>
+      <?php print render($page['header']); ?>
 
-  </div> <!-- /#header -->
+    </div> <!-- /#header -->
+  <?php endif; ?>
 
   <div id="main-columns"><div id="main-columns-inner" class="clearfix">
     <div id="main-wrapper"><div id="main">
       <div id="main-content">
-        <?php if ($page['highlight']): ?>
+        <?php if ($page['highlight'] && !$in_overlay): ?>
           <div id="highlight"><?php print render($page['highlight']); ?></div>
         <?php endif; ?>
         <div id="content" class="clearfix">
@@ -132,7 +134,7 @@
           <?php if ($messages): ?><div id="messages"><?php print $messages; ?></div><?php endif; ?>
           <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
           <?php print render($title_prefix); ?>
-          <?php if ($title): ?>
+          <?php if ($title && !$in_overlay): ?>
             <h1 class="page-title"><?php print $title ?></h1>
           <?php endif; ?>
           <?php print render($title_suffix); ?>
@@ -141,7 +143,7 @@
           <?php print render($page['content']); ?>
           <?php print $feed_icons; ?>
         </div> <!-- /#content -->
-        <?php if ($secondary_menu): ?>
+        <?php if ($secondary_menu && !$in_overlay): ?>
           <div id="secondary-menu">
             <?php print theme('links__system_secondary_menu', array(
               'links' => $secondary_menu,
@@ -159,13 +161,13 @@
       </div> <!-- /#main-content -->
     </div></div> <!-- /#main-wrapper /#main -->
 
-    <?php if ($page['sidebar_first']): ?>
+    <?php if ($page['sidebar_first'] && !$in_overlay): ?>
       <div id="sidebar-first" class="clearfix">
         <?php print render($page['sidebar_first']); ?>
       </div> <!-- /#sidebar-first -->
     <?php endif; ?>
 
-    <?php if ($page['sidebar_second']): ?>
+    <?php if ($page['sidebar_second'] && !$in_overlay): ?>
       <div id="sidebar-second" class="clearfix">
         <?php print render($page['sidebar_second']); ?>
       </div> <!-- /#sidebar-second -->
@@ -175,7 +177,7 @@
 
 </div> <!-- /#page -->
 
-<?php if ($page['footer']): ?>
+<?php if ($page['footer'] && !$in_overlay): ?>
   <div id="footer-wrapper"><div id="footer" class="clearfix">
     <?php print render($page['footer']); ?>
   </div></div><!-- /#footer-wrapper /#footer -->

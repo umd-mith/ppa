@@ -700,13 +700,6 @@ body.overlay #page {
   max-width: inherit;
   width: 95%;
 }
-/* Hide elements when in the Overlay */
-body.overlay h1.page-title,
-body.overlay #navigation,
-body.overlay #header,
-body.overlay #secondary-menu {
-  display: none;
-}
 .overlay .ui-dialog-title {
   font-size: 2.333em;
   padding: 0 0 6px;

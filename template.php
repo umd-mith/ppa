@@ -34,6 +34,13 @@ function corolla_process_page(&$variables) {
     // Make sure the shortcut link is the first item in title_suffix.
     $variables['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
   }
+  // Provide a variable to check if the page is in the overlay.
+  if (module_exists('overlay')) {
+    $variables['in_overlay'] = (overlay_get_mode() == 'child');
+  }
+  else {
+    $variables['in_overlay'] = FALSE;
+  }
 }
 
 /**
