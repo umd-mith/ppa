@@ -786,6 +786,7 @@ div.add-or-remove-shortcuts a:hover span.text {
 div.add-or-remove-shortcuts a span.icon {
   margin: 0;
 }
+
 /**
  * Contextual links module
  */
@@ -795,9 +796,9 @@ div.contextual-links-wrapper {
 #content .contextual-links-wrapper a.contextual-links-trigger {
   background-color: #ffffff;
 }
-a.contextual-links-trigger {
-  margin: 0!important;
-  padding: 0!important;
+div.contextual-links-wrapper a.contextual-links-trigger {
+  margin: 1px 0 0;
+  padding: 0;
 }
 ul.contextual-links li a {
   font-size: 12px;
@@ -809,6 +810,7 @@ ul.contextual-links li a {
 a.contextual-links-trigger {
   border: transparent 1px solid;
 }
+
 /**
  * Color module
  */
@@ -1037,10 +1039,10 @@ html.js fieldset.collapsed {
 }
 /* form autocompletion */
 html.js input.form-autocomplete {
-  background-position: 99% 6px; /* LTR */
+  background-position: 99% 8px; /* LTR */
 }
 html.js input.throbbing {
-  background-position: 99% -14px; /* LTR */
+  background-position: 99% -12px; /* LTR */
 }
 /* Resizable textareas */
 .resizable-textarea {
