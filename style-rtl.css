@@ -60,6 +60,9 @@
 .node ul.links.inline li {
   margin: 0 0 0 8px;
 }
+h1.page-title {
+  clear: left;
+}
 div.item-list ul li {
   margin-right: 0;
 }
@@ -132,4 +135,7 @@ html.js fieldset.collapsed legend a {
 }
 .admin .right {
   float: left;
+}
+.tabs ul.tabs li a {
+  float: right;
 }

@@ -835,19 +835,27 @@ a.contextual-links-trigger {
   white-space: normal;
 }
 .tabs ul.tabs li {
-  display: inline-block;
+  display: inline;
   padding: 0;
 }
 .tabs ul.tabs li a {
   background-color: #f5f4f3;
   border: 1px solid #cccccc;
   color: inherit;
-  display: block;
-  margin: 0;
+  float:left;
+  display: inline;
+  margin: 2px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -khtml-border-radius: 3px;
   border-radius: 3px;
+}
+.tabs:after {
+content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
 .tabs ul.tabs li.active a {
   background-color: #ffffff;
@@ -1264,6 +1272,9 @@ h1 em:before {
 }
 h1 em:after {
   content: "»";
+}
+h1.page-title {
+  clear: left;
 }
 td.edit,
 td.delete {
