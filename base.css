@@ -102,8 +102,7 @@ strong {
   font-weight: 700;
 }
 em {
-  font-style: normal;
-  font-weight: 700;
+  font-style: italic;
 }
 kbd {
   background-color: #f1eed4;
