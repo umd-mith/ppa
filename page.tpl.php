@@ -67,7 +67,7 @@
  */
 ?>
 <?php if ($main_menu): ?>
-  <div id="navigation">
+  <div id="navigation" class="clearfix">
     <?php print theme('links__system_main_menu', array(
       'links' => $main_menu,
       'attributes' => array(

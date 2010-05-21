@@ -36,6 +36,11 @@
 #main-menu {
   padding: 3px 6px 0 0;
 }
+#main-menu li a {
+  float: right;
+  display: inline;
+  padding: 8px 15px 11px;
+}
 #branding {
   float: right;
 }
