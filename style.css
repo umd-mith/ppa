@@ -1,8 +1,8 @@
 /* $Id$ */
 
-/*
-* Layout - fluid layout with min and max widths.
-*/
+/**
+ * Layout - fluid layout with min and max widths.
+ */
 #main-menu,
 #page,
 #footer {
@@ -72,9 +72,9 @@
     width: 100%!important;
   }
 }
-/*
-** Wrappers
-*/
+/**
+ * Wrappers
+ */
 html {
   height: 100%;
 }
@@ -91,28 +91,27 @@ body {
   -khtml-border-radius: 6px;
   border-radius: 6px;
 }
-/*
-** Skip link
-*/
+/**
+ * Skip link
+ */
 #skip-link {
   height: 0;
   overflow: hidden;
   padding: 0;
   position: absolute;
 }
-/*
-** Header
-*/
+/**
+ * Header
+ */
 #header {
   clear: both;
   min-height: 210px;
 }
-/*
-** Branding
-*/
+/**
+ * Branding
+ */
 #branding {
   float: left;
-  margin-bottom: 7px;
   padding: 50px 0 0;
   width: 100%;
 }
@@ -159,9 +158,9 @@ body {
   float: right; /* LTR */
   padding: 40px 0 0;
 }
-/*
-* Menus
-*/
+/**
+ * Menus
+ */
 /* Navigation */
 #main-menu {
   padding: 3px 0 0 6px; /* LTR */
@@ -222,7 +221,6 @@ div.item-list ul li {
   list-style: none;
   margin-left: 0; /* LTR */
 }
-
 /**
  * Block module
  */
@@ -272,7 +270,6 @@ div.item-list ul li {
   max-width: 400px;
   width: 100%;
 }
-
 /**
  * Node module
  */
@@ -346,8 +343,6 @@ h1.page-title,
 .node .field-name-body {
   margin-bottom: 14px;
 }
-
-
 /* "Read more" and "X comments" links */
 .node .links-wrapper {
   margin: 4px 0;
@@ -359,7 +354,6 @@ h1.page-title,
 .node ul.links.inline li {
   margin: 0 8px 0 0; /* LTR */
 }
-
 /**
  * Comment module
  */
@@ -419,7 +413,6 @@ h1.page-title,
 form#comment-form #edit-actions {
   margin: 0;
 }
-
 /**
  * Book module
  */
@@ -439,7 +432,6 @@ form#comment-form #edit-actions {
 #book-outline  {
   min-width: 0;
 }
-
 /**
  * Aggregator module
  */
@@ -452,7 +444,6 @@ form#comment-form #edit-actions {
 #content a.feed-icon img {
   margin: 0;
 }
-
 /**
  * Field module
  */
@@ -483,7 +474,6 @@ form#comment-form #edit-actions {
 .field-type-image a {
   border: none;
 }
-
 /**
  * Filter module
  */
@@ -519,7 +509,6 @@ body.page-filter-tips #block-system-main table {
 .tips {
   font-size: 1em;
 }
-
 /**
  * Forum module
  */
@@ -560,7 +549,6 @@ body.page-forum ul.action-links {
 #forum div.indent {
   margin: 0 0 0 15px;
 }
-
 /**
  * OpenID module
  */
@@ -584,7 +572,6 @@ body.page-forum ul.action-links {
   background-position: 6px 50%;
   padding-left: 25px;
 }
-
 /**
  * Poll module
  */
@@ -628,7 +615,6 @@ body.page-forum ul.action-links {
 .poll .total {
   text-align: left;
 }
-
 /**
  * Profile and User modules
  */
@@ -666,7 +652,6 @@ body.page-profile .name {
   display: inline-block;
   line-height: 2.2;
 }
-
 /**
  * Search module
  */
@@ -681,7 +666,6 @@ body.page-profile .name {
   color: #ffffff;
   padding: 0 4px;
 }
-
 /**
  * Overlay module
  */
@@ -726,7 +710,6 @@ body.overlay #secondary-menu {
   font-size: 2.333em;
   padding: 0 0 6px;
 }
-
 /**
  * DBlog module
  */
@@ -768,10 +751,9 @@ tr.dblog-error {
 tr.dblog-error .active {
   background: #fad4c0;
 }
-
-/*
-* Shortcut module
-*/
+/**
+ * Shortcut module
+ */
 .shortcut-wrapper h1.page-title {
   display: inline-block;
 }
@@ -803,10 +785,9 @@ div.add-or-remove-shortcuts a:hover span.text {
 div.add-or-remove-shortcuts a span.icon {
   margin: 0;
 }
-
-/*
-* Contextual links module
-*/
+/**
+ * Contextual links module
+ */
 div.contextual-links-wrapper {
   z-index: 20;
 }
@@ -827,10 +808,9 @@ ul.contextual-links li a {
 a.contextual-links-trigger {
   border: transparent 1px solid;
 }
-
-/*
-* Color module
-*/
+/**
+ * Color module
+ */
 #palette .form-item {
   width: auto;
 }
@@ -840,10 +820,9 @@ a.contextual-links-trigger {
 #palette .item-selected {
   background: none;
 }
-
-/*
-* System module
-*/
+/**
+ * System module
+ */
 /* Tabs */
 .tabs {
   margin: 12px 0;
@@ -902,8 +881,9 @@ a.contextual-links-trigger {
   font-size: 11px;
   padding: 3px 12px;
 }
-
-/* Vertical tabs */
+/**
+ * Vertical tabs
+ */
 div.vertical-tabs {
   border: 1px solid #cccccc;
 }
@@ -926,7 +906,9 @@ ul.vertical-tabs-list li a {
 ul.vertical-tabs-list li.selected a {
   background-color: #ffffff;
 }
-/* Pagers */
+/**
+ * Pagers
+ */
 .item-list ul.pager {
   margin: 15px 0 2px 0;
   text-align: left;
@@ -944,7 +926,9 @@ ul.pager li.pager-previous {
 ul.pager li.pager-next {
   padding-left: 8px;
 }
-/* Breadcrumbs */
+/**
+ * Breadcrumb
+ */
 #breadcrumb {
   margin: 0 0 10px 0;
 }
@@ -978,7 +962,9 @@ ul.action-links li a {
   padding-left: 15px;
   background: url(images/action-link.png) no-repeat left center;
 }
-/* Messages */
+/**
+ * Messages 
+ */
 #messages {
   margin: 10px 0;
 }
@@ -1013,7 +999,9 @@ div.messages {
   color: #ffffff;
   text-decoration: underline;
 }
-/* Collapsing fieldsets */
+/**
+ * Collapsing fieldsets
+ */
 html.js fieldset.collapsible legend {
   padding: 2px 4px 2px 10px; /* LTR */
 }
@@ -1138,10 +1126,9 @@ input.password-field {
 .element-invisible {
   padding: 0;
 }
-
-/*
-** Admin pages
-*/
+/**
+ * Admin pages
+ */
 /* admin/structure/block and admin/people/permissions*/
 tr.region-title td,
 table#permissions td.module {
