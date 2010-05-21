@@ -1,10 +1,16 @@
 /* $Id$ */
 
-/* Ensure links are always clickable in RTL for IE6 and 7. */
-a {
+/* Ensure links are always clickable and dont jump in RTL for IE6 and 7. */
+.block,
+.region a {
   zoom: 1;
 }
-
+/* min-height hack for IE */
+#header {
+  min-height: 210px;
+  height:auto !important;
+  height: 210px;
+}
 /* Bug: no borders on tr elements */
 td, th {
   border-bottom: 1px solid #cccccc;
@@ -15,14 +21,12 @@ td, th {
 .block .item-list ul {
   list-style-position: outside;
 }
-
 /*
 * Fix issues caused by lack of support for last-child pseudoclass
 */
 fieldset.filter-wrapper {
   margin-top: -14px;
 }
-
 /*
 * Fix issues caused by lack of support for display: inline-block property
 */
@@ -34,7 +38,6 @@ fieldset.filter-wrapper {
   hasLayout: true;
   display: inline;
 }
-
 /*
 * Fix issues caused by lack of support for border box model
 */
@@ -44,7 +47,6 @@ textarea {
 input {
   padding: 5px 0!important;
 }
-
 /*
 * Fix issues caused by lack of support for inherit value
 */
@@ -52,15 +54,3 @@ input {
 #site-name a {
   color: #2e2e2e;
 }
-
-/*
-* Fix issues caused by lack of support for CSS tables
-*/
-/* branding */
-a#logo {
-  float: left;
-}
-#name-and-slogan {
-  float: left;
-}
-

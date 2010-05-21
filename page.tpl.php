@@ -87,11 +87,12 @@
 
   <div id="header" class="clearfix">
 
-    <div id="branding" class="clearfix">
+    <div id="branding">
+
       <?php if ($logo): ?>
-        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+        <div id="logo"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
           <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-        </a>
+        </a></div>
       <?php endif; ?>
 
       <?php if ($site_name || $site_slogan): ?>
@@ -113,6 +114,7 @@
           <?php endif; ?>
         </div> <!-- /#name-and-slogan -->
       <?php endif; ?>
+
     </div> <!-- /#branding -->
 
     <?php print render($page['header']); ?>

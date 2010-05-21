@@ -2,17 +2,14 @@
 
 /*
 * Layout - fluid layout with min and max widths.
-* You can overide the min, max and width with a single fixed value to 
-* create a fixed-width theme.
 */
 #main-menu,
 #page,
 #footer {
   margin: 0 auto;
   min-width: 960px;
-  max-width: 1260px;
+  max-width: 1200px;
   width: 85%;
-  position: relative;
 }
 #main-wrapper,
 #sidebar-first,
@@ -41,15 +38,27 @@
   margin-left: -24.25%;  /* LTR */
 }
 /* hasLayout trigger */
+#main-content,
 #main-columns {
   display: inline-block;
+  width:100%;
 }
-#page > #main-columns {
+#page > #main-columns,
+#main > #main-content {
   display: block;
 }
-#main-columns-inner,
+#main-content {
+  position: relative;
+}
+#main-columns {
+  clear: both;
+}
 #main-wrapper {
-  width:100%;
+  width: 100%;
+  clear: both;
+}
+.block {
+  position: relative;
 }
 #sidebar-first .region,
 #sidebar-second .region {
@@ -63,7 +72,6 @@
     width: 100%!important;
   }
 }
-
 /*
 ** Wrappers
 */
@@ -83,7 +91,6 @@ body {
   -khtml-border-radius: 6px;
   border-radius: 6px;
 }
-
 /*
 ** Skip link
 */
@@ -93,25 +100,32 @@ body {
   padding: 0;
   position: absolute;
 }
-
+/*
+** Header
+*/
+#header {
+  clear: both;
+  min-height: 210px;
+}
 /*
 ** Branding
 */
 #branding {
   float: left;
-  margin-bottom: 7px;
-  padding: 50px 1% 47px 2%; /* LTR */
-  width: 30.333%;
+  padding: 50px 0 0; /* LTR */
+  width: 50.5%;
 }
-a#logo {
-  float: left;
+.region-header {
+  float: right; /* LTR */
+  width: 48.5%;
+  padding: 20px 0; /* LTR */
+}
+#logo {
   padding: 0 15px 0 0; /* LTR */
-}
-a#logo img {
-  margin: 0;
+  float: left;
 }
 #name-and-slogan {
-  float: left; /* LTR */
+  float: left;
 }
 #site-name {
   line-height: 1;
@@ -138,11 +152,6 @@ a#logo img {
   font-weight: 700;
   margin-top: 2px;
   text-transform: uppercase;
-}
-.region-header {
-  float: right; /* LTR */
-  width: 63.666%;
-  padding: 20px 2% 20px 1%; /* LTR */
 }
 /*
 * Menus

@@ -29,38 +29,25 @@
   width: 24.25%;
   margin-right: -24.25%;
 }
-/* Containers and helpers. */
-#main-wrapper,
-.block {
-  zoom: 1;
-}
-#main-wrapper,
-#content {
-  position: relative;
-}
 #sidebar-first,
 #sidebar-second {
-  position: relative;
-  z-index: 1000;
+  z-index: 900;
 }
 #main-menu {
   padding: 3px 6px 0 0;
 }
 #branding {
   float: right;
-  margin-bottom: 7px;
-  padding: 50px 2% 47px 1%;
 }
-a#logo {
+.region-header {
+  float: left;
+}
+#logo {
   float: right;
   padding: 0 0 0 15px;
 }
 #name-and-slogan  {
   float: right;
-}
-.region-header {
-  float: left;
-  padding: 20px 1% 20px 2%;
 }
 #content a.feed-icon {
   float: left;
