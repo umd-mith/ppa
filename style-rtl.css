@@ -139,3 +139,7 @@ html.js fieldset.collapsed legend a {
 .tabs ul.tabs li a {
   float: right;
 }
+.shortcut-wrapper h1.page-title,
+.shortcut-wrapper .add-or-remove-shortcuts {
+  float: right;
+}

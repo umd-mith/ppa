@@ -132,7 +132,7 @@
         <div id="content" class="clearfix">
           <?php if ($breadcrumb): ?><div id="breadcrumb" class="clearfix"><?php print $breadcrumb; ?></div><?php endif; ?>
           <?php if ($messages): ?><div id="messages"><?php print $messages; ?></div><?php endif; ?>
-          <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
+          <?php if ($tabs): ?><div class="tabs clearfix"><?php print render($tabs); ?></div><?php endif; ?>
           <?php print render($title_prefix); ?>
           <?php if ($title && !$in_overlay): ?>
             <h1 class="page-title"><?php print $title ?></h1>
