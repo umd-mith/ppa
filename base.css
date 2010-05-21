@@ -225,9 +225,14 @@ td {
 }
 td.help,
 td.permissions,
-td.configure {
+td.configure
+{
   padding-left: 8px;
   padding-right: 8px;
+}
+th.checkbox {
+  padding-left: 14px;
+  padding-right: 7px;
 }
 th,
 thead,
