@@ -428,7 +428,7 @@ select.error:focus {
 */
 /* a { border-bottom: 1px solid #CFDDE5; } */
 body.page-admin a,
-a#logo,
+#logo a,
 #site-name a,
 #main-links li a,
 #navigation li a,
