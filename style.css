@@ -1159,9 +1159,8 @@ tr.region-populated {
 }
 /* admin/config */
 div.admin .left,
-.admin .right {
+div.admin .right {
   margin: 0;
-  width: 49%;
 }
 div.admin-panel {
   margin: 0 0 9px 0;
