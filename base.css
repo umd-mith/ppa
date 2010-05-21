@@ -223,6 +223,12 @@ td {
   text-align: left; /* LTR */
   vertical-align: middle;
 }
+td.help,
+td.permissions,
+td.configure {
+  padding-left: 8px;
+  padding-right: 8px;
+}
 th,
 thead,
 thead th {
