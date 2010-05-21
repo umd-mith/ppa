@@ -110,11 +110,10 @@ body {
 /*
 ** Branding
 */
-
 #branding {
   float: left;
   margin-bottom: 7px;
-  padding: 50px 1% 47px 2%; /* LTR */
+  padding: 50px 0 0;
   width: 100%;
 }
 .with-blocks #branding {
@@ -158,7 +157,7 @@ body {
 }
 .region-header {
   float: right; /* LTR */
-  padding: 40px 2% 20px 1%; /* LTR */
+  padding: 40px 0 0;
 }
 /*
 * Menus

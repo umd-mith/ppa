@@ -36,9 +36,7 @@
 #main-menu {
   padding: 3px 6px 0 0;
 }
-#branding {
-  float: right;
-}
+#branding,
 .region-header {
   float: left;
 }
