@@ -900,6 +900,9 @@ content: ".";
 div.vertical-tabs {
   border: 1px solid #cccccc;
 }
+div.vertical-tabs ul.vertical-tabs-list {
+  list-style-position: outside;
+}
 div.vertical-tabs ul.vertical-tabs-list li {
   background: #f5f4f3;
 }
