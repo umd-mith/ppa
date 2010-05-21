@@ -1,8 +1,8 @@
 /* $Id$ */
 
 /**
-* Properties inherited by all elements
-*/
+ * Properties inherited by all elements
+ */
 html {
   line-height: 1.5;
   font-size: 0.75em;
@@ -11,8 +11,8 @@ html {
 }
 
 /**
-* Headers
-*/
+ * Headers
+ */
 h1 {
   margin: 9px 0 9px;
   font-size: 2em;
@@ -20,17 +20,16 @@ h1 {
   line-height: 1.1;
 }
 h2 {
-  margin: 17px 0 7px;
+  margin: 0 0 7px;
   padding: 0 0 4px 0;
   font-family: "Trebuchet MS", "FreeSans", sans-serif;
   font-size: 1.333em;
   font-weight: 700;
   line-height: 1.3;
-  /* color: #779125; */
 }
 h3 {
   font-family: "Trebuchet MS", "FreeSans", sans-serif;
-  margin: 20px 0 12px;
+  margin: 0 0 12px;
   font-size: 1.333em;
 }
 h4 {
@@ -48,18 +47,10 @@ h6 {
   font-size: 0.833em;
   font-weight: 700;
 }
-h1 + *,
-h2 + *,
-h3 + *,
-h4 + *,
-h5 + *,
-h6 + * {
-  margin-top: 0;
-}
 
 /**
-* Block elements
-*/
+ * Block elements
+ */
 p {
   margin: 14px 0;
 }
@@ -96,8 +87,8 @@ hr {
 }
 
 /**
-* Inline elements
-*/
+ * Inline elements
+ */
 strong {
   font-weight: 700;
 }
@@ -154,8 +145,8 @@ i {
 }
 
 /**
-* Lists
-*/
+ * Lists
+ */
 ul,
 ol,
 dl {
@@ -199,8 +190,8 @@ dd {
 }
 
 /**
-* Links
-*/
+ * Links
+ */
 a {
   text-decoration: none;
   border-bottom: 1px solid #cfdde5;
@@ -219,8 +210,8 @@ a::-moz-selection {
 }
 
 /**
-* Tables
-*/
+ * Tables
+ */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -251,8 +242,8 @@ caption {
 }
 
 /**
-* Forms
-*/
+ * Forms
+ */
 /* Wrappers, labels and helpers */
 .fieldset-wrapper {
 }
@@ -422,10 +413,9 @@ select.error:focus {
   border: 1px solid #d43308!important;
 }
 
-/*
-** Undo
-*/
-/* a { border-bottom: 1px solid #CFDDE5; } */
+/**
+ * Selectively remove border-bottom from anchors.
+ */
 body.page-admin a,
 #logo a,
 #site-name a,
@@ -453,4 +443,3 @@ ul.contextual-links li a,
 a.contextual-links-trigger {
   border-bottom: none;
 }
-
