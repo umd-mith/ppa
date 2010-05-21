@@ -85,7 +85,7 @@
 
 <div id="page">
 
-  <div id="header" class="clearfix">
+  <div id="header" class="clearfix<?php if ($page['header']): ?> with-blocks<?php endif; ?>">
 
     <div id="branding">
 

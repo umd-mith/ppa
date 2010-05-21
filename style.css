@@ -110,15 +110,18 @@ body {
 /*
 ** Branding
 */
+
 #branding {
   float: left;
-  padding: 50px 0 0; /* LTR */
-  width: 50.5%;
+  margin-bottom: 7px;
+  padding: 50px 1% 47px 2%; /* LTR */
+  width: 100%;
 }
-.region-header {
-  float: right; /* LTR */
-  width: 48.5%;
-  padding: 20px 0; /* LTR */
+.with-blocks #branding {
+  width: 58%;
+}
+.with-blocks .region-header {
+  width: 35%;
 }
 #logo {
   padding: 0 15px 0 0; /* LTR */
@@ -152,6 +155,10 @@ body {
   font-weight: 700;
   margin-top: 2px;
   text-transform: uppercase;
+}
+.region-header {
+  float: right; /* LTR */
+  padding: 40px 2% 20px 1%; /* LTR */
 }
 /*
 * Menus
