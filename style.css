@@ -37,11 +37,10 @@
   width: 24.25%;
   margin-left: -24.25%;  /* LTR */
 }
-/* hasLayout trigger */
 #main-content,
 #main-columns {
   display: inline-block;
-  width:100%;
+  width: 100%;
 }
 #page > #main-columns,
 #main > #main-content {
@@ -72,6 +71,7 @@
     width: 100%!important;
   }
 }
+
 /**
  * Wrappers
  */
@@ -82,7 +82,7 @@ body {
   background: url(images/noise.png) repeat top left;
 }
 #content {
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 6px;
   margin-bottom: 7px;
   padding: 25px 30px;
@@ -94,8 +94,9 @@ body {
 .region-content {
   clear: both;
 }
+
 /**
- * Skip link - show on focus.
+ * Skip link
  */
 #skip-link {
   height: 0;
@@ -131,7 +132,7 @@ body {
   -khtml-border-radius-bottomleft: 10px;
   -khtml-border-radius-topright: 0;
   -khtml-border-radius-topleft: 0;
-  border-radius:0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
 }
 #skip-link a:hover,
 #skip-link a:active,
@@ -142,6 +143,7 @@ body {
   overflow: visible;
   padding: 1px 10px 2px 10px;
 }
+
 /**
  * Header
  */
@@ -149,6 +151,7 @@ body {
   clear: both;
   min-height: 210px;
 }
+
 /**
  * Branding
  */
@@ -178,19 +181,19 @@ body {
 }
 #site-name a {
   color: inherit;
-  font-family: "Trebuchet MS", "Bitstream Vera Sans", "FreeSans", sans-serif;
+  font-family: "Trebuchet MS", "Bitstream Vera Sans", FreeSans, sans-serif;
   letter-spacing: -3px;
 }
 #site-name a::-moz-selection {
 	background-color: #2e2e2e;
-  color: #ffffff;
+  color: #fff;
 }
 #site-name a::selection {
 	background-color: #2e2e2e;
-  color: #ffffff;
+  color: #fff;
 }
 #site-slogan {
-  font-family: "Trebuchet MS", "FreeSans", sans-serif;
+  font-family: "Trebuchet MS", FreeSans, sans-serif;
   font-size: 1.167em;
   font-weight: 700;
   margin-top: 2px;
@@ -200,6 +203,7 @@ body {
   float: right; /* LTR */
   padding: 40px 0 0;
 }
+
 /**
  * Menus
  */
@@ -214,7 +218,7 @@ body {
   display: inline;
 }
 #main-menu li a {
-  color: #ffffff;
+  color: #fff;
   float: left;
   display: inline;
   margin: 0;
@@ -231,16 +235,17 @@ body {
   -webkit-border-top-right-radius: 6px;
   -moz-border-radius-topleft: 6px;
   -moz-border-radius-topright: 6px;
+  -khtml-border-radius-topright: 6px;
+  -khtml-border-radius-topleft: 6px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
 #main-menu li.active a {
   color: inherit;
   font-weight: 700;
-  background: #F8F8F8;
+  background: #f8f8f8;
 
 }
-/* Secondary menu */
 #secondary-menu {
   font-size: 0.95em;
   margin: 0 0 9px 8px;
@@ -259,11 +264,11 @@ body {
   display: inline;
   margin: 0 9px 0 0; /* LTR */
 }
-/* other */
 div.item-list ul li {
   list-style: none;
   margin-left: 0; /* LTR */
 }
+
 /**
  * Block module
  */
@@ -281,7 +286,7 @@ div.item-list ul li {
   font-size: 1.45em;
   margin: 0 0 15px 0;
   padding: 0 0 4px 0;
-  font-family: "Trebuchet MS", "FreeSans", sans-serif;
+  font-family: "Trebuchet MS", FreeSans, sans-serif;
   font-size: 1.333em;
   font-weight: 700;
   line-height: 1.3;
@@ -290,12 +295,12 @@ div.item-list ul li {
   border-bottom: 1px dashed #2e2e2e;
 }
 .block h2::selection {
-  color: #ffffff;
+  color: #fff;
   background-color: #779125;
 }
 .block h2::-moz-selection {
   background-color: #779125;
-  color: #ffffff;
+  color: #fff;
 }
 .block li {
   margin: 6px 0;
@@ -313,11 +318,12 @@ div.item-list ul li {
   max-width: 400px;
   width: 100%;
 }
+
 /**
  * Node module
  */
 .node {
-  border-bottom: 1px dashed #CCCCCC;
+  border-bottom: 1px dashed #ccc;
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
@@ -348,11 +354,11 @@ h1.page-title,
 }
 .node-title a::-moz-selection {
   background-color: #2e2e2e;
-  color: #ffffff;
+  color: #fff;
 }
 .node-title a::selection {
   background-color: #2e2e2e;
-  color: #ffffff;
+  color: #fff;
 }
 .node h1.node-title a:hover,
 .node h2.node-title a:hover {
@@ -369,7 +375,7 @@ h1.page-title,
   margin-top: 3px;
 }
 .node .meta a:focus {
-  outline-color: #444444;
+  outline-color: #444;
 }
 .node .user-picture {
   float: left; /* LTR */
@@ -379,14 +385,13 @@ h1.page-title,
   display: block;
 }
 .node .user-picture img {
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   padding: 2px;
   width: 50px;
 }
 .node .field-name-body {
   margin-bottom: 14px;
 }
-/* "Read more" and "X comments" links */
 .node .links-wrapper {
   margin: 4px 0;
 }
@@ -397,6 +402,7 @@ h1.page-title,
 .node ul.links.inline li {
   margin: 0 8px 0 0; /* LTR */
 }
+
 /**
  * Comment module
  */
@@ -407,7 +413,7 @@ h1.page-title,
   margin: 0 0 0 30px; /* LTR */
 }
 .comment {
-  border-bottom: 1px solid #CCCCCC;
+  border-bottom: 1px solid #ccc;
   margin: 20px 0;
   padding: 0 0 16px 0;
 }
@@ -421,7 +427,7 @@ h1.page-title,
 }
 .comment .user-picture img {
   background-color: #fcfcfc;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   padding: 2px;
   width: 28px;
 }
@@ -437,7 +443,7 @@ h1.page-title,
   font-weight: 700;
 }
 .comment h3.title a:hover {
-  color: #E25401 #e25401;
+  color: #e25401;
 }
 .comment .meta {
   font-size: 0.917em;
@@ -456,6 +462,7 @@ h1.page-title,
 form#comment-form #edit-actions {
   margin: 0;
 }
+
 /**
  * Book module
  */
@@ -464,7 +471,7 @@ form#comment-form #edit-actions {
 }
 .book-navigation .menu {
   border: none;
-  padding: 15px 0 15px 25px;
+  padding: 15px 0 15px 25px; /* LTR */
 }
 .book-navigation .page-links {
   width: 100%;
@@ -475,6 +482,7 @@ form#comment-form #edit-actions {
 #book-outline  {
   min-width: 0;
 }
+
 /**
  * Aggregator module
  */
@@ -487,10 +495,10 @@ form#comment-form #edit-actions {
 #content a.feed-icon img {
   margin: 0;
 }
+
 /**
  * Field module
  */
-/* Taxonomy terms */
 .field-type-taxonomy-term-reference .field-label {
   color: #808080;
   font-weight: 700;
@@ -508,15 +516,15 @@ form#comment-form #edit-actions {
 .field-type-taxonomy-term-reference .field-item:last-child:after {
   content: normal;
 }
-/* Images */
 .field-type-image {
   float: left;
   clear: left;
-  margin: 5px 15px 15px 0;
+  margin: 5px 15px 15px 0; /* LTR */
 }
 .field-type-image a {
   border: none;
 }
+
 /**
  * Filter module
  */
@@ -552,6 +560,7 @@ body.page-filter-tips #block-system-main table {
 .tips {
   font-size: 1em;
 }
+
 /**
  * Forum module
  */
@@ -559,11 +568,11 @@ body.page-forum ul.action-links {
   margin: 9px 0;
 }
 #forum td.container {
-  border-top: 1px solid #2E2E2E;
-  border-bottom: 1px solid #2E2E2E;
+  border-top: 1px solid #2e2e2e;
+  border-bottom: 1px solid #2e2e2e;
 }
 #forum td.container .name a {
-  font-family: "Trebuchet MS", "Bitstream Vera Sans", "FreeSans", sans-serif;
+  font-family: "Trebuchet MS", "Bitstream Vera Sans", FreeSans, sans-serif;
   font-size: 1.25em;
   text-transform: uppercase;
   line-height: 1.3;
@@ -592,10 +601,10 @@ body.page-forum ul.action-links {
 #forum div.indent {
   margin: 0 0 0 15px;
 }
+
 /**
  * OpenID module
  */
-/* user login form */
 #block-user-login .item-list {
   margin-top: 10px;
 }
@@ -615,6 +624,7 @@ body.page-forum ul.action-links {
   background-position: 6px 50%;
   padding-left: 25px;
 }
+
 /**
  * Poll module
  */
@@ -631,7 +641,7 @@ body.page-forum ul.action-links {
 }
 .poll .bar {
   background-color: #fafafa;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   height: 18px;
 }
 .poll .bar .foreground {
@@ -656,8 +666,9 @@ body.page-forum ul.action-links {
   display: block;
 }
 .poll .total {
-  text-align: left;
+  text-align: left; /* LTR */
 }
+
 /**
  * Profile and User modules
  */
@@ -671,7 +682,7 @@ body.page-forum ul.action-links {
   margin: 0;
 }
 .profile h3 {
-  border-bottom: 1px solid #EBEBEB;
+  border-bottom: 1px solid #ebebeb;
   padding-bottom: 4px;
   margin-bottom: 10px;
   margin-top: 17px;
@@ -680,7 +691,6 @@ body.page-forum ul.action-links {
   float: right; /* LTR */
   margin-top: 45px;
 }
-/* User list */
 body.page-profile .profile {
   min-height: 60px;
   float: left;
@@ -702,6 +712,7 @@ body.page-profile .field {
   margin-left: 60px; /* LTR */
   padding:0 10px 10px 0; /* LTR */
 }
+
 /**
  * Search module
  */
@@ -713,9 +724,10 @@ body.page-profile .field {
 }
 .search-snippet strong {
   background-color: #e25400;
-  color: #ffffff;
+  color: #fff;
   padding: 0 4px;
 }
+
 /**
  * Overlay module
  */
@@ -753,6 +765,7 @@ body.overlay #page {
   font-size: 2.333em;
   padding: 0 0 6px;
 }
+
 /**
  * DBlog module
  */
@@ -794,6 +807,7 @@ tr.dblog-error {
 tr.dblog-error .active {
   background: #fad4c0;
 }
+
 /**
  * Shortcut module
  */
@@ -807,10 +821,10 @@ div.add-or-remove-shortcuts a:hover span.text {
   left: 6px;
 }
 div.add-or-remove-shortcuts a span.text {
-  -moz-border-radius-bottomright:5px;
-  -moz-border-radius-topright:5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-topright: 5px;
   background-color: #5f605b;
-  color: #ffffff;
+  color: #fff;
   cursor: pointer;
   display: block;
   font-size: 10px;
@@ -836,7 +850,7 @@ div.contextual-links-wrapper {
   z-index: 20;
 }
 #content .contextual-links-wrapper a.contextual-links-trigger {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 div.contextual-links-wrapper a.contextual-links-trigger {
   margin: 1px 0 0;
@@ -844,7 +858,7 @@ div.contextual-links-wrapper a.contextual-links-trigger {
 }
 ul.contextual-links li a {
   font-size: 12px;
-  color:#333333 !important;
+  color: #333!important;
   display:block;
   margin: 0;
   padding: 5px 5px;
@@ -865,10 +879,10 @@ a.contextual-links-trigger {
 #palette .item-selected {
   background: none;
 }
+
 /**
  * System module
  */
-/* Tabs */
 .tabs {
   margin: 12px 0;
 }
@@ -884,9 +898,9 @@ a.contextual-links-trigger {
 }
 .tabs ul.tabs li a {
   background-color: #f5f4f3;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   color: inherit;
-  float:left;
+  float: left;
   display: inline;
   margin: 2px;
   -moz-border-radius: 3px;
@@ -894,24 +908,15 @@ a.contextual-links-trigger {
   -khtml-border-radius: 3px;
   border-radius: 3px;
 }
-.tabs:after {
-content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
 .tabs ul.tabs li.active a {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 .tabs ul.tabs li a:hover,
 .tabs ul.tabs li a:active,
 .tabs ul.tabs li a:focus {
   outline: none;
   opacity: 0.8;
-  filter: alpha(opacity = 80);
-
-  border-color: #666666;
+  border-color: #666;
 }
 .tabs ul.tabs li a:hover {
   opacity: 0.8;
@@ -936,11 +941,12 @@ content: ".";
   font-size: 11px;
   padding: 3px 12px;
 }
+
 /**
  * Vertical tabs
  */
 div.vertical-tabs {
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
 }
 div.vertical-tabs ul.vertical-tabs-list {
   list-style-position: outside;
@@ -962,8 +968,9 @@ ul.vertical-tabs-list li a {
   color: inherit;
 }
 ul.vertical-tabs-list li.selected a {
-  background-color: #ffffff;
+  background-color: #fff;
 }
+
 /**
  * Pagers
  */
@@ -984,6 +991,7 @@ ul.pager li.pager-previous {
 ul.pager li.pager-next {
   padding-left: 8px;
 }
+
 /**
  * Breadcrumb
  */
@@ -996,7 +1004,10 @@ ul.pager li.pager-next {
 .breadcrumb {
   padding: 0;
 }
-/* Markers (e.g. "new", "updated") */
+
+/**
+ * Markers
+ */
 .marker {
   color: #e25401;
   text-transform: capitalize;
@@ -1008,7 +1019,10 @@ ul.pager li.pager-next {
 .marker:after {
   content: ")";
 }
-/* Action links (e.g. "Add new Forum topic") */
+
+/**
+ * Action links
+ */
 ul.action-links {
   margin: 6px 0;
 }
@@ -1020,6 +1034,7 @@ ul.action-links li a {
   padding-left: 15px;
   background: url(images/action-link.png) no-repeat left center;
 }
+
 /**
  * Messages 
  */
@@ -1032,7 +1047,7 @@ ul.action-links li a {
 div.messages {
   padding: 7px 12px;
   margin: 0 0 15px 0;
-  color: #ffffff;
+  color: #fff;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -khtml-border-radius: 3px;
@@ -1042,30 +1057,31 @@ div.messages {
   font-weight: 300;
 }
 .messages.status {
-  color: #ffffff;
+  color: #fff;
   background-color: #74950a;
 }
 .messages.warning {
-  color: #ffffff;
+  color: #fff;
   background-color: #e89c00;
 }
 .messages.error {
-  color: #ffffff;
+  color: #fff;
   background: #d53400;
 }
 .messages a {
-  color: #ffffff;
+  color: #fff;
   text-decoration: underline;
 }
+
 /**
- * Collapsing fieldsets
+ * Forms
  */
 html.js fieldset.collapsible legend {
   padding: 2px 4px 2px 10px; /* LTR */
 }
 html.js fieldset.collapsible legend a {
   padding: 0 15px 0 0; /* LTR */
-  color: #ffffff;
+  color: #fff;
   background: url("images/arrow-down-white.png") no-repeat right 4px; /* LTR */
 }
 html.js fieldset.collapsed legend a {
@@ -1082,33 +1098,34 @@ html.js fieldset.collapsed {
   border-width: 1px;
   margin-bottom: 15px;
 }
-/* form autocompletion */
 html.js input.form-autocomplete {
   background-position: 99% 8px; /* LTR */
 }
 html.js input.throbbing {
   background-position: 99% -12px; /* LTR */
 }
-/* Resizable textareas */
 .resizable-textarea {
   width: 100%;
 }
 .resizable-textarea .grippie {
   height: 9px;
   width: 100%;
-  background: #cccccc url(images/grippie.png) no-repeat center 2px;
-  border: 1px solid #cccccc;
+  background: #ccc url(images/grippie.png) no-repeat center 2px;
+  border: 1px solid #ccc;
   border-top-width: 0;
   cursor: s-resize;
   margin-top: -6px;
-  position: relative; /* required in RTL mode */
-  margin-right: 0!important; /* textarea.js sets unncessary margin here */
+  position: relative;
+  margin-right: 0!important;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -khtml-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* Table drag and drop */
+
+/**
+ * Tables
+ */
 .draggable a.tabledrag-handle {
   margin: 0 12px 0 0;
   padding: 0;
@@ -1122,21 +1139,23 @@ tr.drag-previous {
 span.tabledrag-changed {
   font-size: 13px;
   margin-left: 3px;
-  color: red;
+  color: #f00;
 }
-/* Table sort */
 th a,
 thead a {
-  color: #ffffff!important;
+  color: #fff!important;
 }
 th a:hover,
 thead a:hover {
-  color: #ffffff;
+  color: #fff;
 }
 table img {
   margin: 0 0 0 7px; /* LTR */
 }
-/* Password strength indicator */
+
+/**
+ * Password 
+ */
 .password-parent {
   width: 420px;
 }
@@ -1180,21 +1199,24 @@ input.password-field {
 .password-suggestions ul {
   margin: 8px 0 0 9px;
 }
-/* utility classes */
+
+/** 
+ * Utility
+ */
 .element-invisible {
   padding: 0;
 }
+
 /**
- * Admin pages
+ * Admin
  */
-/* admin/structure/block and admin/people/permissions*/
 tr.region-title td,
 table#permissions td.module {
-  border-bottom: 1px solid #2E2E2E;
-  border-top: 1px solid #2E2E2E;
+  border-bottom: 1px solid #2e2e2e;
+  border-top: 1px solid #2e2e2e;
   color: #779125;
   font-family: "Trebuchet MS", "Bitstream Vera Sans", "FreeSans", sans-serif;
-  font-size: 13px;
+  font-size: 1.083em;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -1202,7 +1224,6 @@ table#permissions td.module {
 tr.region-populated {
   display: none;
 }
-/* admin/config */
 div.admin .left,
 div.admin .right {
   margin: 0;
@@ -1210,7 +1231,7 @@ div.admin .right {
 div.admin-panel {
   margin: 0 0 9px 0;
   padding: 5px 0 10px;
-  border-bottom: 1px dashed black;
+  border-bottom: 1px dashed #000;
 }
 div.admin-panel h3 {
   margin-top: 5px;
@@ -1218,29 +1239,23 @@ div.admin-panel h3 {
 .admin-panel:last-child {
   border-bottom: none;
 }
-/* admin/help/ */
 body.page-admin-help dd {
   margin-bottom: 12px;
 }
-/* admin/config/regional/date-time */
 td .form-item {
   margin: 4px 0;
 }
-/* admin/<blah>/fields */
 .label-add-new-field,
 .label-add-existing-field {
   display: inline-block;
   vertical-align: middle;
 }
-/* admin/config/people/ip-blocking */
 form#system-ip-blocking-form {
   margin-bottom: 15px;
 }
-/* admin/config */
 div.admin-panel .body {
   padding: 0;
 }
-/* admin/reports/updates */
 table.version tr {
   margin: 10px 0;
 }
@@ -1250,17 +1265,15 @@ td.version-links li {
 }
 table.update tr,
 table.update td {
-  border-top: 1px solid #2E2E2E;
-  border-bottom: 1px solid #2E2E2E;
+  border-top: 1px solid #2e2e2e;
+  border-bottom: 1px solid #2e2e2e;
 }
 body.page-admin-reports-updates h3 {
   margin-bottom: 0;
 }
-/* node/<blah>/edit */
 #edit-field-image {
   float: none;
 }
-/* admin forms */
 body.page-admin label {
   font-weight: 700;
 }
@@ -1276,7 +1289,7 @@ body.page-admin input {
 }
 .multiselect .form-item {
   display: inline-block;
-  margin: 0 10px 0 0;
+  margin: 0 10px 0 0; /* LTR */
 }
 dl.multiselect dt,
 dl.multiselect dd {
@@ -1304,7 +1317,11 @@ dl.multiselect dd .form-item label {
 .node-form #edit-poll-more {
   margin-top: 10px;
 }
-/* other */
+
+/** 
+ * Misc
+ * Should be moved to relevant section if possible.
+ */
 td.block {
   background: inherit;
   border: none;
@@ -1324,7 +1341,7 @@ h1.page-title {
 }
 td.edit,
 td.delete {
-  padding-left: 7px;
+  padding-left: 7px; /* LTR */
 }
 dl.admin-list dd {
   margin: 0 0 11px 0;
@@ -1366,5 +1383,5 @@ fieldset .action {
   margin-top: 7px;
 }
 #dashboard #disabled-blocks h2 {
-  color: #ffffff;
+  color: #fff;
 }

@@ -19,4 +19,8 @@ fieldset.filter-wrapper {
 .node ul.links {
   display: inline;
 }
-
+.tabs ul.tabs li a:hover,
+.tabs ul.tabs li a:active,
+.tabs ul.tabs li a:focus {
+  filter: alpha(opacity = 80);
+}

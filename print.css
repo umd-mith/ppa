@@ -1,8 +1,8 @@
 /* $Id$ */
 
-/*
-* Wrappers
-*/
+/**
+ * Wrappers
+ */
 body,
 #main-wrapper,
 #main,
@@ -18,20 +18,18 @@ body,
   background: none!important;
 }
 
-/*
-* Elements
-*/
-/* Styles inherited by all elements */
+/**
+ * Elements
+ */
 body {
   font-size: 10pt;
-  color: #000000;
+  color: #000;
   word-spacing: 1.1pt;
   line-height: 1.4;
 }
 body * {
   font-family: "Times New Roman", serif!important;
 }
-/* Headers */
 h1 {
   font-size: 20pt;
 }
@@ -46,14 +44,13 @@ h5,
 h6 {
   font-size: 12pt;
 }
-/* Links */
 a {
   border-bottom: 1px solid #cfdde5;
 }
 
-/*
-* Hidden
-*/
+/**
+ * Hidden
+ */
 #toolbar,
 #navigation-wrapper,
 #header-wrapper,
@@ -70,4 +67,3 @@ h2#add-comment-form,
 form#comment-form {
   display: none!important;
 }
-

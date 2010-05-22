@@ -1,35 +1,25 @@
 /* $Id$ */
 
-/* Ensure links are always clickable and dont jump in RTL for IE6 and 7. */
 .block,
 .region a {
   zoom: 1;
 }
-/* Set height on header - min-height hack for IE */
 #header {
   min-height: 210px;
   height:auto !important;
   height: 210px;
 }
-/* Bug: no borders on tr elements */
 td, th {
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #ccc;
 }
-/* Bug: misalignd menus in blocks */
 .block ul.menu,
 .block ul.links,
 .block .item-list ul {
   list-style-position: outside;
 }
-/*
-* Fix issues caused by lack of support for last-child pseudoclass
-*/
 fieldset.filter-wrapper {
   margin-top: -14px;
 }
-/*
-* Fix issues caused by lack of support for display: inline-block property
-*/
 #navigation li,
 .field-type-taxonomy-term-reference .field-label,
 .field-type-taxonomy-term-reference .field-item,
@@ -38,23 +28,16 @@ fieldset.filter-wrapper {
   hasLayout: true;
   display: inline;
 }
-/*
-* Fix issues caused by lack of support for border box model
-*/
 textarea {
   padding: 0;
 }
 input {
   padding: 5px 0!important;
 }
-/*
-* Fix issues caused by lack of support for inherit value
-*/
 #navigation li a.active,
 #site-name a {
   color: #2e2e2e;
 }
-/* Profile list - min-height hack for IE */
 body.page-profile .profile {
   min-height: 60px;
   height:auto !important;
