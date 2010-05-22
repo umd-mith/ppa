@@ -5,7 +5,7 @@
 .region a {
   zoom: 1;
 }
-/* min-height hack for IE */
+/* Set height on header - min-height hack for IE */
 #header {
   min-height: 210px;
   height:auto !important;
@@ -53,4 +53,10 @@ input {
 #navigation li a.active,
 #site-name a {
   color: #2e2e2e;
+}
+/* Profile list - min-height hack for IE */
+body.page-profile .profile {
+  min-height: 60px;
+  height:auto !important;
+  height: 60px;
 }

@@ -143,3 +143,17 @@ html.js fieldset.collapsed legend a {
 .shortcut-wrapper .add-or-remove-shortcuts {
   float: right;
 }
+/* User list */
+body.page-profile .profile {
+  margin-right: 0;
+  margin-left: 1%;
+}
+body.page-profile .user-picture {
+  float: right;
+}
+body.page-profile .name,
+body.page-profile .field {
+  margin-left: 0;
+  margin-right: 60px;
+  padding:0 0 10px 10px;
+}

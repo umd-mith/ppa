@@ -681,19 +681,26 @@ body.page-forum ul.action-links {
   margin-top: 45px;
 }
 /* User list */
+body.page-profile .profile {
+  min-height: 60px;
+  float: left;
+  clear: none;
+  width: 48.5%;
+  margin-right: 1%; /* LTR */
+}
 body.page-profile .user-picture {
-  display: inline-block;
   margin: 0;
-  vertical-align: top;
-  float: none;
+  padding: 0;
+  float: left; /* LTR */
 }
 body.page-profile .user-picture img {
-  width: 20px;
-  margin: 2px 0 0 10px;
+  width: 40px;
+  padding: 5px 0;
 }
-body.page-profile .name {
-  display: inline-block;
-  line-height: 2.2;
+body.page-profile .name,
+body.page-profile .field {
+  margin-left: 60px; /* LTR */
+  padding:0 10px 10px 0; /* LTR */
 }
 /**
  * Search module
