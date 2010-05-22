@@ -451,6 +451,7 @@ thead a,
 a.tabledrag-handle,
 ul.contextual-links li a,
 .overlay .ui-dialog-titlebar a,
-a.contextual-links-trigger {
+a.contextual-links-trigger,
+.book-navigation .page-links a {
   border-bottom: none;
 }
