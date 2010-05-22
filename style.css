@@ -797,12 +797,36 @@ tr.dblog-error .active {
 /**
  * Shortcut module
  */
-.shortcut-wrapper h1.page-title,
-.shortcut-wrapper .add-or-remove-shortcuts {
-  float: left;
+.shortcut-wrapper h1.page-title {
+  display: inline-block;
 }
-div.add-or-remove-shortcuts  {
-  padding-top: 10px;
+.shortcut-wrapper .add-or-remove-shortcuts {
+  display: inline-block;
+}
+div.add-or-remove-shortcuts a:hover span.text {
+  left: 6px;
+}
+div.add-or-remove-shortcuts a span.text {
+  -moz-border-radius-bottomright:5px;
+  -moz-border-radius-topright:5px;
+  background-color: #5f605b;
+  color: #ffffff;
+  cursor: pointer;
+  display: block;
+  font-size: 10px;
+  line-height: 12px;
+  padding-right: 6px;
+  visibility: hidden;
+}
+div.add-or-remove-shortcuts a:hover span.text {
+  visibility: visible;
+  line-height: 12px!important;
+}
+.shortcut-wrapper h1.page-title {
+  margin-right: 6px;
+}
+div.add-or-remove-shortcuts a span.icon {
+  margin: 0;
 }
 
 /**
