@@ -49,7 +49,11 @@ function corolla_process_page(&$variables) {
 function corolla_preprocess_block(&$variables) {
   // Remove "block" class from "Main page content" block
   if ($variables['block']->module == 'system' && $variables['block']->delta == 'main') {
-    unset($variables['classes_array']['0']);
+    foreach ($variables['classes_array'] as $key => $val) {
+      if ($val == 'block') {
+        unset($variables['classes_array'][$key]);
+      }
+    }
   }
 }
 
