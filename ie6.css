@@ -9,3 +9,8 @@ body {
 #main-links li a:focus {
   background: none;
 }
+#main-menu,
+#page,
+#footer {
+  width: 960px;
+}
