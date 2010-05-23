@@ -885,6 +885,13 @@ a.contextual-links-trigger {
 .tabs {
   margin: 12px 0;
 }
+.tabs:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
 .tabs ul.tabs {
   margin: 0;
   padding: 0;
