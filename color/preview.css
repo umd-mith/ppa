@@ -5,15 +5,18 @@
   font-size: 8px;
   line-height: 1;
   width: 500px;
-  height: 300px;
+  height: 350px;
   background-color: #f8f8f8;
   border: 1px solid #e1e1e1;
+}
+.two-sidebars #wrapper-p {
+  width: 460px;
 }
 #wrapper-p * {
   margin: 0;
   padding: 0;
   line-height: 1;
-  font-weight: 300;
+  font-weight: 350;
   font-family: "Arial", sans-serif;
 }
 /* navigation */
@@ -21,6 +24,9 @@
   width: 500px;
   height: 20px;
   margin: 0;
+}
+.two-sidebars #navigation-p {
+  width: 460px;
 }
 #navigation-p ul {
   list-style: none;

@@ -869,6 +869,10 @@ a.contextual-links-trigger {
 /**
  * Color module
  */
+.two-sidebars #placeholder {
+  position:static;
+  margin-bottom: 10px;
+}
 #palette .form-item {
   width: auto;
 }
@@ -877,6 +881,12 @@ a.contextual-links-trigger {
 }
 #palette .item-selected {
   background: none;
+}
+.farbtastic .marker:before {
+  content: "";
+}
+.farbtastic .marker:after {
+  content: "";
 }
 
 /**
@@ -1256,6 +1266,13 @@ body.page-admin-help dd {
 }
 td .form-item {
   margin: 4px 0;
+}
+#toolbar div.toolbar-menu ul li a {
+  line-height: 1.7;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -khtml-border-radius: 9px;
+  border-radius: 9px;
 }
 .label-add-new-field,
 .label-add-existing-field {
