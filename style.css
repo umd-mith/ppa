@@ -185,11 +185,11 @@ body {
   letter-spacing: -3px;
 }
 #site-name a::-moz-selection {
-	background-color: #2e2e2e;
+  background-color: #2e2e2e;
   color: #fff;
 }
 #site-name a::selection {
-	background-color: #2e2e2e;
+  background-color: #2e2e2e;
   color: #fff;
 }
 #site-slogan {
@@ -244,7 +244,6 @@ body {
   color: inherit;
   font-weight: 700;
   background: #f8f8f8;
-
 }
 #secondary-menu {
   font-size: 0.95em;
@@ -419,7 +418,7 @@ h1.page-title,
 }
 .comment .header {
   display: block;
-  margin-bottom: 14px;  
+  margin-bottom: 14px;
 }
 .comment .user-picture {
   float: right; /* LTR */
@@ -888,7 +887,7 @@ a.contextual-links-trigger {
 }
 .tabs ul.tabs {
   margin: 0;
-  padding: 0; 
+  padding: 0;
   border: none;
   white-space: normal;
 }
@@ -1019,6 +1018,12 @@ ul.pager li.pager-next {
 .marker:after {
   content: ")";
 }
+.farbtastic .marker:before {
+  content: "";
+}
+.farbtastic .marker:after {
+  content: "";
+}
 
 /**
  * Action links
@@ -1036,7 +1041,7 @@ ul.action-links li a {
 }
 
 /**
- * Messages 
+ * Messages
  */
 #messages {
   margin: 10px 0;
@@ -1154,7 +1159,7 @@ table img {
 }
 
 /**
- * Password 
+ * Password
  */
 .password-parent {
   width: 420px;
@@ -1200,7 +1205,7 @@ input.password-field {
   margin: 8px 0 0 9px;
 }
 
-/** 
+/**
  * Utility
  */
 .element-invisible {
@@ -1318,7 +1323,7 @@ dl.multiselect dd .form-item label {
   margin-top: 10px;
 }
 
-/** 
+/**
  * Misc
  * Should be moved to relevant section if possible.
  */
@@ -1329,12 +1334,6 @@ td.block {
 }
 h1 em {
   font-weight: 300;
-}
-h1 em:before {
-  content: "«";
-}
-h1 em:after {
-  content: "»";
 }
 h1.page-title {
   clear: left;

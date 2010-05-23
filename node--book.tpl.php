@@ -79,7 +79,6 @@
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
   <div class="node-header">
-    
     <?php print render($title_prefix); ?>
     <?php if (!$page): ?>
       <h2 class="node-title" <?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
@@ -91,7 +90,6 @@
         <?php print t('Submitted by !username on !datetime', array('!username' => $name, '!datetime' => $date)); ?>
       </div>
     <?php endif; ?>
-
   </div> <!-- /.node-header -->
 
   <div class="content"<?php print $content_attributes; ?>>
