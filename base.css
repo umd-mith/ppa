@@ -438,6 +438,7 @@ select.error:focus {
  * Selectively remove border-bottom from anchors.
  */
 body.page-admin a,
+#skip-link a,
 #logo a,
 #site-name a,
 #main-links li a,
