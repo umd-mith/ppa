@@ -156,6 +156,18 @@ body.page-profile .field {
   margin-right: 60px;
   padding:0 0 10px 10px;
 }
+#password-strength {
+  left: auto;
+  margin-top: 2em;
+  right: 16em;
+}
+#password-strength-text {
+  margin-top: 0;
+  float: left;
+}
+.form-item-pass-pass2 label {
+  clear: right;
+}
 #skip-link {
   right: auto;
   left: 20px;

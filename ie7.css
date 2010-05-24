@@ -43,3 +43,9 @@ body.page-profile .profile {
   height:auto !important;
   height: 60px;
 }
+input.password-confirm, input.password-field {
+  width: 13em;
+}
+#password-strength-text {
+  margin-top: 0;
+}

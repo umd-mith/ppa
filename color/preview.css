@@ -5,7 +5,7 @@
   font-size: 8px;
   line-height: 1;
   width: 500px;
-  height: 350px;
+  height: 30em;
   background-color: #f8f8f8;
   border: 1px solid #e1e1e1;
 }
@@ -16,12 +16,12 @@
   margin: 0;
   padding: 0;
   line-height: 1;
-  font-weight: 350;
+  font-weight: 300;
 }
 /* navigation */
 #navigation-p {
   width: 500px;
-  height: 20px;
+  height: 1.667em;
   margin: 0;
 }
 .two-sidebars #navigation-p {
@@ -51,26 +51,27 @@
   line-height: 1;
   color: #e76111;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 0.833em;
   margin-top: 3px;
 }
 /* page */
 #page-p {
   position: absolute;
   left: 50px;
-  top: 85px;
+  top: 9em;
   width: 250px;
-  height: 184px;
+  height: 15.4em;
   padding: 15px;
   background: #fff;
   border: 1px solid #e1e1e1;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
+  -khtml-border-radius: 2px;
   border-radius: 2px;
 }
 #page-p p {
-  font-size: 10px;
-  line-height: 14px;
+  font-size: 0.833em;
+  line-height: 1.167em;
   margin-bottom: 10px;
 }
 #page a {
@@ -80,13 +81,13 @@
 /* sidebar */
 #sidebar-p {
   width: 100px;
-  height: 400px;
+  height: 15.4em;
   position: absolute;
   left: 343px;
-  top: 90px;
+  top: 9em;
 }
 #sidebar-p .block-title-p {
-  font-size: 10px;
+  font-size: 0.833em;
   padding-bottom: 3px;
   margin-bottom: 5px;
   border-bottom: 1px solid black;
@@ -102,5 +103,5 @@
   margin: 4px 0;
 }
 #sidebar-p p {
-  line-height: 11px;
+  line-height: 0.917em;
 }

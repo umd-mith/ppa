@@ -1128,49 +1128,37 @@ table img {
 /**
  * Password
  */
-.password-parent {
-  width: 420px;
+.password-parent,
+div.form-item div.password-suggestions {
+  position: relative;
+  width: auto;
 }
 #password-strength {
-  float: right; /* LTR */
-  margin-top: 16px;
+  float: none;
+  left: 16em;
+  position: absolute;
+  width: 11.5em;
+}
+#password-strength-text,
+.password-strength-title,
+div.password-confirm {
+  font-size: 0.833em;
 }
 #password-strength-text {
-  float: right;
-  font-weight: bold;
-}
-div.password-confirm {
-  visibility: hidden;
-}
-#password-indicator {
-  border: 1px solid #989898;
-  margin-top: 3px;
-  background-color: #f5f5f5;
-  height: 8px;
-}
-#password-indicator div {
-  height: 100%;
-  width: 0%;
-  background-color: #9eb42c;
+  margin-top: 0.2em;
 }
 input.password-confirm,
 input.password-field {
-  width: 16em;
+  width: 15em;
   margin-bottom: 0.4em;
 }
-.password-confirm {
-  display: inline;
-  padding-left: 1em;
-}
-.form-item .password-suggestions {
+div.form-item div.password-suggestions {
   padding: 8px 9px;
   margin: 10px 0;
   background-color: #f3fcdb;
   border: 1px solid #b8e643;
 }
-.password-suggestions ul {
-  margin: 8px 0 0 9px;
-}
+
 
 /**
  * Utility
