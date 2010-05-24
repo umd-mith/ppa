@@ -8,8 +8,14 @@ body {
 #main-links li a:focus {
   background: none;
 }
-#main-menu,
-#page,
-#footer {
-  width: 960px;
+#width,
+#width-inner {
+  height: 0;
+}
+#width {
+  border-left: 960px solid #fbfcfd;
+}
+#width-inner {
+  margin-left: -960px;
+  position: relative;
 }

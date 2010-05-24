@@ -67,7 +67,7 @@
  */
 ?>
 <?php if ($main_menu && !$in_overlay): ?>
-  <div id="navigation" class="clearfix">
+  <div id="navigation"><div id="width"><div id="width-inner" class="clearfix">
     <?php print theme('links__system_main_menu', array(
       'links' => $main_menu,
       'attributes' => array(
@@ -80,10 +80,10 @@
         'class' => array('element-invisible'),
       ),
     )); ?>
-  </div> <!-- /#navigation -->
+  </div></div></div> <!-- /#navigation /#width /#width-inner -->
 <?php endif; ?>
 
-<div id="page">
+<div id="page"><div id="width"><div id="width-inner">
 
   <?php if (!$in_overlay): ?>
     <div id="header" class="clearfix<?php if ($page['header']): ?> with-blocks<?php endif; ?>">
@@ -175,10 +175,10 @@
 
   </div></div> <!-- /#main-columns-inner /#main-columns -->
 
-</div> <!-- /#page -->
+</div></div></div> <!-- /#page /#width /#width-inner -->
 
 <?php if ($page['footer'] && !$in_overlay): ?>
-  <div id="footer-wrapper"><div id="footer" class="clearfix">
+  <div id="footer-wrapper"><div id="footer"><div id="width"><div id="width-inner" class="clearfix">
     <?php print render($page['footer']); ?>
-  </div></div><!-- /#footer-wrapper /#footer -->
+  </div></div></div></div><!-- /#footer-wrapper /#footer /#width /#width-inner -->
 <?php endif; ?>

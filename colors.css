@@ -24,6 +24,9 @@ a:focus {
 #navigation {
   background-color: #2e2e2d;
 }
+#navigation #width {
+  border-left-color: #2e2e2d;
+}
 #main-links li.expanded ul {
   background-color: #2e2e2d;
 }
