@@ -12,7 +12,8 @@ html {
 /**
  * Font stacks
  */
-html {
+html,
+#wrapper-p * {
   font-family: "Helvetica Neue", Arial, FreeSans, sans-serif;
 }
 h1,
@@ -23,7 +24,10 @@ h3,
 .block h2,
 #forum td.container .name a,
 tr.region-title td,
-table#permissions td.module {
+table#permissions td.module,
+#name-p,
+#slogan-p,
+#sidebar-p .block-title-p {
   font-family: "Trebuchet MS", "Myriad Pro", "Bitstream Vera Sans", FreeSans, sans-serif;
 }
 h6 {
