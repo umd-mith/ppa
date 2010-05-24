@@ -6,8 +6,32 @@
 html {
   line-height: 1.5;
   font-size: 0.75em;
-  font-family: Arial, FreeSans, sans-serif;
   word-wrap: break-word;
+}
+
+/**
+ * Font stacks
+ */
+html {
+  font-family: "Helvetica Neue", Arial, FreeSans, sans-serif;
+}
+h1,
+h2,
+h3,
+#site-name a,
+#site-slogan,
+.block h2,
+#forum td.container .name a,
+tr.region-title td,
+table#permissions td.module {
+  font-family: "Trebuchet MS", "Myriad Pro", "Bitstream Vera Sans", FreeSans, sans-serif;
+}
+h6 {
+  font-family: Verdana, "Helvetica Neue", Helvetica, Arial, FreeSans, sans-serif;
+}
+pre,
+tt {
+  font-family: "Courier New", Monaco, "Nimbus Mono L", monospace;
 }
 
 /**
@@ -16,19 +40,16 @@ html {
 h1 {
   margin: 9px 0 9px;
   font-size: 2em;
-  font-family: "Trebuchet MS", FreeSans, sans-serif;
   line-height: 1.1;
 }
 h2 {
   margin: 0 0 7px;
   padding: 0 0 4px 0;
-  font-family: "Trebuchet MS", FreeSans, sans-serif;
   font-size: 1.333em;
   font-weight: 700;
   line-height: 1.3;
 }
 h3 {
-  font-family: "Trebuchet MS", FreeSans, sans-serif;
   margin: 0 0 12px;
   font-size: 1.333em;
 }
@@ -42,7 +63,6 @@ h5 {
   font-weight: 700;
 }
 h6 {
-  font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;
   margin: 12px 0 8px 0;
   font-size: 0.833em;
   font-weight: 700;
@@ -65,7 +85,6 @@ pre {
   padding: 15px;
   background-color: #fafafa;
   border: 1px solid #e5e5e5;
-  font-family: Courier, "Courier New", monospace;
   white-space: pre-wrap;
   overflow: hidden;
 }
@@ -126,9 +145,6 @@ sub {
 }
 sup {
   vertical-align: super
-}
-tt {
-  font-family: Courier, "Courier New", monospace;
 }
 b {
   font-weight: 700;
@@ -229,6 +245,9 @@ td.permissions,
 td.configure {
   padding-left: 8px;
   padding-right: 8px;
+}
+td.active {
+  background-color: #eee;
 }
 th.checkbox {
   padding-left: 14px;
