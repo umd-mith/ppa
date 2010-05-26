@@ -3,7 +3,7 @@
 #wrapper-p {
   position: relative;
   font-size: 8px;
-  line-height: 1;
+  line-height: 1.25;
   width: 500px;
   height: 30em;
   background-color: #f8f8f8;
@@ -98,10 +98,12 @@
 #sidebar-p ul {
   margin-bottom: 15px;
   list-style: none;
+  font-size: 0.833em;
 }
 #sidebar-p ul li {
   margin: 4px 0;
 }
 #sidebar-p p {
   line-height: 0.917em;
+  font-size: 0.833em;
 }
