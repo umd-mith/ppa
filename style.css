@@ -100,7 +100,6 @@ body {
  */
 #header {
   clear: both;
-  min-height: 210px;
 }
 
 /**
@@ -108,8 +107,8 @@ body {
  */
 #branding {
   float: left;
-  padding: 50px 0 0;
   width: 100%;
+  margin: 65px 0;
 }
 .with-blocks #branding {
   width: 58%;
@@ -150,7 +149,7 @@ body {
 }
 .region-header {
   float: right; /* LTR */
-  padding: 40px 0 0;
+  padding: 15px 0;
 }
 
 /**
