@@ -132,7 +132,7 @@
           <?php if ($tabs): ?><div class="tabs clearfix"><?php print render($tabs); ?></div><?php endif; ?>
 
           <?php if ($page['highlight'] && !$in_overlay): ?>
-            <div id="highlight"><?php print render($page['highlight']); ?></div>
+            <?php print render($page['highlight']); ?>
           <?php endif; ?>
 
           <?php print render($title_prefix); ?>

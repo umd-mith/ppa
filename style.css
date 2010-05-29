@@ -240,6 +240,10 @@ div.item-list ul li {
   text-transform: uppercase;
   border-bottom: 1px dashed #2e2e2e;
 }
+.block ul {
+  list-style-position:inside;
+  padding:0;
+}
 .block li {
   margin: 6px 0;
 }
@@ -255,6 +259,22 @@ div.item-list ul li {
 .block input.form-file {
   max-width: 400px;
   width: 100%;
+}
+
+.region-highlight {
+  -moz-border-radius:3px 3px 3px 3px;
+  background-color:#F5F9FA;
+  border:1px solid #B3CFD4;
+  margin: 5px 0 10px 0;
+  padding: 15px 15px 0 18px;
+}
+.region-highlight .block h2 {
+  border-bottom: none;
+  text-transform: none;
+  font-size: 1.5em;
+  letter-spacing: normal;
+  color: inherit;
+  margin-bottom: 5px;
 }
 
 /**
@@ -789,9 +809,6 @@ div.add-or-remove-shortcuts a span.icon {
  */
 div.contextual-links-wrapper {
   z-index: 20;
-}
-#content .contextual-links-wrapper a.contextual-links-trigger {
-  background-color: #fff;
 }
 div.contextual-links-wrapper a.contextual-links-trigger {
   margin: 1px 0 0;
