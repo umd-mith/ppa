@@ -630,6 +630,9 @@ body.page-forum ul.action-links {
   float: right; /* LTR */
   margin-top: 45px;
 }
+body.page-profile #profile {
+  margin-top: 15px;
+}
 body.page-profile .profile {
   min-height: 60px;
   float: left;
@@ -649,7 +652,7 @@ body.page-profile .user-picture img {
 body.page-profile .name,
 body.page-profile .field {
   margin-left: 60px; /* LTR */
-  padding:0 10px 10px 0; /* LTR */
+  padding: 12px 10px 10px 0; /* LTR */
 }
 
 /**

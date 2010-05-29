@@ -154,7 +154,7 @@ body.page-profile .name,
 body.page-profile .field {
   margin-left: 0;
   margin-right: 60px;
-  padding:0 0 10px 10px;
+  padding: 12px 0 10px 10px;
 }
 #password-strength {
   left: auto;
