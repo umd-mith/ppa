@@ -347,6 +347,10 @@ h1.page-title,
   padding: 2px;
   width: 50px;
 }
+.node .field-name-field-image {
+  float: left;
+  clear: left;
+}
 .node .field-name-body {
   margin-bottom: 14px;
 }
@@ -475,8 +479,6 @@ form#comment-form #edit-actions {
   content: normal;
 }
 .field-type-image {
-  float: left;
-  clear: left;
   margin: 15px 15px 15px 0; /* LTR */
 }
 .field-type-image a {
