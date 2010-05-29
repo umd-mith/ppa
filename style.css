@@ -221,7 +221,6 @@ div.item-list ul li {
  * Block module
  */
 .block {
-  font-size: 0.95em;
   margin-bottom: 25px;
 }
 .block:last-child {
