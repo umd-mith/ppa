@@ -123,7 +123,7 @@
     </div> <!-- /#header -->
   <?php endif; ?>
 
-  <div id="main-columns"><div id="main-columns-inner" class="clearfix">
+  <div id="main-columns"><div id="main-columns-inner">
     <div id="main-wrapper"><div id="main">
       <div id="main-content">
         <?php if ($page['highlight'] && !$in_overlay): ?>
