@@ -374,7 +374,6 @@ input.form-file {
   max-width: 320px;
 }
 textarea {
-  height: 230px;
   resize: none;
 }
 select {
