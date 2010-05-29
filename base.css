@@ -373,6 +373,10 @@ input.form-file {
   width: 100%;
   max-width: 320px;
 }
+textarea {
+  height: 230px;
+  resize: none;
+}
 select {
   padding: 4px;
   width: 100%!important;
