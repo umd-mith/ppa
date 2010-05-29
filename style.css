@@ -1288,6 +1288,9 @@ dl.multiselect dd .form-item label {
 .node-form #edit-poll-more {
   margin-top: 10px;
 }
+#edit-field-screenshot {
+  float: none;
+}
 
 /**
  * Misc
