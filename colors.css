@@ -49,5 +49,16 @@ a:focus {
 #sidebar-second input {
   border: 1px solid #c4c4c4;
 }
-
+/* block title (green) */
+.block h2 {
+  color: #779125;
+}
+.block h2::selection {
+  color: #fff;
+  background-color: #779125;
+}
+.block h2::-moz-selection {
+  background-color: #779125;
+  color: #fff;
+}
 

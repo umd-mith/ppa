@@ -13,7 +13,7 @@ stylesheets[all][]   = style.css
 stylesheets[all][]   = colors.css
 stylesheets[print][] = print.css
 
-regions[header]         = Header blocks
+regions[header]         = Header
 regions[sidebar_first]  = First sidebar
 regions[sidebar_second] = Second sidebar
 regions[highlight]      = Highlighted

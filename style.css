@@ -241,14 +241,6 @@ div.item-list ul li {
   text-transform: uppercase;
   border-bottom: 1px dashed #2e2e2e;
 }
-.block h2::selection {
-  color: #fff;
-  background-color: #779125;
-}
-.block h2::-moz-selection {
-  background-color: #779125;
-  color: #fff;
-}
 .block li {
   margin: 6px 0;
 }
