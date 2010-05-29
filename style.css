@@ -478,7 +478,7 @@ form#comment-form #edit-actions {
 .field-type-image {
   float: left;
   clear: left;
-  margin: 5px 15px 15px 0; /* LTR */
+  margin: 15px 15px 15px 0; /* LTR */
 }
 .field-type-image a {
   border: none;

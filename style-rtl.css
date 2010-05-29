@@ -77,6 +77,11 @@ div.item-list ul li {
   float: right;
   margin: 0 0 8px 10px;
 }
+.field-type-image {
+  float: right;
+  clear: right;
+  margin: 15px 0 15px 15px;
+}
 .page-links .page-next {
   float: left;
   text-align: left;
