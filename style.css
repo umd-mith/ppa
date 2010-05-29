@@ -938,9 +938,6 @@ ul.vertical-tabs-list li.selected a {
   margin: 0 6px;
   padding: 0;
 }
-ul.pager a.active {
-  color: #086782;
-}
 ul.pager li.pager-previous {
   padding-right: 8px;
 }

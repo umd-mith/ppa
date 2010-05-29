@@ -12,12 +12,15 @@ body {
   color: #2e2e2e;
 }
 /* link (blue) */
-a {
+a,
+ul.pager a.active {
   color: #086782;
 }
 /* link hovered (orange) */
 a:hover,
-a:focus {
+a:focus,
+ul.pager a.active:hover,
+ul.pager a.active:focus {
   color: #e25401;
 }
 /* navigation (black) */
