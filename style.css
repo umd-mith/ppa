@@ -874,9 +874,6 @@ a.contextual-links-trigger {
   opacity: 0.8;
   border-color: #666;
 }
-.tabs ul.tabs li a:hover {
-  opacity: 0.8;
-}
 .tabs ul.primary li {
   margin: 3px 3px 3px 0;
 }
