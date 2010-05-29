@@ -100,6 +100,7 @@ body {
  */
 #header {
   clear: both;
+  min-height: 210px;
 }
 
 /**
@@ -448,6 +449,7 @@ form#comment-form #edit-actions {
 .field-type-taxonomy-term-reference .field-label {
   color: #808080;
   font-weight: 700;
+  display: inline;
 }
 .field-type-taxonomy-term-reference .field-items {
   display: inline-block;
