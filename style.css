@@ -15,6 +15,7 @@
 #sidebar-first,
 #sidebar-second {
   float: left; /* LTR */
+  display: inline;
 }
 .two-sidebars #main {
   margin-right: 50.5%;  /* LTR */
