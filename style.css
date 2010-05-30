@@ -20,10 +20,10 @@
   margin-right: 50.5%;  /* LTR */
 }
 .sidebar-first #main {
-  margin-right: 25.25%;  /* LTR */
+  margin-right: 26.25%;  /* LTR */
 }
 .sidebar-second #main {
-  margin-right: 25.25%;  /* LTR */
+  margin-right: 26.25%;  /* LTR */
 }
 #sidebar-first {
   width: 24.25%;
@@ -31,11 +31,11 @@
 }
 #sidebar-second {
   width: 24.25%;
-  margin-left: -24.25%;  /* LTR */
+  margin-left: -25.25%;  /* LTR */
 }
 .sidebar-first #sidebar-first {
   width: 24.25%;
-  margin-left: -24.25%;  /* LTR */
+  margin-left: -25.25%;  /* LTR */
 }
 #main-content,
 #main-columns {
@@ -61,7 +61,7 @@
 }
 #sidebar-first .region,
 #sidebar-second .region {
-  padding: 0 10px;
+  padding: 0 15px 0 12px;
 }
 /* Mobile */
 @media only screen and (max-device-width: 480px) {
