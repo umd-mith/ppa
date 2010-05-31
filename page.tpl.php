@@ -126,7 +126,7 @@
   <?php endif; ?>
 
   <div id="main-columns-wrapper">
-    <div id="main-columns">
+    <div id="main-columns" class="clearfix">
       <div id="main">
         <div id="page" class="clearfix">
           <?php if ($breadcrumb): ?><div id="breadcrumb" class="clearfix"><?php print $breadcrumb; ?></div><?php endif; ?>
