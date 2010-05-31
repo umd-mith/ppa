@@ -67,7 +67,7 @@
  */
 ?>
 <?php if ($main_menu && !$in_overlay): ?>
-  <div id="navigation"><div id="width"><div id="width-inner" class="clearfix">
+  <div id="navigation" class="clearfix">
     <?php print theme('links__system_main_menu', array(
       'links' => $main_menu,
       'attributes' => array(
@@ -80,12 +80,13 @@
         'class' => array('element-invisible'),
       ),
     )); ?>
-  </div></div></div> <!-- /#navigation /#width /#width-inner -->
+  </div> <!-- /#navigation -->
 <?php endif; ?>
 
-<div id="page"><div id="width"><div id="width-inner">
+
 
   <?php if (!$in_overlay): ?>
+  <div id="header-wrapper">
     <div id="header" class="clearfix<?php if ($page['header']): ?> with-blocks<?php endif; ?>">
 
       <div id="branding">
@@ -121,12 +122,13 @@
       <?php print render($page['header']); ?>
 
     </div> <!-- /#header -->
+  </div>  <!-- /#header-wrapper -->
   <?php endif; ?>
 
-  <div id="main-columns"><div id="main-columns-inner">
-    <div id="main-wrapper"><div id="main">
-      <div id="main-content">
-        <div id="content" class="clearfix">
+  <div id="main-columns-wrapper">
+    <div id="main-columns">
+      <div id="main">
+        <div id="page" class="clearfix">
           <?php if ($breadcrumb): ?><div id="breadcrumb" class="clearfix"><?php print $breadcrumb; ?></div><?php endif; ?>
           <?php if ($messages): ?><div id="messages"><?php print $messages; ?></div><?php endif; ?>
           <?php if ($tabs): ?><div class="tabs clearfix"><?php print render($tabs); ?></div><?php endif; ?>
@@ -134,6 +136,8 @@
           <?php if ($page['highlight'] && !$in_overlay): ?>
             <?php print render($page['highlight']); ?>
           <?php endif; ?>
+
+          <div id="main-content"></div>
 
           <?php print render($title_prefix); ?>
           <?php if ($title && !$in_overlay): ?>
@@ -144,13 +148,14 @@
           <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
           <?php print render($page['content']); ?>
           <?php print $feed_icons; ?>
-        </div> <!-- /#content -->
+        </div> <!-- /#page -->
+   
         <?php if ($secondary_menu && !$in_overlay): ?>
-          <div id="secondary-menu">
+          <div id="footer">
             <?php print theme('links__system_secondary_menu', array(
               'links' => $secondary_menu,
               'attributes' => array(
-                 'class' => array('links'),
+                  'class' => array('links'),
               ),
               'heading' => array(
                 'text' => t('Secondary menu'),
@@ -158,29 +163,23 @@
                 'class' => array('element-invisible'),
               ),
             )); ?>
-          </div> <!-- /#secondary-menu -->
+            <?php print render($page['footer']); ?>
+          </div> <!-- /#footer -->
         <?php endif; ?>
-      </div> <!-- /#main-content -->
-    </div></div> <!-- /#main-wrapper /#main -->
+      </div> <!-- /#main -->
 
-    <?php if ($page['sidebar_first'] && !$in_overlay): ?>
-      <div id="sidebar-first" class="clearfix">
-        <?php print render($page['sidebar_first']); ?>
-      </div> <!-- /#sidebar-first -->
-    <?php endif; ?>
+      <?php if ($page['sidebar_first'] && !$in_overlay): ?>
+        <div id="sidebar-first" class="clearfix">
+          <?php print render($page['sidebar_first']); ?>
+        </div> <!-- /#sidebar-first -->
+      <?php endif; ?>
 
-    <?php if ($page['sidebar_second'] && !$in_overlay): ?>
-      <div id="sidebar-second" class="clearfix">
-        <?php print render($page['sidebar_second']); ?>
-      </div> <!-- /#sidebar-second -->
-     <?php endif; ?>
+      <?php if ($page['sidebar_second'] && !$in_overlay): ?>
+        <div id="sidebar-second" class="clearfix">
+          <?php print render($page['sidebar_second']); ?>
+        </div> <!-- /#sidebar-second -->
+       <?php endif; ?>
 
-  </div></div> <!-- /#main-columns-inner /#main-columns -->
+    </div> <!-- /#main-columns -->
+  </div> <!-- /#main-columns-wrapper -->
 
-</div></div></div> <!-- /#page /#width /#width-inner -->
-
-<?php if ($page['footer'] && !$in_overlay): ?>
-  <div id="footer-wrapper"><div id="footer"><div id="width"><div id="width-inner" class="clearfix">
-    <?php print render($page['footer']); ?>
-  </div></div></div></div><!-- /#footer-wrapper /#footer /#width /#width-inner -->
-<?php endif; ?>

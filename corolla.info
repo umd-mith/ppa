@@ -18,8 +18,8 @@ regions[sidebar_first]  = First sidebar
 regions[sidebar_second] = Second sidebar
 regions[highlight]      = Highlighted
 regions[content]        = Content
+regions[footer]         = Footer closure
 regions[help]           = Help
-regions[footer]         = Footer
 regions[page_top]       = Page top
 regions[page_bottom]    = Page bottom
 

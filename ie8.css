@@ -1,5 +1,4 @@
 /* $Id$ */
-
 textarea {
   overflow: auto;
 }
@@ -25,4 +24,3 @@ fieldset.filter-wrapper {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
 }
-

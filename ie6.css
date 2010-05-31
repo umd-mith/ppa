@@ -1,21 +1,30 @@
 /* $Id$ */
 
+/* Set fixed values for layout width */
+#navigation ul,
+#header,
+#main-columns {
+  width: 960px;
+}
+/* Don's show transparent PNGs */
 body {
   background-image: none;
 }
-#navigation li a:hover,
-#main-links li a:active,
-#main-links li a:focus {
-  background: none;
+/* Bug: toolbar causes horizontal scrollbar to show up */
+#toolbar {
+  padding: 0;
 }
-#width,
-#width-inner {
-  height: 0;
+/* Bug: vertical tabs are breaking the layout */
+div.vertical-tabs {
+  width: auto;
 }
-#width {
-  border-left: 960px solid #fbfcfd;
+/* Bug: form legends are cut off */
+legend {
+  margin: 0 0 10px 0;
+  line-height: 1.6em!important;
+  padding-top: 1px!important;
+  padding-bottom: 1px!important;
 }
-#width-inner {
-  margin-left: -960px;
-  position: relative;
+html.js fieldset.collapsed  {
+  padding: 15px 20px;
 }

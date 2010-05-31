@@ -1,85 +1,48 @@
 /* $Id$ */
 
-#main-wrapper,
+#main,
 #sidebar-first,
 #sidebar-second {
   float: right;
 }
-.two-sidebars #main {
-  margin-left: 50.5%;
-  margin-right:0;
-}
-.sidebar-first #main{
-  margin-left: 25.25%;
-  margin-right: 0;
-}
-.sidebar-second #main {
-  margin-left: 25.25%;
-  margin-right: 0;
-}
-#sidebar-first {
-  width: 24.25%;
-  margin-right: -49.5%;
-}
-#sidebar-second {
-  width: 24.25%;
-  margin-right: -24.25%;
-}
-.sidebar-first #sidebar-first{
-  width: 24.25%;
-  margin-right: -24.25%;
-}
-#sidebar-first,
-#sidebar-second {
-  z-index: 900;
-}
-#main-menu {
-  padding: 3px 6px 0 0;
-}
-#main-menu li a {
-  float: right;
-  display: inline;
-  padding: 8px 15px 11px;
+#sidebar-first .region,
+#sidebar-second .region {
+  margin: 0 20px 0 0;
 }
 #branding {
   float: right;
+  margin: 65px 25px 65px 0;
 }
 .region-header {
   float: left;
 }
 #logo {
-  float: right;
   padding: 0 0 0 15px;
 }
-#name-and-slogan  {
-  float: right;
-}
-#content a.feed-icon {
+#page a.feed-icon {
   float: left;
 }
 .node ul.links.inline li {
   margin: 0 0 0 8px;
 }
-h1.page-title {
-  clear: left;
-}
-div.item-list ul li {
-  margin-right: 0;
+.item-list ul.pager {
+  text-align: right;
 }
 #comments-wrapper .indented {
   margin: 0 30px 0 0;
-}
-.comment .user-picture {
-  float: left;
-  margin: 0 10px 10px 0;
 }
 .node .user-picture {
   float: right;
   margin: 0 0 8px 10px;
 }
-.field-type-image {
+.comment .user-picture {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+.node .field-name-field-image {
   float: right;
-  clear: right;
+}
+.field-type-image {
   margin: 15px 0 15px 15px;
 }
 .page-links .page-next {
@@ -94,6 +57,12 @@ div.item-list ul li {
 }
 .profile .user-picture {
   float: left;
+}
+div.vertical-tabs {
+  width: 100%;
+}
+.vertical-tabs-panes {
+  margin-left: 15em;
 }
 #password-strength {
   float: left;
@@ -124,10 +93,10 @@ html.js fieldset.collapsible legend {
 }
 html.js fieldset.collapsible legend a {
   padding: 0 0 0 15px;
-  background: url("images/arrow-down-white.png") no-repeat left 4px;
+  background: url("images/arrow-down-white.gif") no-repeat left 4px;
 }
 html.js fieldset.collapsed legend a {
-  background: url(images/arrow-left-white.png) no-repeat left 4px;
+  background: url(images/arrow-left-white.gif) no-repeat left 4px;
 }
 .theme-selector {
   margin: 0 0 20px 25px;
@@ -140,13 +109,6 @@ html.js fieldset.collapsed legend a {
 }
 .admin .right {
   float: left;
-}
-.tabs ul.tabs li a {
-  float: right;
-}
-.shortcut-wrapper h1.page-title,
-.shortcut-wrapper .add-or-remove-shortcuts {
-  float: right;
 }
 body.page-profile .profile {
   margin-right: 0;
@@ -182,4 +144,16 @@ body.page-profile .field {
 #skip-link a:visited {
   right: -10000px;
   left: auto;
+}
+ul.menu li ul.menu {
+  margin-right: 7px;
+  margin-left: 0;
+}
+#footer ul.links {
+  float: left;
+  margin: 0 0 0 7px;
+}
+.region-footer {
+  float: right;
+  margin: 0 10px 0 0;
 }

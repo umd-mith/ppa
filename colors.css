@@ -44,7 +44,7 @@ ul.pager a.active:focus {
   background-color:  #e25400;
 }
 /* border (gray) */
-#content {
+#page {
   border: 1px solid #e1e1e1;
 }
 /* border strong (dark gray) */
