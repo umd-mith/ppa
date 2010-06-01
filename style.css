@@ -32,7 +32,8 @@ body.one-sidebar #sidebar-first,
 body.one-sidebar #sidebar-second {
   width: 29.7%;
 }
-body.no-sidebars #main {
+body.no-sidebars #main,
+body.page-admin #main {
   width: 100%;
 }
 /* Spacing between columns */
@@ -45,6 +46,14 @@ body.no-sidebars #main {
 #header,
 #main-columns {
   padding: 0 15px;
+}
+/* Hide content on admin pages */
+body.page-admin #sidebar-first,
+body.page-admin #sidebar-second,
+body.page-admin #navigation,
+body.page-admin #header-wrapper,
+body.page-admin #footer {
+  display: none;
 }
 /* Mobile */
 @media only screen and (max-device-width: 480px) {
@@ -162,15 +171,12 @@ body {
   padding: 0;
 }
 #site-name a {
-  color: #2e2e2e;
   letter-spacing: -3px;
 }
 #site-name a::-moz-selection {
-  background-color: #2e2e2e;
   color: #fff;
 }
 #site-name a::selection {
-  background-color: #2e2e2e;
   color: #fff;
 }
 #site-slogan {
@@ -203,19 +209,18 @@ body {
  * Menus
  */
 /* Navigation */
-#main-menu li a {
+#navigation li a {
   display: inline-block;
   color: #fff;
   margin: 0;
   padding: 8px 15px 11px;
 }
-#main-menu li a:hover,
-#main-menu li a:active,
-#main-menu li a:focus {
-  background-color: #E25400;
+#navigation li a:hover,
+#navigation li a:active,
+#navigation li a:focus {
   outline: none;
 }
-#main-menu li.active a {
+#navigation li.active a {
   -webkit-border-top-left-radius: 6px;
   -webkit-border-top-right-radius: 6px;
   -moz-border-radius-topleft: 6px;
@@ -225,8 +230,7 @@ body {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
-#main-menu li.active a {
-  color: #2e2e2e;
+#navigation li.active a {
   font-weight: 700;
   background: #f8f8f8;
 }
@@ -359,23 +363,16 @@ ul.menu li ul.menu {
 h1.page-title,
 .node h2.node-title {
   border-bottom: none;
-  color: #2e2e2e;
   font-size: 2.167em;
   line-height: 1;
   margin: 0;
   padding: 0;
   text-transform: none;
 }
-.node h1.node-title a,
-.node h2.node-title a {
-  color: 	#2e2e2e;
-}
 .node-title a::-moz-selection {
-  background-color: #2e2e2e;
   color: #fff;
 }
 .node-title a::selection {
-  background-color: #2e2e2e;
   color: #fff;
 }
 .node h1.node-title a:hover,
@@ -461,7 +458,6 @@ h1.page-title,
   text-transform: none;
 }
 .comment h3.title a {
-  color: 	#2e2e2e;
   font-weight: 700;
 }
 .comment h3.title a:hover {
@@ -667,7 +663,6 @@ body.page-forum ul.action-links {
   height: 18px;
 }
 .poll .bar .foreground {
-  background-color: #e25401;
   height: 18px;
 }
 .vote-form .form-item-choice {
@@ -741,11 +736,22 @@ body.page-profile .field {
 /**
  * Search module
  */
+.search-results {
+  margin: 0;
+  padding: 0;
+}
+.search-results li  {
+  margin-bottom: 20px;
+}
+.search-results .title {
+  margin: 0;
+}
+.search-results .search-snippet-info {
+  margin: 0;
+  padding: 0;
+}
 .search-results p {
   margin-bottom: 4px;
-}
-.search-results dd {
-  margin: 5px 0 20px 0;
 }
 .search-snippet strong {
   background-color: #e25400;
@@ -874,6 +880,15 @@ a.contextual-links-trigger {
 .farbtastic .marker:after {
   content: "";
 }
+#palette .lock {
+  background-position: 50% 2px;
+}
+#palette .unlocked {
+  background-position: 50% -22px;
+}
+#palette .hook {
+  margin-top: 0.6em;
+}
 
 /**
  * Dashboard module
@@ -936,9 +951,6 @@ body.overlay-open div.add-or-remove-shortcuts {
   padding: 0;
 }
 .tabs ul.tabs li a {
-  background-color: #f5f4f3;
-  border: 1px solid #ccc;
-  color: #2e2e2e;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -khtml-border-radius: 3px;
@@ -982,9 +994,6 @@ div.vertical-tabs {
 div.vertical-tabs ul.vertical-tabs-list {
   list-style-position: outside;
 }
-div.vertical-tabs ul.vertical-tabs-list li {
-  background: #f5f4f3;
-}
 .vertical-tabs-panes {
   padding: 9px 5px;
 }
@@ -992,7 +1001,6 @@ div.vertical-tabs fieldset {
   background: none;
 }
 ul.vertical-tabs-list li a {
-  background-color: #f5f4f3;
   display: block;
   border: none;
   padding: 7px 12px;
@@ -1099,7 +1107,10 @@ div.error {
   border-bottom-style: dotted;
 }
 /* Collapsible fieldsets */
-html.js fieldset.collapsible legend {
+html.js fieldset.collapsible .fieldset-legend {
+  background: none;
+}
+html.js fieldset.collapsible .fieldset-legend {
   padding: 2px 4px 2px 10px; /* LTR */
 }
 html.js fieldset.collapsible legend a {
@@ -1115,7 +1126,7 @@ html.js fieldset.collapsed .action {
   display: none;
 }
 html.js fieldset.collapsed {
-  padding: 5px 20px;
+  padding: 10px 20px;
 }
 html.js fieldset.collapsed {
   border-width: 1px;
@@ -1267,6 +1278,17 @@ form#system-ip-blocking-form {
 /* admin/config */
 div.admin-panel .body {
   padding: 0;
+}
+/* admin/structure/block/demo/corolla */
+body.page-admin-structure-block-demo-corolla #sidebar-first,
+body.page-admin-structure-block-demo-corolla #sidebar-second,
+body.page-admin-structure-block-demo-corolla #navigation,
+body.page-admin-structure-block-demo-corolla #header-wrapper,
+body.page-admin-structure-block-demo-corolla #footer {
+  display: block;
+}
+body.page-admin-structure-block-demo-corolla #main {
+  width: 56%;
 }
 /* admin/reports/updates */
 table.version tr {

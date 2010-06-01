@@ -2,30 +2,28 @@
 
 #wrapper-p {
   position: relative;
-  font-size: 8px;
-  line-height: 1.25;
+  font-size: 9px;
+  line-height: 1;
   width: 500px;
-  height: 30em;
+  height: 300px;
   background-color: #f8f8f8;
   border: 1px solid #e1e1e1;
-}
-.two-sidebars #wrapper-p {
-  width: 460px;
 }
 #wrapper-p * {
   margin: 0;
   padding: 0;
   line-height: 1;
   font-weight: 300;
+  font-family: "Helvetica Neue", Arial, FreeSans, sans-serif;
+}
+#wrapper-p a {
 }
 /* navigation */
 #navigation-p {
   width: 500px;
-  height: 1.667em;
+  height: 20px;
   margin: 0;
-}
-.two-sidebars #navigation-p {
-  width: 460px;
+  background-color: #2e2e2d;
 }
 #navigation-p ul {
   list-style: none;
@@ -44,53 +42,50 @@
 }
 #name-p {
   font-size: 22px;
+  font-family: "Trebuchet MS", "Myriad Pro", "Bitstream Vera Sans", FreeSans, sans-serif;
   letter-spacing: -1px;
   margin: 0;
 }
 #slogan-p {
   line-height: 1;
+  font-family: "Trebuchet MS", "Myriad Pro", "Bitstream Vera Sans", FreeSans, sans-serif;
   color: #e76111;
   text-transform: uppercase;
-  font-size: 0.833em;
+  font-size: 10px;
   margin-top: 3px;
 }
 /* page */
 #page-p {
   position: absolute;
   left: 50px;
-  top: 9em;
+  top: 85px;
   width: 250px;
-  height: 15.4em;
+  height: 175px;
   padding: 15px;
-  background: #fff;
+  background: #ffffff;
   border: 1px solid #e1e1e1;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
-  -khtml-border-radius: 2px;
   border-radius: 2px;
 }
 #page-p p {
-  font-size: 0.833em;
-  line-height: 1.167em;
+  line-height: 14px;
   margin-bottom: 10px;
-}
-#page a {
-}
-#page a:hover {
 }
 /* sidebar */
 #sidebar-p {
   width: 100px;
-  height: 15.4em;
+  height: 400px;
   position: absolute;
   left: 343px;
-  top: 9em;
+  top: 90px;
 }
 #sidebar-p .block-title-p {
-  font-size: 0.833em;
-  padding-bottom: 3px;
-  margin-bottom: 5px;
-  border-bottom: 1px solid black;
+  font-family: "Trebuchet MS", "Myriad Pro", "Bitstream Vera Sans", FreeSans, sans-serif;
+  font-size: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+  border-bottom: 1px dotted #2E2E2E;
   color: #779125;
   font-weight: 700;
   text-transform: uppercase;
@@ -98,12 +93,11 @@
 #sidebar-p ul {
   margin-bottom: 15px;
   list-style: none;
-  font-size: 0.833em;
 }
 #sidebar-p ul li {
-  margin: 4px 0;
+  margin: 6px 0;
 }
 #sidebar-p p {
-  line-height: 0.917em;
-  font-size: 0.833em;
+  line-height: 11px;
 }
+

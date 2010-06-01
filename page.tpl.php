@@ -89,7 +89,7 @@
   <div id="header-wrapper">
     <div id="header" class="clearfix<?php if ($page['header']): ?> with-blocks<?php endif; ?>">
 
-      <div id="branding">
+      <div id="branding" class="clearfix">
 
         <?php if ($logo): ?>
           <div id="logo"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
@@ -126,7 +126,7 @@
   <?php endif; ?>
 
   <div id="main-columns-wrapper">
-    <div id="main-columns" class="clearfix">
+    <div id="main-columns" <?php if ($in_overlay): ?>class="clearfix"<?php endif; ?>>
       <div id="main">
         <div id="page" class="clearfix">
           <?php if ($breadcrumb): ?><div id="breadcrumb" class="clearfix"><?php print $breadcrumb; ?></div><?php endif; ?>
@@ -150,7 +150,7 @@
           <?php print $feed_icons; ?>
         </div> <!-- /#page -->
    
-        <?php if ($secondary_menu && !$in_overlay): ?>
+        <?php if (($secondary_menu || $page['footer']) && !$in_overlay): ?>
           <div id="footer">
             <?php print theme('links__system_secondary_menu', array(
               'links' => $secondary_menu,

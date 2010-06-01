@@ -4,17 +4,41 @@
 body {
   background-color: #f8f8f8;
 }
-#navigation li.active {
+#navigation li.active a,
+#navigation li.active a:hover {
   background-color: #f8f8f8;
 }
 /* text (black) */
-body {
+body,
+#site-name a,
+#navigation li.active a,
+h1.page-title,
+.node h2.node-title,
+.node h1.node-title a,
+.node h2.node-title a,
+.comment h3.title a,
+.tabs ul.tabs li a {
   color: #2e2e2e;
+}
+#site-name a::-moz-selection {
+  background-color: #2e2e2e;
+}
+#site-name a::selection {
+  background-color: #2e2e2e;
+}
+.node-title a::-moz-selection {
+  background-color: #2e2e2e;
+}
+.node-title a::selection {
+  background-color: #2e2e2e;
 }
 /* link (blue) */
 a,
 ul.pager a.active {
   color: #086782;
+}
+legend {
+  background-color: #086782;
 }
 /* link hovered (orange) */
 a:hover,
@@ -22,6 +46,11 @@ a:focus,
 ul.pager a.active:hover,
 ul.pager a.active:focus {
   color: #e25401;
+  border-bottom-color: #e25401; 
+}
+/* link underline (light blue) */
+a {
+  border-bottom: 1px solid #cfdde5;
 }
 /* navigation (black) */
 #navigation {
@@ -33,6 +62,12 @@ ul.pager a.active:focus {
 #main-links li.expanded ul {
   background-color: #2e2e2d;
 }
+/* navigation hovered (orange) */
+#navigation li a:hover,
+#navigation li a:active,
+#navigation li a:focus {
+  background-color: #e25402;
+}
 /* slogan (orange) */
 #site-slogan {
   color: #e25400;
@@ -43,6 +78,9 @@ ul.pager a.active:focus {
 #site-slogan::-moz-selection {
   background-color:  #e25400;
 }
+.poll .bar .foreground {
+  background-color: #e25400;
+}
 /* border (gray) */
 #page {
   border: 1px solid #e1e1e1;
@@ -51,6 +89,16 @@ ul.pager a.active:focus {
 #sidebar-first input,
 #sidebar-second input {
   border: 1px solid #c4c4c4;
+}
+.tabs ul.tabs li a {
+  border: 1px solid #c4c4c4;
+}
+/* tab */
+.tabs ul.tabs li a {
+  background-color: #f5f4f3;
+}
+ul.vertical-tabs-list li a {
+  background-color: #f5f4f3;
 }
 /* block title (green) */
 .block h2 {
@@ -63,5 +111,13 @@ ul.pager a.active:focus {
 .block h2::-moz-selection {
   background-color: #779125;
   color: #fff;
+}
+/* fieldset (gray) */
+fieldset {
+  background-color: #fbfbfb;
+}
+/* fieldset border (dark gray) */
+fieldset {
+  border: 1px solid #e1e1e2;
 }
 

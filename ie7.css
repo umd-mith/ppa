@@ -10,7 +10,8 @@
 .field-type-taxonomy-term-reference .field-items,
 .tabs ul.tabs li,
 h1.page-title,
-body.page-admin div.add-or-remove-shortcuts {
+body.page-admin div.add-or-remove-shortcuts,
+#navigation-p li {
   zoom: 1;
   display: inline;
 }

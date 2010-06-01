@@ -24,10 +24,7 @@ h3,
 .block h2,
 #forum td.container .name a,
 tr.region-title td,
-table#permissions td.module,
-#name-p,
-#slogan-p,
-#sidebar-p .block-title-p {
+table#permissions td.module {
   font-family: "Trebuchet MS", "Myriad Pro", "Bitstream Vera Sans", FreeSans, sans-serif;
 }
 h6 {
@@ -218,11 +215,6 @@ dd {
  */
 a {
   text-decoration: none;
-  border-bottom: 1px solid #cfdde5;
-}
-a:hover,
-a:focus {
-  border-bottom-color: #e25401;
 }
 a::selection {
   background-color: #086782;
@@ -284,8 +276,6 @@ caption {
 fieldset {
   margin: 15px 0;
   padding: 13px 20px;
-  background-color: #fbfbfb;
-  border: 1px solid #e1e1e1;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   -khtml-border-radius: 3px;
@@ -294,7 +284,6 @@ fieldset {
 legend {
   margin-left: -8px;
   padding: 1px 8px 1px 9px;
-  background-color: #086782;
   color: #fff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;

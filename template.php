@@ -4,15 +4,21 @@
 /**
  * Override or insert variables into the html template.
  */
+function corolla_preprocess_html(&$variables) {
+  // Add conditional stylesheets for IE
+  drupal_add_css(path_to_theme() . '/ie8.css', array('weight' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 8', '!IE' => FALSE), 'preprocess' => FALSE));
+  drupal_add_css(path_to_theme() . '/ie7.css', array('weight' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 7', '!IE' => FALSE), 'preprocess' => FALSE));
+  drupal_add_css(path_to_theme() . '/ie6.css', array('weight' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 6', '!IE' => FALSE), 'preprocess' => FALSE));
+}
+
+/**
+ * Override or insert variables into the html template.
+ */
 function corolla_process_html(&$variables) {
   // Hook into color module
   if (module_exists('color')) {
     _color_html_alter($variables);
   }
-  // Add conditional stylesheets for IEs. TODO: move this to the info file if http://drupal.org/node/522006 gets into core.
-  $variables['styles'] .= "\n<!--[if lte IE 8]>\n" . '<link type="text/css" rel="stylesheet" media="all" href="' . file_create_url(path_to_theme() . '/ie8.css') . '" />' . "\n" . "<![endif]-->\n";
-  $variables['styles'] .= "\n<!--[if lte IE 7]>\n" . '<link type="text/css" rel="stylesheet" media="all" href="' . file_create_url(path_to_theme() . '/ie7.css') . '" />' . "\n" . "<![endif]-->\n";
-  $variables['styles'] .= "\n<!--[if lte IE 6]>\n" . '<link type="text/css" rel="stylesheet" media="all" href="' . file_create_url(path_to_theme() . '/ie6.css') . '" />' . "\n" . "<![endif]-->\n";
 }
 
 /**
