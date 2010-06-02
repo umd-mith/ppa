@@ -327,7 +327,7 @@ ul.menu li ul.menu {
   background-color: #f5f9fa;
   border: 1px solid #b3cfd4;
   margin: 5px 0 10px 0;
-  padding: 15px 15px 0 18px;
+  padding: 11px 16px;
 }
 .region-highlight .block h2 {
   border-bottom: none;
@@ -542,6 +542,9 @@ form#comment-form #edit-actions {
 }
 .field-type-image a {
   border: none;
+}
+#edit-field-image {
+  float: none;
 }
 
 /**
@@ -1279,17 +1282,6 @@ form#system-ip-blocking-form {
 div.admin-panel .body {
   padding: 0;
 }
-/* admin/structure/block/demo/corolla */
-body.page-admin-structure-block-demo-corolla #sidebar-first,
-body.page-admin-structure-block-demo-corolla #sidebar-second,
-body.page-admin-structure-block-demo-corolla #navigation,
-body.page-admin-structure-block-demo-corolla #header-wrapper,
-body.page-admin-structure-block-demo-corolla #footer {
-  display: block;
-}
-body.page-admin-structure-block-demo-corolla #main {
-  width: 56%;
-}
 /* admin/reports/updates */
 table.version tr {
   margin: 10px 0;
@@ -1306,9 +1298,44 @@ table.update td {
 body.page-admin-reports-updates h3 {
   margin-bottom: 0;
 }
-/* node/<blah>/edit */
-#edit-field-image {
-  float: none;
+/* admin/structure/block/demo/corolla */
+body.page-admin-structure-block-demo-corolla #sidebar-first,
+body.page-admin-structure-block-demo-corolla #sidebar-second,
+body.page-admin-structure-block-demo-corolla #navigation,
+body.page-admin-structure-block-demo-corolla #header-wrapper,
+body.page-admin-structure-block-demo-corolla #footer {
+  display: block;
+}
+body.page-admin-structure-block-demo-corolla #main {
+  width: 56%;
+}
+.block-region {
+  background-color: transparent;
+  border: 2px dashed #ff3e00;
+  padding: 10px 10px;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #ff3e00;
+  text-align: center;
+  text-transform: uppercase;
+}
+#sidebar-first .block-region,
+#sidebar-second .block-region {
+  padding: 225px 0;
+}
+#header .block-region {
+  padding: 60px 0;
+}
+.region-help .block-region {
+  margin: 10px 0 15px 0;
+}
+.region-content .block-region {
+  padding: 90px 0;
+}
+.region-footer .block-region {
+  padding: 3px 10px;
+  font-size: 1em;
+  margin-top: -3px;
 }
 /* System help */
 #block-system-help {
