@@ -375,11 +375,6 @@ h1.page-title,
 .node-title a::selection {
   color: #fff;
 }
-.node h1.node-title a:hover,
-.node h2.node-title a:hover {
-  background: none;
-  color: #e25401;
-}
 .node h1.node-title a:focus,
 .node h2.node-title a:focus {
   color: #e25401;

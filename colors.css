@@ -48,6 +48,10 @@ ul.pager a.active:focus {
   color: #e25401;
   border-bottom-color: #e25401; 
 }
+.node h1.node-title a:hover,
+.node h2.node-title a:hover {
+  color: #e25401;
+}
 /* link underline (light blue) */
 a {
   border-bottom: 1px solid #cfdde5;
