@@ -1301,10 +1301,10 @@ body.page-admin-reports-updates h3 {
 /* /admin/appearance */
 .system-themes-list-disabled .theme-selector  {
   padding: 20px 30px 20px 0;
-  width: auto;
+  width: 200px;
 }
 .system-themes-list-disabled .theme-info {
-  min-height: auto;
+  min-height: 0;
 }
 /* admin/structure/block/demo/corolla */
 body.page-admin-structure-block-demo-corolla #sidebar-first,
