@@ -1298,6 +1298,14 @@ table.update td {
 body.page-admin-reports-updates h3 {
   margin-bottom: 0;
 }
+/* /admin/appearance */
+.system-themes-list-disabled .theme-selector  {
+  padding: 20px 30px 20px 0;
+  width: auto;
+}
+.system-themes-list-disabled .theme-info {
+  min-height: auto;
+}
 /* admin/structure/block/demo/corolla */
 body.page-admin-structure-block-demo-corolla #sidebar-first,
 body.page-admin-structure-block-demo-corolla #sidebar-second,
