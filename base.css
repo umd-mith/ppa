@@ -456,6 +456,7 @@ thead a,
 #forum td.container .name a,
 a.tabledrag-handle,
 ul.contextual-links li a,
+a.contextual-links-trigger:hover,
 .overlay .ui-dialog-titlebar a,
 a.contextual-links-trigger,
 .book-navigation .page-links a {
