@@ -894,6 +894,9 @@ a.contextual-links-trigger {
 #dashboard #disabled-blocks h2 {
   color: #fff;
 }
+#dashboard .ui-sortable .block h2 {
+  background-position: 0 -36px;
+}
 
 /**
  * Shortcut module
@@ -906,6 +909,10 @@ h1.page-title {
 }
 div.add-or-remove-shortcuts {
   display: none;
+  margin-bottom: 3px;
+}
+div.add-or-remove-shortcuts a span.icon {
+  margin-left: 4px;
 }
 body.page-admin div.add-or-remove-shortcuts,
 body.overlay-open div.add-or-remove-shortcuts {
