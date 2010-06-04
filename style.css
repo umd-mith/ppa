@@ -1103,13 +1103,12 @@ div.error {
   color: #fff;
   background: #d53400;
 }
-.messages a {
+div.messages a {
   color: #fff;
   border-bottom: 1px solid #ffffff;
 }
 .messages a:hover {
   color: #fff;
-  border-bottom-style: dotted;
 }
 /* Collapsible fieldsets */
 html.js fieldset.collapsible .fieldset-legend {
