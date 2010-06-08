@@ -362,8 +362,7 @@ textarea:focus {
 input.form-text,
 input.form-password,
 input.form-file {
-  width: 100%;
-  max-width: 320px;
+  width: auto;
 }
 textarea {
   resize: none;
