@@ -146,23 +146,30 @@ body {
 /**
  * Branding
  */
-#branding {
+#branding-wrapper {
   float: left;
-  width: 100%;
-  margin: 65px 0 65px 25px; /* LTR */
+  padding: 65px 0 65px 25px; /* LTR */
 }
-.with-blocks #branding {
+#branding {
+  display: table;
+}
+.with-blocks #branding-wrapper {
   width: 58%;
 }
 .with-blocks .region-header {
   width: 35%;
 }
 #logo {
-  display: inline-block;
+  display: table-cell;
+  vertical-align: middle;
   padding: 0 15px 0 0; /* LTR */
 }
+#logo img {
+  vertical-align: middle;
+}
 #name-and-slogan {
-  display: inline-block;
+  display: table-cell;
+  vertical-align: middle;
 }
 #site-name {
   line-height: 1;
@@ -182,7 +189,7 @@ body {
 #site-slogan {
   font-size: 1.167em;
   font-weight: 700;
-  margin-top: 2px;
+  margin: 2px 0 0 3px; /* LTR */
   text-transform: uppercase;
 }
 .region-header {

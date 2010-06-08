@@ -9,9 +9,12 @@
 #sidebar-second .region {
   margin: 0 20px 0 0;
 }
-#branding {
+#branding-wrapper {
   float: right;
-  margin: 65px 25px 65px 0;
+  padding: 65px 25px 65px 0;
+}
+#site-slogan {
+  margin: 2px 3px 0 0;
 }
 .region-header {
   float: left;
