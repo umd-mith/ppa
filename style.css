@@ -1069,11 +1069,12 @@ ul.pager li.pager-ellipsis {
 }
 /* Action links */
 ul.action-links {
-  margin: 6px 0;
+  margin: 10px 0;
 }
 ul.action-links li {
   list-style: none;
-  display: block;
+  display: inline;
+  padding: 0 14px 0 1px;
 }
 ul.action-links li a {
   padding-left: 15px;
