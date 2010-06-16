@@ -107,6 +107,9 @@ body {
 .region-content {
   clear: both;
 }
+.region-content-bottom {
+  margin-top: 23px;
+}
 
 /**
  * Skip link
