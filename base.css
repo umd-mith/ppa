@@ -247,6 +247,9 @@ td.configure {
 td.active {
   background-color: #eee;
 }
+td.empty {
+  background: none;
+}
 th.checkbox {
   padding-left: 14px;
   padding-right: 7px;
