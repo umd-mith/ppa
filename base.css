@@ -187,7 +187,8 @@ ul {
 li {
 }
 li > ul {
-  margin-top: 8px;
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
 ul.inline li {
   display: inline;
