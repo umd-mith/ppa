@@ -4,7 +4,7 @@
 #navigation ul,
 #header,
 #main-columns {
-  width: 960px;
+  width: 960px!important;
 }
 /* Don's show transparent PNGs */
 body {

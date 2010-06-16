@@ -8,11 +8,32 @@
 #sidebar-second {
   float: left; /* LTR */
 }
-/* Layout width */
 #navigation ul,
 #header,
 #main-columns {
   margin: 0 auto;
+}
+/* Layout width */
+body.no-sidebars #navigation ul,
+body.no-sidebars #header,
+body.no-sidebars #main-columns {
+  width: 70%;
+  min-width: 550px;
+  max-width: 800px;
+}
+body.one-sidebar #navigation ul,
+body.one-sidebar #header,
+body.one-sidebar #main-columns {
+  width: 75%;
+  min-width: 700px;
+  max-width: 1000px;
+}
+body.two-sidebars #navigation ul,
+body.two-sidebars #header,
+body.two-sidebars #main-columns,
+body.page-admin #navigation ul,
+body.page-admin #header,
+body.page-admin #main-columns {
   width: 85%;
   min-width: 960px;
   max-width: 1200px;
