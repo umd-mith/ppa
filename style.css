@@ -1233,7 +1233,8 @@ body.maintenance-page #content {
 }
 /* Utility classes */
 .element-invisible {
-  padding: 0;
+  padding: 0!important;
+  border: none!important;
 }
 
 /**
