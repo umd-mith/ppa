@@ -219,11 +219,13 @@ body {
 }
 
 /**
- * Footer closure
+ * Footer
  */
+#footer {
+}
 #footer ul.links {
   float: right; /* LTR */
-  margin: 0 7px 0 0; /* LTR */
+  margin: 0 7px 10px 0; /* LTR */
 }
 #footer ul.links li {
   margin-left: 10px;
