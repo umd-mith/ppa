@@ -591,6 +591,9 @@ fieldset.filter-wrapper {
   background: none;
   padding-right: 0;
 }
+.filter-wrapper .form-item {
+  margin-top: 0;
+}
 .filter-guidelines {
   padding-top: 6px;
 }
