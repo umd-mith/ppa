@@ -34,7 +34,8 @@ h1.page-title,
 }
 /* link (blue) */
 a,
-ul.pager a.active {
+a.active,
+li a.active {
   color: #086782;
 }
 legend {
@@ -43,8 +44,10 @@ legend {
 /* link hovered (orange) */
 a:hover,
 a:focus,
-ul.pager a.active:hover,
-ul.pager a.active:focus {
+a.active:hover,
+a.active:focus,
+li a.active:hover,
+li a.active:focus {
   color: #e25401;
   border-bottom-color: #e25401; 
 }
