@@ -96,6 +96,7 @@ body {
 }
 #page {
   background-color: #fff;
+  min-height: 170px;
   border-radius: 6px;
   margin-bottom: 7px;
   padding: 25px 30px;
