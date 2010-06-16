@@ -243,10 +243,14 @@ body {
  * Menus
  */
 /* Navigation */
+
+#navigation ul {
+}
 #navigation li a {
   display: inline-block;
   color: #fff;
   margin: 0;
+  margin-top: 4px;
   padding: 8px 15px 11px;
 }
 #navigation li a:hover,
@@ -254,7 +258,7 @@ body {
 #navigation li a:focus {
   outline: none;
 }
-#navigation li.active a {
+#navigation li a {
   -webkit-border-top-left-radius: 6px;
   -webkit-border-top-right-radius: 6px;
   -moz-border-radius-topleft: 6px;
