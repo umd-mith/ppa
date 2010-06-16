@@ -131,8 +131,11 @@
     <div id="main-columns" <?php if ($in_overlay): ?>class="clearfix"<?php endif; ?>>
       <div id="main">
         <div id="page" class="clearfix">
+
           <?php if ($breadcrumb): ?><div id="breadcrumb" class="clearfix"><?php print $breadcrumb; ?></div><?php endif; ?>
           <?php if ($messages): ?><div id="messages"><?php print $messages; ?></div><?php endif; ?>
+          <?php print render($page['content_top']); ?>
+
           <?php if ($tabs): ?><div class="tabs clearfix"><?php print render($tabs); ?></div><?php endif; ?>
 
           <?php if ($page['highlight'] && !$in_overlay): ?>
@@ -140,8 +143,6 @@
           <?php endif; ?>
 
           <div id="main-content"></div>
-
-          <?php print render($page['content_top']); ?>
           <?php print render($title_prefix); ?>
           <?php if ($title && !$in_overlay): ?>
             <h1 class="page-title"><?php print $title ?></h1>
