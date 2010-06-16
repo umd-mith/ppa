@@ -318,6 +318,7 @@ ul.menu li ul.menu {
  */
 .block {
   margin-bottom: 25px;
+  clear: both;
 }
 .block:last-child {
   margin-bottom: 15px;
@@ -373,6 +374,10 @@ ul.menu li ul.menu {
 }
 #footer .block {
   margin-bottom: 10px;
+}
+#block-profile-author-information .user-picture {
+  float: left;
+  margin: 0 15px 15px 0; /* LTR */
 }
 
 /**

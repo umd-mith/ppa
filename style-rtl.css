@@ -31,6 +31,10 @@
 .item-list ul.pager {
   text-align: right;
 }
+#block-profile-author-information .user-picture {
+  float: right;
+  margin: 0 0 15px 15px;
+}
 #comments-wrapper .indented {
   margin: 0 30px 0 0;
 }
