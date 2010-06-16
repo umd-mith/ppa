@@ -53,8 +53,8 @@ function corolla_process_page(&$variables) {
  * Override or insert variables into the block template.
  */
 function corolla_preprocess_block(&$variables) {
-  // Remove "block" class from "Main page content" block
-  if ($variables['block']->module == 'system' && $variables['block']->delta == 'main') {
+  // Remove "block" class from blocks in "Main page content" region
+  if ($variables['elements']['#block']->region == 'content') {
     foreach ($variables['classes_array'] as $key => $val) {
       if ($val == 'block') {
         unset($variables['classes_array'][$key]);
