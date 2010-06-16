@@ -1272,8 +1272,6 @@ body.maintenance-page #content {
 /* admin/structure/block and admin/people/permissions */
 tr.region-title td,
 table#permissions td.module {
-  border-bottom: 1px solid #2e2e2e;
-  border-top: 1px solid #2e2e2e;
   color: #779125;
   font-size: 1.083em;
   font-weight: 700;
