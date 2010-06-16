@@ -105,7 +105,8 @@ ul.vertical-tabs-list li a {
   background-color: #f5f4f3;
 }
 /* block title (green) */
-.block h2 {
+.block h2,
+h2 {
   color: #779125;
 }
 .block h2::selection {
