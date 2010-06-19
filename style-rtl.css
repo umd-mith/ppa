@@ -158,7 +158,7 @@ ul.menu li ul.menu {
 }
 #footer ul.links {
   float: left;
-  margin: 0 0 10px 7px;
+  margin: 0 0 10px 0;
 }
 .region-footer {
   float: right;
