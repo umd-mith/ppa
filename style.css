@@ -1058,6 +1058,9 @@ ul.vertical-tabs-list li a {
 ul.vertical-tabs-list li.selected a {
   background-color: #fff;
 }
+.vertical-tabs input {
+  width: 100%;
+}
 /* Pagers */
 .item-list ul.pager {
   margin: 15px 0 2px 0;
