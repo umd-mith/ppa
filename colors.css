@@ -17,7 +17,11 @@ h1.page-title,
 .node h1.node-title a,
 .node h2.node-title a,
 .comment h3.title a,
-.tabs ul.tabs li a {
+.tabs ul.tabs li a,
+pre,
+code,
+samp,
+var {
   color: #2e2e2e;
 }
 #site-name a::-moz-selection {
