@@ -92,7 +92,7 @@
     <?php endif; ?>
   </div> <!-- /.node-header -->
 
-  <div class="content"<?php print $content_attributes; ?>>
+  <div class="content clearfix" <?php print $content_attributes; ?>>
     <?php print $user_picture; ?>
     <?php
       // We hide the comments and links now so that we can render them later.
