@@ -1061,6 +1061,10 @@ ul.vertical-tabs-list li.selected a {
 .vertical-tabs input {
   width: 100%;
 }
+.vertical-tabs input.form-checkbox,
+.vertical-tabs input.form-radio {
+  width: auto;
+}
 /* Pagers */
 .item-list ul.pager {
   margin: 15px 0 2px 0;
