@@ -98,8 +98,6 @@ blockquote {
   border-left: 7px solid #e25401; /* LTR */
   quotes: none;
 }
-img {
-}
 .block-system-main .img {
   float: left;
 }
@@ -172,19 +170,12 @@ ol,
 dl {
   list-style-position: inside;
 }
-ul li,
-ol li,
-dl dt,
-dl dd {
-}
 p + ul {
   margin-top: 5px;
 }
 ul {
   list-style: disc inside none;
   margin: 0 0 0 15px; /* LTR */
-}
-li {
 }
 li > ul {
   margin-top: 1px;
@@ -206,8 +197,6 @@ ol {
 dt {
   margin-top: 5px;
   font-weight: 900;
-}
-dd {
 }
 
 /**

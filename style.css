@@ -243,9 +243,6 @@ body {
  * Menus
  */
 /* Navigation */
-
-#navigation ul {
-}
 #navigation li a {
   display: inline-block;
   color: #fff;
