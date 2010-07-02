@@ -3,7 +3,7 @@
 
 /**
  * @file
- * Color modules main settigns file.
+ * Color modules main settings file.
  */
 
 $info = array(
