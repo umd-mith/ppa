@@ -2,6 +2,11 @@
 // $Id$
 
 /**
+ * @file
+ * Theme functions overrides. 
+ */
+
+/**
  * Override or insert variables into the html template.
  */
 function corolla_preprocess_html(&$variables) {

@@ -1,6 +1,11 @@
 <?php
 // $Id$
 
+/**
+ * @file
+ * Color modules main settigns file.
+ */
+
 $info = array(
 
   // Available colors and color labels used in theme.
