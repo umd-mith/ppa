@@ -98,6 +98,11 @@ blockquote {
   border-left: 7px solid #e25401; /* LTR */
   quotes: none;
 }
+blockquote:before,
+blockquote:after {
+  content: '';
+  content: none;
+}
 .block-system-main .img {
   float: left;
 }
@@ -146,6 +151,14 @@ sub {
 }
 sup {
   vertical-align: super
+}
+q {
+  quotes: none;
+}
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
 b {
   font-weight: 700;
