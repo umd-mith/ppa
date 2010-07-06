@@ -81,6 +81,7 @@
     <div id="main-columns">
       <div id="main">
         <div id="page" class="clearfix">
+          <?php if ($messages): ?><div id="messages"><?php print $messages; ?></div><?php endif; ?>
           <div id="main-content"></div>
           <?php if ($title): ?>
             <h1 class="page-title"><?php print $title; ?></h1>

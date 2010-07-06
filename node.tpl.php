@@ -87,7 +87,7 @@
 
     <?php if ($display_submitted): ?>
       <div class="meta">
-        <?php print t('Submitted by !username on !datetime', array('!username' => $name, '!datetime' => $date)); ?>
+        <span class="submitted"><?php print t('Submitted by !username on !datetime', array('!username' => $name, '!datetime' => $date)); ?></span>
       </div>
     <?php endif; ?>
   </div> <!-- /.node-header -->
