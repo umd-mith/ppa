@@ -6,10 +6,6 @@
 #main-columns {
   width: 960px!important;
 }
-/* Don's show transparent PNGs */
-body {
-  background-image: none;
-}
 /* Bug: double margin on floated elements with margins */
 .node .user-picture,
 .node .field-name-field-image,
