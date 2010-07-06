@@ -7,8 +7,8 @@
  *
  * Available variables:
  * - $content: The array of content-related elements for the node. Use
- *   render($content) to print them all, or
- *   print a subset such as render($content['comment_form']).
+ *   render($content) to print them all, or print a subset such as
+ *   render($content['comment_form']).
  * - $classes: String of classes that can be used to style contextually through
  *   CSS. It can be manipulated through the variable $classes_array from
  *   preprocess functions. The default value has the following:
@@ -23,7 +23,7 @@
  *   - COMMENT_MODE_THREADED
  *
  * Other variables:
- * - $classes_array: Array of html class attribute values. It is flattened
+ * - $classes_array: Array of HTML class attribute values. It is flattened
  *   into a string within the variable $classes.
  *
  * @see template_preprocess_comment_wrapper()

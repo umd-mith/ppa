@@ -27,7 +27,7 @@ body.no-sidebars #main-columns {
   min-width: 550px;
   max-width: 800px;
 }
-/*  Column width */
+/* Column width */
 body.two-sidebars #main {
   width: 56%;
 }
@@ -211,8 +211,6 @@ html {
 /**
  * Footer
  */
-#footer {
-}
 #footer ul.links {
   float: right; /* LTR */
   margin: 0 7px 10px 0; /* LTR */
@@ -255,7 +253,7 @@ html {
   font-weight: 700;
   background: #f8f8f8;
 }
-/* secondary menu */
+/* Secondary menu */
 #secondary-menu {
   margin: 0 0 6px 8px;
 }
@@ -277,7 +275,7 @@ div.item-list ul li {
   list-style: none;
   margin-left: 0; /* LTR */
 }
-/* system menus */
+/* System menus */
 .item-list ul li {
   margin: 5px 0;
 }
@@ -1303,7 +1301,7 @@ body.page-admin-help dd {
 td .form-item {
   margin: 4px 0;
 }
-/* admin/<blah>/fields */
+/* admin/<content_type>/fields */
 .label-add-new-field,
 .label-add-existing-field {
   display: inline-block;
@@ -1368,7 +1366,7 @@ body.page-admin-reports-updates h3 {
   padding-left: 0;
   padding-right: 0;
 }
-/* /admin/reports/status */
+/* admin/reports/status */
 table.system-status-report tr {
   border-bottom: 1px solid #878787;
   border-top: 1px solid #878787;
@@ -1383,7 +1381,7 @@ table.system-status-report tr.ok {
 table.system-status-report tr.error {
   background-color: #ffece2;
 }
-/* /admin/appearance */
+/* admin/appearance */
 .system-themes-list-disabled .theme-selector  {
   padding: 20px 30px 20px 0;
   width: 200px;
@@ -1441,7 +1439,7 @@ body.page-admin-structure-block-demo-corolla #main {
   -khtml-border-radius: 3px;
   border-radius: 3px;
 }
-/* admin forms */
+/* Admin forms */
 body.page-admin label {
   font-weight: 700;
 }

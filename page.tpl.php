@@ -154,7 +154,7 @@
           <?php print render($page['content_bottom']); ?>
           <?php print $feed_icons; ?>
         </div> <!-- /#page -->
-   
+
         <?php if (($secondary_menu || $page['footer']) && !$in_overlay): ?>
           <div id="footer">
             <?php print theme('links__system_secondary_menu', array(

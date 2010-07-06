@@ -201,8 +201,6 @@ ul.inline li {
 ul.links li {
   padding: 0;
 }
-li.expanded > ul {
-}
 ol {
   list-style: decimal inside none;
   margin: 0 0 0 15px; /* LTR */

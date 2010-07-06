@@ -3,7 +3,7 @@
 
 /**
  * @file
- * Theme functions overrides. 
+ * Theme functions overrides.
  */
 
 /**
@@ -73,7 +73,8 @@ function corolla_preprocess_block(&$variables) {
  *
  * @param $breadcrumb
  *   An array containing the breadcrumb links.
- * @return a string containing the breadcrumb output.
+ * @return
+ *   A string containing the breadcrumb output.
  */
 function corolla_breadcrumb($variables) {
   // Wrap separator with span element.

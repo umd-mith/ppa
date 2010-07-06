@@ -40,8 +40,6 @@
   </div> <!-- /#navigation -->
 <?php endif; ?>
 
-
-
   <div id="header-wrapper">
     <div id="header" class="clearfix">
 

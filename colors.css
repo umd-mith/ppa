@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/* background */
+/* Background */
 body {
   background-color: #f8f8f8;
 }
@@ -8,7 +8,7 @@ body {
 #navigation li.active a:hover {
   background-color: #f8f8f8;
 }
-/* text (black) */
+/* Text (black) */
 body,
 #site-name a,
 #navigation li.active a,
@@ -38,7 +38,7 @@ table.system-status-report tr {
 .node-title a::selection {
   background-color: #2e2e2e;
 }
-/* link (blue) */
+/* Link (blue) */
 a,
 a.active,
 li a.active {
@@ -47,7 +47,7 @@ li a.active {
 legend {
   background-color: #086782;
 }
-/* link hovered (orange) */
+/* Link hovered (orange) */
 a:hover,
 a:focus,
 a.active:hover,
@@ -55,17 +55,17 @@ a.active:focus,
 li a.active:hover,
 li a.active:focus {
   color: #e25401;
-  border-bottom-color: #e25401; 
+  border-bottom-color: #e25401;
 }
 .node h1.node-title a:hover,
 .node h2.node-title a:hover {
   color: #e25401;
 }
-/* link underline (light blue) */
+/* Link underline (light blue) */
 a {
   border-bottom: 1px solid #cfdde5;
 }
-/* navigation (black) */
+/* Navigation (black) */
 #navigation {
   background-color: #2e2e2d;
 }
@@ -75,13 +75,13 @@ a {
 #main-links li.expanded ul {
   background-color: #2e2e2d;
 }
-/* navigation hovered (orange) */
+/* Navigation hovered (orange) */
 #navigation li a:hover,
 #navigation li a:active,
 #navigation li a:focus {
   background-color: #e25402;
 }
-/* slogan (orange) */
+/* Slogan (orange) */
 #site-slogan {
   color: #e25400;
 }
@@ -94,11 +94,11 @@ a {
 .poll .bar .foreground {
   background-color: #e25400;
 }
-/* border (gray) */
+/* Border (gray) */
 #page {
   border: 1px solid #e1e1e1;
 }
-/* border strong (dark gray) */
+/* Border strong (dark gray) */
 #sidebar-first input,
 #sidebar-second input {
   border: 1px solid #c4c4c4;
@@ -106,14 +106,14 @@ a {
 .tabs ul.tabs li a {
   border: 1px solid #c4c4c4;
 }
-/* tab */
+/* Tab */
 .tabs ul.tabs li a {
   background-color: #f5f4f3;
 }
 ul.vertical-tabs-list li a {
   background-color: #f5f4f3;
 }
-/* block title (green) */
+/* Block title (green) */
 .block h2,
 h2 {
   color: #779125;
@@ -126,11 +126,11 @@ h2 {
   background-color: #779125;
   color: #fff;
 }
-/* fieldset (gray) */
+/* Fieldset (gray) */
 fieldset {
   background-color: #fbfbfb;
 }
-/* fieldset border (dark gray) */
+/* Fieldset border (dark gray) */
 fieldset {
   border: 1px solid #e1e1e2;
 }
