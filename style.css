@@ -1371,6 +1371,21 @@ body.page-admin-reports-updates h3 {
   padding-left: 0;
   padding-right: 0;
 }
+/* /admin/reports/status */
+table.system-status-report tr {
+  border-bottom: 1px solid #878787;
+  border-top: 1px solid #878787;
+  padding-left: 30px;
+}
+table.system-status-report tr.warning {
+  background-color: #fdf9e5;
+}
+table.system-status-report tr.ok {
+  background-color: #eef8ca;
+}
+table.system-status-report tr.error {
+  background-color: #ffece2;
+}
 /* /admin/appearance */
 .system-themes-list-disabled .theme-selector  {
   padding: 20px 30px 20px 0;

@@ -22,7 +22,8 @@ pre,
 code,
 samp,
 var,
-table.update tr {
+table.update tr,
+table.system-status-report tr {
   color: #2e2e2e;
 }
 #site-name a::-moz-selection {
