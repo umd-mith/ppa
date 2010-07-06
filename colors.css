@@ -21,7 +21,8 @@ h1.page-title,
 pre,
 code,
 samp,
-var {
+var,
+table.update tr {
   color: #2e2e2e;
 }
 #site-name a::-moz-selection {
