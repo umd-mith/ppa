@@ -14,7 +14,7 @@ html {
  */
 html,
 #wrapper-p * {
-  font-family: "Helvetica Neue", Arial, FreeSans, sans-serif;
+  font-family: Arial, FreeSans, sans-serif;
 }
 h1,
 h2,
@@ -28,7 +28,7 @@ table#permissions td.module {
   font-family: "Trebuchet MS", "Myriad Pro", "Bitstream Vera Sans", FreeSans, sans-serif;
 }
 h6 {
-  font-family: Verdana, "Helvetica Neue", Helvetica, Arial, FreeSans, sans-serif;
+  font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif;
 }
 pre,
 tt {
