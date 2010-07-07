@@ -401,7 +401,6 @@ input.form-submit {
   margin: 0 5px 0 0; /* LTR */
   padding: 5px 11px;
   background: url(images/button.png) repeat-x top left;
-  color: #414141;
   border: 1px solid #ccc;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;

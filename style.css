@@ -151,7 +151,7 @@ html {
  */
 #header {
   clear: both;
-  min-height: 210px;
+  min-height: 20px;
 }
 
 /**
@@ -159,7 +159,7 @@ html {
  */
 #branding-wrapper {
   float: left;
-  padding: 65px 0 65px 25px; /* LTR */
+  padding: 45px 0 45px 25px; /* LTR */
 }
 #branding {
   display: table;
