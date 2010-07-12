@@ -66,70 +66,12 @@
  * @see template_process()
  */
 ?>
-<?php if ($navigation && !$in_overlay): ?>
-  <div id="navigation-wrapper">
-    <div id="navigation" class="clearfix">
-      <?php print $navigation; ?>
-    </div> <!-- /#navigation -->
-  </div>
-<?php endif; ?>
 
-
-
-  <?php if (!$in_overlay): ?>
-  <div id="header-wrapper">
-    <div id="header" class="clearfix">
-
-      <div id="branding-wrapper" class="clearfix">
-        <div id="branding">
-
-          <?php if ($logo): ?>
-            <div id="logo"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
-              <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-            </a></div>
-          <?php endif; ?>
-
-          <?php if ($site_name || $site_slogan): ?>
-            <div id="name-and-slogan">
-              <?php if ($site_name): ?>
-                <?php if ($title): ?>
-                  <div id="site-name">
-                    <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-                  </div>
-                <?php else: /* Use h1 when the content title is empty */ ?>
-                  <h1 id="site-name">
-                    <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-                  </h1>
-                <?php endif; ?>
-              <?php endif; ?>
-
-              <?php if ($site_slogan): ?>
-                <div id="site-slogan"><?php print $site_slogan; ?></div>
-              <?php endif; ?>
-            </div> <!-- /#name-and-slogan -->
-          <?php endif; ?>
-
-        </div> <!-- /#branding -->
-      </div> <!-- /#branding-wrapper -->
-
-    </div> <!-- /#header -->
-  </div>  <!-- /#header-wrapper -->
+<?php if ($page['sidebar_second'] && !$in_overlay): ?>
+  <?php $column++; ?>
+  <div id="sidebar-second" class="clearfix<?php if ($column == 1): ?> first<?php endif; ?><?php if ($column == $main_columns_number): ?> last<?php endif; ?>">
+    <?php print render($page['sidebar_second']); ?>
+  </div> <!-- /#sidebar-second -->
   <?php endif; ?>
 
-  <div id="main-columns-wrapper">
-    <div id="main-columns" <?php if ($in_overlay): ?>class="clearfix"<?php endif; ?>>
-
-      <?php
-      $column = 0;
-      for ($n = -2; $n <= 2; $n++) {
-        foreach (array('content', 'sidebar-first', 'sidebar-second') as $a) {
-          if ($weight[$a] == $n) {
-            include 'page-' . $a .'.tpl.php';
-          }
-        }
-      }
-      ?>
-
-    </div> <!-- /#main-columns -->
-  </div> <!-- /#main-columns-wrapper -->
 

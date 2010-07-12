@@ -4,8 +4,7 @@
 body {
   background-color: #f8f8f8;
 }
-#navigation li.active a,
-#navigation li.active a:hover {
+#navigation > ul > li.active-trail {
   background-color: #f8f8f8;
 }
 /* Text (black) */
@@ -66,13 +65,10 @@ a {
   border-bottom: 1px solid #cfdde5;
 }
 /* Navigation (black) */
-#navigation {
+#navigation-wrapper {
   background-color: #2e2e2d;
 }
-#navigation #width {
-  border-left-color: #2e2e2d;
-}
-#main-links li.expanded ul {
+#navigation li.expanded ul {
   background-color: #2e2e2d;
 }
 /* Navigation hovered (orange) */

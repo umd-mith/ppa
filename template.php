@@ -10,10 +10,20 @@
  * Override or insert variables into the html template.
  */
 function corolla_preprocess_html(&$variables) {
+  // Add reset.css
+  drupal_add_css($data = path_to_theme() . '/reset.css', $options['type'] = 'file', $options['weight'] = CSS_SYSTEM - 2);
+
   // Add conditional stylesheets for IE
   drupal_add_css(path_to_theme() . '/ie8.css', array('weight' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 8', '!IE' => FALSE), 'preprocess' => FALSE));
   drupal_add_css(path_to_theme() . '/ie7.css', array('weight' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 7', '!IE' => FALSE), 'preprocess' => FALSE));
   drupal_add_css(path_to_theme() . '/ie6.css', array('weight' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 6', '!IE' => FALSE), 'preprocess' => FALSE));
+
+  /* Add dynamic stylesheet */
+  ob_start();
+  include('dynamic.css.php');
+  $dynamic_styles = ob_get_contents();
+  ob_end_clean();
+  drupal_add_css($data = $dynamic_styles, $options['type'] = 'inline', $options['weight'] = CSS_SYSTEM - 1);
 }
 
 /**
@@ -51,6 +61,35 @@ function corolla_process_page(&$variables) {
   }
   else {
     $variables['in_overlay'] = FALSE;
+  }
+
+   // Add variables with weight value for each main column
+  $variables['weight']['content'] = 0;
+  $variables['weight']['sidebar-first'] = 'disabled';
+  $variables['weight']['sidebar-second'] = 'disabled';
+  if ($variables["page"]["sidebar_first"]) {
+    $variables['weight']['sidebar-first'] = theme_get_setting('sidebar_first_weight');
+  }
+  if ($variables["page"]["sidebar_second"]) {
+    $variables['weight']['sidebar-second'] = theme_get_setting('sidebar_second_weight');
+  }
+
+  // Add $main_columns_number variable (used in page-*.tpl.php files)
+  $columns = 0;
+  foreach (array('content', 'sidebar_first', 'sidebar_second') as $n) {
+    if ($variables["page"]["$n"]) {
+      $columns++;
+    }
+  }
+  $variables['main_columns_number'] = $columns;  
+
+  // Add $navigation variable to page.tpl.php. Unlike built-in $main_menu variable, it supports nested menus
+  if (isset($variables['main_menu'])) {
+    $pid = variable_get('menu_main_links_source', 'main-links');
+    $tree = menu_tree($pid);
+    $variables['navigation'] = drupal_render($tree);
+  } else {
+    $variables['navigation'] = FALSE;
   }
 }
 
@@ -149,3 +188,4 @@ function corolla_tablesort_indicator($variables) {
     return theme('image', array('path' => path_to_theme() . '/images/tablesort-descending.png', 'alt' => t('sort descending'), 'title' => t('sort descending')));
   }
 }
+

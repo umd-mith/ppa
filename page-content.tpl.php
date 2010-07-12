@@ -66,70 +66,51 @@
  * @see template_process()
  */
 ?>
-<?php if ($navigation && !$in_overlay): ?>
-  <div id="navigation-wrapper">
-    <div id="navigation" class="clearfix">
-      <?php print $navigation; ?>
-    </div> <!-- /#navigation -->
-  </div>
-<?php endif; ?>
+<?php $column++; ?>
+<div id="main-wrapper" class="<?php if ($column == 1): ?> first<?php endif; ?><?php if ($column == $main_columns_number): ?> last<?php endif; ?>">
+  <div id="main">
+    <div id="page" class="clearfix">
 
+      <?php if ($breadcrumb): ?><div id="breadcrumb" class="clearfix"><?php print $breadcrumb; ?></div><?php endif; ?>
+      <?php if ($messages): ?><div id="messages"><?php print $messages; ?></div><?php endif; ?>
+      <?php print render($page['content_top']); ?>
 
+      <?php if ($tabs): ?><div class="tabs clearfix"><?php print render($tabs); ?></div><?php endif; ?>
 
-  <?php if (!$in_overlay): ?>
-  <div id="header-wrapper">
-    <div id="header" class="clearfix">
+      <?php if ($page['highlight'] && !$in_overlay): ?>
+        <?php print render($page['highlight']); ?>
+      <?php endif; ?>
 
-      <div id="branding-wrapper" class="clearfix">
-        <div id="branding">
+      <div id="main-content"></div>
+      <?php print render($title_prefix); ?>
+      <?php if ($title && !$in_overlay): ?>
+        <h1 class="page-title"><?php print $title ?></h1>
+      <?php endif; ?>
+      <?php print render($title_suffix); ?>
+      <?php print render($page['help']); ?>
+      <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
+      <?php print render($page['content']); ?>
+      <?php print render($page['content_bottom']); ?>
+      <?php print $feed_icons; ?>
+    </div> <!-- /#page -->
 
-          <?php if ($logo): ?>
-            <div id="logo"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
-              <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-            </a></div>
-          <?php endif; ?>
+      <div id="closure">
+        <div id="info">
+          <span id="copyright"><?php print theme_get_setting('copyright_information'); ?></span><?php if (theme_get_setting('copyright_information') != ''): ?>. <?php endif; ?>Drupal theme by <a href="http://www.kiwi-themes.com">Kiwi Themes</a>.
+        </div>
 
-          <?php if ($site_name || $site_slogan): ?>
-            <div id="name-and-slogan">
-              <?php if ($site_name): ?>
-                <?php if ($title): ?>
-                  <div id="site-name">
-                    <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-                  </div>
-                <?php else: /* Use h1 when the content title is empty */ ?>
-                  <h1 id="site-name">
-                    <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-                  </h1>
-                <?php endif; ?>
-              <?php endif; ?>
-
-              <?php if ($site_slogan): ?>
-                <div id="site-slogan"><?php print $site_slogan; ?></div>
-              <?php endif; ?>
-            </div> <!-- /#name-and-slogan -->
-          <?php endif; ?>
-
-        </div> <!-- /#branding -->
-      </div> <!-- /#branding-wrapper -->
-
-    </div> <!-- /#header -->
-  </div>  <!-- /#header-wrapper -->
-  <?php endif; ?>
-
-  <div id="main-columns-wrapper">
-    <div id="main-columns" <?php if ($in_overlay): ?>class="clearfix"<?php endif; ?>>
-
-      <?php
-      $column = 0;
-      for ($n = -2; $n <= 2; $n++) {
-        foreach (array('content', 'sidebar-first', 'sidebar-second') as $a) {
-          if ($weight[$a] == $n) {
-            include 'page-' . $a .'.tpl.php';
-          }
-        }
-      }
-      ?>
-
-    </div> <!-- /#main-columns -->
-  </div> <!-- /#main-columns-wrapper -->
+        <?php print theme('links__system_secondary_menu', array(
+          'links' => $secondary_menu,
+          'attributes' => array(
+              'class' => array('links'),
+          ),
+          'heading' => array(
+            'text' => t('Secondary menu'),
+            'level' => 'h2',
+            'class' => array('element-invisible'),
+          ),
+        )); ?>
+      </div> <!-- /#closure -->
+  </div> <!-- /#main -->
+</div> <!-- /#main-wrapper -->
 

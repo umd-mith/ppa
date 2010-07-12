@@ -1,26 +1,32 @@
 /* $Id$ */
 
-#main,
-#sidebar-first,
-#sidebar-second {
-  float: right;
-}
-#sidebar-first .region,
-#sidebar-second .region {
-  margin: 0 20px 0 0;
-}
 #branding-wrapper {
   float: right;
-  padding: 45px 25px 45px 0;
+  padding: 45px 25px 48px 0;
 }
 #site-slogan {
   margin: 2px 3px 0 0;
 }
-.region-header {
-  float: left;
-}
 #logo {
   padding: 0 0 0 15px;
+}
+#navigation > ul > li.expanded > a {
+  background-position: 10% 16px;
+  margin: 0 0 0 10px;
+}
+#navigation > ul > li.expanded.active-trail > a {
+  background-position: 10% 16px;
+}
+#navigation li.expanded ul {
+  right: 0px;
+}
+#navigation li.expanded li.expanded > a {
+  background-position: 4% 50%;
+  background-image: url("images/arrow-left-white.png");
+}
+#navigation li.expanded li.expanded ul {
+  margin: 0 190px 0 0;
+  right: 0;
 }
 #page a.feed-icon {
   float: left;
@@ -30,6 +36,9 @@
 }
 .item-list ul.pager {
   text-align: right;
+}
+ul.pager li:first-child {
+  margin: 0 0 0 6px;
 }
 #block-profile-author-information .user-picture {
   float: right;
@@ -156,11 +165,14 @@ ul.menu li ul.menu {
   margin-right: 7px;
   margin-left: 0;
 }
-#footer ul.links {
-  float: left;
-  margin: 0 0 10px 0;
-}
-.region-footer {
+#closure #info {
   float: right;
+  margin: 0 5px 10px 0;
+}
+#closure ul.links {
+  float: left;
+  margin: 0 0 10px 5px;
+}
+#closure ul.links li {
   margin: 0 10px 0 0;
 }
