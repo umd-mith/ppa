@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /* Fix inline-blocks */
-#navigation li,
+#navigation > ul > li,
 #logo,
 #name-and-slogan,
 .tabs ul.tabs li a,
@@ -10,8 +10,7 @@
 .field-type-taxonomy-term-reference .field-items,
 .tabs ul.tabs li,
 h1.page-title,
-body.page-admin div.add-or-remove-shortcuts,
-#navigation-p li {
+body.page-admin div.add-or-remove-shortcuts {
   zoom: 1;
   display: inline;
 }
@@ -28,6 +27,12 @@ ul.menu li {
 ul.menu li a {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+/* Bug: Ugly arrows in navigation menu */
+#navigation li.expanded * {
+  list-style-image: none!important;
+  list-style-type: none!important;
 }
 /* Bug: reduce whitespace under footer blocks */
 .region-footer .block {
