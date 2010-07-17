@@ -293,6 +293,9 @@ html {
   z-index: 100;
   opacity: 0.95;
 }
+#navigation li.expanded ul {
+  background-color: #2e2e2d;
+}
 #navigation li.expanded:hover > ul {
   display: block;
 }

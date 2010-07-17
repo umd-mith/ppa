@@ -68,9 +68,6 @@ a {
 #navigation-wrapper {
   background-color: #2e2e2d;
 }
-#navigation li.expanded ul {
-  background-color: #2e2e2d;
-}
 /* Navigation hovered (orange) */
 #navigation li a:hover,
 #navigation li a:active,

@@ -28,7 +28,10 @@ ul.menu li a {
   padding-left: 5px;
   padding-right: 5px;
 }
-
+/* Bug: extra margin on navigation items */
+#navigation li.expanded ul {
+  list-style-position: outside;
+}
 /* Bug: Ugly arrows in navigation menu */
 #navigation li.expanded * {
   list-style-image: none!important;
