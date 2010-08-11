@@ -85,7 +85,7 @@ function corolla_process_page(&$variables) {
 
   // Add $navigation variable to page.tpl.php. Unlike built-in $main_menu variable, it supports nested menus
   if (isset($variables['main_menu'])) {
-    $pid = variable_get('menu_main_links_source', 'main-links');
+    $pid = variable_get('menu_main_links_source', 'main-menu');
     $tree = menu_tree($pid);
     $variables['navigation'] = drupal_render($tree);
   } else {
