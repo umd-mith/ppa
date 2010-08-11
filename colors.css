@@ -85,7 +85,7 @@ a {
   background-color:  #e25400;
 }
 .poll .bar .foreground {
-  background-color: #e25400;
+  background-color: #e25400!important;
 }
 /* Border (gray) */
 #page {
