@@ -10,21 +10,21 @@
 #logo {
   padding: 0 0 0 15px;
 }
-#navigation > ul > li.expanded > a {
+#header-menu .content > ul > li.expanded > a {
   background-position: 10% 16px;
   margin: 0 0 0 10px;
 }
-#navigation > ul > li.expanded.active-trail > a {
+#header-menu .content > ul > li.expanded.active-trail > a {
   background-position: 10% 16px;
 }
-#navigation li.expanded ul {
+#header-menu .content li.expanded ul {
   right: 0px;
 }
-#navigation li.expanded li.expanded > a {
+#header-menu .content li.expanded li.expanded > a {
   background-position: 4% 50%;
   background-image: url("images/arrow-left-white.png");
 }
-#navigation li.expanded li.expanded ul {
+#header-menu .content li.expanded li.expanded ul {
   margin: 0 190px 0 0;
   right: 0;
 }

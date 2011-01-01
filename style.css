@@ -8,7 +8,7 @@
 #sidebar-second {
   float: left; /* LTR */
 }
-#navigation,
+#header-menu,
 #header,
 #main-columns {
   margin: 0 auto;
@@ -49,7 +49,7 @@ body.page-admin #main-wrapper {
   margin-right: 0;
 }
 /* Prevent collision with browser chrome */
-#navigation-wrapper,
+#header-menu-wrapper,
 #header,
 #main-columns {
   padding: 0 15px;
@@ -57,14 +57,14 @@ body.page-admin #main-wrapper {
 /* Hide content on admin pages */
 body.page-admin #sidebar-first,
 body.page-admin #sidebar-second,
-body.page-admin #navigation-wrapper,
+body.page-admin #header-menu-wrapper,
 body.page-admin #header-wrapper,
 body.page-admin #closure {
   display: none;
 }
 /* Mobile */
 @media only screen and (max-device-width: 480px) {
-  #navigation-wrapper,
+  #header-menu-wrapper,
   #header,
   #main-columns {
     width: 100%!important;
@@ -203,6 +203,7 @@ html {
  */
 #closure {
   font-size: 0.9em;
+  margin-top: 10px;
 }
 #closure #info {
   float: left; /* LTR */
@@ -217,20 +218,23 @@ html {
 }
 
 /*
-** Navigation
+** Header menu
 */
 /* 1st level */
-#navigation {
+#header-menu {
 }
-#navigation ul {
+#header-menu .block {
   margin: 0;
 }
-#navigation > ul > li {
+#header-menu .content ul {
+  margin: 0;
+}
+#header-menu .content > ul > li {
   display: inline-block;
   padding-left: 0;
   margin: 4px 0 0;
 }
-#navigation > ul > li > a {
+#header-menu .content > ul > li > a {
   color: #ffffff;
   display: block;
   padding: 11px 21px 15px 21px;
@@ -242,17 +246,17 @@ html {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
-#navigation > ul > li:hover > a,
-#navigation > ul > li > li.active:hover > span > a {
+#header-menu .content > ul > li:hover > a,
+#header-menu .content > ul > li > li.active:hover > span > a {
   color: #ffffff;
   text-decoration: none;
 }
-#navigation > ul > li > a:active,
-#navigation > ul > li > a:focus {
+#header-menu .content > ul > li > a:active,
+#header-menu .content > ul > li > a:focus {
   outline: 1px dotted #e0e0e0;
   color: #ffffff;
 }
-#navigation > ul > li.active-trail {
+#header-menu .content > ul > li.active-trail {
   position: relative;
   background-color: #ffffff;
   -webkit-border-top-left-radius: 5px;
@@ -262,28 +266,28 @@ html {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-#navigation > ul > li.active-trail > a {
+#header-menu .content > ul > li.active-trail > a {
   color: #1a272e;
   background: none;
   font-weight: 700;
 }
-#navigation > ul > li.active-trail > a:hover {
+#header-menu .content > ul > li.active-trail > a:hover {
   color: inherit;
 }
-#navigation > ul > li.expanded {
+#header-menu .content > ul > li.expanded {
   position: relative;
 }
-#navigation > ul > li.expanded > a {
+#header-menu .content > ul > li.expanded > a {
   background-image: url(images/arrow-down-white.png);
   background-repeat: no-repeat;
   background-position: 90% 16px;
   margin: 0 10px 0 0; /* LTR */
 }
-#navigation > ul > li.expanded.active-trail > a {
+#header-menu .content > ul > li.expanded.active-trail > a {
   background: url(images/arrow-down-black.png) no-repeat 90% 16px;
 }
 /* 2nd, 3rd, 4th level */
-#navigation li.expanded ul {
+#header-menu .content li.expanded ul {
   display: none;
   position: absolute;
   width: 190px;
@@ -293,70 +297,64 @@ html {
   z-index: 100;
   opacity: 0.95;
 }
-#navigation li.expanded ul {
-  background-color: #2e2e2d;
-}
-#navigation li.expanded:hover > ul {
+#header-menu .content li.expanded:hover > ul {
   display: block;
 }
-#navigation li.expanded li {
+#header-menu .content li.expanded li {
   display: block;
   margin: 0;
   padding: 0;
 }
-#navigation li.expanded li a {
+#header-menu .content li.expanded li a {
   padding: 7px 15px 7px 21px;
   color: #ffffff;
   display: block;
 }
-#navigation li.expanded li a:hover {
+#header-menu .content li.expanded li a:hover {
   text-decoration: none;
 }
-#navigation li.expanded li a:active,
-#navigation li.expanded li a:focus {
+#header-menu .content li.expanded li a:active,
+#header-menu .content li.expanded li a:focus {
   outline: none;
 }
-#navigation li.expanded li.expanded {
+#header-menu .content li.expanded li.expanded {
   position: relative;
 }
-#navigation li.expanded li.expanded > a {
+#header-menu .content li.expanded li.expanded > a {
   background-image: url("images/arrow-right-white.png");
   background-repeat: no-repeat;
   background-position: 96% 50%;
 }
-#navigation a::selection {
+#header-menu .content a::selection {
 	background-color: #ffffff;
   color: #16222B;
 }
-#navigation a::-moz-selection {
+#header-menu .content a::-moz-selection {
 	background-color: #ffffff;
   color: #16222B;
 }
 
 /* Third level */
-#navigation li.expanded li.expanded ul {
+#header-menu .content li.expanded li.expanded ul {
   margin: 0 0 0 190px;
   top: 0;
   left: 0; /* LTR */
 }
 
 /**
- * Secondary menu
+ * Footer menu
  */
-#secondary-menu {
+#footer-menu {
   margin: 0 0 6px 8px;
+  float: right;
 }
-#secondary-menu h2 {
-  border: none;
-  height: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
+#footer-menu .block {
+  margin-bottom: 0;
 }
-#secondary-menu ul {
+#footer-menu ul {
   margin: 0;
 }
-#secondary-menu ul li {
+#footer-menu ul li {
   display: inline;
   margin: 0 9px 0 0; /* LTR */
 }
@@ -413,6 +411,7 @@ ul.menu li ul.menu {
 .block ul {
   list-style-position:inside;
   padding:0;
+  margin: 0;
 }
 .block li {
   margin: 6px 0;
@@ -665,7 +664,7 @@ fieldset.filter-wrapper {
 }
 .filter-help a {
   background: none;
-  padding-right: 0;
+  padding: 0;
 }
 .filter-wrapper .form-item {
   margin-top: 0;
@@ -728,6 +727,36 @@ body.page-forum ul.action-links {
 }
 #forum div.indent {
   margin: 0 0 0 15px;
+}
+#forum td.icon .topic-status-sticky {
+  background: url(images/forum-sticky.png) no-repeat center center;
+  width: 30px;
+  height: 35px;
+}
+#forum td.icon .topic-status-default {
+  background: url(images/forum-default.png) no-repeat center center;
+  width: 37px;
+  height: 32px;
+}
+#forum td.icon .topic-status-closed {
+  background: url(images/forum-closed.png) no-repeat center center;
+  width: 30px;
+  height: 35px;
+}
+#forum td.icon .topic-status-hot {
+  background: url(images/forum-hoht.png) no-repeat center center;
+  width: 37px;
+  height: 32px;
+}
+#forum td.icon .topic-status-new {
+  background: url(images/forum-new.png) no-repeat center center;
+  width: 42px;
+  height: 39px;
+}
+#forum td.icon .topic-status-hot-new {
+  background: url(images/forum-hot-new.png) no-repeat center center;
+  width: 43px;
+  height: 38px;
 }
 
 /**
@@ -1023,6 +1052,8 @@ a.contextual-links-trigger {
  */
 h1.page-title {
   display: inline-block;
+  word-wrap: break-word;
+  width: 100%;
 }
 .shortcut-wrapper {
   position: relative;
@@ -1204,44 +1235,6 @@ ul.action-links li a {
   padding-left: 15px;
   background: url(images/action-link.png) no-repeat left center;
 }
-/* Messages */
-#messages {
-  margin: 10px 0;
-}
-#messages:first-child {
-  margin-top: 0;
-}
-div.messages {
-  padding: 7px 12px;
-  margin: 0 0 15px 0;
-  color: #fff;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -khtml-border-radius: 3px;
-  border-radius: 3px;
-}
-.messages em {
-  font-weight: 300;
-}
-div.status {
-  color: #fff;
-  background-color: #74950a;
-}
-div.warning {
-  color: #fff;
-  background-color: #e89c00;
-}
-div.error {
-  color: #fff;
-  background: #d53400;
-}
-div.messages a {
-  color: #fff;
-  border-bottom: 1px solid #ffffff;
-}
-.messages a:hover {
-  color: #fff;
-}
 /* Collapsible fieldsets */
 html.js fieldset.collapsible .fieldset-legend {
   background: none;
@@ -1356,9 +1349,12 @@ body.maintenance-page #content {
   margin-top: 5px;
 }
 /* Utility classes */
-.element-invisible {
-  padding: 0!important;
-  border: none!important;
+.element-invisible,
+#header-menu h2,
+#footer-menu h2 {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
 }
 .clearfix:after,
 .clear-block:after {
@@ -1500,7 +1496,7 @@ table.system-status-report tr.error {
 /* admin/structure/block/demo/corolla */
 body.page-admin-structure-block-demo-corolla #sidebar-first,
 body.page-admin-structure-block-demo-corolla #sidebar-second,
-body.page-admin-structure-block-demo-corolla #navigation,
+body.page-admin-structure-block-demo-corolla #header-menu,
 body.page-admin-structure-block-demo-corolla #header-wrapper {
   display: block;
 }

@@ -13,10 +13,9 @@ function corolla_preprocess_html(&$variables) {
   // Add reset.css
   drupal_add_css($data = path_to_theme() . '/reset.css', $options['type'] = 'file', $options['weight'] = CSS_SYSTEM - 2);
 
-  // Add conditional stylesheets for IE
-  drupal_add_css(path_to_theme() . '/ie8.css', array('weight' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 8', '!IE' => FALSE), 'preprocess' => FALSE));
-  drupal_add_css(path_to_theme() . '/ie7.css', array('weight' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 7', '!IE' => FALSE), 'preprocess' => FALSE));
-  drupal_add_css(path_to_theme() . '/ie6.css', array('weight' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 6', '!IE' => FALSE), 'preprocess' => FALSE));
+  // Add conditional stylesheets for IEs
+  drupal_add_css(path_to_theme() . '/ie8.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 8', '!IE' => FALSE), 'preprocess' => FALSE));
+  drupal_add_css(path_to_theme() . '/ie7.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 7', '!IE' => FALSE), 'preprocess' => FALSE)); 
 
   /* Add dynamic stylesheet */
   ob_start();
@@ -82,15 +81,6 @@ function corolla_process_page(&$variables) {
     }
   }
   $variables['main_columns_number'] = $columns;  
-
-  // Add $navigation variable to page.tpl.php. Unlike built-in $main_menu variable, it supports nested menus
-  if (isset($variables['main_menu'])) {
-    $pid = variable_get('menu_main_links_source', 'main-menu');
-    $tree = menu_tree($pid);
-    $variables['navigation'] = drupal_render($tree);
-  } else {
-    $variables['navigation'] = FALSE;
-  }
 }
 
 /**
@@ -135,8 +125,9 @@ function corolla_breadcrumb($variables) {
  *   - title: A descriptive verb for the link, like 'Read more'.
  */
 function corolla_more_link($variables) {
-  return '<div class="more-link">' . t('<a href="@link" title="@title">more ›</a>', array('@link' => check_url($variables['url']), '@title' => $variables['title'])) . '</div>';
+  return '<div class="more-link">' . l(t('More ›'), $variables['url'], array('attributes' => array('title' => $variables['title']))) . '</div>';
 }
+
 
 /**
  * Returns HTML for status and/or error messages, grouped by type.

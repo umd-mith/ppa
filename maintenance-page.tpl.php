@@ -23,23 +23,6 @@
 </head>
 
 <body class="<?php print $classes; ?>">
-<?php if ($main_menu): ?>
-  <div id="navigation" class="clearfix">
-    <?php print theme('links__system_main_menu', array(
-      'links' => $main_menu,
-      'attributes' => array(
-        'id' => 'main-menu',
-        'class' => array('links'),
-      ),
-      'heading' => array(
-        'text' => t('Main menu'),
-        'level' => 'h2',
-        'class' => array('element-invisible'),
-      ),
-    )); ?>
-  </div> <!-- /#navigation -->
-<?php endif; ?>
-
   <div id="header-wrapper">
     <div id="header" class="clearfix">
 

@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /* Fix inline-blocks */
-#navigation > ul > li,
+#header-menu .content > ul > li,
 #logo,
 #name-and-slogan,
 .tabs ul.tabs li a,

@@ -94,22 +94,16 @@
       <?php print $feed_icons; ?>
     </div> <!-- /#page -->
 
-      <div id="closure">
+      <div id="closure" class="clearfix">
         <div id="info">
           <span id="copyright"><?php print theme_get_setting('copyright_information'); ?></span><?php if (theme_get_setting('copyright_information') != ''): ?>. <?php endif; ?>Drupal theme by <a href="http://www.kiwi-themes.com">Kiwi Themes</a>.
         </div>
 
-        <?php print theme('links__system_secondary_menu', array(
-          'links' => $secondary_menu,
-          'attributes' => array(
-              'class' => array('links'),
-          ),
-          'heading' => array(
-            'text' => t('Secondary menu'),
-            'level' => 'h2',
-            'class' => array('element-invisible'),
-          ),
-        )); ?>
+        <?php if ($page['footer_menu']): ?>
+          <div id="footer-menu">
+            <?php print render($page['footer_menu']); ?>
+          </div> <!-- /#footer-menu -->
+        <?php endif; ?>
       </div> <!-- /#closure -->
   </div> <!-- /#main -->
 </div> <!-- /#main-wrapper -->

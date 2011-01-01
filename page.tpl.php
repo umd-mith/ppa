@@ -66,15 +66,13 @@
  * @see template_process()
  */
 ?>
-<?php if ($navigation && !$in_overlay): ?>
-  <div id="navigation-wrapper">
-    <div id="navigation" class="clearfix">
-      <?php print $navigation; ?>
-    </div> <!-- /#navigation -->
-  </div>
-<?php endif; ?>
-
-
+  <?php if ($page['header_menu']): ?>
+    <div id="header-menu-wrapper">
+      <div id="header-menu">
+        <?php print render($page['header_menu']); ?>
+      </div>
+    </div>
+  <?php endif; ?>
 
   <?php if (!$in_overlay): ?>
   <div id="header-wrapper">

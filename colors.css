@@ -4,13 +4,13 @@
 body {
   background-color: #f8f8f8;
 }
-#navigation > ul > li.active-trail {
+#header-menu .content > ul > li.active-trail {
   background-color: #f8f8f8;
 }
 /* Text (black) */
 body,
 #site-name a,
-#navigation li.active a,
+#header-menu .content li.active a,
 h1.page-title,
 .node h2.node-title,
 .node h1.node-title a,
@@ -64,14 +64,14 @@ li a.active:focus {
 a {
   border-bottom: 1px solid #cfdde5;
 }
-/* Navigation (black) */
-#navigation-wrapper {
+/* Header menu (black) */
+#header-menu-wrapper {
   background-color: #2e2e2d;
 }
-/* Navigation hovered (orange) */
-#navigation li a:hover,
-#navigation li a:active,
-#navigation li a:focus {
+/* Header menu hovered (orange) */
+#header-menu .content li a:hover,
+#header-menu .content li a:active,
+#header-menu .content li a:focus {
   background-color: #e25402;
 }
 /* Slogan (orange) */
