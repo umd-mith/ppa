@@ -1500,8 +1500,14 @@ body.page-admin-structure-block-demo-corolla #header-menu,
 body.page-admin-structure-block-demo-corolla #header-wrapper {
   display: block;
 }
-body.page-admin-structure-block-demo-corolla #main {
+body.page-admin-structure-block-demo-corolla #main-wrapper {
   width: 56%;
+}
+body.page-admin-structure-block-demo-corolla div.add-or-remove-shortcuts {
+  display: none;
+}
+body.page-admin-structure-block-demo-corolla #closure {
+  display: block;
 }
 .block-region {
   background-color: transparent;
