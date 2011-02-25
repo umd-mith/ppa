@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 function corolla_form_system_theme_settings_alter(&$form, $form_state) {
   // Generate the form using Forms API. http://api.drupal.org/api/7

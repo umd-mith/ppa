@@ -1,4 +1,3 @@
-; $Id$
 
 name        = Corolla
 description = A colorable, fluid width theme, with min and max widths, that can support 1, 2 or 3 columns.
