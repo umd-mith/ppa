@@ -1,0 +1,137 @@
+
+/* Blocks. */
+.block {
+  clear: both;
+  margin-bottom: 25px;
+}
+.block:last-child {
+  margin-bottom: 15px;
+}
+
+.block ul {
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+.block-inner {} /* set block background styles on .block-inner */
+.block-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  line-height: 1.3;
+  margin: 0;
+  padding: 0 0 4px;
+  text-transform: uppercase;
+}
+.block-content {}
+
+#block-system-main .block-inner {
+  margin: 0;
+}
+
+/* Mini panels get a special title class. */
+.mini-panel-title {
+  margin: 0 10px;
+}
+
+/* Target region blocks. */
+.sidebar .block {}
+.sidebar .block-inner {}
+.sidebar .block-title {}
+.sidebar .block-content {}
+
+#sidebar-first .block {}
+#sidebar-first .block-inner {}
+#sidebar-first .block-title {}
+#sidebar-first .block-content {}
+
+#sidebar-second .block {}
+#sidebar-second .block-inner {}
+#sidebar-second .block-title{}
+#sidebar-second .block-content {}
+
+.region-secondary-content .block {
+  font-size: 1.2em;
+  line-height: 1.35;
+  text-shadow: 1px 1px 1px #fff;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.region-header .block {
+  margin-top: 20px;
+}
+
+.region-header .block-superfish {
+  margin-top: 36px;
+}
+
+
+/* Block lists */
+.block ul li {
+  margin: 0 0 0 0.5em;
+}
+.block .item-list ul  {
+  margin-left: 1em;
+}
+
+/* Block wrapper for Mini Panels */
+.block-panels_mini {}
+.block-panels_mini .block-inner {}
+.block-panels_mini .block-content {}
+.block-panels_mini .mini-panel-title {
+  margin: 0 10px;
+}
+
+/* Login block - horizontal (theme setting) basic styles */
+.lb-h {
+  min-width: 320px;
+  margin-top: 1px;
+}
+.region-header .lb-h {
+  float: right;
+} 
+.lb-h .block-inner,
+.lb-h .block-content {
+  background: none;
+  padding: 0;
+}
+.lb-h #user-login-form {
+  margin: 0;
+}
+.lb-h #user-login-form label {
+  line-height: 1.2
+}
+.lb-h .form-item {
+  float:left;
+  margin: 0;
+}
+.lb-h input.form-text {
+  margin:0 3px 0 0;
+  width:110px;
+}
+.lb-h #edit-actions {
+  margin: 0;
+}
+.lb-h input.form-submit {
+  position: absolute;
+  margin: 0;
+  top: 1.2em;
+}
+.lb-h .form-required,
+.lb-h .item-list {
+  display: none;
+}
+.lb-h h2 {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Login block - slider (theme setting) */
+/* TODO: add the login slider styles
+ * Uses the class .lb-s {}
+ */
+
+

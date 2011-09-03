@@ -1,165 +1,161 @@
 <?php
 
-/**
- * @file
- * Theme functions overrides.
- */
+// Include the Google webfont definitions.
+include_once(drupal_get_path('theme', 'corolla') . '/inc/gwf.inc');
 
 /**
  * Override or insert variables into the html template.
  */
-function corolla_preprocess_html(&$variables) {
-  // Add reset.css
-  drupal_add_css($data = path_to_theme() . '/reset.css', $options['type'] = 'file', $options['weight'] = CSS_SYSTEM - 2);
+function corolla_preprocess_html(&$vars) {
 
-  // Add conditional stylesheets for IEs
-  drupal_add_css(path_to_theme() . '/ie8.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 8', '!IE' => FALSE), 'preprocess' => FALSE));
-  drupal_add_css(path_to_theme() . '/ie7.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'lte IE 7', '!IE' => FALSE), 'preprocess' => FALSE)); 
+  global $theme, $theme_key;
 
-  /* Add dynamic stylesheet */
-  ob_start();
-  include('dynamic.css.php');
-  $dynamic_styles = ob_get_contents();
-  ob_end_clean();
-  drupal_add_css($data = $dynamic_styles, $options['type'] = 'inline', $options['weight'] = CSS_SYSTEM - 1);
-}
+  drupal_add_css(path_to_theme() . '/css/ie/ie-lte-7.css', array(
+    'group' => CSS_THEME,
+    'browsers' => array(
+      'IE' => 'lte IE 7',
+      '!IE' => FALSE,
+      ),
+    'preprocess' => FALSE,
+    )
+  );
+  drupal_add_css(path_to_theme() . '/css/ie/ie-lte-9.css', array(
+    'group' => CSS_THEME,
+    'browsers' => array(
+      'IE' => 'lte IE 9',
+      '!IE' => FALSE,
+      ),
+    'preprocess' => FALSE,
+    )
+  );
 
-/**
- * Override or insert variables into the html template.
- */
-function corolla_process_html(&$variables) {
-  // Hook into color module
   if (module_exists('color')) {
-    _color_html_alter($variables);
+    $info = color_get_info($theme);
+    $info['schemes'][''] = array('title' => t('Custom'), 'colors' => array());
+    $schemes = array();
+    foreach ($info['schemes'] as $key => $scheme) {
+      $schemes[$key] = $scheme['colors'];
+    }
+    $current_scheme = variable_get('color_' . $theme . '_palette', array());
+    foreach ($schemes as $key => $scheme) {
+      if ($current_scheme == $scheme) {
+        $scheme_name = $key;
+        break;
+      }
+    }
+    if (empty($scheme_name)) {
+      if (empty($current_scheme)) {
+        $scheme_name = 'default';
+      }
+      else {
+        $scheme_name = 'custom';
+      }
+    }
+    $vars['classes_array'][] = 'color-scheme-' . drupal_html_class($scheme_name);
   }
-}
-
-/**
- * Override or insert variables into the page template.
- */
-function corolla_process_page(&$variables) {
-  // Since the title and the shortcut link are both block level elements,
-  // positioning them next to each other is much simpler with a wrapper div.
-  if (!empty($variables['title_suffix']['add_or_remove_shortcut']) ) {
-    // Add a wrapper div using the title_prefix and title_suffix render elements.
-    $variables['title_prefix']['shortcut_wrapper'] = array(
-      '#markup' => '<div class="shortcut-wrapper clearfix">',
-      '#weight' => 100,
-    );
-    $variables['title_suffix']['shortcut_wrapper'] = array(
-      '#markup' => '</div>',
-      '#weight' => -99,
-    );
-    // Make sure the shortcut link is the first item in title_suffix.
-    $variables['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
-  }
-  // Provide a variable to check if the page is in the overlay.
-  if (module_exists('overlay')) {
-    $variables['in_overlay'] = (overlay_get_mode() == 'child');
-  }
-  else {
-    $variables['in_overlay'] = FALSE;
-  }
-
-   // Add variables with weight value for each main column
-  $variables['weight']['content'] = 0;
-  $variables['weight']['sidebar-first'] = 'disabled';
-  $variables['weight']['sidebar-second'] = 'disabled';
-  if ($variables["page"]["sidebar_first"]) {
-    $variables['weight']['sidebar-first'] = theme_get_setting('sidebar_first_weight');
-  }
-  if ($variables["page"]["sidebar_second"]) {
-    $variables['weight']['sidebar-second'] = theme_get_setting('sidebar_second_weight');
+  $vars['classes_array'][] = drupal_html_class($theme_key);
+  $settings_array = array(
+    'font_size',
+    'box_shadows',
+    'body_background',
+    'menu_bullets',
+    'content_corner_radius',
+    'tabs_corner_radius',
+  );
+  foreach ($settings_array as $setting) {
+    $vars['classes_array'][] = theme_get_setting($setting);
   }
 
-  // Add $main_columns_number variable (used in page-*.tpl.php files)
-  $columns = 0;
-  foreach (array('content', 'sidebar_first', 'sidebar_second') as $n) {
-    if ($variables["page"]["$n"]) {
-      $columns++;
+  $fonts = array(
+    'bf'  => 'base_font', 
+    'snf' => 'site_name_font', 
+    'ssf' => 'site_slogan_font',
+    'ptf' => 'page_title_font',
+    'ntf' => 'node_title_font',
+    'ctf' => 'comment_title_font',
+    'btf' => 'block_title_font'
+  );
+  foreach($fonts as $key => $value) {
+
+    $font_type = theme_get_setting($value . '_type');
+    $font_value = theme_get_setting($value . (!empty($font_type) ? '_' . $font_type : ''));
+
+    if ($font_type == '') {
+      $vars['classes_array'][] = $font_value;
+    }
+    else {
+      if ($font_type == 'gwf') {
+        drupal_add_css('http://fonts.googleapis.com/css?family=' . $font_value, array('group' => CSS_THEME, 'type' => 'inline'));
+      }
+
+      $font_value = preg_replace('/[^\w\d_ -]/si', '', $font_value);
+      $style_name = get_style_name($key, $font_type, $font_value); 
+      $vars['classes_array'][] = $style_name;
+
+      switch($key) {
+        case 'bf': 
+          drupal_add_css("body.$style_name, .$style_name .form-text {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+          break;
+        case 'snf': 
+          drupal_add_css(".$style_name #site-name {font-family : '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+          break;
+        case 'ssf': 
+          drupal_add_css(".$style_name #site-slogan {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+          break;
+        case 'ptf': 
+          drupal_add_css(".$style_name #page-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+          break;
+        case 'ntf': 
+          drupal_add_css(".$style_name .article-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+          break;
+        case 'ctf': 
+          drupal_add_css(".$style_name .comment-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+          break;
+        case 'btf': 
+          drupal_add_css(".$style_name .block-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+          break;
+      }
     }
   }
-  $variables['main_columns_number'] = $columns;  
+
+  if (theme_get_setting('headings_styles_caps') == 1) {
+    $vars['classes_array'][] = 'hs-caps';
+  }
+  if (theme_get_setting('headings_styles_weight') == 1) {
+    $vars['classes_array'][] = 'hs-fwn';
+  }
+  if (theme_get_setting('headings_styles_shadow') == 1) {
+    $vars['classes_array'][] = 'hs-ts';
+  }
+}
+
+/**
+ * Hook into the color module.
+ */
+function corolla_process_html(&$vars) {
+  if (module_exists('color')) {
+    _color_html_alter($vars);
+  }
+}
+function corolla_process_page(&$vars) {
+  if (module_exists('color')) {
+    _color_page_alter($vars);
+  }
 }
 
 /**
  * Override or insert variables into the block template.
  */
-function corolla_preprocess_block(&$variables) {
-  // Remove "block" class from blocks in "Main page content" region
-  if ($variables['elements']['#block']->region == 'content') {
-    foreach ($variables['classes_array'] as $key => $val) {
-      if ($val == 'block') {
-        unset($variables['classes_array'][$key]);
-      }
-    }
+function corolla_preprocess_block(&$vars) {
+  if ($vars['block']->module == 'superfish' || $vars['block']->module == 'nice_menu') {
+    $vars['content_attributes_array']['class'][] = 'clearfix';
   }
-}
-
-/**
- * Return a themed breadcrumb trail.
- *
- * @param $breadcrumb
- *   An array containing the breadcrumb links.
- * @return
- *   A string containing the breadcrumb output.
- */
-function corolla_breadcrumb($variables) {
-  // Wrap separator with span element.
-  if (!empty($variables['breadcrumb'])) {
-    // Provide a navigational heading to give context for breadcrumb links to
-    // screen-reader users. Make the heading invisible with .element-invisible.
-    $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
-    $output .= '<div class="breadcrumb">' . implode('<span class="separator">»</span>', $variables['breadcrumb']) . '</div>';
-    return $output;
+  if (!$vars['block']->subject) {
+    $vars['content_attributes_array']['class'][] = 'no-title';
   }
-}
-
-/**
- * Returns HTML for a "more" link, like those used in blocks.
- *
- * @param $variables
- *   An associative array containing:
- *   - url: The url of the main page.
- *   - title: A descriptive verb for the link, like 'Read more'.
- */
-function corolla_more_link($variables) {
-  return '<div class="more-link">' . l(t('More ›'), $variables['url'], array('attributes' => array('title' => $variables['title']))) . '</div>';
-}
-
-
-/**
- * Returns HTML for status and/or error messages, grouped by type.
- *
- * An invisible heading identifies the messages for assistive technology.
- * Sighted users see a colored box. See http://www.w3.org/TR/WCAG-TECHS/H69.html
- * for info.
- *
- * @param $variables
- *   An associative array containing:
- *   - display: (optional) Set to 'status' or 'error' to display only messages
- *     of that type.
- */
-function corolla_status_messages($variables) {
-  $output = '';
-  $status_heading = array(
-    'status' => t('Status message'),
-    'error' => t('Error message'),
-    'warning' => t('Warning message'),
-  );
-  // Print serveral messages in separate divs.
-  foreach (drupal_get_messages($variables['display']) as $type => $messages) {
-    if (!empty($status_heading[$type])) {
-      $output .= '<h2 class="element-invisible">' . $status_heading[$type] . "</h2>\n";
-    }
-    foreach ($messages as $message) {
-      $output .= '<div class="messages message ' . $type . '">';
-      $output .= $message;
-      $output .= "</div>\n";
-    }
+  if ($vars['block']->region == 'menu_bar' || $vars['block']->region == 'header') {
+    $vars['title_attributes_array']['class'][] = 'element-invisible';
   }
-
-  return $output;
 }
 
 /**
@@ -169,13 +165,12 @@ function corolla_status_messages($variables) {
  *   An associative array containing:
  *   - style: Set to either 'asc' or 'desc', this determines which icon to show.
  */
-function corolla_tablesort_indicator($variables) {
+function corolla_tablesort_indicator($vars) {
   // Use custom arrow images.
-  if ($variables['style'] == 'asc') {
-    return theme('image', array('path' => path_to_theme() . '/images/tablesort-ascending.png', 'alt' => t('sort ascending'), 'title' => t('sort ascending')));
+  if ($vars['style'] == 'asc') {
+    return theme('image', array('path' => path_to_theme() . '/css/images/tablesort-ascending.png', 'alt' => t('sort ascending'), 'title' => t('sort ascending')));
   }
   else {
-    return theme('image', array('path' => path_to_theme() . '/images/tablesort-descending.png', 'alt' => t('sort descending'), 'title' => t('sort descending')));
+    return theme('image', array('path' => path_to_theme() . '/css/images/tablesort-descending.png', 'alt' => t('sort descending'), 'title' => t('sort descending')));
   }
 }
-

@@ -1,119 +1,474 @@
 <?php
 
-function corolla_form_system_theme_settings_alter(&$form, $form_state) {
-  // Generate the form using Forms API. http://api.drupal.org/api/7
-  $form['custom'] = array(
-    '#title' => 'Custom theme settings', 
-    '#type' => 'fieldset', 
-  );
-  $form['custom']['base_font_size'] = array(
-    '#title' => 'Base font size',
-    '#type' => 'select', 
-    '#default_value' => theme_get_setting('base_font_size'),
-    '#options' => array(
-      '9px' => '9px',
-      '10px' => '10px',
-      '11px' => '11px',
-      '12px' => '12px',
-      '13px' => '13px',
-      '14px' => '14px',
-      '15px' => '15px',
-      '16px' => '16px',
-      '100%' => '100%',
-    ),
-  );
-  $form['custom']['sidebar_first_weight'] = array(
-    '#title' => 'First sidebar position', 
-    '#type' => 'select',
-    '#default_value' => theme_get_setting('sidebar_first_weight'),
-    '#options' => array(
-      -2 => 'Far left',
-      -1 => 'Left',
-       1 => 'Right',
-       2 => 'Far right',
-    ),
-  );
-  $form['custom']['sidebar_second_weight'] = array(
-    '#title' => 'Second sidebar position', 
-    '#type' => 'select',
-    '#default_value' => theme_get_setting('sidebar_second_weight'),
-    '#options' => array(
-      -2 => 'Far left',
-      -1 => 'Left',
-       1 => 'Right',
-       2 => 'Far right',
-    ),
-  );
-  $form['custom']['layout_1'] = array(
-    '#title' => '1-column layout', 
-    '#type' => 'fieldset',
-  );
-  $form['custom']['layout_1']['layout_1_min_width'] = array(
-    '#type' => 'select',
-    '#title' => 'Min width', 
-    '#default_value' => theme_get_setting('layout_1_min_width'),
-    '#options' => corolla_generate_array(200, 1400, 10, 'px'),
-  );
-  $form['custom']['layout_1']['layout_1_max_width'] = array(
-    '#type' => 'select',
-    '#title' => 'Max width', 
-    '#default_value' => theme_get_setting('layout_1_max_width'),
-    '#options' => corolla_generate_array(200, 1400, 10, 'px'),
-  );
-  $form['custom']['layout_2'] = array(
-    '#title' => '2-column layout', 
-    '#type' => 'fieldset',
-  );
-  $form['custom']['layout_2']['layout_2_min_width'] = array(
-    '#type' => 'select',
-    '#title' => 'Min width', 
-    '#default_value' => theme_get_setting('layout_2_min_width'),
-    '#options' => corolla_generate_array(200, 1400, 10, 'px'),
-  );
-  $form['custom']['layout_2']['layout_2_max_width'] = array(
-    '#type' => 'select',
-    '#title' => 'Max width', 
-    '#default_value' => theme_get_setting('layout_2_max_width'),
-    '#options' => corolla_generate_array(200, 1400, 10, 'px'),
-  );
-  $form['custom']['layout_3'] = array(
-    '#title' => '3-column layout', 
-    '#type' => 'fieldset',
-  );
-  $form['custom']['layout_3']['layout_3_min_width'] = array(
-    '#type' => 'select',
-    '#title' => 'Min width', 
-    '#default_value' => theme_get_setting('layout_3_min_width'),
-    '#options' => corolla_generate_array(200, 1400, 10, 'px'),
-  );
-  $form['custom']['layout_3']['layout_3_max_width'] = array(
-    '#type' => 'select',
-    '#title' => 'Max width', 
-    '#default_value' => theme_get_setting('layout_3_max_width'),
-    '#options' => corolla_generate_array(200, 1400, 10, 'px'),
-  );
-  $form['custom']['copyright_information'] = array(
-    '#title' => 'Copyright information',
-    '#description' => t('Information about copyright holder of the website - will show up at the bottom of the page'), 
-    '#type' => 'textfield',
-    '#default_value' => theme_get_setting('copyright_information'),
-    '#size' => 60, 
-    '#maxlength' => 128, 
-    '#required' => FALSE,
-  );
-}
+drupal_add_css(drupal_get_path('theme', 'corolla') . '/css/theme-settings.css', array('group' => CSS_THEME));
+include_once(drupal_get_path('theme', 'corolla') . '/inc/gwf.inc');
 
-function corolla_generate_array($min, $max, $increment, $postfix, $unlimited = NULL) {
-  $array = array();
-  if ($unlimited == 'first') {
-    $array['none'] = 'Unlimited';
-  }
-  for ($a = $min; $a <= $max; $a += $increment) {
-    $array[$a . $postfix] = $a . ' ' . $postfix;
-  }
-  if ($unlimited == 'last') {
-    $array['none'] = 'Unlimited';
-  }
-  return $array;
-}
+function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
 
+  $fonts = array(
+    'snf-sss' => t('Helvetica Neue, Trebuchet MS, Arial, Helvetica, sans-serif'),
+    'snf-ssl' => t('Verdana, Geneva, Arial, Helvetica, sans-serif'),
+    'snf-a'   => t('Arial, Helvetica, sans-serif'),
+    'snf-ss'  => t('Garamond, Perpetua, Times New Roman, serif'),
+    'snf-sl'  => t('Georgia, Baskerville, Palatino, Palatino Linotype, Book Antiqua, Times New Roman, serif'),
+    'snf-m'   => t('Trebuchet MS, Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif;'),
+    'snf-l'   => t('Lucida Sans Unicode, Lucida Sans, Lucida Grande, Verdana, Geneva, sans-serif'),
+    'snf-ms'  => t('Consolas, Monaco, Courier New, Courier, monospace'),
+  );
+
+  $form['at']['font'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Fonts'),
+    '#description' => t('<h3>Fonts</h3><p>Set the default font and font family for headings. First select the font type (normal websafe font or a Google font), then select the font family.'),
+  );
+  $form['at']['font']['base_font_wrapper'] = array (
+    '#type' => 'fieldset',
+    '#title' => t('Default font'),
+    '#attributes' => array('class' => array('font-element-wrapper'))
+  );
+  $form['at']['font']['base_font_wrapper']['base_font_type'] = array (
+    '#type' => 'select',
+    '#title' => t('Type'),
+    '#options' => array (
+      '' => t('Websafe font'),
+      'gwf' => t('Google font'),
+    ),
+    '#default_value' => theme_get_setting('base_font_type'),
+  );
+  $form ['at'] ['font']['base_font_wrapper']['base_font_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="base_font_type"]' => array (
+          'value' => ''
+        )
+      )
+    )
+  );
+  $form['at']['font']['base_font_wrapper']['base_font_container']['base_font'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('base_font'),
+    '#options' => $fonts,
+  );
+  $form ['at'] ['font']['base_font_wrapper']['base_font_gwf_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="base_font_type"]' => array (
+          'value' => 'gwf'
+        )
+      )
+    )
+  );
+  $form['at']['font']['base_font_wrapper']['base_font_gwf_container']['base_font_gwf'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('base_font_gwf'),
+    '#options' => get_gwf_font_families_options()
+  );
+  $form['at']['font']['site_name_font_wrapper'] = array (
+    '#type' => 'fieldset',
+    '#title' => t('Site Name'),
+    '#attributes' => array('class' => array('font-element-wrapper'))
+  );
+  $form['at']['font']['site_name_font_wrapper']['site_name_font_type'] = array (
+    '#type' => 'select',
+    '#title' => t('Type'),
+    '#options' => array (
+      '' => t('Websafe font'),
+      'gwf' => t('Google font'),
+    ), '#default_value' => theme_get_setting('site_name_font_type')
+  );
+  $form['at']['font']['site_name_font_wrapper']['site_name_font_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="site_name_font_type"]' => array (
+          'value' => ''
+        )
+      )
+    )
+  );
+  $form['at']['font']['site_name_font_wrapper']['site_name_font_container']['site_name_font'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('site_name_font'),
+    '#options' => $fonts,
+  );
+  $form['at']['font']['site_name_font_wrapper']['site_name_font_gwf_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="site_name_font_type"]' => array (
+          'value' => 'gwf'
+        )
+      )
+    )
+  );
+  $form['at']['font']['site_name_font_wrapper']['site_name_font_gwf_container']['site_name_font_gwf'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('site_name_font_gwf'),
+    '#options' => get_gwf_font_families_options()
+  );
+  $form['at']['font']['site_slogan_font_wrapper'] = array (
+    '#type' => 'fieldset',
+    '#title' => t('Site Slogan'),
+    '#attributes' => array('class' => array('font-element-wrapper'))
+  );
+  $form ['at']['font']['site_slogan_font_wrapper']['site_slogan_font_type'] = array (
+    '#type' => 'select',
+    '#title' => t('Type'),
+    '#options' => array (
+      '' => t('Websafe font'),
+      'gwf' => t('Google font'),
+    ), '#default_value' => theme_get_setting('site_slogan_font_type')
+  );
+  $form ['at'] ['font']['site_slogan_font_wrapper']['site_slogan_font_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="site_slogan_font_type"]' => array (
+          'value' => ''
+        )
+      )
+    )
+  );
+  $form['at']['font']['site_slogan_font_wrapper']['site_slogan_font_container']['site_slogan_font'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('site_slogan_font'),
+    '#options' => $fonts,
+  );
+  $form['at']['font']['site_slogan_font_wrapper']['site_slogan_font_gwf_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="site_slogan_font_type"]' => array (
+          'value' => 'gwf'
+        )
+      )
+    )
+  );
+  $form['at']['font']['site_slogan_font_wrapper']['site_slogan_font_gwf_container']['site_slogan_font_gwf'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('site_slogan_font_gwf'),
+    '#options' => get_gwf_font_families_options()
+  );
+  $form['at']['font']['page_title_font_wrapper'] = array (
+    '#type' => 'fieldset',
+    '#title' => t('Page Title'),
+    '#attributes' => array('class' => array('font-element-wrapper'))
+  );
+  $form['at']['font']['page_title_font_wrapper']['page_title_font_type'] = array (
+    '#type' => 'select',
+    '#title' => t('Type'),
+    '#options' => array (
+      '' => t('Websafe font'),
+      'gwf' => t('Google font'),
+    ), '#default_value' => theme_get_setting('page_title_font_type')
+  );
+  $form['at']['font']['page_title_font_wrapper']['page_title_font_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="page_title_font_type"]' => array (
+          'value' => ''
+        )
+      )
+    )
+  );
+  $form['at']['font']['page_title_font_wrapper']['page_title_font_container']['page_title_font'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('page_title_font'),
+    '#options' => $fonts,
+  );
+  $form['at']['font']['page_title_font_wrapper']['page_title_font_gwf_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="page_title_font_type"]' => array (
+          'value' => 'gwf'
+        )
+      )
+    )
+  );
+  $form['at']['font']['page_title_font_wrapper']['page_title_font_gwf_container']['page_title_font_gwf'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('page_title_font_gwf'),
+    '#options' => get_gwf_font_families_options()
+  );
+  // Node title font
+  $form['at']['font']['node_title_font_wrapper'] = array (
+    '#type' => 'fieldset',
+    '#title' => t('Node Title'),
+    '#attributes' => array('class' => array('font-element-wrapper'))
+  );
+  $form ['at']['font']['node_title_font_wrapper']['node_title_font_type'] = array (
+    '#type' => 'select',
+    '#title' => t('Type'),
+    '#options' => array (
+      '' => t('Websafe font'),
+      'gwf' => t('Google font'),
+    ), '#default_value' => theme_get_setting('node_title_font_type')
+  );
+  $form['at']['font']['node_title_font_wrapper']['node_title_font_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="node_title_font_type"]' => array (
+          'value' => ''
+        )
+      )
+    )
+  );
+  $form['at']['font']['node_title_font_wrapper']['node_title_font_container']['node_title_font'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('node_title_font'),
+    '#options' => $fonts,
+  );
+  $form['at']['font']['node_title_font_wrapper']['node_title_font_gwf_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="node_title_font_type"]' => array (
+          'value' => 'gwf'
+        )
+      )
+    )
+  );
+  $form['at']['font']['node_title_font_wrapper']['node_title_font_gwf_container']['node_title_font_gwf'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('node_title_font_gwf'),
+    '#options' => get_gwf_font_families_options()
+  );
+
+  // Comment title font
+  $form['at']['font']['comment_title_font_wrapper'] = array (
+    '#type' => 'fieldset',
+    '#title' => t('Comment Title'),
+    '#attributes' => array('class' => array('font-element-wrapper'))
+  );
+  $form ['at']['font']['comment_title_font_wrapper']['comment_title_font_type'] = array (
+    '#type' => 'select',
+    '#title' => t('Type'),
+    '#options' => array (
+      '' => t('Websafe font'),
+      'gwf' => t('Google font'),
+    ), '#default_value' => theme_get_setting('comment_title_font_type')
+  );
+  $form['at']['font']['comment_title_font_wrapper']['comment_title_font_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="comment_title_font_type"]' => array (
+          'value' => ''
+        )
+      )
+    )
+  );
+  $form['at']['font']['comment_title_font_wrapper']['comment_title_font_container']['comment_title_font'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('comment_title_font'),
+    '#options' => $fonts,
+  );
+  $form ['at'] ['font']['comment_title_font_wrapper']['comment_title_font_gwf_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="comment_title_font_type"]' => array (
+          'value' => 'gwf'
+        )
+      )
+    )
+  );
+  $form['at']['font']['comment_title_font_wrapper']['comment_title_font_gwf_container']['comment_title_font_gwf'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('comment_title_font_gwf'),
+    '#options' => get_gwf_font_families_options()
+  );
+  // Block title font
+  $form ['at']['font'] ['block_title_font_wrapper'] = array (
+    '#type' => 'fieldset',
+    '#title' => t('Block Title'),
+    '#attributes' => array('class' => array('font-element-wrapper'))
+  );
+  // Block title font
+  $form ['at']['font']['block_title_font_wrapper']['block_title_font_type'] = array (
+    '#type' => 'select',
+    '#title' => t('Type'),
+    '#options' => array (
+      '' => t('Websafe font'),
+      'gwf' => t('Google font'),
+    ), '#default_value' => theme_get_setting('block_title_font_type')
+  );
+  $form ['at']['font']['block_title_font_wrapper']['block_title_font_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="block_title_font_type"]' => array (
+          'value' => ''
+        )
+      )
+    )
+  );
+  $form['at']['font']['block_title_font_wrapper']['block_title_font_container']['block_title_font'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('block_title_font'),
+    '#options' => $fonts,
+  );
+  $form ['at'] ['font']['block_title_font_wrapper']['block_title_font_gwf_container'] = array (
+    '#type' => 'container',
+    '#states' => array (
+      'visible' => array (
+        'select[name="block_title_font_type"]' => array (
+          'value' => 'gwf'
+        )
+      )
+    )
+  );
+  $form['at']['font']['block_title_font_wrapper']['block_title_font_gwf_container']['block_title_font_gwf'] = array(
+    '#type' => 'select',
+    '#title' => t('Font'),
+    '#default_value' => theme_get_setting('block_title_font_gwf'),
+    '#options' => get_gwf_font_families_options()
+  );
+  $form['at']['size'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Font Size'),
+    '#description' => t('<h3>Font Size</h3>'),
+  );
+  $form['at']['size']['font_size'] = array(
+    '#type' => 'select',
+    '#title' => t('Font Size'),
+    '#default_value' => theme_get_setting('font_size'),
+    '#description' => t('This sets a base font-size on the body element - all text will scale relative to this value.'),
+    '#options' => array(
+      'fs-smallest' => t('Smallest'),
+      'fs-small'    => t('Small'),
+      'fs-medium'   => t('Medium'),
+      'fs-large'    => t('Large'),
+      'fs-largest'  => t('Largest'),
+    ),
+  );
+  $form['at']['headings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Heading Styles'),
+    '#description' => t('<h3>Heading Styles</h3><p>Add extra styles to headings. Shadows ony work for CSS3 capable browsers such as Firefox, Safari, IE9 etc.<p>'),
+  );
+  $form['at']['headings']['headings_styles_caps'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('All Caps'),
+    '#default_value' => theme_get_setting('headings_styles_caps'),
+  );
+  $form['at']['headings']['headings_styles_weight'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Font weight normal'),
+    '#default_value' => theme_get_setting('headings_styles_weight'),
+  );
+  $form['at']['headings']['headings_styles_shadow'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Text shadows'),
+    '#default_value' => theme_get_setting('headings_styles_shadow'),
+  );
+  $form['at']['corners'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Rounded corners'),
+    '#description' => t('<h3>Rounded Corners</h3><p>Rounded corners are implimented using CSS and only work in modern compliant browsers. You can set the radius for both the main content and main menu tabs.'),
+  );
+  $form['at']['corners']['content_corner_radius'] = array(
+    '#type' => 'select',
+    '#title' => t('Main content radius'),
+    '#default_value' => theme_get_setting('content_corner_radius'),
+    '#description' => t('Change the corner radius for the main content area.'),
+    '#options' => array(
+      'rc-0' => t('none'),
+      'rc-4' => t('4px'),
+      'rc-6' => t('6px'),
+      'rc-8' => t('8px'),
+      'rc-10' => t('10px'),
+      'rc-12' => t('12px'),
+    ),
+  );
+  $form['at']['corners']['tabs_corner_radius'] = array(
+    '#type' => 'select',
+    '#title' => t('Menu tabs radius'),
+    '#default_value' => theme_get_setting('tabs_corner_radius'),
+    '#description' => t('Change the corner radius for the main menu tabs.'),
+    '#options' => array(
+      'rct-0' => t('none'),
+      'rct-4' => t('4px'),
+      'rct-6' => t('6px'),
+      'rct-8' => t('8px'),
+      'rct-10' => t('10px'),
+      'rct-12' => t('12px'),
+    ),
+  );
+  $form['at']['pagestyles'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Page Styles'),
+    '#description' => t('<h3>Page Styles</h3><p>The Box Shadows are implimented using CSS and only work in modern compliant browsers. The backgrounds are semi-transparent images.'),
+  );
+  $form['at']['pagestyles']['box_shadows'] = array(
+    '#type' => 'radios',
+    '#title' => t('Page Styles'),
+    '#default_value' => theme_get_setting('box_shadows'),
+    '#description' => t('Add styles for CSS3 browsers.'),
+    '#options' => array(
+      'bs-n' => t('None'),
+      'bs-l' => t('Box shadow - light'),
+      'bs-d' => t('Box shadow - dark'),
+    ),
+  );
+  $form['at']['pagestyles']['body_background'] = array(
+    '#type' => 'select',
+    '#title' => t('Background overlays'),
+    '#default_value' => theme_get_setting('body_background'),
+    '#description' => t('This setting adds a texture or pattern over the main background color.'),
+    '#options' => array(
+      'bb-n'   => t('None'),
+      'bb-b'   => t('Bubbles'),
+      'bb-hs'  => t('Horizontal stripes'),
+      'bb-dp'  => t('Diagonal pattern'),
+      'bb-dll' => t('Diagonal lines - loose'),
+      'bb-dlt' => t('Diagonal lines - tight'),
+      'bb-sd'  => t('Small dots'),
+      'bb-bd'  => t('Big dots'),
+    ),
+  );
+  $form['at']['menu_styles'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Menu Bullets'),
+    '#description' => t('<h3>Menu Bullets</h3><p>This setting allows you to customize the bullet images used on menus.'),
+  );
+  $form['at']['menu_styles']['menu_bullets'] = array(
+    '#type' => 'select',
+    '#title' => t('Menu Bullets'),
+    '#default_value' => theme_get_setting('menu_bullets'),
+    '#description' => t('Change the default menu bullets.'),
+    '#options' => array(
+      'mb-n' => t('None'),
+      'mb-dd' => t('Drupal default'),
+      'mb-ah' => t('Arrow head'),
+      'mb-ad' => t('Double arrow head'),
+      'mb-ca' => t('Circle arrow'),
+      'mb-fa' => t('Fat arrow'),
+      'mb-sa' => t('Skinny arrow'),
+    ),
+  );
+  $form['theme_settings']['#collapsible'] = TRUE;
+  $form['theme_settings']['#collapsed'] = TRUE;
+  $form['logo']['#collapsible'] = TRUE;
+  $form['logo']['#collapsed'] = TRUE;
+  $form['favicon']['#collapsible'] = TRUE;
+  $form['favicon']['#collapsed'] = TRUE;
+}

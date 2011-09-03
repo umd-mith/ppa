@@ -1,0 +1,234 @@
+
+/* Smartphone portrait */
+@media only screen and (max-width:320px) {
+
+  #branding {
+    padding: 15px 0 0 0;
+  }
+  .region-header {
+    padding: 0 0 10px;
+  }
+  #branding,
+  .region-header {
+    float: none;
+    margin: auto;
+    text-align: center;
+    display: table;
+  }
+  #site-name,
+  #site-slogan {
+    text-align: left;
+  }
+  #site-name {
+    font-size: 3.5em;
+  }
+  #secondary-content-wrapper,
+  #top-panels-wrapper,
+  #content-wrapper,
+  #footer-panels-wrapper,
+  #tertiary-content-wrapper {
+    margin-bottom: 10px;
+  }
+  .region-secondary-content .block {
+    margin-bottom: 0;
+    font-size: 1em;
+  }
+  #menu-bar {
+    padding: 0 2px;
+  }
+  #menu-bar .menu-wrapper > ul > li {
+    display: block;
+    float: none;
+    margin: 0;
+    overflow: hidden;
+  }
+  #menu-bar .menu-wrapper ul > li > a {
+    padding: 6px 10px 8px;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+  #menu-bar .sf-menu {
+    height: auto;
+    padding: 2px 0;
+  }
+  .region-header .block {
+    overflow: hidden;
+  }
+  .region-header .block ul li {
+    display: block;
+    text-align: center;
+    float: none;
+  }
+  .region-header .block ul li a {
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+
+}
+
+/* Smartphone landscape */
+@media only screen and (min-width:321px) and (max-width:480px) {
+
+  #branding {
+    padding: 15px 0 0 0;
+  }
+  .region-header {
+    padding: 0 0 10px;
+  }
+  #branding,
+  .region-header {
+    float: none;
+    margin: auto;
+    text-align: center;
+    display: table;
+  }
+  #site-name,
+  #site-slogan {
+    text-align: left;
+  }
+  #site-name {
+    font-size: 3.5em;
+  }
+  #secondary-content-wrapper,
+  #top-panels-wrapper,
+  #content-wrapper,
+  #footer-panels-wrapper,
+  #tertiary-content-wrapper {
+    margin-bottom: 10px;
+  }
+  .region-secondary-content .block {
+    margin-bottom: 0;
+    font-size: 1em;
+  }
+  #menu-bar {
+    padding: 0 2px;
+  }
+  #menu-bar .menu-wrapper > ul > li {
+    display: block;
+    float: none;
+    margin: 0;
+    overflow: hidden;
+  }
+  #menu-bar .menu-wrapper ul > li > a {
+    padding: 6px 10px 8px;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+  #menu-bar .sf-menu {
+    height: auto;
+    padding: 2px 0;
+  }
+  .region-header .block {
+    overflow: hidden;
+  }
+  .region-header .block ul li {
+    display: block;
+    text-align: center;
+    float: none;
+  }
+  .region-header .block ul li a {
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+
+}
+
+/* Tablet portrait */
+@media only screen and (min-width:481px) and (max-width:768px) {
+
+  #branding {
+    padding: 15px 0 0 0;
+  }
+  .region-header {
+    padding: 0 0 10px;
+  }
+  #branding,
+  .region-header {
+    float: none;
+    margin: auto;
+    text-align: center;
+    display: table;
+  }
+  #site-name,
+  #site-slogan {
+    text-align: left;
+  }
+  #site-name {
+    font-size: 3.5em;
+  }
+  #secondary-content-wrapper,
+  #top-panels-wrapper,
+  #content-wrapper,
+  #footer-panels-wrapper,
+  #tertiary-content-wrapper {
+    margin-bottom: 10px;
+  }
+  .region-secondary-content .block {
+    margin-bottom: 0;
+    font-size: 1em;
+  }
+  #menu-bar {
+    padding: 0 2px;
+  }
+  #menu-bar .menu-wrapper > ul > li {
+    display: block;
+    float: none;
+    margin: 0;
+    overflow: hidden;
+  }
+  #menu-bar .menu-wrapper ul > li > a {
+    padding: 6px 10px 8px;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+  #menu-bar .sf-menu {
+    height: auto;
+    padding: 2px 0;
+  }
+  .region-header .block {
+    overflow: hidden;
+  }
+  .region-header .block ul li {
+    display: block;
+    text-align: center;
+    float: none;
+  }
+  .region-header .block ul li a {
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+
+}
+
+/* Tablet landscape */
+@media only screen and (min-width:769px) and (max-width:1024px) {
+
+  #branding,
+  .region-header  {
+    padding-top: 15px;
+    padding-bottom: 20px;
+  }
+  #site-name {
+    font-size: 3.5em;
+  }
+  .region-secondary-content .block {
+    margin-bottom: 0;
+    font-size: 1.077em;
+  }
+
+}
+
+/* Standard layout */
+@media only screen and (min-width:1025px) {
+
+  th, td {
+    padding: 10px 14px;
+  }
+
+}

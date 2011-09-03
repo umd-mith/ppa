@@ -1,0 +1,35 @@
+/* Set layout for gpanels for smaller devices */
+
+/* Smartphone portrait */
+@media only screen and (max-width:320px) {
+
+  .gpanel .region {
+    display: block;
+    float: none;
+    width: 100% !important;
+  }
+
+}
+
+/* Smartphone landscape */
+@media only screen and (min-width:321px) and (max-width:480px) {
+
+  .gpanel .region {
+    display: block;
+    float: none;
+    width: 100% !important;
+  }
+
+}
+
+/* Tablet portrait */
+@media only screen and (min-width:481px) and (max-width:768px) {
+
+  .five-5x20 .region,
+  .six-6x16 .region {
+    display: block;
+    float: none;
+    width: 100% !important;
+  }
+
+}

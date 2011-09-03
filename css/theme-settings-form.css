@@ -1,0 +1,127 @@
+/**
+ * NOTICE: This is a commercial Drupal theme. Elements of this theme including this field
+ * are licensed under a standard commercial license which does not permit redistribution. 
+ */
+
+/* This theme is designed to work with the Seven admin theme - if you use another admin theme
+   the theme settings form could potentially break. */
+
+div.vertical-tabs .vertical-tabs-panes {
+  min-height: 300px;
+}
+.vertical-tabs-panes .form-item {
+  clear: both;
+}
+.vertical-tabs-panes label {
+  float: left;
+  width: 14em;
+}
+.vertical-tabs-panes select {
+  width: 16em;
+}
+#edit-font label {
+  width: 10em;
+}
+#edit-font select {
+  width: 25em;
+}
+#edit-font #edit-font-size {
+  width: auto;
+}
+#edit-breadcrumb select#edit-breadcrumb-display,
+#edit-breadcrumb input#edit-breadcrumb-separator {
+  width: auto;
+}
+.vertical-tabs-panes .form-type-checkbox label,
+.vertical-tabs-panes .form-type-radios label {
+  float: none;
+  width: auto;
+}
+.vertical-tabs-panes fieldset fieldset {
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+}
+#edit-search-info-separator {
+  width: 20%;
+}
+#edit-classes,
+#edit-menu-links {
+  margin-top: 10px;
+}
+
+/* Override cores display none, we really do need titles on some fieldsets */
+.vertical-tabs-panes #edit-font .fieldset-wrapper fieldset.form-wrapper,
+.vertical-tabs-panes #edit-headings .fieldset-wrapper fieldset.form-wrapper,
+.vertical-tabs-panes #edit-images .fieldset-wrapper fieldset.form-wrapper {
+  border: none;
+  margin-bottom: 1px;
+  background: none;
+  border-bottom: 1px solid #ccc;
+}
+.vertical-tabs-panes #edit-images .fieldset-wrapper fieldset.form-wrapper {
+  border-bottom: none;
+}
+.vertical-tabs-panes #edit-font .fieldset-wrapper fieldset.form-wrapper legend,
+.vertical-tabs-panes #edit-headings .fieldset-wrapper fieldset.form-wrapper legend,
+.vertical-tabs-panes #edit-images .fieldset-wrapper fieldset.form-wrapper legend {
+  display: block;
+}
+.vertical-tabs-panes #edit-font .fieldset-wrapper fieldset.form-wrapper .fieldset-legend,
+.vertical-tabs-panes #edit-headings .fieldset-wrapper fieldset.form-wrapper .fieldset-legend,
+.vertical-tabs-panes #edit-images .fieldset-wrapper fieldset.form-wrapper .fieldset-legend {
+  text-transform: none;
+  margin-top: 0;
+  margin-bottom: 0.9em;
+  padding-left: 0;
+  position: static;
+}
+.vertical-tabs-panes #edit-headings .fieldset-wrapper fieldset.form-wrapper .fieldset-legend {
+  padding-left: 15px;
+}
+.vertical-tabs-panes #edit-font .fieldset-wrapper fieldset.form-wrapper .form-type-select {
+  clear: none;
+  float: left;
+  margin: 0;
+  padding: 0 30px 15px 0;
+}
+.vertical-tabs-panes #edit-font div.fieldset-wrapper > .form-type-select > select {
+  width: 10em;
+}
+.vertical-tabs-panes #edit-font .fieldset-wrapper fieldset.form-wrapper > .fieldset-wrapper {
+  margin-top: 1em;
+}
+.vertical-tabs-panes #edit-font .fieldset-wrapper fieldset.form-wrapper .form-type-select label {
+  width: auto;
+  margin-right: 1em;
+  font-weight: 400;
+}
+.vertical-tabs-panes #edit-headings .fieldset-wrapper fieldset.form-wrapper {
+  padding-top: 30px;
+}
+.vertical-tabs-panes #edit-captions .fieldset-wrapper {
+  padding: 30px 0 15px 0;
+}
+.vertical-tabs-panes #edit-captions .fieldset-wrapper .fieldset-description {
+  margin-bottom: 10px;
+  color: #666666;
+  font-size: 0.923em;
+  line-height: 1.231em;
+}
+#edit-headings .form-type-radios {
+  width: 12em;
+  float: left;
+  clear: none;
+}
+
+/* Color form overrides */
+#palette .form-item {
+  width: 26em;
+}
+.color-form label {
+  width: 16em;
+}
+
+/* Fieldsets */
+#edit-minmax {
+  margin-top: 10px;
+}

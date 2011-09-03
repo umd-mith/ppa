@@ -1,0 +1,90 @@
+/**
+ */
+
+/* Articles (nodes) */
+.article {
+  margin-bottom: 20px;
+}
+
+.article-inner > header {
+  margin-bottom: 16px;
+}
+
+/* Teaser title. */
+.article-title{
+  border-bottom: none;
+  font-size: 2.167em;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+.article-title a:link,
+.article-title a:visited,
+.article-title a:active {}
+
+.article-title a:hover,
+.article-title a:focus {
+  text-decoration: underline;
+}
+
+/* User Picture. */
+.article .user-picture {
+  float: left;
+  margin: 0 10px 8px 0;
+}
+.article .user-picture img {
+  border: 1px solid #ccc;
+  padding: 2px;
+  width: 50px;
+}
+
+/* Submitted */
+.article-inner .submitted {
+  color: #696969;
+  line-height: 1;
+  margin-top: 3px;
+}
+.article-inner .submitted a {}
+.article-inner .submitted a:hover {}
+.article-inner .submitted .username {}
+.article-inner .submitted footer time {}
+
+/* Links. */
+.article ul.links {
+  margin: 0;
+}
+.article ul.links li {
+  padding: 0;
+  margin: 0 8px 0 0;
+}
+.article ul.links li a {}
+.article ul.links li.node_read_more a {}
+.article ul.links li.comment_add a {}
+.article ul.links li.comment_comments a {}
+.article ul.links li.comment_new_comments a {}
+.article ul.links li.blog_usernames_blog a {}
+.article ul.links li.print_html a {}
+.article ul.links li.print_email a {}
+.article ul.links li.print_pdf a {}
+
+/* UL link first and last classes. */
+.article ul.links li.first {}
+.article ul.links li.last  {}
+
+.article-book ul.links {
+  margin: 0 0 14px;
+}
+
+/* Workflow states. */
+.article-add    {}
+.article-edit   {}
+.article-delete {}
+.article-preview  {}
+.article-sticky   {}
+.article-promoted {}
+
+/* Status. */
+.article-unpublished {}
+
+/* Theme the teaser. */
+.article-teaser {}
