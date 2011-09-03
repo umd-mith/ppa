@@ -61,14 +61,15 @@ function corolla_preprocess_html(&$vars) {
     'menu_bullets',
     'content_corner_radius',
     'tabs_corner_radius',
+    'image_alignment',
   );
   foreach ($settings_array as $setting) {
     $vars['classes_array'][] = theme_get_setting($setting);
   }
 
   $fonts = array(
-    'bf'  => 'base_font', 
-    'snf' => 'site_name_font', 
+    'bf'  => 'base_font',
+    'snf' => 'site_name_font',
     'ssf' => 'site_slogan_font',
     'ptf' => 'page_title_font',
     'ntf' => 'node_title_font',
@@ -89,30 +90,30 @@ function corolla_preprocess_html(&$vars) {
       }
 
       $font_value = preg_replace('/[^\w\d_ -]/si', '', $font_value);
-      $style_name = get_style_name($key, $font_type, $font_value); 
+      $style_name = get_style_name($key, $font_type, $font_value);
       $vars['classes_array'][] = $style_name;
 
       switch($key) {
-        case 'bf': 
+        case 'bf':
           drupal_add_css("body.$style_name, .$style_name .form-text {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
           break;
-        case 'snf': 
-          drupal_add_css(".$style_name #site-name {font-family : '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+        case 'snf':
+          drupal_add_css("body.$style_name #site-name {font-family : '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
           break;
-        case 'ssf': 
-          drupal_add_css(".$style_name #site-slogan {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+        case 'ssf':
+          drupal_add_css("body.$style_name #site-slogan {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
           break;
-        case 'ptf': 
-          drupal_add_css(".$style_name #page-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+        case 'ptf':
+          drupal_add_css("body.$style_name #page-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
           break;
-        case 'ntf': 
-          drupal_add_css(".$style_name .article-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+        case 'ntf':
+          drupal_add_css("body.$style_name .article-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
           break;
-        case 'ctf': 
-          drupal_add_css(".$style_name .comment-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+        case 'ctf':
+          drupal_add_css("body.$style_name .comment-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
           break;
-        case 'btf': 
-          drupal_add_css(".$style_name .block-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
+        case 'btf':
+          drupal_add_css("body.$style_name .block-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
           break;
       }
     }
@@ -156,6 +157,24 @@ function corolla_preprocess_block(&$vars) {
   if ($vars['block']->region == 'menu_bar' || $vars['block']->region == 'header') {
     $vars['title_attributes_array']['class'][] = 'element-invisible';
   }
+}
+
+/**
+ * Override or insert variables into the field template.
+ */
+function corolla_preprocess_field(&$vars) {
+  $element = $vars['element'];
+  $vars['classes_array'][] = 'view-mode-'. $element['#view_mode'];
+  $vars['image_caption_teaser'] = FALSE;
+  $vars['image_caption_full'] = FALSE;
+  if(theme_get_setting('image_caption_teaser') == 1) {
+    $vars['image_caption_teaser'] = TRUE;
+  }
+  if(theme_get_setting('image_caption_full') == 1) {
+    $vars['image_caption_full'] = TRUE;
+  }
+  $vars['field_view_mode'] = '';
+  $vars['field_view_mode'] = $element['#view_mode'];
 }
 
 /**

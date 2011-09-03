@@ -1,4 +1,4 @@
-
+/* HTML Elements */
 html {
   font-size: 81.3%; /* 16px x 81.3% = 13px */
   word-wrap: break-word;
@@ -75,8 +75,6 @@ caption,
 th {
   font-weight: 700;
 }
-
-/* Lists */
 ul,
 ol {
   margin: 0 0 1.5em 1em;

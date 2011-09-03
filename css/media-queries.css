@@ -1,7 +1,6 @@
 
 /* Smartphone portrait */
 @media only screen and (max-width:320px) {
-
   #branding {
     padding: 15px 0 0 0;
   }
@@ -65,12 +64,9 @@
     -webkit-border-radius: 0 !important;
     border-radius: 0 !important;
   }
-
 }
-
 /* Smartphone landscape */
 @media only screen and (min-width:321px) and (max-width:480px) {
-
   #branding {
     padding: 15px 0 0 0;
   }
@@ -134,12 +130,9 @@
     -webkit-border-radius: 0 !important;
     border-radius: 0 !important;
   }
-
 }
-
 /* Tablet portrait */
 @media only screen and (min-width:481px) and (max-width:768px) {
-
   #branding {
     padding: 15px 0 0 0;
   }
@@ -203,12 +196,9 @@
     -webkit-border-radius: 0 !important;
     border-radius: 0 !important;
   }
-
 }
-
 /* Tablet landscape */
 @media only screen and (min-width:769px) and (max-width:1024px) {
-
   #branding,
   .region-header  {
     padding-top: 15px;
@@ -221,14 +211,10 @@
     margin-bottom: 0;
     font-size: 1.077em;
   }
-
 }
-
 /* Standard layout */
 @media only screen and (min-width:1025px) {
-
-  th, td {
+  th,td {
     padding: 10px 14px;
   }
-
 }

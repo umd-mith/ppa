@@ -1,9 +1,4 @@
-/**
- * Adaptivetheme takes a pretty heavy handed approach to form styling,
- * this is so you can have decent looking forms without having to do a
- * lot of work. The CSS is included in full, including all positioning,
- * so you can change anything you want.
- */
+/* Forms */
 form {
   margin: 0 0 1.5em;
   padding: 0;
@@ -28,15 +23,15 @@ input.form-text,
 input.form-password,
 input.form-file,
 textarea {
-    background-color: #fafafa;
-    border: 1px solid #ccc;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    padding: 6px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -moz-box-sizing: border-box;
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 6px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-sizing: border-box;
 }
 .form-textarea-wrapper.resizable textarea{
   -moz-border-radius: 3px 3px 0 0;
@@ -60,11 +55,11 @@ input.form-file,
 }
 input.form-button,
 input.form-submit {
-    background: url(images/button.png) repeat-x left top transparent;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    margin: 0 5px 0 0;
-    padding: 5px 11px;
+  background: url(images/button.png) repeat-x left top transparent;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  margin: 0 5px 0 0;
+  padding: 5px 11px;
 }
 input.form-button:hover,
 input.form-submit:hover,
@@ -101,11 +96,6 @@ span.marker {}
 #edit-operation-wrapper select {
   margin: .5em;
 }
-div.resizable-textarea textarea {
-  margin-top: 0;
-}
-
-/* Fieldsets */
 fieldset {
   background: transparent;
   border: 1px solid #dadada;
@@ -141,22 +131,64 @@ html.js fieldset.collapsed {
   background: transparent;
   padding-top: 5px;
 }
-
-/* Search */
+html.js fieldset.collapsible .fieldset-legend {
+  background: none;
+}
+html.js fieldset.collapsible .fieldset-legend {
+  padding: 2px 4px 2px 10px;
+}
+html.js fieldset.collapsible legend a {
+  padding: 0 15px 0 0;
+  color: #fff;
+  background: url(images/arrow-down-white.png) no-repeat right 4px;
+}
+html.js fieldset.collapsed legend a {
+  background: url(images/arrow-right-white.png) no-repeat right 4px;
+}
+html.js fieldset.collapsed .fieldset-wrapper,
+html.js fieldset.collapsed .action {
+  display: none;
+}
+html.js fieldset.collapsed {
+  padding: 10px 20px;
+}
+html.js fieldset.collapsed {
+  border-width: 1px;
+  margin-bottom: 15px;
+}
+html.js input.form-autocomplete {
+  background-position: 99% 8px;
+}
+html.js input.throbbing {
+  background-position: 99% -12px;
+}
+div.resizable-textarea textarea {
+  margin-top: 0;
+}
+.resizable-textarea {
+  width: 100%;
+}
+.resizable-textarea .grippie {
+  height: 9px;
+  width: 100%;
+  background: #ccc url(images/grippie.png) no-repeat center 2px;
+  border: 1px solid #ccc;
+  border-top-width: 0;
+  cursor: s-resize;
+  margin-top: -6px;
+  position: relative;
+  margin-right: 0!important;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  box-sizing: border-box;
+}
 #search-block-form {
     margin-top: 0.4em;
 }
-#search-block-form > div {}
-#search-block-form .container-inline{}
-#edit-search-block-form-1-wrapper {}
-#search-block-form label {}
-#search-block-form input {}
-#search-block-form .form-submit {}
 #search-block-form .form-text {
   margin-bottom: 6px;
 }
-
-/* Advanced search form */
 fieldset#edit-advanced fieldset {
   margin: 0 10px 10px 0;
 }
@@ -187,8 +219,6 @@ fieldset#edit-advanced fieldset .fieldset-legend {
 .search-advanced .fieldset-wrapper legend {
   background: transparent;
 }
-
-/* User login */
 #user-login-form ul {
   margin: 0;
   padding: 0;
@@ -224,7 +254,6 @@ fieldset#edit-advanced fieldset .fieldset-legend {
 .description {
   color: #555;
 }
-/* Tips overrides */
 .field-type-text-long fieldset {
   padding: 10px 0;
 }
@@ -240,20 +269,16 @@ fieldset .filter-help {
   margin: 0;
   padding: 5px 18px 10px;
 }
-/* Special case modules */
 #devel-switch-user-form {
   margin-bottom: 0;
 }
-/**
- * Filter module
- */
 fieldset.filter-wrapper {
   margin: 0 0 12px 0;
   border-top: none;
   width: auto;
 }
 .filter-help {
-  float: right; /* LTR */
+  float: right;
   margin: 0;
 }
 .filter-help a {
@@ -284,4 +309,32 @@ body.page-filter-tips #block-system-main li {
 }
 body.page-filter-tips #block-system-main table {
   margin: 10px 0;
+}
+div.vertical-tabs {
+  border: 1px solid #ccc;
+}
+div.vertical-tabs ul.vertical-tabs-list {
+  list-style-position: outside;
+}
+.vertical-tabs-panes {
+  padding: 9px 5px;
+}
+div.vertical-tabs fieldset {
+  background: none;
+}
+ul.vertical-tabs-list li a {
+  display: block;
+  border: none;
+  padding: 7px 12px;
+  color: inherit;
+}
+ul.vertical-tabs-list li.selected a {
+  background-color: #fff;
+}
+.vertical-tabs input {
+  width: 100%;
+}
+.vertical-tabs input.form-checkbox,
+.vertical-tabs input.form-radio {
+  width: auto;
 }

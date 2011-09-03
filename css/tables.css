@@ -1,6 +1,3 @@
-/** 
- */
-
 /* Tables */
 table {
   border-spacing: 0;
@@ -79,9 +76,6 @@ tr:first-child td.container {
 #forum {
   overflow-x: scroll;
 }
-/**
- * Forum module
- */
 body.page-forum ul.action-links {
   margin: 9px 0;
 }
@@ -148,7 +142,33 @@ body.page-forum ul.action-links {
   width: 43px;
   height: 38px;
 }
-
+/* Table drag & drop */
+.draggable a.tabledrag-handle {
+  margin: 0 12px 0 0;
+  padding: 0;
+}
+tr.drag {
+  background-color: #f3fbfe;
+}
+tr.drag-previous {
+  background-color: #f8fdfe;
+}
+span.tabledrag-changed {
+  font-size: 13px;
+  margin-left: 3px;
+  color: #f00;
+}
+th a,
+thead a {
+  color: #fff!important;
+}
+th a:hover,
+thead a:hover {
+  color: #fff;
+}
+table img {
+  margin: 0 0 0 7px;
+}
 /**
  * Webkit work-around. Uncomment and adjust if you have borders on td.
  */

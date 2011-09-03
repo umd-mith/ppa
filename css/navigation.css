@@ -1,18 +1,7 @@
 /* CSS for major navigation elements such as menus, pager, superfish etc */
-
 a {
   text-decoration: none;
 }
-a:link    {}
-a:visited {}
-a:hover   {}
-a:active  {}
-a.active  {}
-
-/* Global focus style for links. */
-a:active,
-a:focus {}
-
 ul.menu {
   list-style-position: inside;
   margin: 4px 0;
@@ -22,36 +11,21 @@ ul.menu li {
   margin: 2px 0;
   padding: 0;
 }
-
-/* Menus */
-.menu,
-.menu ul, 
-.menu ul ul, 
-.menu ul ul ul {}
-
-/* Menu li styles */
-.menu li {}
-
-.menu li.collapsed {}
-.menu li.expanded  {}
-.menu li.leaf      {}
-
-.menu li a:link,
-.menu li a:visited {}
-.menu li a:hover,
-.menu li a:focus,
-.menu li a:active  {}
-.menu li.active a  {}
-.menu li.active-trail a {}
-
-.menu li.first {}
-.menu li.last  {}
-
 .block .menu li.content {
   padding: 0; /* extra class can equal a standard class */
 }
-
-/* Pagers */
+ul.action-links {
+  margin: 10px 0;
+}
+ul.action-links li {
+  list-style: none;
+  display: inline;
+  padding: 0 14px 0 1px;
+}
+ul.action-links li a {
+  padding-left: 15px;
+  background: url(images/action-link.png) no-repeat left center;
+}
 .item-list ul.pager {
   margin: 15px 0 2px 0;
   text-align: left;
@@ -72,8 +46,6 @@ ul.pager li.pager-next {
 ul.pager li.pager-ellipsis {
   margin: 0;
 }
-
-/* Breadcrumbs */
 #breadcrumb-wrapper {
   margin: 0 0 10px 0;
 }
@@ -92,8 +64,6 @@ ul.pager li.pager-ellipsis {
   list-style: none;
   display: inline;
 }
-
-/* Superfish Skins */
 .sf-menu {
   margin-bottom: 0;
   height: 30px;
@@ -105,18 +75,12 @@ ul.pager li.pager-ellipsis {
   padding: 0;
   text-decoration: none;
 }
-.sf-menu a:link,
-.sf-menu a,
-.sf-menu a:visited  {}
 .sf-menu > li > a:link,
 .sf-menu > li > a,
 .sf-menu > li > a:visited  {}
 .sf-menu li {
   background: transparent;
 }
-.sf-menu li li {}
-.sf-menu li li li {}
-.sf-menu li li li li {}
 .sf-menu li:hover,
 .sf-menu li.sfHover,
 .sf-menu a:focus,
@@ -124,8 +88,6 @@ ul.pager li.pager-ellipsis {
 .sf-menu a:active {
   outline: 0;
 }
-
-/* Superfish blocks */
 .block-superfish .block-inner,
 .block-superfish .block-inner .content {
   padding: 0;
@@ -162,17 +124,11 @@ ul.pager li.pager-ellipsis {
 .sf-navbar {
   padding-bottom: 0 !important;
 }
-
-
 /* Corolla supports Superfish drop menus in two regions - Menu bar and the Header panel,
    and we need to support standard menu blocks as well. */
-/* Any menu block in the menu-bar region. */
-
 #menu-bar-wrapper, #menu-bar {
-  background-color: #8E9E35;
   height: 3em;
 }
-
 #menu-bar {
   padding: 0 15px;
   font-size: 0.923em;
@@ -205,7 +161,6 @@ ul.pager li.pager-ellipsis {
 #menu-bar .menu-wrapper > ul > li > ul {
   margin-top: 0.417em;
 }
-
 .region-header .sf-horizontal.sf-style-none,
 .region-header ul.menu {
   text-transform: uppercase;
@@ -237,8 +192,6 @@ ul.pager li.pager-ellipsis {
 .region-header .sf-horizontal.sf-style-none > li > ul {
   margin-top: -0.231em !important;
 }
-
-/* Skip Navigation */
 #skip-link {
   left: 50%;
   margin-left: -6.5em;
@@ -272,8 +225,6 @@ ul.pager li.pager-ellipsis {
 #skip-link a:focus {
   outline: 0;
 }
-
-/* Tabs */
 #tasks {
   margin: 0 20px -1px;
 }
@@ -287,7 +238,7 @@ ul.primary li a {
   margin-right: .08em;
   border-color: #e1e1e1;
   line-height: 1.7;
-  padding: 0.4em 1em 0.45em;
+  padding: 0.4em 1em 0.43em;
   -moz-border-radius: 6px 6px 0 0;
   border-radius: 6px 6px 0 0;
 }

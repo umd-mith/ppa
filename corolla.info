@@ -151,13 +151,13 @@
   setting[comment_title_font_type] = 'wsf'
   setting[block_title_font_type]   = 'wsf'
 
-  settings[base_font]              = 'bf-sss'
-  settings[site_name_font]         = 'snf-sl'
-  settings[site_slogan_font]       = 'ssf-sl'
-  settings[page_title_font]        = 'ptf-sl'
-  settings[node_title_font]        = 'ntf-sl'
-  settings[comment_title_font]     = 'ctf-sl'
-  settings[block_title_font]       = 'btf-sl'
+  settings[base_font]              = 'bf-l'
+  settings[site_name_font]         = 'snf-cc'
+  settings[site_slogan_font]       = 'ssf-cc'
+  settings[page_title_font]        = 'ptf-a'
+  settings[node_title_font]        = 'ntf-a'
+  settings[comment_title_font]     = 'ctf-a'
+  settings[block_title_font]       = 'btf-a'
 
   settings[font_size]              = 'fs-medium'
   settings[headings_styles_caps]   = 0
