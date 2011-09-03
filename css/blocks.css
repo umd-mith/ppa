@@ -30,6 +30,11 @@
   margin: 0;
 }
 
+/* Reset block ul in the dashboard */
+#dashboard .block ul {
+  margin-left: 0;
+}
+
 /* Mini panels get a special title class. */
 .mini-panel-title {
   margin: 0 10px;

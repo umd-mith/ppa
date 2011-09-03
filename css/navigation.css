@@ -167,9 +167,15 @@ ul.pager li.pager-ellipsis {
 /* Corolla supports Superfish drop menus in two regions - Menu bar and the Header panel,
    and we need to support standard menu blocks as well. */
 /* Any menu block in the menu-bar region. */
+
+#menu-bar-wrapper, #menu-bar {
+  background-color: #8E9E35;
+  height: 3em;
+}
+
 #menu-bar {
   padding: 0 15px;
-  font-size: 0.9em;
+  font-size: 0.923em;
 }
 #menu-bar .block ,
 #menu-bar ul,
@@ -179,14 +185,14 @@ ul.pager li.pager-ellipsis {
 }
 #menu-bar .menu-wrapper > ul > li {
   display: inline-block;
-  margin: 4px 0 0;
+  margin: 0.333em 0 0;
   padding-left: 0;
 }
 #menu-bar ul > li > a {
   color: #fff;
   display: block;
   line-height: 1;
-  padding: 10px 20px 12px;
+  padding: 0.833em 20px 1.083em;
 }
 #menu-bar .sf-horizontal.sf-style-none li ul {
   opacity: .95;
@@ -197,7 +203,7 @@ ul.pager li.pager-ellipsis {
   border-radius: 0;
 }
 #menu-bar .menu-wrapper > ul > li > ul {
-  margin-top: 5px;
+  margin-top: 0.417em;
 }
 
 .region-header .sf-horizontal.sf-style-none,
@@ -229,7 +235,7 @@ ul.pager li.pager-ellipsis {
   padding: 0;
 }
 .region-header .sf-horizontal.sf-style-none > li > ul {
-  margin-top: -3px !important;
+  margin-top: -0.231em !important;
 }
 
 /* Skip Navigation */
@@ -294,7 +300,7 @@ ul.primary li.active a {
 }
 ul.secondary {
   border-bottom: 1px solid #e1e1e1;
-  margin: 1em 0 0;
+  margin: 0;
   padding: 0 .3em 1em;
 }
 ul.secondary li {
