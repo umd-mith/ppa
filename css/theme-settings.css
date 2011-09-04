@@ -153,7 +153,7 @@ body.bf-sss,
 .ntf-sss .article-title,
 .ctf-sss .comment-title,
 .btf-sss .block-title {
-  font-family: Candara, "Trebuchet MS", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: "Trebuchet MS", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 /* sans-serif large */
 body.bf-ssl,
@@ -369,18 +369,21 @@ body.bf-ms,
 .bb-g {
   background-image: url(images/grid.png);
 }
+.bb-d {
+  background-image: url(images/dots.png);
+}
 /* Box shadows */
-.sc-n #page  {
+.sc-n #page .content-style  {
   -webkit-box-shadow:0 0 0 transparent;
   -moz-box-shadow:0 0 0 transparent;
   box-shadow:0 0 0 transparent;
 }
-.bs-l #page {
+.bs-l #page .content-style {
   -webkit-box-shadow:0 0 10px rgba(76, 76, 76, 0.7);
   -moz-box-shadow:0 0 10px rgba(76, 76, 76, 0.7);
   box-shadow:0 0 10px rgba(76, 76, 76, 0.7);
 }
-.bs-d #page  {
+.bs-d #page  .content-style {
   -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.9);
   -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.9);
   box-shadow:0 0 10px rgba(0, 0, 0, 0.9);

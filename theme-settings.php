@@ -478,34 +478,40 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
   );
   $form['at']['pagestyles'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Page Styles'),
-    '#description' => t('<h3>Page Styles</h3><p>The Box Shadows are implimented using CSS and only work in modern compliant browsers. The backgrounds are semi-transparent images.'),
+    '#title' => t('Box Shadows and Textures'),
+    '#description' => t('<h3>Shadows and Textures</h3><p>The box shadows are implimented using CSS and only work in modern compliant browsers. The textures are small, semi-transparent images that tile to fill the entire background.</p>'),
   );
-  $form['at']['pagestyles']['box_shadows'] = array(
+  $form['at']['pagestyles']['shadows'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Box Shadows'),
+    '#description' => t('<h3>Box Shadows</h3><p>Box shadows (a drop shadow/glow effect) apply to the main content column and work only in CSS3 compliant browsers such as Firefox, Safari and Chrome.</p>'),
+  );
+  $form['at']['pagestyles']['shadows']['box_shadows'] = array(
     '#type' => 'radios',
-    '#title' => t('Page Styles'),
+    '#title' => t('<strong>Apply a box shadow to the main content column</strong>'),
     '#default_value' => theme_get_setting('box_shadows'),
-    '#description' => t('Add styles for CSS3 browsers.'),
     '#options' => array(
       'bs-n' => t('None'),
       'bs-l' => t('Box shadow - light'),
       'bs-d' => t('Box shadow - dark'),
     ),
   );
-  $form['at']['pagestyles']['body_background'] = array(
+  $form['at']['pagestyles']['textures'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Textures'),
+    '#description' => t('<h3>Body Textures</h3><p>This setting adds a texture over the main background color - the darker the background the more these stand out, on light backgrounds the effect is subtle.</p>'),
+  );
+  $form['at']['pagestyles']['textures']['body_background'] = array(
     '#type' => 'select',
-    '#title' => t('Background overlays'),
+    '#title' => t('Select texture'),
     '#default_value' => theme_get_setting('body_background'),
-    '#description' => t('This setting adds a texture or pattern over the main background color.'),
     '#options' => array(
-      'bb-n'   => t('None'),
-      'bb-b'   => t('Bubbles'),
-      'bb-hs'  => t('Horizontal stripes'),
-      'bb-dp'  => t('Diagonal pattern'),
-      'bb-dll' => t('Diagonal lines - loose'),
-      'bb-dlt' => t('Diagonal lines - tight'),
-      'bb-sd'  => t('Small dots'),
-      'bb-bd'  => t('Big dots'),
+      'bb-n'  => t('None'),
+      'bb-h'  => t('Hatch'),
+      'bb-vl' => t('Vertical lines'),
+      'bb-hl' => t('Horizontal lines'),
+      'bb-g'  => t('Grid'),
+      'bb-d'  => t('Dots'),
     ),
   );
   // Image styles
@@ -548,13 +554,12 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
   $form['at']['menu_styles'] = array(
     '#type' => 'fieldset',
     '#title' => t('Menu Bullets'),
-    '#description' => t('<h3>Menu Bullets</h3><p>This setting allows you to customize the bullet images used on menus.'),
+    '#description' => t('<h3>Menu Bullets</h3><p>This setting allows you to customize the bullet images used on menus items. Bullet images only show on normal vertical block menus.'),
   );
   $form['at']['menu_styles']['menu_bullets'] = array(
     '#type' => 'select',
     '#title' => t('Menu Bullets'),
     '#default_value' => theme_get_setting('menu_bullets'),
-    '#description' => t('Change the default menu bullets.'),
     '#options' => array(
       'mb-n' => t('None'),
       'mb-dd' => t('Drupal default'),

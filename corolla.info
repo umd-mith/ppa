@@ -64,10 +64,11 @@
   ; Smartphone
   settings[smartphone_portrait_layout]                     = 'one-col-stack'
   settings[smartphone_landscape_layout]                    = 'one-col-vert'
+  settings[smartphone_landscape_width]                     = '480px'
   settings[smartphone_sidebar_first_portrait_adaptive]     = '320px'
   settings[smartphone_sidebar_second_portrait_adaptive]    = '320px'
-  settings[smartphone_sidebar_first_landscape_adaptive]    = '240px'
-  settings[smartphone_sidebar_second_landscape_adaptive]   = '240px'
+  settings[smartphone_sidebar_first_landscape_adaptive]    = '220px'
+  settings[smartphone_sidebar_second_landscape_adaptive]   = '220px'
   settings[smartphone_sidebar_first_portrait_responsive]   = '100%'
   settings[smartphone_sidebar_second_portrait_responsive]  = '100%'
   settings[smartphone_sidebar_first_landscape_responsive]  = '50%'
@@ -76,6 +77,8 @@
   ; Tablet
   settings[tablet_portrait_layout]                     = 'two-col-stack'
   settings[tablet_landscape_layout]                    = 'three-col-right'
+  settings[tablet_portrait_width]                      = '720px'
+  settings[tablet_landscape_width]                     = '960px'
   settings[tablet_sidebar_first_portrait_adaptive]     = '180px'
   settings[tablet_sidebar_second_portrait_adaptive]    = '180px'
   settings[tablet_sidebar_first_landscape_adaptive]    = '180px'
@@ -96,22 +99,19 @@
 
   ; Media queries
   setting[debug_media_queries] = 1
-
   settings[smartphone_override_media_query]  = 0
   settings[smartphone_landscape_media_query] = 'only screen and (min-width:321px) and (max-width:480px)'
   settings[smartphone_portrait_media_query]  = 'only screen and (max-width:320px)'
-
   settings[tablet_override_media_query]      = 0
   settings[tablet_landscape_media_query]     = 'only screen and (min-width:769px) and (max-width:1024px)'
   settings[tablet_portrait_media_query]      = 'only screen and (min-width:481px) and (max-width:768px)'
-
   settings[bigscreen_override_media_query]   = 0
   settings[bigscreen_media_query]            = 'only screen and (min-width:1025px)'
 
   ; Breadcrumb
   settings[breadcrumb_display]   = 'yes'
   settings[breadcrumb_separator] = ' &#187; '
-  settings[breadcrumb_home]      = 1
+  settings[breadcrumb_home]      = 0
 
   ; Search
   settings[display_search_form_label] = 1
@@ -132,37 +132,50 @@
   settings[style_schemes]        = 'style-default.css'
 
   ; Extra CSS classes
-  settings[extra_page_classes]      = 0
-  settings[extra_article_classes]   = 0
-  settings[extra_comment_classes]   = 0
-  settings[extra_block_classes]     = 0
-  settings[extra_menu_classes]      = 0
-  settings[extra_item_list_classes] = 0
+  settings[extra_page_classes]      = 1
+  settings[extra_article_classes]   = 1
+  settings[extra_comment_classes]   = 1
+  settings[extra_block_classes]     = 1
+  settings[extra_menu_classes]      = 1
+  settings[extra_item_list_classes] = 1
 
   ; Extra markup
   settings[menu_item_span_elements] = 0
 
   ; Fonts
-  setting[base_font_type]          = 'wsf'
-  setting[site_name_font_type]     = 'wsf'
-  setting[site_slogan_font_type]   = 'wsf'
-  setting[page_title_font_type]    = 'wsf'
-  setting[node_title_font_type]    = 'wsf'
-  setting[comment_title_font_type] = 'wsf'
-  setting[block_title_font_type]   = 'wsf'
+  settings[base_font_type]          = 'wsf'
+  settings[site_name_font_type]     = 'wsf'
+  settings[site_slogan_font_type]   = 'wsf'
+  settings[page_title_font_type]    = 'wsf'
+  settings[node_title_font_type]    = 'wsf'
+  settings[comment_title_font_type] = 'wsf'
+  settings[block_title_font_type]   = 'wsf'
+  settings[base_font]               = 'bf-l'
+  settings[site_name_font]          = 'snf-cc'
+  settings[site_slogan_font]        = 'ssf-cc'
+  settings[page_title_font]         = 'ptf-a'
+  settings[node_title_font]         = 'ntf-a'
+  settings[comment_title_font]      = 'ctf-a'
+  settings[block_title_font]        = 'btf-a'
+  settings[font_size]               = 'fs-medium'
 
-  settings[base_font]              = 'bf-l'
-  settings[site_name_font]         = 'snf-cc'
-  settings[site_slogan_font]       = 'ssf-cc'
-  settings[page_title_font]        = 'ptf-a'
-  settings[node_title_font]        = 'ntf-a'
-  settings[comment_title_font]     = 'ctf-a'
-  settings[block_title_font]       = 'btf-a'
-
-  settings[font_size]              = 'fs-medium'
+  ; Heading styles
   settings[headings_styles_caps]   = 0
   settings[headings_styles_weight] = 0
   settings[headings_styles_shadow] = 0
-  settings[content_corner_radius]  = 'rc-6'
-  settings[tabs_corner_radius]     = 'rct-6'
-  settings[box_shadows]            = 'bs-n'
+
+  ; Border radius
+  settings[content_corner_radius] = 'rc-6'
+  settings[tabs_corner_radius]    = 'rct-6'
+
+  ; Box shadows and textures
+  settings[box_shadows]     = 'bs-n'
+  settings[body_background] = 'bb-n'
+
+  ; Image field settings
+  settings[image_alignment]     = 'ia-r'
+  settings[image_caption_teaser = 0
+  settings[image_caption_full   = 0
+
+  ; Menu bullets
+  settings[menu_bullets] = 'mb-dd'
