@@ -8,7 +8,7 @@
   <?php endif; ?>
 
   <div id="header-wrapper"><div class="container clearfix">
-    <header class="clearfix">
+    <header class="clearfix<?php print $linked_site_logo ? ' with-logo' : ''; ?>">
       <div id="branding">
         <?php if ($linked_site_logo): ?>
           <div id="logo"><?php print $linked_site_logo; ?></div>

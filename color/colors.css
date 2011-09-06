@@ -44,6 +44,7 @@ li a.active {
 }
 legend {
   background-color: #086782;
+  color: #fff;
 }
 
 /* Link hovered */

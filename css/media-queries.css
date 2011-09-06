@@ -2,7 +2,7 @@
 /* Smartphone portrait */
 @media only screen and (max-width:320px) {
   #branding {
-    padding: 15px 0 0 0;
+    padding: 10px 0 10px;
   }
   .region-header {
     padding: 0 0 10px;
@@ -14,12 +14,17 @@
     text-align: center;
     display: table;
   }
+  #logo,
   #site-name,
   #site-slogan {
-    text-align: left;
+    display: block;
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
   }
   #site-name {
-    font-size: 3.5em;
+    font-size: 3em;
   }
   #secondary-content-wrapper,
   #top-panels-wrapper,
@@ -32,8 +37,17 @@
     margin-bottom: 0;
     font-size: 1em;
   }
+  #menu-bar-wrapper,
+  #menu-bar {
+    min-height: 3em;
+    height: auto;
+  }
   #menu-bar {
     padding: 0 2px;
+  }
+  #menu-bar .block {
+    clear: both;
+    float: none;
   }
   #menu-bar .menu-wrapper > ul > li {
     display: block;
@@ -63,6 +77,9 @@
     -moz-border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
     border-radius: 0 !important;
+  }
+  .article-title {
+    font-size: 1.5em;
   }
 }
 /* Smartphone landscape */
@@ -73,6 +90,9 @@
   .region-header {
     padding: 0 0 10px;
   }
+  #branding hgroup {
+    margin-top: 1em;
+  }
   #branding,
   .region-header {
     float: none;
@@ -80,12 +100,12 @@
     text-align: center;
     display: table;
   }
-  #site-name,
-  #site-slogan {
+  .with-logo #site-name,
+  .with-logo #site-slogan {
     text-align: left;
   }
   #site-name {
-    font-size: 3.5em;
+    font-size: 3em;
   }
   #secondary-content-wrapper,
   #top-panels-wrapper,
@@ -98,8 +118,17 @@
     margin-bottom: 0;
     font-size: 1em;
   }
+  #menu-bar-wrapper,
+  #menu-bar {
+    min-height: 3em;
+    height: auto;
+  }
   #menu-bar {
     padding: 0 2px;
+  }
+  #menu-bar .block {
+    clear: both;
+    float: none;
   }
   #menu-bar .menu-wrapper > ul > li {
     display: block;
@@ -130,19 +159,30 @@
     -webkit-border-radius: 0 !important;
     border-radius: 0 !important;
   }
+  .article-title {
+    font-size: 1.5em;
+  }
 }
 /* Tablet portrait */
 @media only screen and (min-width:481px) and (max-width:768px) {
+  #header-wrapper {
+    float: left;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 10000;
+  }
   #branding {
     padding: 15px 0 0 0;
   }
   .region-header {
     padding: 0 0 10px;
   }
+  #branding hgroup {
+    margin-top: 0.8em;
+  }
   #branding,
   .region-header {
     float: none;
-    margin: auto;
     text-align: center;
     display: table;
   }
@@ -164,8 +204,23 @@
     margin-bottom: 0;
     font-size: 1em;
   }
+  #menu-bar-wrapper {
+    float: right;
+    margin: 3px;
+    padding: 2px 0 0 0;
+    max-width: 30%;
+  }
+  #menu-bar-wrapper,
+  #menu-bar {
+    min-height: 3em;
+    height: auto;
+  }
   #menu-bar {
     padding: 0 2px;
+  }
+  #menu-bar .block {
+    clear: both;
+    float: none;
   }
   #menu-bar .menu-wrapper > ul > li {
     display: block;
@@ -203,6 +258,9 @@
   .region-header  {
     padding-top: 15px;
     padding-bottom: 20px;
+  }
+  #branding hgroup {
+    margin-top: 0.8em;
   }
   #site-name {
     font-size: 3.5em;

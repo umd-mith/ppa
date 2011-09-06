@@ -41,6 +41,7 @@
 #footer-panels-wrapper,
 #tertiary-content-wrapper {
   margin-bottom: 25px;
+  clear: both;
 }
 .content-margin {
   margin: 0 10px;

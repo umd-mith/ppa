@@ -135,11 +135,15 @@ body div.image-center .field-type-image img{
   margin-right: auto;
 }
 /* Reset node from image fields */
-form.node-form div.field-type-image,
-form.node-form div.field-type-image img {
+form.node-form div.field-type-image {
   text-align: left !important;
 }
+form.node-form div.field-type-image {
+  float: none !important;
+  margin: 0 !important;
+}
 form.node-form div.field-type-image img {
+  text-align: left !important;
   display: inline !important;
   margin: 0 !important;
 }

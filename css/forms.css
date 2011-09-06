@@ -101,6 +101,7 @@ fieldset {
   border: 1px solid #dadada;
   margin: 10px 0;
   padding: 10px;
+  position: relative;
 }
 fieldset fieldset:last-child {
   margin-bottom: 0;
@@ -121,15 +122,23 @@ fieldset fieldset:last-child {
 fieldset legend {
   display: block;
   font-weight: 400;
-  padding: 0 10px 0 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
 }
 *:first-child+html fieldset legend,
 *:first-child+html fieldset.collapsed legend {
   display: inline;
 }
+fieldset legend span.fieldset-legend {
+ display: block;
+ padding: 4px 10px;
+}
 html.js fieldset.collapsed {
-  background: transparent;
-  padding-top: 5px;
+  min-height: 1.85em;
 }
 html.js fieldset.collapsible .fieldset-legend {
   background: none;
@@ -140,21 +149,23 @@ html.js fieldset.collapsible .fieldset-legend {
 html.js fieldset.collapsible legend a {
   padding: 0 15px 0 0;
   color: #fff;
-  background: url(images/arrow-down-white.png) no-repeat right 4px;
+  background: url(images/arrow-down-white.png) no-repeat right 6px;
 }
 html.js fieldset.collapsed legend a {
-  background: url(images/arrow-right-white.png) no-repeat right 4px;
+  background: url(images/arrow-right-white.png) no-repeat right 6px;
 }
 html.js fieldset.collapsed .fieldset-wrapper,
 html.js fieldset.collapsed .action {
   display: none;
 }
 html.js fieldset.collapsed {
-  padding: 10px 20px;
 }
 html.js fieldset.collapsed {
   border-width: 1px;
   margin-bottom: 15px;
+}
+html.js fieldset.collapsible div.fieldset-wrapper {
+  margin-top: 3em;
 }
 html.js input.form-autocomplete {
   background-position: 99% 8px;
