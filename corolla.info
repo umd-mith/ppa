@@ -66,8 +66,9 @@
   settings[bigscreen_sidebar_unit]   = '%'
   settings[bigscreen_max_width_unit] = 'px'
   settings[bigscreen_page_width]     = 100
-  settings[bigscreen_sidebar_first]  = 25
+  settings[bigscreen_sidebar_first]  = 20
   settings[bigscreen_sidebar_second] = 25
+  settings[bigscreen_set_max_width]  = 1
   settings[bigscreen_max_width]      = 1260
   settings[bigscreen_media_query]    = 'only screen and (min-width:1024px)'
 
@@ -79,6 +80,7 @@
   settings[tablet_landscape_page_width]     = 100
   settings[tablet_landscape_sidebar_first]  = 20
   settings[tablet_landscape_sidebar_second] = 20
+  settings[tablet_landscape_set_max_width]  = 0
   settings[tablet_landscape_max_width]      = 960
   settings[tablet_landscape_media_query]    = 'only screen and (min-width:768px) and (max-width:1024px)'
 
@@ -90,6 +92,7 @@
   settings[tablet_portrait_page_width]     = 100
   settings[tablet_portrait_sidebar_first]  = 50
   settings[tablet_portrait_sidebar_second] = 50
+  settings[tablet_portrait_set_max_width]  = 0
   settings[tablet_portrait_max_width]      = 780
   settings[tablet_portrait_media_query]    = 'only screen and (min-width:480px) and (max-width:768px)'
 
@@ -101,19 +104,12 @@
   settings[smartphone_landscape_page_width]     = 100
   settings[smartphone_landscape_sidebar_first]  = 50
   settings[smartphone_landscape_sidebar_second] = 50
+  settings[smartphone_landscape_set_max_width]  = 0
   settings[smartphone_landscape_max_width]      = 520
   settings[smartphone_landscape_media_query]    = 'only screen and (min-width:321px) and (max-width:480px)'
 
   ; smartphone portrait
-  settings[smartphone_portrait_layout]         = 'one-col-stack'
-  settings[smartphone_portrait_page_unit]      = '%'
-  settings[smartphone_portrait_sidebar_unit]   = '%'
-  settings[smartphone_portrait_max_width_unit] = 'px'
-  settings[smartphone_portrait_page_width]     = 100
-  settings[smartphone_portrait_sidebar_first]  = 50
-  settings[smartphone_portrait_sidebar_second] = 50
-  settings[smartphone_portrait_max_width]      = 780
-  settings[smartphone_portrait_media_query]    = 'only screen and (max-width:320px)'
+  settings[smartphone_portrait_media_query] = 'only screen and (max-width:320px)'
 
   ; Media queries
   setting[debug_media_queries] = 1
