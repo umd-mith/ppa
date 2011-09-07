@@ -183,9 +183,9 @@
   settings[body_background] = 'bb-n'
 
   ; Image field settings
-  settings[image_alignment]     = 'ia-r'
-  settings[image_caption_teaser = 0
-  settings[image_caption_full   = 0
+  settings[image_alignment]      = 'ia-r'
+  settings[image_caption_teaser] = 0
+  settings[image_caption_full]   = 0
 
   ; Menu bullets
   settings[menu_bullets] = 'mb-dd'

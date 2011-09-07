@@ -88,8 +88,6 @@ fieldset .description,
 .fieldset-layout-settings dd {
   font-size: 0.846em;
 }
-span.form-required,
-span.marker {}
 #article-admin-filter ul {
   padding: .5em 0;
 }
@@ -348,4 +346,51 @@ ul.vertical-tabs-list li.selected a {
 .vertical-tabs input.form-checkbox,
 .vertical-tabs input.form-radio {
   width: auto;
+}
+.marker {
+  color: #e25401;
+  text-transform: capitalize;
+  margin-left: 3px;
+}
+.marker:before {
+  content: "(";
+}
+.marker:after {
+  content: ")";
+}
+.farbtastic .marker:before {
+  content: "";
+}
+.farbtastic .marker:after {
+  content: "";
+}
+.password-parent,
+div.form-item div.password-suggestions {
+  position: relative;
+  width: auto;
+}
+#password-strength {
+  float: none;
+  left: 16em;
+  position: absolute;
+  width: 11.5em;
+}
+#password-strength-text,
+.password-strength-title,
+div.password-confirm {
+  font-size: 0.833em;
+}
+#password-strength-text {
+  margin-top: 0.2em;
+}
+input.password-confirm,
+input.password-field {
+  width: 15em;
+  margin-bottom: 0.4em;
+}
+div.form-item div.password-suggestions {
+  padding: 8px 9px;
+  margin: 10px 0;
+  background-color: #f3fcdb;
+  border: 1px solid #b8e643;
 }

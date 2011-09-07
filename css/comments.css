@@ -8,7 +8,7 @@
   padding: 0 0 16px;
 }
 .comment .indented {
-  margin-left: 60px; /* one grid column */
+  margin-left: 60px;
 }
 h3.comment-title {
   border: none;

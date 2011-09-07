@@ -7,7 +7,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
   $form['at']['font'] = array(
     '#type' => 'fieldset',
     '#title' => t('Fonts'),
-    '#description' => t('<h3>Fonts</h3><p>Set the default font and font family for headings. First select the font type (normal websafe font or a Google font), then select the font family.'),
+    '#description' => t('<h3>Fonts</h3><p>Set the default font and font family for headings. First select the font type (normal websafe font or a Google font), then select the font family.</p>'),
   );
   $form['at']['font']['base_font_wrapper'] = array (
     '#type' => 'fieldset',
@@ -426,7 +426,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
   $form['at']['headings'] = array(
     '#type' => 'fieldset',
     '#title' => t('Heading Styles'),
-    '#description' => t('<h3>Heading Styles</h3><p>Add extra styles to headings. Shadows ony work for CSS3 capable browsers such as Firefox, Safari, IE9 etc.<p>'),
+    '#description' => t('<h3>Heading Styles</h3><p>Add extra styles to headings. Shadows ony work for CSS3 capable browsers such as Firefox, Safari, IE9 etc.</p>'),
   );
   $form['at']['headings']['headings_styles_caps'] = array(
     '#type' => 'checkbox',
@@ -446,7 +446,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
   $form['at']['corners'] = array(
     '#type' => 'fieldset',
     '#title' => t('Rounded corners'),
-    '#description' => t('<h3>Rounded Corners</h3><p>Rounded corners are implimented using CSS and only work in modern compliant browsers. You can set the radius for both the main content and main menu tabs.'),
+    '#description' => t('<h3>Rounded Corners</h3><p>Rounded corners are implimented using CSS and only work in modern compliant browsers. You can set the radius for both the main content and main menu tabs.</p>'),
   );
   $form['at']['corners']['content_corner_radius'] = array(
     '#type' => 'select',
@@ -554,7 +554,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
   $form['at']['menu_styles'] = array(
     '#type' => 'fieldset',
     '#title' => t('Menu Bullets'),
-    '#description' => t('<h3>Menu Bullets</h3><p>This setting allows you to customize the bullet images used on menus items. Bullet images only show on normal vertical block menus.'),
+    '#description' => t('<h3>Menu Bullets</h3><p>This setting allows you to customize the bullet images used on menus items. Bullet images only show on normal vertical block menus.</p>'),
   );
   $form['at']['menu_styles']['menu_bullets'] = array(
     '#type' => 'select',
