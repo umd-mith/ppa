@@ -121,6 +121,9 @@ fieldset fieldset:last-child {
 *:first-child+html fieldset .fieldset-wrapper .description {
   padding-top: 10px;
 }
+fieldset div.with-legend {
+  margin-top: 3em;
+}
 fieldset legend {
   display: block;
   font-weight: 400;

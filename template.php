@@ -4,7 +4,7 @@
 include_once(drupal_get_path('theme', 'corolla') . '/inc/gwf.inc');
 
 /**
- * Override or insert variables into the html template.
+ * Override or insert vars into the html template.
  */
 function corolla_preprocess_html(&$vars) {
 
@@ -145,7 +145,7 @@ function corolla_process_page(&$vars) {
 }
 
 /**
- * Override or insert variables into the block template.
+ * Override or insert vars into the block template.
  */
 function corolla_preprocess_block(&$vars) {
   if ($vars['block']->module == 'superfish' || $vars['block']->module == 'nice_menu') {
@@ -160,7 +160,7 @@ function corolla_preprocess_block(&$vars) {
 }
 
 /**
- * Override or insert variables into the field template.
+ * Override or insert vars into the field template.
  */
 function corolla_preprocess_field(&$vars) {
   $element = $vars['element'];
@@ -180,7 +180,7 @@ function corolla_preprocess_field(&$vars) {
 /**
  * Returns HTML for a sort icon.
  *
- * @param $variables
+ * @param $vars
  *   An associative array containing:
  *   - style: Set to either 'asc' or 'desc', this determines which icon to show.
  */
@@ -192,4 +192,41 @@ function corolla_tablesort_indicator($vars) {
   else {
     return theme('image', array('path' => path_to_theme() . '/css/images/tablesort-descending.png', 'alt' => t('sort descending'), 'title' => t('sort descending')));
   }
+}
+
+/**
+ * Returns HTML for a fieldset form element and its children.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - element: An associative array containing the properties of the element.
+ *     Properties used: #attributes, #children, #collapsed, #collapsible,
+ *     #description, #id, #title, #value.
+ *
+ * @ingroup themeable
+ */
+function corolla_fieldset($vars) {
+  $element = $vars['element'];
+  element_set_attributes($element, array('id'));
+  _form_set_class($element, array('form-wrapper'));
+
+  $output = '<fieldset' . drupal_attributes($element['#attributes']) . '>';
+  if (!empty($element['#title'])) {
+    // Always wrap fieldset legends in a SPAN for CSS positioning.
+    $output .= '<legend><span class="fieldset-legend">' . $element['#title'] . '</span></legend>';
+
+    // add a class if a legend is being included
+    $fieldset_wrapper_class = ' with-legend';
+  }
+  $output .= '<div class="fieldset-wrapper' . $fieldset_wrapper_class . '">';
+  if (!empty($element['#description'])) {
+    $output .= '<div class="fieldset-description">' . $element['#description'] . '</div>';
+  }
+  $output .= $element['#children'];
+  if (isset($element['#value'])) {
+    $output .= $element['#value'];
+  }
+  $output .= '</div>';
+  $output .= "</fieldset>\n";
+  return $output;
 }
