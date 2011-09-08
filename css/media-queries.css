@@ -27,6 +27,9 @@
   #site-name {
     font-size: 3em;
   }
+  .content-style {
+    padding: 10px;
+  }
   #secondary-content-wrapper,
   #top-panels-wrapper,
   #content-wrapper,
@@ -107,6 +110,9 @@
   }
   #site-name {
     font-size: 3em;
+  }
+  .content-style {
+    padding: 10px;
   }
   #secondary-content-wrapper,
   #top-panels-wrapper,
@@ -193,6 +199,9 @@
   }
   #site-name {
     font-size: 3.5em;
+  }
+  .content-style {
+    padding: 12px 15px;
   }
   #secondary-content-wrapper,
   #top-panels-wrapper,
