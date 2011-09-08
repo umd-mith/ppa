@@ -25,6 +25,10 @@
 /* Tablet portrait */
 @media only screen and (min-width:481px) and (max-width:768px) {
 
+  .four-4x25 .region {
+    width: 50% !important;
+    display: block;
+  }
   .five-5x20 .region,
   .six-6x16 .region {
     display: block;

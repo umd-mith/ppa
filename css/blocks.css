@@ -7,7 +7,6 @@
   margin-bottom: 15px;
 }
 .block ul {
-  list-style-position: inside;
   margin: 0;
   padding: 0;
 }
@@ -57,4 +56,8 @@
 }
 .block-panels_mini .mini-panel-title {
   margin: 0 10px;
+}
+.block-poll ul.links li {
+  list-style: none;
+  margin: 0 0.5em 0 0;
 }
