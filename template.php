@@ -10,6 +10,21 @@ function corolla_preprocess_html(&$vars) {
 
   global $theme, $theme_key;
 
+  $media_queries_css = array(
+    'corolla-responsive-style.css',
+    'corolla-responsive-gpanels.css'
+  );
+  foreach ($media_queries_css as $css) {
+    $filepath = drupal_get_path('theme', 'corolla') . '/css/' . $css;
+    drupal_add_css($filepath, array(
+      'preprocess' => theme_get_setting('debug_media_queries') == 1 ? FALSE : TRUE,
+      'group' => CSS_THEME,
+      'media' => 'screen',
+      'every_page' => TRUE,
+      )
+    );
+  }
+
   drupal_add_css(path_to_theme() . '/css/ie/ie-lte-7.css', array(
     'group' => CSS_THEME,
     'browsers' => array(

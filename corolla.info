@@ -8,7 +8,6 @@
   base theme  = adaptivetheme
 
 ;----------// Modular stylesheets
-  stylesheets[all][]   = css/dynamic-gpanels.css
   stylesheets[all][]   = css/html-elements.css
   stylesheets[all][]   = css/forms.css
   stylesheets[all][]   = css/tables.css
@@ -20,7 +19,6 @@
   stylesheets[all][]   = css/navigation.css
   stylesheets[all][]   = css/fonts.css
   stylesheets[all][]   = css/theme-settings.css
-  stylesheets[all][]   = css/media-queries.css
   stylesheets[all][]   = color/colors.css
   stylesheets[print][] = css/print.css
 

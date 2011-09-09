@@ -3,6 +3,9 @@
 body {
   background-color: #f8f8f8;
 }
+body.corolla .color-form {
+  max-width: 100%;
+}
 
 /* Text */
 body,
