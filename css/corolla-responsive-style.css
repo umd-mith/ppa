@@ -69,6 +69,9 @@
     height: auto;
     padding: 2px 0;
   }
+  #menu-bar .menu-wrapper ul ul {
+    display: none !important;
+  }
   .region-header .block {
     overflow: hidden;
   }
@@ -152,6 +155,9 @@
   #menu-bar .sf-menu {
     height: auto;
     padding: 2px 0;
+  }
+  #menu-bar .menu-wrapper ul ul {
+    display: none !important;
   }
   .region-header .block {
     overflow: hidden;
