@@ -68,7 +68,7 @@
   settings[bigscreen_sidebar_second] = 25
   settings[bigscreen_set_max_width]  = 1
   settings[bigscreen_max_width]      = 1260
-  settings[bigscreen_media_query]    = 'only screen and (min-width:1024px)'
+  settings[bigscreen_media_query]    = 'only screen and (min-width:1025px)'
 
   ; Tablet landscape
   settings[tablet_landscape_layout]         = 'three-col-grail'
@@ -80,7 +80,7 @@
   settings[tablet_landscape_sidebar_second] = 20
   settings[tablet_landscape_set_max_width]  = 0
   settings[tablet_landscape_max_width]      = 960
-  settings[tablet_landscape_media_query]    = 'only screen and (min-width:768px) and (max-width:1024px)'
+  settings[tablet_landscape_media_query]    = 'only screen and (min-width:769px) and (max-width:1024px)'
 
   ; Tablet portrait
   settings[tablet_portrait_layout]         = 'one-col-vert'
@@ -92,7 +92,7 @@
   settings[tablet_portrait_sidebar_second] = 50
   settings[tablet_portrait_set_max_width]  = 0
   settings[tablet_portrait_max_width]      = 780
-  settings[tablet_portrait_media_query]    = 'only screen and (min-width:480px) and (max-width:768px)'
+  settings[tablet_portrait_media_query]    = 'only screen and (min-width:481px) and (max-width:768px)'
 
   ; smartphone landscape
   settings[smartphone_landscape_layout]         = 'one-col-vert'
