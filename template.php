@@ -25,15 +25,7 @@ function corolla_preprocess_html(&$vars) {
     );
   }
 
-  drupal_add_css(path_to_theme() . '/css/ie/ie-lte-7.css', array(
-    'group' => CSS_THEME,
-    'browsers' => array(
-      'IE' => 'lte IE 7',
-      '!IE' => FALSE,
-      ),
-    'preprocess' => FALSE,
-    )
-  );
+  // < IE 9
   drupal_add_css(path_to_theme() . '/css/ie/ie-lte-9.css', array(
     'group' => CSS_THEME,
     'browsers' => array(

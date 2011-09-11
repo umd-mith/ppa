@@ -53,13 +53,13 @@
     clear: both;
     float: none;
   }
-  #menu-bar .menu-wrapper > ul > li {
+  #menu-bar .menu-wrapper ul li {
     display: block;
     float: none;
     margin: 0;
     overflow: hidden;
   }
-  #menu-bar .menu-wrapper ul > li > a {
+  #menu-bar .menu-wrapper ul li a {
     padding: 6px 10px 8px;
     -moz-border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
@@ -140,13 +140,13 @@
     clear: both;
     float: none;
   }
-  #menu-bar .menu-wrapper > ul > li {
+  #menu-bar .menu-wrapper ul li {
     display: block;
     float: none;
     margin: 0;
     overflow: hidden;
   }
-  #menu-bar .menu-wrapper ul > li > a {
+  #menu-bar .menu-wrapper ul li a {
     padding: 6px 10px 8px;
     -moz-border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
@@ -238,13 +238,13 @@
     clear: both;
     float: none;
   }
-  #menu-bar .menu-wrapper > ul > li {
+  #menu-bar .menu-wrapper ul li {
     display: block;
     float: none;
     margin: 0;
     overflow: hidden;
   }
-  #menu-bar .menu-wrapper ul > li > a {
+  #menu-bar .menu-wrapper ul li a {
     padding: 6px 10px 8px;
     -moz-border-radius: 0 !important;
     -webkit-border-radius: 0 !important;

@@ -161,6 +161,13 @@ ul.pager li.pager-ellipsis {
 #menu-bar .menu-wrapper > ul > li > ul {
   margin-top: 0.417em;
 }
+
+#menu-bar .block-menu ul ul {
+  display: none;
+}
+
+
+
 .region-header .sf-horizontal.sf-style-none,
 .region-header ul.menu {
   text-transform: uppercase;
