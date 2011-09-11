@@ -224,6 +224,7 @@ function corolla_fieldset($vars) {
   $element = $vars['element'];
   element_set_attributes($element, array('id'));
   _form_set_class($element, array('form-wrapper'));
+  $fieldset_wrapper_class = '';
 
   $output = '<fieldset' . drupal_attributes($element['#attributes']) . '>';
   if (!empty($element['#title'])) {
