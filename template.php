@@ -1,7 +1,8 @@
 <?php
+// Corolla by Adaptivethemes.com
 
-// Include the Google webfont definitions.
-include_once(drupal_get_path('theme', 'corolla') . '/inc/gwf.inc');
+// Load Google web fonts
+include_once(drupal_get_path('theme', 'adaptivetheme') . '/inc/google.web.fonts.inc');
 
 /**
  * Override or insert vars into the html template.
