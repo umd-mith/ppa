@@ -9,7 +9,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
   $form['at']['font'] = array(
     '#type' => 'fieldset',
     '#title' => t('Fonts'),
-    '#description' => t('<h3>Fonts</h3><p>Set the default font and font family for headings. First select the font type (normal websafe font or a Google font), then select the font family.</p>'),
+    '#description' => t('<h3>Fonts</h3><p>Here you can set a default font which will style all text. You can also set unique fonts for the page title, site name and slogan, and fonts for node, comment and block titles. First select the font type (Websafe or Google web font), then select the font family. You can preview Google web fonts here: <a href="!link" target="_blank">http://www.google.com/webfonts</a></p>', array('!link' => 'http://www.google.com/webfonts')),
   );
   $form['at']['font']['base_font_wrapper'] = array (
     '#type' => 'fieldset',
