@@ -84,23 +84,21 @@ function corolla_preprocess_html(&$vars) {
     'ctf' => 'comment_title_font',
     'btf' => 'block_title_font'
   );
+  $google_font_families = array();
   foreach($fonts as $key => $value) {
-
     $font_type = theme_get_setting($value . '_type');
     $font_value = theme_get_setting($value . (!empty($font_type) ? '_' . $font_type : ''));
-
     if ($font_type == '') {
       $vars['classes_array'][] = $font_value;
     }
     else {
       if ($font_type == 'gwf') {
-        drupal_add_css('http://fonts.googleapis.com/css?family=' . $font_value, array('group' => CSS_THEME, 'type' => 'inline'));
+        $gff = str_replace(' ', '+', $font_value);
+        $google_font_families[] = $gff;
       }
-
       $font_value = preg_replace('/[^\w\d_ -]/si', '', $font_value);
       $style_name = get_style_name($key, $font_type, $font_value);
       $vars['classes_array'][] = $style_name;
-
       switch($key) {
         case 'bf':
           drupal_add_css("body.$style_name, .$style_name .form-text {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
@@ -125,6 +123,11 @@ function corolla_preprocess_html(&$vars) {
           break;
       }
     }
+  }
+  if (!empty($google_font_families)) {
+    $font_families = array_unique($google_font_families);
+    $gwff = trim(implode('|', $font_families));
+    drupal_add_css('http://fonts.googleapis.com/css?family=' . $gwff, array('group' => CSS_THEME, 'type' => 'external', 'preprocess' => FALSE));
   }
 
   if (theme_get_setting('headings_styles_caps') == 1) {
