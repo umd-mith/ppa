@@ -131,6 +131,9 @@
   settings[horizontal_login_block]        = 0
   settings[horizontal_login_block_enable] = 'on'
 
+  ; Comments
+  settings[comments_hide_title] = 0
+
   ; Style settings
   settings[style_enable_schemes] = 'off'
   settings[style_schemes]        = 'style-default.css'

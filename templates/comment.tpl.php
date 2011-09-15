@@ -13,12 +13,7 @@
     <?php if ($new): ?>
       <em class="new"><?php print $new ?></em>
     <?php endif; ?>
-    <p class="comment-submitted">
-    <?php
-      print t('Submitted by !username on !datetime',
-      array('!username' => $author, '!datetime' => '<time datetime="' . $datetime . '">' . $created . '</time>'));
-    ?>
-    <p>
+    <p class="comment-submitted"><?php print $submitted; ?><p>
   </header>
 
   <div<?php print $content_attributes; ?>>
