@@ -382,19 +382,19 @@ body.bf-ms,
   background-image: none;
 }
 .bb-h {
-  background-image: url(images/hatch.png);
+  background-image: url(images/ts/hatch.png);
 }
 .bb-vl {
-  background-image: url(images/line-vert.png);
+  background-image: url(images/ts/line-vert.png);
 }
 .bb-hl {
-  background-image: url(images/line-horiz.png);
+  background-image: url(images/ts/line-horiz.png);
 }
 .bb-g {
-  background-image: url(images/grid.png);
+  background-image: url(images/ts/grid.png);
 }
 .bb-d {
-  background-image: url(images/dots.png);
+  background-image: url(images/ts/dots.png);
 }
 /* Box shadows */
 .sc-n #page .content-style  {
@@ -432,7 +432,7 @@ body.bf-ms,
 .mb-ah ul li.leaf,   
 .mb-ah ul li.collapsed,
 .mb-ah ul li.expanded {
-  list-style-image: url(images/arrow-head.png);
+  list-style-image: url(images/ts/arrow-head.png);
 }
 .mb-ad ul.menu {
   padding: 0 0 0 0.2em;
@@ -441,7 +441,7 @@ body.bf-ms,
 .mb-ad ul li.leaf,   
 .mb-ad ul li.collapsed,
 .mb-ad ul li.expanded {
-  list-style-image: url(images/arrow-double.png);
+  list-style-image: url(images/ts/arrow-double.png);
 }
 .mb-ca ul.menu {
   padding: 0 0 0 0.6em;
@@ -450,7 +450,7 @@ body.bf-ms,
 .mb-ca ul li.leaf,   
 .mb-ca ul li.collapsed,
 .mb-ca ul li.expanded {
-  list-style-image: url(images/arrow-circle.png);
+  list-style-image: url(images/ts/arrow-circle.png);
 }
 .mb-fa ul.menu {
   padding: 0 0 0 0.6em;
@@ -459,7 +459,7 @@ body.bf-ms,
 .mb-fa ul li.leaf,   
 .mb-fa ul li.collapsed,
 .mb-fa ul li.expanded {
-  list-style-image: url(images/arrow-fat.png);
+  list-style-image: url(images/ts/arrow-fat.png);
 }
 .mb-sa ul.menu {
   padding: 0 0 0 0.6em;
@@ -468,7 +468,7 @@ body.bf-ms,
 .mb-sa ul li.leaf,   
 .mb-sa ul li.collapsed,
 .mb-sa ul li.expanded {
-  list-style-image: url(images/arrow-skinny.png);
+  list-style-image: url(images/ts/arrow-skinny.png);
 }
 /* Login block - horizontal (theme setting) basic styles */
 .lb-h {
