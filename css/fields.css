@@ -1,4 +1,10 @@
 /* Fields */
+.field .field-label {
+  font-size: 1em;
+  font-weight: 700;
+  line-height: inherit;
+  margin: 0;
+}
 .field-lable-inline .field-label {
   display: inline;
 }
@@ -17,7 +23,6 @@
 .field-label-inline .field-label,
 .field-label-inline .field-items {
   display: inline;
-  float: none;
 }
 .field-type-image figure {}
 .field-type-image figure,

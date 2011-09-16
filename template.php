@@ -18,7 +18,7 @@ function corolla_preprocess_html(&$vars) {
   foreach ($media_queries_css as $css) {
     $filepath = drupal_get_path('theme', 'corolla') . '/css/' . $css;
     drupal_add_css($filepath, array(
-      'preprocess' => theme_get_setting('debug_media_queries') == 1 ? FALSE : TRUE,
+      'preprocess' => variable_get('preprocess_css', '') == 1 ? TRUE : FALSE,
       'group' => CSS_THEME,
       'media' => 'screen',
       'every_page' => TRUE,
