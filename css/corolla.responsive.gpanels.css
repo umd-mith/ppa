@@ -28,16 +28,16 @@
   }
   .three-50-25-25 .region-three-50-25-25-first,
   .three-25-25-50 .region-three-25-25-50-third {
-    width: 100%;
+    width: 100% !important;
   }
   .four-4x25 .region {
-    width: 50% !important;
+    width: 50%;
   }
   .six-6x16 .region,
   .five-5x20 .region-five-first,
   .five-5x20 .region-five-second,
   .five-5x20 .region-five-third {
-    width: 33.333% !important;
+    width: 33.333%;
   }
   .five-5x20 .region-five-fourth,
   .five-5x20 .region-five-fifth {
@@ -47,6 +47,25 @@
   .three-25-25-50 .region-three-25-25-50-third ,
   .six-6x16 .region-six-third,
   .five-5x20 .region-five-fourth {
-    clear: left !important;
+    clear: left;
+  }
+
+  /* IE6-7 */
+  .ie6-7 .three-25-25-50 .region-three-25-25-50-first,
+  .ie6-7 .three-25-25-50 .region-three-25-25-50-second,
+  .ie6-7 .three-50-25-25 .region-three-50-25-25-second,
+  .ie6-7 .three-50-25-25 .region-three-50-25-25-third,
+  .ie6-7 .four-4x25 .region,
+  .ie6-7 .five-5x20 .region-five-fourth,
+  .ie6-7 .five-5x20 .region-five-fifth   {
+    width: 49%;
+    right: 0;
+  }
+  .ie6-7 .six-6x16 .region,
+  .ie6-7 .five-5x20 .region-five-first,
+  .ie6-7 .five-5x20 .region-five-second,
+  .ie6-7 .five-5x20 .region-five-third {
+    width: 32.333%;
+    right: 0;
   }
 }

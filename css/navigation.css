@@ -88,8 +88,10 @@ ul.pager li.pager-ellipsis {
 .sf-menu a:active {
   outline: 0;
 }
-.block-superfish .block-inner,
-.block-superfish .block-inner .content {
+.menu-wrapper .block-superfish .block-inner,
+.menu-wrapper .block-superfish .block-inner .content,
+.region-header .block-superfish .block-inner,
+.region-header .block-superfish .block-inner .content {
   padding: 0;
   margin: 0;
 }

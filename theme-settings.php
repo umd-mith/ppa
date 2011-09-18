@@ -1,9 +1,6 @@
 <?php
 // Corolla
 
-// Load Google web fonts
-include_once(drupal_get_path('theme', 'adaptivetheme') . '/inc/google.web.fonts.inc');
-
 function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
 
   $form['at']['font'] = array(
@@ -44,7 +41,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
       'bf-ssl' => t('Verdana, Geneva, Arial, Helvetica, sans-serif'),
       'bf-a'   => t('Arial, Helvetica, sans-serif'),
       'bf-cc'  => t('Calibri, Candara, Arial, Helvetica, sans-serif'),
-      'bf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif;'),
+      'bf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif'),
       'bf-l'   => t('Lucida Sans Unicode, Lucida Sans, Lucida Grande, Verdana, Geneva, sans-serif'),
       'bf-ss'  => t('Garamond, Perpetua, Times New Roman, serif'),
       'bf-sl'  => t('Georgia, Baskerville, Palatino, Palatino Linotype, Book Antiqua, Times New Roman, serif'),
@@ -65,7 +62,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
     '#type' => 'select',
     '#title' => t('Font'),
     '#default_value' => theme_get_setting('base_font_gwf'),
-    '#options' => get_gwf_font_families_options(),
+    '#options' => google_web_fonts_list_options(),
   );
   $form['at']['font']['site_name_font_wrapper'] = array (
     '#type' => 'fieldset',
@@ -100,7 +97,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
       'snf-ssl' => t('Verdana, Geneva, Arial, Helvetica, sans-serif'),
       'snf-a'   => t('Arial, Helvetica, sans-serif'),
       'snf-cc'  => t('Calibri, Candara, Arial, Helvetica, sans-serif'),
-      'snf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif;'),
+      'snf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif'),
       'snf-l'   => t('Lucida Sans Unicode, Lucida Sans, Lucida Grande, Verdana, Geneva, sans-serif'),
       'snf-ss'  => t('Garamond, Perpetua, Times New Roman, serif'),
       'snf-sl'  => t('Georgia, Baskerville, Palatino, Palatino Linotype, Book Antiqua, Times New Roman, serif'),
@@ -121,7 +118,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
     '#type' => 'select',
     '#title' => t('Font'),
     '#default_value' => theme_get_setting('site_name_font_gwf'),
-    '#options' => get_gwf_font_families_options(),
+    '#options' => google_web_fonts_list_options(),
   );
   $form['at']['font']['site_slogan_font_wrapper'] = array (
     '#type' => 'fieldset',
@@ -156,7 +153,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
       'ssf-ssl' => t('Verdana, Geneva, Arial, Helvetica, sans-serif'),
       'ssf-a'   => t('Arial, Helvetica, sans-serif'),
       'ssf-cc'  => t('Calibri, Candara, Arial, Helvetica, sans-serif'),
-      'ssf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif;'),
+      'ssf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif'),
       'ssf-l'   => t('Lucida Sans Unicode, Lucida Sans, Lucida Grande, Verdana, Geneva, sans-serif'),
       'ssf-ss'  => t('Garamond, Perpetua, Times New Roman, serif'),
       'ssf-sl'  => t('Georgia, Baskerville, Palatino, Palatino Linotype, Book Antiqua, Times New Roman, serif'),
@@ -177,7 +174,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
     '#type' => 'select',
     '#title' => t('Font'),
     '#default_value' => theme_get_setting('site_slogan_font_gwf'),
-    '#options' => get_gwf_font_families_options(),
+    '#options' => google_web_fonts_list_options(),
   );
   $form['at']['font']['page_title_font_wrapper'] = array (
     '#type' => 'fieldset',
@@ -212,7 +209,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
       'ptf-ssl' => t('Verdana, Geneva, Arial, Helvetica, sans-serif'),
       'ptf-a'   => t('Arial, Helvetica, sans-serif'),
       'ptf-cc'  => t('Calibri, Candara, Arial, Helvetica, sans-serif'),
-      'ptf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif;'),
+      'ptf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif'),
       'ptf-l'   => t('Lucida Sans Unicode, Lucida Sans, Lucida Grande, Verdana, Geneva, sans-serif'),
       'ptf-ss'  => t('Garamond, Perpetua, Times New Roman, serif'),
       'ptf-sl'  => t('Georgia, Baskerville, Palatino, Palatino Linotype, Book Antiqua, Times New Roman, serif'),
@@ -233,7 +230,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
     '#type' => 'select',
     '#title' => t('Font'),
     '#default_value' => theme_get_setting('page_title_font_gwf'),
-    '#options' => get_gwf_font_families_options(),
+    '#options' => google_web_fonts_list_options(),
   );
   // Node title font
   $form['at']['font']['node_title_font_wrapper'] = array (
@@ -269,7 +266,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
       'ntf-ssl' => t('Verdana, Geneva, Arial, Helvetica, sans-serif'),
       'ntf-a'   => t('Arial, Helvetica, sans-serif'),
       'ntf-cc'  => t('Calibri, Candara, Arial, Helvetica, sans-serif'),
-      'ntf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif;'),
+      'ntf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif'),
       'ntf-l'   => t('Lucida Sans Unicode, Lucida Sans, Lucida Grande, Verdana, Geneva, sans-serif'),
       'ntf-ss'  => t('Garamond, Perpetua, Times New Roman, serif'),
       'ntf-sl'  => t('Georgia, Baskerville, Palatino, Palatino Linotype, Book Antiqua, Times New Roman, serif'),
@@ -290,7 +287,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
     '#type' => 'select',
     '#title' => t('Font'),
     '#default_value' => theme_get_setting('node_title_font_gwf'),
-    '#options' => get_gwf_font_families_options(),
+    '#options' => google_web_fonts_list_options(),
   );
   // Comment title font
   $form['at']['font']['comment_title_font_wrapper'] = array (
@@ -326,7 +323,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
       'ctf-ssl' => t('Verdana, Geneva, Arial, Helvetica, sans-serif'),
       'ctf-a'   => t('Arial, Helvetica, sans-serif'),
       'ctf-cc'  => t('Calibri, Candara, Arial, Helvetica, sans-serif'),
-      'ctf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif;'),
+      'ctf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif'),
       'ctf-l'   => t('Lucida Sans Unicode, Lucida Sans, Lucida Grande, Verdana, Geneva, sans-serif'),
       'ctf-ss'  => t('Garamond, Perpetua, Times New Roman, serif'),
       'ctf-sl'  => t('Georgia, Baskerville, Palatino, Palatino Linotype, Book Antiqua, Times New Roman, serif'),
@@ -347,7 +344,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
     '#type' => 'select',
     '#title' => t('Font'),
     '#default_value' => theme_get_setting('comment_title_font_gwf'),
-    '#options' => get_gwf_font_families_options(),
+    '#options' => google_web_fonts_list_options(),
   );
   // Block title font
   $form ['at']['font'] ['block_title_font_wrapper'] = array (
@@ -384,7 +381,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
       'btf-ssl' => t('Verdana, Geneva, Arial, Helvetica, sans-serif'),
       'btf-a'   => t('Arial, Helvetica, sans-serif'),
       'btf-cc'  => t('Calibri, Candara, Arial, Helvetica, sans-serif'),
-      'btf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif;'),
+      'btf-m'   => t('Segoe UI, Myriad Pro, Myriad, Arial, Helvetica, sans-serif'),
       'btf-l'   => t('Lucida Sans Unicode, Lucida Sans, Lucida Grande, Verdana, Geneva, sans-serif'),
       'btf-ss'  => t('Garamond, Perpetua, Times New Roman, serif'),
       'btf-sl'  => t('Georgia, Baskerville, Palatino, Palatino Linotype, Book Antiqua, Times New Roman, serif'),
@@ -405,7 +402,7 @@ function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
     '#type' => 'select',
     '#title' => t('Font'),
     '#default_value' => theme_get_setting('block_title_font_gwf'),
-    '#options' => get_gwf_font_families_options(),
+    '#options' => google_web_fonts_list_options(),
   );
   $form['at']['size'] = array(
     '#type' => 'fieldset',

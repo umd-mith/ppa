@@ -1,67 +1,37 @@
 <?php
 // Corolla by Adaptivethemes.com
 
-// Load Google web fonts
-include_once(drupal_get_path('theme', 'adaptivetheme') . '/inc/google.web.fonts.inc');
-
 /**
  * Override or insert vars into the html template.
  */
 function corolla_preprocess_html(&$vars) {
+  global $theme_key;
 
-  global $theme, $theme_key;
+  $theme_name = 'corolla';
 
+  // Load the media queries styles
   $media_queries_css = array(
-    'corolla-responsive-style.css',
-    'corolla-responsive-gpanels.css'
+    $theme_name . '.responsive.style.css',
+    $theme_name . '.responsive.gpanels.css'
   );
-  foreach ($media_queries_css as $css) {
-    $filepath = drupal_get_path('theme', 'corolla') . '/css/' . $css;
-    drupal_add_css($filepath, array(
-      'preprocess' => variable_get('preprocess_css', '') == 1 ? TRUE : FALSE,
-      'group' => CSS_THEME,
-      'media' => 'screen',
-      'every_page' => TRUE,
-      )
-    );
-  }
+  load_subtheme_media_queries($media_queries_css, $theme_name);
 
-  // < IE 9
-  drupal_add_css(path_to_theme() . '/css/ie/ie-lte-9.css', array(
-    'group' => CSS_THEME,
-    'browsers' => array(
-      'IE' => 'lte IE 9',
-      '!IE' => FALSE,
-      ),
-    'preprocess' => FALSE,
-    )
+  // Load IE specific stylesheets
+  $ie_files = array(
+    'lte IE 9' => 'ie-lte-9.css',
   );
+  load_subtheme_ie_styles($ie_files, $theme_name);
 
+  // Add a class for the active color scheme
   if (module_exists('color')) {
-    $info = color_get_info($theme);
-    $info['schemes'][''] = array('title' => t('Custom'), 'colors' => array());
-    $schemes = array();
-    foreach ($info['schemes'] as $key => $scheme) {
-      $schemes[$key] = $scheme['colors'];
-    }
-    $current_scheme = variable_get('color_' . $theme . '_palette', array());
-    foreach ($schemes as $key => $scheme) {
-      if ($current_scheme == $scheme) {
-        $scheme_name = $key;
-        break;
-      }
-    }
-    if (empty($scheme_name)) {
-      if (empty($current_scheme)) {
-        $scheme_name = 'default';
-      }
-      else {
-        $scheme_name = 'custom';
-      }
-    }
-    $vars['classes_array'][] = 'color-scheme-' . drupal_html_class($scheme_name);
+    $class = check_plain(get_color_scheme_name($theme_key));
+    $vars['classes_array'][] = 'color-scheme-' . drupal_html_class($class);
   }
+
+  // Add class for the active theme
   $vars['classes_array'][] = drupal_html_class($theme_key);
+
+  // Add theme settings classes
   $settings_array = array(
     'font_size',
     'box_shadows',
@@ -75,6 +45,7 @@ function corolla_preprocess_html(&$vars) {
     $vars['classes_array'][] = theme_get_setting($setting);
   }
 
+  // Fonts
   $fonts = array(
     'bf'  => 'base_font',
     'snf' => 'site_name_font',
@@ -84,52 +55,14 @@ function corolla_preprocess_html(&$vars) {
     'ctf' => 'comment_title_font',
     'btf' => 'block_title_font'
   );
-  $google_font_families = array();
-  foreach($fonts as $key => $value) {
-    $font_type = theme_get_setting($value . '_type');
-    $font_value = theme_get_setting($value . (!empty($font_type) ? '_' . $font_type : ''));
-    if ($font_type == '') {
-      $vars['classes_array'][] = $font_value;
+  $families = get_font_families($fonts, $theme_key);
+  if (!empty($families)) {
+    foreach($families as $family) {
+      $vars['classes_array'][] = $family;
     }
-    else {
-      if ($font_type == 'gwf') {
-        $gff = str_replace(' ', '+', $font_value);
-        $google_font_families[] = $gff;
-      }
-      $font_value = preg_replace('/[^\w\d_ -]/si', '', $font_value);
-      $style_name = get_style_name($key, $font_type, $font_value);
-      $vars['classes_array'][] = $style_name;
-      switch($key) {
-        case 'bf':
-          drupal_add_css("body.$style_name, .$style_name .form-text {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
-          break;
-        case 'snf':
-          drupal_add_css("body.$style_name #site-name {font-family : '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
-          break;
-        case 'ssf':
-          drupal_add_css("body.$style_name #site-slogan {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
-          break;
-        case 'ptf':
-          drupal_add_css("body.$style_name #page-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
-          break;
-        case 'ntf':
-          drupal_add_css("body.$style_name .article-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
-          break;
-        case 'ctf':
-          drupal_add_css("body.$style_name .comment-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
-          break;
-        case 'btf':
-          drupal_add_css("body.$style_name .block-title {font-family: '" . $font_value . "'}", array('group' => CSS_DEFAULT, 'type' => 'inline'));
-          break;
-      }
-    }
-  }
-  if (!empty($google_font_families)) {
-    $font_families = array_unique($google_font_families);
-    $gwff = trim(implode('|', $font_families));
-    drupal_add_css('http://fonts.googleapis.com/css?family=' . $gwff, array('group' => CSS_THEME, 'type' => 'external', 'preprocess' => FALSE));
   }
 
+  // Heading styles
   if (theme_get_setting('headings_styles_caps') == 1) {
     $vars['classes_array'][] = 'hs-caps';
   }

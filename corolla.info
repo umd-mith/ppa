@@ -18,7 +18,7 @@
   stylesheets[all][]   = css/blocks.css
   stylesheets[all][]   = css/navigation.css
   stylesheets[all][]   = css/fonts.css
-  stylesheets[all][]   = css/theme-settings.css
+  stylesheets[all][]   = css/corolla.settings.style.css
   stylesheets[all][]   = color/colors.css
   stylesheets[print][] = css/print.css
 

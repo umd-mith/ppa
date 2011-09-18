@@ -8,7 +8,7 @@
   <?php endif; ?>
 
   <div id="header-wrapper"><div class="container clearfix">
-    <header class="clearfix<?php print $linked_site_logo ? ' with-logo' : ''; ?>">
+    <header class="clearfix<?php print $linked_site_logo ? ' with-logo' : ''; ?>" role="banner">
       <div id="branding">
         <?php if ($linked_site_logo): ?>
           <div id="logo"><?php print $linked_site_logo; ?></div>
@@ -62,7 +62,7 @@
         <?php print render($page['highlighted']); ?>
 
         <?php $tag = $title ? 'section' : 'div'; ?>
-        <<?php print $tag; ?> id="main-content">
+        <<?php print $tag; ?> id="main-content" role="main">
         
           <?php if ($primary_local_tasks): ?>
             <div id="tasks" class="clearfix">
@@ -135,7 +135,7 @@
 
   <?php if ($page['footer']): ?>
     <div id="footer-wrapper"><div class="container clearfix">
-      <footer class="clearfix">
+      <footer class="clearfix" role="contentinfo">
         <?php print render($page['footer']); ?>
       </footer>
     </div></div>
