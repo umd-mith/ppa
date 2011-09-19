@@ -54,51 +54,9 @@ http://drupal.org/project/superfish
 
 -- CREATING A SUBTHEME --
 
-1. Create a new theme directory and .info file with the following inside it:
+Please see our help page and the starter sub-theme we have built to get you up and running:
 
-    name = Name of your theme.
-    description = Description of your theme.
-    core = 7.x
-
-    base theme = corolla
-
-    stylesheets[all][] = color/colors.css
-    stylesheets[all][] = custom.css
-
-    regions[sidebar_first]     = Sidebar first
-    regions[sidebar_second]    = Sidebar second
-    regions[highlighted]       = Highlighted
-    regions[content]           = Main content
-    regions[content_aside]     = Content cottom panel
-    regions[menu_bar]          = Menu Bar
-    regions[header]            = Header panel
-    regions[three_33_first]    = Top panel first
-    regions[three_33_second]   = Top panel second
-    regions[three_33_third]    = Top panel third
-    regions[secondary_content] = Features panel
-    regions[tertiary_content]  = Bottom panel
-    regions[four_first]        = Footer panel first
-    regions[four_second]       = Footer panel second
-    regions[four_third]        = Footer panel third
-    regions[four_fourth]       = Footer panel fourth
-    regions[footer]            = Footer
-    regions[help]              = Help
-    regions[page_top]          = Page top
-    regions[page_bottom]       = Page bottom
-
-    features[] = logo
-    features[] = favicon
-    features[] = name
-    features[] = slogan
-    features[] = node_user_picture
-    features[] = comment_user_picture
-    features[] = comment_user_verification
-
-2. Create a custom.css file which will contain any styles you want to change or
-   add. You can place this in the root or your theme or in a sub-directory, just
-   make sure the path matches the info file entry.
-
-3. Copy the entire color directory from Corolla into your subtheme.
+http://adaptivethemes.com/documentation/footheme-starter-coloarble-sub-theme-for-corolla-sky-and-pixture-reloaded
 
 
 -- CONTACT --
