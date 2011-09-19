@@ -1,5 +1,6 @@
 <?php
 // Corolla
+include_once(drupal_get_path('theme', 'adaptivetheme') . '/inc/google.web.fonts.inc');
 
 function corolla_form_system_theme_settings_alter(&$form, &$form_state)  {
 
