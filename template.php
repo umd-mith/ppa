@@ -57,7 +57,7 @@ function corolla_preprocess_html(&$vars) {
   );
   $families = get_font_families($fonts, $theme_key);
   if (!empty($families)) {
-    foreach($families as $family) {
+    foreach ($families as $family) {
       $vars['classes_array'][] = $family;
     }
   }
@@ -108,13 +108,13 @@ function corolla_preprocess_block(&$vars) {
  */
 function corolla_preprocess_field(&$vars) {
   $element = $vars['element'];
-  $vars['classes_array'][] = 'view-mode-'. $element['#view_mode'];
+  $vars['classes_array'][] = 'view-mode-' . $element['#view_mode'];
   $vars['image_caption_teaser'] = FALSE;
   $vars['image_caption_full'] = FALSE;
-  if(theme_get_setting('image_caption_teaser') == 1) {
+  if (theme_get_setting('image_caption_teaser') == 1) {
     $vars['image_caption_teaser'] = TRUE;
   }
-  if(theme_get_setting('image_caption_full') == 1) {
+  if (theme_get_setting('image_caption_full') == 1) {
     $vars['image_caption_full'] = TRUE;
   }
   $vars['field_view_mode'] = '';
