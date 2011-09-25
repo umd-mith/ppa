@@ -11,6 +11,9 @@ ul.menu li {
   margin: 2px 0;
   padding: 0;
 }
+ul.menu ul {
+  margin-left: 15px;
+}
 .block .menu li.content {
   padding: 0; /* extra class can equal a standard class */
 }
@@ -128,7 +131,12 @@ ul.pager li.pager-ellipsis {
 }
 /* Corolla supports Superfish drop menus in two regions - Menu bar and the Header panel,
    and we need to support standard menu blocks as well. */
-#menu-bar-wrapper, #menu-bar {
+#menu-bar-wrapper {
+  position: relative;
+  z-index: 10;
+}
+#menu-bar-wrapper,
+#menu-bar {
   height: 3em;
 }
 #menu-bar {

@@ -27,7 +27,7 @@
   regions[sidebar_second]    = Sidebar second
   regions[highlighted]       = Highlighted
   regions[content]           = Main content
-  regions[content_aside]     = Content cottom panel
+  regions[content_aside]     = Content bottom panel
   regions[menu_bar]          = Menu Bar
   regions[header]            = Header panel
   regions[three_33_first]    = Top panel first

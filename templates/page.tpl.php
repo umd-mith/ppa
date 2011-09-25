@@ -86,14 +86,14 @@
               </div>
             <?php endif; ?>
 
+            <?php print render($title_prefix); ?>
             <?php if ($title && !isset($node)): ?>
               <header class="clearfix">
-                <?php print render($title_prefix); ?>
                 <h1 id="page-title"><?php print $title; ?></h1>
-                <?php print render($title_suffix); ?>
               </header>
             <?php endif; ?>
-
+            <?php print render($title_suffix); ?>
+ 
             <?php if ($action_links = render($action_links)): ?>
               <ul class="action-links"><?php print $action_links; ?></ul>
             <?php endif; ?>

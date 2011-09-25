@@ -415,19 +415,16 @@ body.bf-ms,
 /* Bullets */
 .mb-n ul.menu {
   padding: 0;
-  margin: 0;
 } 
 .mb-n ul li.leaf,   
 .mb-n ul li.collapsed,
 .mb-n ul li.expanded {
   list-style: none;
   list-style-image: none;
-  margin: 0;
   padding: 0;
 }
 .mb-ah ul.menu {
   padding: 0 0 0 0.1em;
-  margin: 0;
 }
 .mb-ah ul li.leaf,   
 .mb-ah ul li.collapsed,
@@ -436,7 +433,6 @@ body.bf-ms,
 }
 .mb-ad ul.menu {
   padding: 0 0 0 0.2em;
-  margin: 0;
 }
 .mb-ad ul li.leaf,   
 .mb-ad ul li.collapsed,
@@ -445,7 +441,6 @@ body.bf-ms,
 }
 .mb-ca ul.menu {
   padding: 0 0 0 0.6em;
-  margin: 0;
 } 
 .mb-ca ul li.leaf,   
 .mb-ca ul li.collapsed,
@@ -454,7 +449,6 @@ body.bf-ms,
 }
 .mb-fa ul.menu {
   padding: 0 0 0 0.6em;
-  margin: 0;
 } 
 .mb-fa ul li.leaf,   
 .mb-fa ul li.collapsed,
@@ -463,7 +457,6 @@ body.bf-ms,
 }
 .mb-sa ul.menu {
   padding: 0 0 0 0.6em;
-  margin: 0;
 } 
 .mb-sa ul li.leaf,   
 .mb-sa ul li.collapsed,
