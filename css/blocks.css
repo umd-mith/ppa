@@ -6,10 +6,6 @@
 .block:last-child {
   margin-bottom: 15px;
 }
-.block ul {
-  margin: 0;
-  padding: 0;
-}
 .block-title {
   font-size: 1.1em;
   font-weight: 700;
@@ -47,9 +43,6 @@
 }
 #menu-bar  #block-system-user-menu {
   float: right;
-}
-.block ul li {
-  margin: 0 0 0 0.5em;
 }
 .block .item-list ul  {
   margin-left: 1em;
