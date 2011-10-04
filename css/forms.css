@@ -401,3 +401,9 @@ div.form-item div.password-suggestions {
   background-color: #f3fcdb;
   border: 1px solid #b8e643;
 }
+
+/* Reset textarea backgrounds in WYSIWYG module text editors */
+body.wysiwygeditor {
+  background-color: #fff;
+  background-image: none;
+}

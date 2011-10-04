@@ -27,6 +27,10 @@ h5,
 h6 {
   font-size: 1em;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
 a img {
   border:none;
 }

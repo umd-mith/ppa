@@ -63,7 +63,7 @@
 
         <?php $tag = $title ? 'section' : 'div'; ?>
         <<?php print $tag; ?> id="main-content" role="main">
-        
+
           <?php if ($primary_local_tasks): ?>
             <div id="tasks" class="clearfix">
               <?php if ($primary_local_tasks): ?>
@@ -73,11 +73,11 @@
           <?php endif; ?>
 
           <div class="content-margin"><div class="content-style">
-          
+
             <?php if ($secondary_local_tasks): ?>
               <ul class="tabs secondary"><?php print render($secondary_local_tasks); ?></ul>
             <?php endif; ?>
-          
+
             <?php if ($breadcrumb): ?>
               <div id="breadcrumb-wrapper">
                 <section class="breadcrumb clearfix">
@@ -93,7 +93,7 @@
               </header>
             <?php endif; ?>
             <?php print render($title_suffix); ?>
- 
+
             <?php if ($action_links = render($action_links)): ?>
               <ul class="action-links"><?php print $action_links; ?></ul>
             <?php endif; ?>

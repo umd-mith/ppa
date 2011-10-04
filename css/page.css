@@ -17,7 +17,7 @@
   padding: 0 15px 0 0;
   vertical-align: middle;
 }
-#page > header > hgroup {
+#branding hgroup {
   display: table-cell;
   vertical-align: middle;
 }
@@ -34,6 +34,10 @@
 #site-slogan {
   font-size: 1.077em;
   font-weight: 400;
+}
+.site-name-hidden #logo,
+.site-name-hidden #branding hgroup {
+  display: block;
 }
 #secondary-content-wrapper,
 #top-panels-wrapper,
@@ -348,11 +352,13 @@ body.overlay-open div.add-or-remove-shortcuts {
 body.maintenance-page #content {
   margin-top: 5px;
 }
+
 /* System help */
 #block-system-help {
   background-color: #f5f9fa;
   border: 1px solid #b3cfd4;
 }
+
 /* Messages */
 div.messages {
   margin: 10px 10px 15px;
@@ -369,4 +375,10 @@ div.messages {
 #block-system-help .block-inner {
   padding: 0;
   margin: 0;
+}
+
+/* Override max-width 100% for Gmaps and Getlocations modules */
+.gmap img,
+#getlocations_map_canvas img {
+  max-width: none;
 }
