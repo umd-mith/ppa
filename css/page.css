@@ -379,6 +379,7 @@ div.messages {
 
 /* Override max-width 100% for Gmaps and Getlocations modules */
 .gmap img,
+.view-gmap img,
 #getlocations_map_canvas img {
   max-width: none;
 }
