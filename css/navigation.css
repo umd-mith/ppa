@@ -186,6 +186,11 @@ ul.sf-menu li ul {
   margin: 0 2px !important;
   padding: 0;
 }
+.region-header .sf-horizontal.sf-style-none ul li,
+.region-header ul.menu ul li {
+  margin: 0 !important;
+  padding: 0;
+}
 .region-header ul.menu li {
   float: left;
 }

@@ -1,4 +1,15 @@
 /* Corolla < IE9 */
+#branding * {
+  display: block;
+}
+#branding,
+#logo,
+#branding hgroup {
+  float: left;
+}
+.site-name-hidden #branding hgroup {
+  clear: left;
+}
 #menu-bar ul li {
   display: block;
   float: left;

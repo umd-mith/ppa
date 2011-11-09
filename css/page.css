@@ -1,16 +1,23 @@
 /* General page and module styles */
-#page > header {
-  clear: both;
-  padding: 10px 0 0;
+#header-wrapper {
+  position: relative;
+  z-index: 100;
+}
+#header-wrapper header {
+    clear: both;
+    display: table;
+    width: 100%;
 }
 #branding {
-  float: left;
   padding: 45px 0 48px 25px;
-  display: table;
+  display: table-cell;
 }
 .region-header {
-  float: right;
   padding: 45px 25px 48px 0;
+  display: table-cell;
+}
+.region-header .block {
+  float: right;
 }
 #logo {
   display: table-cell;
