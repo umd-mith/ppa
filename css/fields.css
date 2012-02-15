@@ -24,7 +24,6 @@
 .field-label-inline .field-items {
   display: inline;
 }
-.field-type-image figure {}
 .field-type-image figure,
 .field-type-image figcaption {
   margin: 0;

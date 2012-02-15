@@ -220,11 +220,9 @@ body.overlay {
 #overlay-container {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  -khtml-border-radius: 5px;
   border-radius: 5px;
   -webkit-border-top-right-radius: 0;
   -moz-border-radius-topright: 0;
-  -khtml-border-radius-topright: 0;
   border-top-right-radius: 0;
 }
 body.overlay #main-columns,
@@ -305,24 +303,6 @@ a.contextual-links-trigger {
   position:static;
   margin-bottom: 10px;
 }
-#palette .form-item {
-  width: auto;
-}
-.color-form .form-item {
-  height: 3em;
-}
-#palette .item-selected {
-  background: none;
-}
-#palette .lock {
-  background-position: 50% 2px;
-}
-#palette .unlocked {
-  background-position: 50% -22px;
-}
-#palette .hook {
-  margin-top: 0.6em;
-}
 #dashboard #disabled-blocks h2 {
   color: #fff;
 }
@@ -382,11 +362,4 @@ div.messages {
 #block-system-help .block-inner {
   padding: 0;
   margin: 0;
-}
-
-/* Override max-width 100% for Gmaps and Getlocations modules */
-.gmap img,
-.view-gmap img,
-#getlocations_map_canvas img {
-  max-width: none;
 }

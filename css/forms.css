@@ -34,11 +34,15 @@ textarea {
   line-height: inherit;
   padding: 6px;
   -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
   border-radius: 3px;
   -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .form-textarea-wrapper.resizable textarea{
   -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
 input.form-text,
@@ -196,7 +200,6 @@ div.resizable-textarea textarea {
   margin-right: 0!important;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -khtml-box-sizing: border-box;
   box-sizing: border-box;
 }
 #search-block-form {
@@ -370,6 +373,24 @@ ul.vertical-tabs-list li.selected a {
 }
 .farbtastic .marker:after {
   content: "";
+}
+#palette .form-item {
+  width: auto;
+}
+.color-form .form-item {
+  height: 3em;
+}
+#palette .item-selected {
+  background: none;
+}
+#palette .lock {
+  background-position: 50% 2px;
+}
+#palette .unlocked {
+  background-position: 50% -22px;
+}
+#palette .hook {
+  margin-top: 0.6em;
 }
 .password-parent,
 div.form-item div.password-suggestions {
