@@ -90,10 +90,10 @@ ul.sf-menu li ul {
 .sf-menu a:active {
   outline: 0;
 }
-.menu-wrapper .block-superfish .block-inner,
-.menu-wrapper .block-superfish .block-inner .content,
-.region-header .block-superfish .block-inner,
-.region-header .block-superfish .block-inner .content {
+#menu-bar .block-superfish .block-inner,
+#menu-bar .block-superfish .block-inner .content,
+#menu-bar .block-superfish .block-inner,
+#menu-bar .block-superfish .block-inner .content {
   padding: 0;
   margin: 0;
 }
@@ -149,7 +149,7 @@ ul.sf-menu li ul {
   margin: 0;
   padding: 0;
 }
-#menu-bar .menu-wrapper > ul > li {
+#menu-bar .block > ul > li {
   display: inline-block;
   margin: 0.333em 0 0;
   padding-left: 0;
@@ -168,7 +168,7 @@ ul.sf-menu li ul {
   -webkit-border-radius: 0;
   border-radius: 0;
 }
-#menu-bar .menu-wrapper > ul > li > ul {
+#menu-bar .block-menu > ul > li > ul {
   margin-top: 0.417em;
 }
 #menu-bar .block-menu ul ul {
