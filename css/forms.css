@@ -59,7 +59,7 @@ input.form-file {
 input.form-file,
 .block input.form-file {
   max-width: 240px;
-  width: 60%;
+  width: 100%;
 }
 input.form-button,
 input.form-submit {
