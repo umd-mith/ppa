@@ -132,7 +132,14 @@ input.form-submit {
 textarea:focus {
   background: #fff;
 }
-
+#autocomplete ul {
+  background: #fff;
+  color: #2e2e2e;
+}
+#autocomplete ul div:hover {
+  background: #779125;
+  color: #fff;
+}
 /* Slogan */
 #site-slogan {
   color: #e25400;
