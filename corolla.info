@@ -22,6 +22,9 @@
   stylesheets[all][]   = color/colors.css
   stylesheets[print][] = css/print.css
 
+;----------// Scripts
+  scripts[] = js/script.js
+
 ;----------// Regions
   regions[sidebar_first]     = Sidebar first
   regions[sidebar_second]    = Sidebar second
@@ -155,12 +158,14 @@
   settings[smartphone_landscape_inset_right] = 'three-inset-right-stack'
 
   ; Global settings
+  settings[global_default_layout] = 'smartphone-portrait'
   settings[disable_responsive_styles] = 0
   settings[load_respondjs] = 0
 
   ; Debug
   settings[expose_regions] = 0
   settings[load_all_panels] = 0
+  settings[show_window_size] = 0
 
   ; Feed icons
   settings[feed_icons] = 0
