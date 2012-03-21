@@ -986,11 +986,21 @@ function theme_biblio_contributors($variables) {
 function theme_biblio_alpha_line($variables) {
   $type    = $variables['type'];
   $all = '';
-  $uri = drupal_parse_url(request_uri());
-  $uri['path'] = $_GET['q']; //replace path in case we are in a multi-language environment, otherwise we end up with double language prefixes.
-  if (substr($uri['path'], 0, 1) == '/') {
-    $uri['path'] = substr($uri['path'], 1);
+  $uri = drupal_parse_url(request_path());
+
+  //replace path in case we are in a multi-language environment, otherwise we end up with double language prefixes.
+  $languages =  language_list('enabled');
+  if (isset($languages[1])) {
+    $path_parts = empty($uri['path']) ? array() : explode('/', $uri['path']);
+    foreach ($languages[1] as $code => $lang) {
+      if ($path_parts[0] == $code) {
+        array_shift($path_parts);
+        break;
+      }
+    }
+    $uri['path'] = implode('/', $path_parts);
   }
+
   $all_uri = $uri;
   $current = '';
 
