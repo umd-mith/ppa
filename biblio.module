@@ -1391,6 +1391,7 @@ function biblio_contributor_form($contributor, $options) {
 
   $form['name'] = array(
     '#type' => 'textfield',
+    '#maxlength' => 255,
     '#autocomplete_path' =>  'biblio/autocomplete/contributor',
     '#default_value' => isset($contributor['name']) ? $contributor['name'] : '',
   );
