@@ -1129,11 +1129,12 @@ class csl_text extends csl_format {
     }
 
     if (empty($text)) return;
+    $text = $this->format($text);
     if ($this->variable == 'title') {
       $url = biblio_get_title_url_info($data);
       $text =  l($text, $url['link'], $url['options']) ;
     }
-    return $this->format($text);
+    return $text;
   }
 }
 
@@ -1211,8 +1212,9 @@ class csl_group extends csl_format{
     $text = '';
     $text_parts = array();
 
-    $terms = $variables = $have_variables = 0;
+    $terms = $variables = $have_variables = $element_count = 0;
     foreach ($this->elements as $element) {
+      $element_count++;
       if (($element instanceof csl_text) &&
           ($element->source == 'term' ||
            $element->source == 'value' )) {
@@ -1228,7 +1230,18 @@ class csl_group extends csl_format{
 
       $text = $element->render($data, $mode);
 
+      $delimiter = $this->delimiter;
       if (!empty($text)) {
+        if ($delimiter && ($element_count < count($this->elements))) {
+          //check to see if the delimiter is already the last character of the text string
+          //if so, remove it so we don't have two of them when we paste together the group
+          $stext = strip_tags(trim($text));
+          if((strrpos($stext, $delimiter[0])+1) == drupal_strlen($stext)) {
+            $text = str_replace($stext, '----REPLACE----', $text);
+            $stext = drupal_substr($stext, 0, -1);
+            $text = str_replace('----REPLACE----', $stext, $text);
+          }
+        }
         $text_parts[] = $text;
         if ($element->source == 'variable' || isset($element->variable)) $have_variables++;
         if ($element->source == 'macro') $have_variables++;
