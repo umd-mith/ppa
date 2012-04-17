@@ -137,7 +137,7 @@ function theme_biblio_citeproc_style_manager_form($variables) {
   $output = theme('table', array('rows' => $rows));
   $rows = array();
   $rows[] = array(
-              array('data' => drupal_render($form['installed_styles']) . '<br>' . drupal_render($form['default']). drupal_render($form['edit'])),
+              array('data' => drupal_render($form['installed_styles']) . '<br>' . drupal_render($form['default']) . drupal_render($form['edit'])),
               array('data' => drupal_render($form['install']) . '<br>' . drupal_render($form['remove'])),
               array('data' => drupal_render($form['avialable_styles']) . '<br>' . drupal_render($form['install_all'])
               ),
@@ -387,8 +387,8 @@ function biblio_citeproc_csl_editor($form, &$form_state, $style) {
 
   }
   if (isset($csl->csl)) {
-     $csl_file_contents = $csl->csl;
- }
+    $csl_file_contents = $csl->csl;
+  }
 
   $form['editor'] = array(
       '#title'         => t('Editing %style', array('%style' => $style)),
@@ -396,11 +396,11 @@ function biblio_citeproc_csl_editor($form, &$form_state, $style) {
       '#rows'          => 40,
       '#format'        => 'csl',
       '#default_value' => $csl_file_contents,
-      );
+  );
   $form['save'] = array(
       '#value' => t('Save'),
       '#type'  => 'submit',
-      );
+  );
   $form['cancel'] = array(
       '#value' => t('Cancel'),
       '#type'  => 'submit',
@@ -435,7 +435,7 @@ function biblio_citeproc_csl_editor_submit($form, &$form_state) {
     $record = array(
         'id'  => $form_state['values']['id'],
         'csl' => $form_state['values']['editor']['value'],
-        );
+    );
     drupal_write_record('biblio_citeproc_styles', $record, 'id');
   }
 
