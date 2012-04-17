@@ -1329,7 +1329,7 @@ function _biblio_author_edit_links($author) {
     $path =  (ord(substr($_GET['q'], -1)) > 97) ? $_GET['q'] . "/" : substr($_GET['q'], 0, -1);
     $path = (strpos($path, 'list/')) ? str_replace('list/', '', $path) : $path;
   }
-  return l(' [' . t('edit') . ']', $path . $author->cid . "/edit", array('query' => $destination) );
+  return l(' [' . t('edit') . ']', $path . $author->cid . "/edit" );
 }
 
 function biblio_keyword_page() {
