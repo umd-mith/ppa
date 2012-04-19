@@ -897,7 +897,7 @@ function biblio_schema() {
       'cid' => array(
         'type' => 'serial',
         'not null' => TRUE,
-        'unsigned' => TRUE,
+        'unsigned' => FALSE,
         'description' => 'Primary Key: Author ID',
         ),
       'aka' => array(
@@ -2101,4 +2101,18 @@ function biblio_update_7018() {
   db_change_field('biblio_contributor_data', 'lastname', 'lastname', $spec);
 
 }
+/**
+ *
+ * Change biblio_contributor_data.cid to a signed int
+ */
 
+function biblio_update_7019() {
+  $spec =  array(
+    'type' => 'serial',
+    'not null' => TRUE,
+    'unsigned' => FALSE,
+    'description' => 'Primary Key: Author ID',
+  );
+  db_change_field('biblio_contributor_data', 'cid', 'cid', $spec);
+
+}

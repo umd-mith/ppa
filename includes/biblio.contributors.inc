@@ -23,6 +23,28 @@ function biblio_get_contributor_category($contributors, $category) {
   return $authors;
 }
 
+/**
+ * Get an author id from the database using the "name" field as a key.
+ * If the "cid" value is negative, this means we found an "alternate" form of
+ * the name, which should have an "aka" value which points to the preferred form.
+ *
+ * @param string $name
+ * @return int
+ */
+function biblio_get_cid_by_name($name) {
+  $cid = 0;
+  $auth = biblio_get_contributor_by_name($name);
+  if ($auth) {
+    if ($auth->cid > 0) {
+      $cid = $auth->cid;
+    }
+    if ($auth->cid < 0 && $auth->aka > 0) {
+      $cid = $auth->aka;
+    }
+  }
+  return $cid;
+}
+
 function biblio_get_contributor_by_name($name) {
   $contributors = &drupal_static(__FUNCTION__);
 
@@ -105,37 +127,6 @@ function biblio_authors_add_etal(&$authors, $type) {
   $authors[] = biblio_parse_author(array('name' => $etal, 'auth_type' => $type, 'lastname' => $etal, 'rank' => $max_rank + 1));
   return TRUE;
 }
-/**
- * Parse initial contributor array and augment with additional info
- * @param $contributors initial contributor array
- * @return augmented contributor array
- */
-function biblio_parse_contributors($contributors) {
-  $result = array();
-  if (!count($contributors)) return;
-  foreach ($contributors as $cat => $authors) {
-    $etal = array();
-    foreach ($authors as $author) {
-      // remove any form of "et al" from name field, because it confuses biblio_parse_author
-      $author_cleaned = preg_replace("/et\.?\s+al\.?/", '', $author['name']);
-      if ($author_cleaned != $author['name']) { // if "et al" was present:
-        $author['name'] = $author_cleaned;  // store cleaned name
-        $etal[$author['auth_type']] = TRUE; // mark it as "to be added" in $etal array
-      }
-      $author['name'] = trim($author['name']);
-      if (strlen($author['name'])) {
-        $result[$cat][] = biblio_parse_author($author, $cat);
-      }
-    }
-    // add "et al" authors for all neccessary author types
-    foreach ($etal as $type => $dummy) {
-      if (isset($result[$cat])) { // add "et al" only if plain authors exists
-        biblio_authors_add_etal($result[$cat], $type);
-      }
-    }
-  }
-  return $result;
-}
 
 function biblio_delete_contributors($node) {
   $count = db_delete('biblio_contributor')
@@ -169,37 +160,70 @@ function biblio_delete_contributor_revision($cid, $vid) {
 
 }
 
+/**
+ * Get the number of orphaned authors in the database
+ *
+ * @return number
+ */
 function biblio_count_orphan_authors() {
-  return db_query('SELECT COUNT(*) FROM {biblio_contributor_data} bcd WHERE bcd.cid NOT IN (SELECT DISTINCT(bc.cid) FROM {biblio_contributor} bc )')->fetchField();
+  $cids =  biblio_get_orphan_author_ids();
+  return count($cids);
 }
 
+/**
+ * Get an array of authors which are not associated with any biblio entires.
+ * @return array
+ */
 function biblio_get_orphan_authors() {
   $authors = array();
-  $result =  db_query('SELECT bcd.* FROM {biblio_contributor_data} bcd WHERE bcd.cid NOT IN (SELECT DISTINCT(bc.cid) FROM {biblio_contributor} bc )');
-  foreach ($result as $author) {
-    $authors[] = $author;
+  $cids =  biblio_get_orphan_author_ids();
+
+  if (count($cids)) {
+    $query = db_select('biblio_contributor_data', 'bcd');
+    $result = $query->fields('bcd')
+      ->condition('cid', $cids, 'IN')
+      ->orderBy('lastname')
+      ->execute();
+
+    foreach ($result as $author) {
+      $authors[] = $author;
+    }
   }
   return $authors;
 }
 
+/**
+ * Get an array of author id's which are not associated with any biblio entries
+ *
+ * @return array
+ */
+function biblio_get_orphan_author_ids() {
+  $orphans = array();
+  $active_cids = array();
+  $all_cids = array();
+
+  $query = db_select('biblio_contributor', 'bc');
+  $active_cids = $query
+    ->fields('bc', array('cid'))
+    ->groupBy('cid')
+    ->execute()
+    ->fetchCol();
+
+  $query = db_select('biblio_contributor_data', 'bcd');
+  $all_cids = $query
+    ->fields('bcd', array('cid'))
+    ->condition('cid', 0, '>')
+    ->execute()
+    ->fetchCol();
+
+  $orphans = array_diff($all_cids, $active_cids);
+
+  return $orphans;
+}
+
 function biblio_delete_orphan_authors($force = FALSE) {
   if (variable_get('biblio_auto_orphaned_author_delete', 0) || $force) {
-    $query = db_select('biblio_contributor', 'bc');
-    $active_cids = $query
-      ->fields('bc', array('cid'))
-      ->groupBy('cid')
-      ->execute()
-      ->fetchCol();
-
-    $query = db_select('biblio_contributor_data', 'bcd');
-    $all_cids = $query
-      ->fields('bcd', array('cid'))
-      ->groupBy('cid')
-      ->execute()
-      ->fetchCol();
-
-    $orphans = array_diff($all_cids, $active_cids);
-
+    $orphans = biblio_get_orphan_author_ids();
     if (!empty($orphans)) {
       db_delete('biblio_contributor_data')
         ->condition('cid', $orphans, 'IN')
@@ -230,6 +254,10 @@ function biblio_update_contributor(&$author) {
   if (!isset($author['cid'])) return FALSE;
   return drupal_write_record('biblio_contributor_data', $author, 'cid');
 }
+
+/**
+ * @param unknown_type $authors
+ */
 function _biblio_contributor_sort(&$authors) {
   foreach($authors as $key => $author) {
     if(!isset($author['rank']) || empty($author['rank'])) {
@@ -238,6 +266,7 @@ function _biblio_contributor_sort(&$authors) {
   }
   usort($authors, '_biblio_contributor_usort');
 }
+
 function _biblio_contributor_usort($a, $b) {
   if(empty($a['name'])) return 1;
   if(empty($b['name'])) return -1;
@@ -258,38 +287,45 @@ function _save_contributors(&$contributors, $nid, $vid, $update = FALSE) {
       ->condition(db_and()->condition('nid', $nid)->condition('vid', $vid))
       ->execute();
 
-  _biblio_contributor_sort($contributors);// re-sort the authors by rank because the rank may have changed due to tabledrag on the input form
+  // re-sort the authors by rank because the rank may have changed due to tabledrag on the input form
+  _biblio_contributor_sort($contributors);
+
+  $name_parser = new HumanNameParser_Parser();
 
   foreach ($contributors as  $key => $author) {
     if (!empty($author['name'])) {
       if (isset($author['cid']) && !empty($author['cid'])) {
+        // check to make sure the name wasn't changed
+        // this should only happen via the node/add/biblio input form
         $auth = biblio_get_contributor($author['cid']);
         if (!empty($auth) && isset($auth->name) && $auth->name != $author['name']) {
-          $author['cid'] = '';
+          //if the name has changed, NULL the cid so a new entry is created
+          $author['cid'] = NULL;
         }
       }
-      // if we don't have a cid, lets see if we can find and exact match to the name and use that cid
+      // if we don't have a cid, lets see if we can find and exact match
+      // to the name and use that cid
       if (!isset($author['cid']) || empty($author['cid'])) {
-        $auth = biblio_get_contributor_by_name($author['name']);
-        if (!empty($auth) && isset($auth->cid)) {
-          $author['cid'] = $auth->cid;
-        }
+        $author['cid'] = biblio_get_cid_by_name($author['name']);
       }
 
+      // if we still don't have a cid, then create a new entry in the biblio_contirbutor_data table
       if (empty($author['cid'])) {
-        $contributors[$key] = $author = biblio_parse_author($author);
+        $author = $name_parser->parseName($author);
+        $contributors[$key] = $author;
+        biblio_save_contributor($author);
       }
 
+      // we should now have a cid, if not we are in big trouble...
       if (empty ($author['cid'])) {
-        biblio_save_contributor($author);
-        if (empty ($author['cid'])) return FALSE;
+        //throw error that author was not saved
       }
 
       $link_array = array(
           'nid' => $nid,
           'vid' => $vid,
           'cid' => $author['cid'],
-          'rank' => $rank++, //((isset($author['rank']) && is_numeric($author['rank'])) ? $author['rank'] : $key),
+          'rank' => $rank++,
           'auth_type' => !empty($author['auth_type']) ? $author['auth_type'] :  $author['auth_category'],
           'auth_category' =>  $author['auth_category'],
       );
@@ -487,3 +523,4 @@ function _loadMD5() {
   }
   return (count($md5)) ? $md5 : NULL;
 }
+
