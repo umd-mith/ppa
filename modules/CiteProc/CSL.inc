@@ -612,6 +612,7 @@ class csl_name extends csl_format {
                 $text = $given . ' ' . $name['lastname'] ;
             }
           }
+          $text = $this->format($text);
           $name['name'] = $text;
         }
       }
@@ -619,7 +620,7 @@ class csl_name extends csl_format {
         $text = theme('biblio_author_link', array('author' => $name));
       }
 
-      $authors[] = $this->format($text);
+      $authors[] = $text;
 
       if (isset($this->{'et-al-min'}) && $count >= $this->{'et-al-min'}) break;
     }
