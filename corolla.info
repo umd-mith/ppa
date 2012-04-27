@@ -1,8 +1,9 @@
 
 ;----------// Theme Information
   name        = Corolla
-  description = Corolla is now a subtheme of <a href="http://drupal.org/project/adaptivetheme">Adaptivetheme 7.x-2.x</a>. To use this theme you must first download and install the 7.x-2.x version of Adaptivetheme. Corolla is colorable and has many theme settings for layout, fonts, headings and much more. Corolla also supports layouts for mobile devices such as tablets and smartphones.
+  description = Corolla is now a subtheme of <a href="http://drupal.org/project/adaptivetheme">Adaptivetheme 7.x-3.x</a>. To use this theme you must first download and install the 7.x-3.x version of Adaptivetheme. Corolla is colorable and has many theme settings for layout, fonts, headings and much more. Corolla also supports layouts for mobile devices such as tablets and smartphones.
   core        = 7.x
+  release = 7.x-3.x
   engine      = phptemplate
   screenshot  = screenshot.png
   base theme  = adaptivetheme

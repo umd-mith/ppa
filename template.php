@@ -12,7 +12,6 @@ function corolla_preprocess_html(&$vars) {
   // Load the media queries styles
   $media_queries_css = array(
     $theme_name . '.responsive.style.css',
-    $theme_name . '.responsive.gpanels.css'
   );
   load_subtheme_media_queries($media_queries_css, $theme_name);
 
@@ -33,44 +32,14 @@ function corolla_preprocess_html(&$vars) {
 
   // Add theme settings classes
   $settings_array = array(
-    'font_size',
     'box_shadows',
     'body_background',
     'menu_bullets',
     'content_corner_radius',
     'tabs_corner_radius',
-    'image_alignment',
   );
   foreach ($settings_array as $setting) {
     $vars['classes_array'][] = theme_get_setting($setting);
-  }
-
-  // Fonts
-  $fonts = array(
-    'bf'  => 'base_font',
-    'snf' => 'site_name_font',
-    'ssf' => 'site_slogan_font',
-    'ptf' => 'page_title_font',
-    'ntf' => 'node_title_font',
-    'ctf' => 'comment_title_font',
-    'btf' => 'block_title_font'
-  );
-  $families = get_font_families($fonts, $theme_key);
-  if (!empty($families)) {
-    foreach ($families as $family) {
-      $vars['classes_array'][] = $family;
-    }
-  }
-
-  // Heading styles
-  if (theme_get_setting('headings_styles_caps') == 1) {
-    $vars['classes_array'][] = 'hs-caps';
-  }
-  if (theme_get_setting('headings_styles_weight') == 1) {
-    $vars['classes_array'][] = 'hs-fwn';
-  }
-  if (theme_get_setting('headings_styles_shadow') == 1) {
-    $vars['classes_array'][] = 'hs-ts';
   }
 }
 
@@ -106,21 +75,21 @@ function corolla_preprocess_block(&$vars) {
 /**
  * Override or insert vars into the field template.
  */
-function corolla_preprocess_field(&$vars) {
-  $element = $vars['element'];
-  $vars['classes_array'][] = 'view-mode-' . $element['#view_mode'];
-  $vars['field_view_mode'] = $element['#view_mode'] ? $element['#view_mode'] : '';
-  if ($element['#field_type'] == 'image') {
-    $vars['image_caption_teaser'] = FALSE;
-    $vars['image_caption_full'] = FALSE;
-    if (theme_get_setting('image_caption_teaser') == 1) {
-      $vars['image_caption_teaser'] = TRUE;
-    }
-    if (theme_get_setting('image_caption_full') == 1) {
-      $vars['image_caption_full'] = TRUE;
-    }
-  }
-}
+//function corolla_preprocess_field(&$vars) {
+//  $element = $vars['element'];
+//  $vars['classes_array'][] = 'view-mode-' . $element['#view_mode'];
+//  $vars['field_view_mode'] = $element['#view_mode'] ? $element['#view_mode'] : '';
+//  if ($element['#field_type'] == 'image') {
+//    $vars['image_caption_teaser'] = FALSE;
+//    $vars['image_caption_full'] = FALSE;
+//    if (theme_get_setting('image_caption_teaser') == 1) {
+//      $vars['image_caption_teaser'] = TRUE;
+//    }
+//    if (theme_get_setting('image_caption_full') == 1) {
+//      $vars['image_caption_full'] = TRUE;
+//    }
+//  }
+//}
 
 /**
  * Returns HTML for a sort icon.
@@ -151,28 +120,39 @@ function corolla_tablesort_indicator($vars) {
  * @ingroup themeable
  */
 function corolla_fieldset($vars) {
+
   $element = $vars['element'];
   element_set_attributes($element, array('id'));
   _form_set_class($element, array('form-wrapper'));
-  $fieldset_wrapper_class = '';
 
   $output = '<fieldset' . drupal_attributes($element['#attributes']) . '>';
+
+  // add a class to the fieldset wrapper if a legend exists, in some instances they do not
+  $class = "without-legend";
+
   if (!empty($element['#title'])) {
+
     // Always wrap fieldset legends in a SPAN for CSS positioning.
     $output .= '<legend><span class="fieldset-legend">' . $element['#title'] . '</span></legend>';
 
-    // add a class if a legend is being included
-    $fieldset_wrapper_class = ' with-legend';
+    // Add a class to the fieldset wrapper if a legend exists, in some instances they do not
+    $class = 'with-legend';
   }
-  $output .= '<div class="fieldset-wrapper' . $fieldset_wrapper_class . '">';
+
+  $output .= '<div class="fieldset-wrapper ' . $class  . '">';
+
   if (!empty($element['#description'])) {
     $output .= '<div class="fieldset-description">' . $element['#description'] . '</div>';
   }
+
   $output .= $element['#children'];
+
   if (isset($element['#value'])) {
     $output .= $element['#value'];
   }
+
   $output .= '</div>';
   $output .= "</fieldset>\n";
+
   return $output;
 }

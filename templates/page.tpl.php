@@ -1,5 +1,5 @@
 <?php // Corolla ?>
-<div id="page-wrapper"><div id="page">
+<div id="page-wrapper"><div id="page" class="<?php print $classes; ?>">
 
   <?php if ($menubar = render($page['menu_bar'])): ?>
     <div id="menu-bar-wrapper"><div class="container clearfix">

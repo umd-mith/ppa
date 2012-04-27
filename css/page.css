@@ -29,7 +29,7 @@
   vertical-align: middle;
 }
 #site-name {
-  font-size: 4.583em;
+  font-size: 4.5em;
   line-height: 1;
   margin: 0;
   padding: 0;
@@ -39,7 +39,7 @@
   letter-spacing: -3px;
 }
 #site-slogan {
-  font-size: 1.077em;
+  font-size: 1.1em;
   font-weight: 400;
 }
 .site-name-hidden #logo,
@@ -65,7 +65,7 @@
 h1#page-title,
 .in-maintenance h1#page-title {
   border-bottom: none;
-  font-size: 2.167em;
+  font-size: 2.1em;
   line-height: 1;
   margin: 0 0 1em;
   padding: 0;
@@ -362,4 +362,18 @@ div.messages {
 #block-system-help .block-inner {
   padding: 0;
   margin: 0;
+}
+
+/* Gutters */
+#main-content,
+.block-inner,
+.pane-inner,
+.menu-wrapper,
+.branding-elements,
+.breadcrumb-wrapper,
+.attribution,
+.at-panel .rounded-corner,
+div.messages {
+  margin-left: 10px;
+  margin-right: 10px;
 }

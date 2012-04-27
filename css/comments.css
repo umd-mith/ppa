@@ -15,14 +15,12 @@ h3.comment-title {
   line-height: 1;
   margin: 0 0 5px;
   padding: 0;
-  text-transform: none;
 }
 .comment-title a:link,
 .comment-title a:visited,
 .comment-title a:active {
   text-decoration: none;
   border-bottom: none;
-  font-weight: 700;
 }
 .comment-title a:hover,
 .comment-title a:focus {
