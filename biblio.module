@@ -1665,6 +1665,9 @@ function biblio_load($nodes) {
     if ($record['biblio_formats'] != NULL) {
       $nodes[$record['nid']]->biblio_formats = unserialize($record['biblio_formats']);
     }
+    else {
+      $nodes[$record['nid']]->biblio_formats = array();
+    }
 
   }
 }
