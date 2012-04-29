@@ -210,6 +210,10 @@ function biblio_theme($existing, $type, $theme, $path) {
         'file' => '/includes/biblio_theme.inc',
         'render element' => 'form',
     ),
+    'biblio_admin_author_edit_merge_table' => array(
+        'file' => '/includes/biblio_theme.inc',
+        'render element' => 'form',
+    ),
     'biblio_openurl' => array(
         'file' => '/includes/biblio_theme.inc',
         'variables' => array('openURL'),
@@ -2053,64 +2057,6 @@ function biblio_hash($node) {
   }
   $node->biblio_md5 = $sum;
   return $duplicate; //return the nid of the potential duplicate
-}
-
-function biblio_token_info() {
-
-  $node['biblio_year'] = array(
-    'name' => t("Biblio: Publication year"),
-    'description' => '',
-  );
-  $node['biblio_authors'] = array(
-    'name' => t("Biblio: Authors"),
-    'description' => '',
-  );
-  $node['biblio_type_id'] = array(
-    'name' => t("Biblio: Type ID (e.g.: 100)"),
-    'description' => '',
-  );
-  $node['biblio_type'] = array(
-    'name' => t("Biblio: Type Name (e.g.: book)"),
-    'description' => '',
-  );
-  $node['biblio_citekey'] = array(
-    'name' => t("Biblio: Cite Key often used in BibTex files"),
-    'description' => '',
-  );
-
-  return array('tokens' => array('node' => $node),
-  );
-}
-
-function biblio_tokens($type, $tokens, $data = array(), $options = array()) {
-  $replacements = array();
-  if ($type == 'node' && !empty($data['node']) && $data['node']->type == 'biblio') {
-    $node = $data['node'];
-    foreach ($tokens as $name => $original) {
-      switch ($name) {
-        // Simple key values on the node.
-        case 'biblio_year':
-          $replacements[$original] = check_plain($node->biblio_year);
-          break;
-        case 'biblio_authors':
-          $replacements[$original] = check_plain($node->biblio_contributors[0]['lastname']);;
-          break;
-        case 'biblio_type_id':
-          $replacements[$original] = check_plain($node->biblio_type);
-          break;
-        case 'biblio_citekey':
-          $replacements[$original] = check_plain($node->biblio_citekey);
-          break;
-        case 'biblio_type':
-          $type = db_query('SELECT name FROM {biblio_types} as t WHERE t.tid = :tid', array(':tid' => $node -> biblio_type))->fetchField();
-          $replacements[$original] = check_plain($type);
-          break;
-
-      }
-    }
-  }
-
-  return $replacements;
 }
 
 function _biblio_profile_access($user, $type = 'profile') {
