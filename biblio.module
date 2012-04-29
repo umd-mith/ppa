@@ -1559,6 +1559,9 @@ function _biblio_prepare_submit(&$node) {
       $node->biblio_formats[$field] = $node->{$field}['format'];
       $node->$field = $node->{$field}['value'];
     }
+    else {
+      $node->biblio_formats[$field] = filter_default_format();
+    }
   }
 }
 /**
@@ -1665,6 +1668,9 @@ function biblio_load($nodes) {
     }
     if ($record['biblio_formats'] != NULL) {
       $nodes[$record['nid']]->biblio_formats = unserialize($record['biblio_formats']);
+    }
+    else {
+      $nodes[$record['nid']]->biblio_formats = array();
     }
 
   }

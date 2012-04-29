@@ -253,7 +253,8 @@ function theme_biblio_tabular($variables) {
           break;
         default:
           if ($row['type'] == 'text_format') {
-            $data = check_markup($node->$row['name'], $node->biblio_formats[$row['name']]);
+            $format = isset($node->biblio_formats[$row['name']]) ? $node->biblio_formats[$row['name']]  : filter_default_format();
+            $data = check_markup($node->$row['name'], $format);
           }
           else {
             $data = check_plain($node->$row['name']);
