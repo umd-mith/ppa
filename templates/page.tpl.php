@@ -8,10 +8,11 @@
   <?php endif; ?>
 
   <div id="header-wrapper"><div class="container clearfix">
-    <header class="clearfix<?php print $linked_site_logo ? ' with-logo' : ''; ?>" role="banner">
+    <header class="clearfix<?php print $site_logo ? ' with-logo' : ''; ?>" role="banner">
       <div id="branding">
-        <?php if ($linked_site_logo): ?>
-          <div id="logo"><?php print $linked_site_logo; ?></div>
+
+        <?php if ($site_logo): ?>
+          <div id="logo"><?php print $site_logo; ?></div>
         <?php endif; ?>
 
         <?php if ($site_name || $site_slogan): ?>
@@ -24,6 +25,7 @@
             <?php endif; ?>
           </hgroup>
         <?php endif; ?>
+
       </div>
 
       <?php print render($page['header']); ?>
