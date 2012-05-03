@@ -475,7 +475,7 @@ settings[extra_block_classes] = 1
 settings[extra_menu_classes] = 1
 settings[extra_item_list_classes] = 1
 settings[image_alignment] = ia-r
-settings[image_alignment_teaser] = ''
+settings[image_alignment_teaser] = iat-r
 settings[image_caption_teaser] = ''
 settings[image_caption_full] = ''
 settings[adaptivetheme_meta_viewport] = width=device-width
