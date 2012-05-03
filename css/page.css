@@ -364,7 +364,8 @@ div.messages {
   margin: 0;
 }
 
-/* Gutters */
+/* Gutters - if gutters are set in theme settings they will override these
+   values: see Extensions > Modify Output > Design */
 #main-content,
 .block-inner,
 .pane-inner,
@@ -376,4 +377,10 @@ div.messages {
 div.messages {
   margin-left: 10px;
   margin-right: 10px;
+}
+/* Panel pages need negative margin equal to the gutter width applied to #content,
+  this is taken care of in theme settings as per above for normal gutters */
+.page-panels #content {
+  margin-left: -10px;
+  margin-right: -10px;
 }

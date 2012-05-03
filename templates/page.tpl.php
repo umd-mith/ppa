@@ -35,7 +35,7 @@
 
   <?php if ($page['three_33_first'] || $page['three_33_second'] || $page['three_33_third']): ?>
     <div id="top-panels-wrapper"><div class="container clearfix">
-      <div class="three-3x33 gpanel clearfix">
+      <div class="three-3x33 at-panel gpanel clearfix">
         <?php print render($page['three_33_first']); ?>
         <?php print render($page['three_33_second']); ?>
         <?php print render($page['three_33_third']); ?>
@@ -125,15 +125,18 @@
 
   <?php if ($page['four_first'] || $page['four_second'] || $page['four_third'] || $page['four_fourth']): ?>
     <div id="footer-panels-wrapper"><div class="container clearfix">
-      <div class="four-4x25 gpanel clearfix">
-        <?php print render($page['four_first']); ?>
-        <?php print render($page['four_second']); ?>
-        <?php print render($page['four_third']); ?>
-        <?php print render($page['four_fourth']); ?>
+      <div class="at-panel gpanel panel-display four-4x25 clearfix">
+        <div class="panel-row row-1 clearfix">
+          <?php print render($page['four_first']); ?>
+          <?php print render($page['four_second']); ?>
+        </div>
+        <div class="panel-row row-2 clearfix">
+          <?php print render($page['four_third']); ?>
+          <?php print render($page['four_fourth']); ?>
+        </div>
       </div>
     </div></div>
   <?php endif; ?>
-
 
   <?php if ($page['footer']): ?>
     <div id="footer-wrapper"><div class="container clearfix">
