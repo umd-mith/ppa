@@ -45,6 +45,9 @@ textarea {
   -webkit-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
+input.form-text {
+  max-width: 100%;
+}
 input.form-text,
 input.form-password,
 input.form-file {
