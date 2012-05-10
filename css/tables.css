@@ -128,7 +128,7 @@ body.page-forum ul.action-links {
   height: 35px;
 }
 #forum td.icon .topic-status-hot {
-  background: url(images/forum-hoht.png) no-repeat center center;
+  background: url(images/forum-hot.png) no-repeat center center;
   width: 37px;
   height: 32px;
 }
