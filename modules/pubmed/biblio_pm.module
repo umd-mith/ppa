@@ -157,6 +157,15 @@ function biblio_pm_biblio_import($file, $terms = array(), $batch = FALSE, $sessi
   return biblio_pm_import_ids($pmids, $terms, $batch, $session_id);
 }
 
+/**
+ * Imports article(s) from an XML file (exported) from PubMed Central
+ *
+ * @param file object $file
+ * @param array $terms
+ * @param bool $batch
+ * @param string $session_id
+ * @return array
+ */
 function biblio_pm_xml_biblio_import($file, $terms = array(), $batch = FALSE, $session_id = NULL) {
   libxml_use_internal_errors(true);
   $xml = @simplexml_load_file($file->uri);
@@ -167,6 +176,15 @@ function biblio_pm_xml_biblio_import($file, $terms = array(), $batch = FALSE, $s
   return _biblio_pm_create_node_from_xml($xml, $terms, $batch, $session_id);
 }
 
+/**
+ * Imports multiple PMIDs
+ *
+ * @param array $pmids
+ * @param array $terms
+ * @param bool $batch
+ * @param string $session_id
+ * @return array:
+ */
 function biblio_pm_import_ids($pmids, $terms = array(), $batch = FALSE, $session_id = NULL) {
   module_load_include('php', 'biblio_pm', 'EntrezClient');
   $retmax = 100;
@@ -185,6 +203,35 @@ function biblio_pm_import_ids($pmids, $terms = array(), $batch = FALSE, $session
   }
 
   return array($nids, $dups);
+}
+
+/**
+ * Fetches the article for the given PMID and returns a biblio node object
+ *
+ * Returns an empty node object if the PMID is not found.
+ *
+ * @param int $pmid
+ * @return stdClass $node
+ */
+function biblio_pm_fetch_pmid($pmid) {
+  $node     = new stdClass;
+  $Eclient  = new BiblioEntrezClient;
+  $paser    = new BiblioEntrezPubmedArticle();
+  try {
+    $xml = $Eclient->fetch($pmid);
+  }
+  catch (Exception $e) {
+    return $node;
+  }
+  $articles = $xml->xpath('//PubmedArticle');
+  if (count($articles)) {
+    $node = $paser->setArticle($articles[0])->getBiblioAsObject();
+    if (!empty($node)) {
+      $node->type = 'biblio';
+      node_object_prepare($node);
+    }
+  }
+  return $node;
 }
 
 function _biblio_pm_create_node_from_xml($xml, $terms, $batch, $session_id) {
@@ -231,6 +278,7 @@ function _biblio_pm_create_node_from_xml($xml, $terms, $batch, $session_id) {
 function biblio_pm_check_pmid($pmid) {
     return db_query("SELECT nid FROM {biblio_pubmed} WHERE biblio_pubmed_id = :pmid", array(':pmid' => $pmid))->fetchField();
 }
+
 function biblio_pm_biblio_lookup_link_settings() {
   return array('pubmed'  => t('PubMed'));
 }
