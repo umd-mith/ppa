@@ -131,10 +131,7 @@ ul.sf-menu li ul {
 
 /* Corolla supports Superfish drop menus in two regions - Menu bar and the Header panel,
    and we need to support standard menu blocks as well. */
-#menu-bar-wrapper {
-  position: relative;
-  z-index: 10;
-}
+#menu-bar-wrapper {}
 #menu-bar-wrapper,
 #menu-bar {
   height: auto;
