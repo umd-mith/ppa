@@ -347,8 +347,11 @@ body.maintenance-page #content {
 }
 
 /* Messages */
+#messages {
+  margin: 0 10px;
+}
 div.messages {
-  margin: 10px 10px 15px;
+  margin-bottom: 15px;
 }
 #block-system-help,
 div.messages {

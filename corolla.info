@@ -139,7 +139,7 @@
 
 ;----------// Theme Settings
 
-  ; These settings set the default settings for the options for Pixture Reloaded's
+  ; These settings set the default settings for the options for Corolla's
   ; Appearance settings. You can safely ignore everything below here.
 
   ; Layout settings - Standard bigscreen
@@ -194,6 +194,20 @@
   settings[smartphone_portrait_sidebar_second] = 100
   settings[smartphone_portrait_media_query]    = 'only screen and (max-width:320px)'
 
+  ; Responsive Panels - Standard layout
+  settings[bigscreen_two_50]            = 'two-50'
+  settings[bigscreen_two_33_66]         = 'two-33-66'
+  settings[bigscreen_two_66_33]         = 'two-66-33'
+  settings[bigscreen_two_brick]         = 'two-brick'
+  settings[bigscreen_three_3x33]        = 'three-3x33'
+  settings[bigscreen_three_25_50_25]    = 'three-25-50-25'
+  settings[bigscreen_three_25_25_50]    = 'three-25-25-50'
+  settings[bigscreen_three_50_25_25]    = 'three-50-25-25'
+  settings[bigscreen_four_4x25]         = 'four-4x25'
+  settings[bigscreen_five_5x20]         = 'five-5x20-2x3-grid'
+  settings[bigscreen_six_6x16]          = 'six-6x16-3x2-grid'
+  settings[bigscreen_three_inset_left]  = 'three-inset-left'
+  settings[bigscreen_three_inset_right] = 'three-inset-right'
 
   ; Responsive Panels - Tablet landscape
   settings[tablet_landscape_two_50]            = 'two-50'
@@ -245,9 +259,9 @@
 
   ; CSS
   settings[disable_responsive_styles]     = 0
-  settings[enable_custom_media_queries]   = 1
+  settings[enable_custom_media_queries]   = 0
   settings[global_default_layout]         = 'smartphone-portrait'
-  settings[global_default_layout_disable] = 1
+  settings[global_default_layout_toggle]  = 0
 
 
   ; Polyfills
