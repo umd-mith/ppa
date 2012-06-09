@@ -7,6 +7,15 @@ body {
   font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
   line-height: 1.5; /* Unit-less line-height means line height can scale. */
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
 /* Sizes match proper font scaling. */
 h1 {
   font-size: 1.5em;
@@ -127,6 +136,21 @@ dt {
 }
 dd {
   margin: 0 0 1.5em 40px;
+}
+
+/* Reset HTML5 elements */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 
 /**

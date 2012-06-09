@@ -5,7 +5,8 @@
 
     <?php print render($title_prefix); ?>
     <?php if ($title || $display_submitted): ?>
-      <header>
+      <header<?php print $header_attributes; ?>>
+
         <?php if ($title): ?>
           <h1<?php print $title_attributes; ?>>
             <?php if (!$page): ?>
@@ -19,6 +20,7 @@
         <?php if ($display_submitted): ?>
           <p class="submitted"><?php print $submitted; ?></p>
         <?php endif; ?>
+
       </header>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
@@ -32,8 +34,8 @@
     ?>
     </div>
 
-    <?php if (!empty($content['links'])): ?>
-      <nav class="clearfix"><?php print render($content['links']); ?></nav>
+    <?php if ($links = render($content['links'])): ?>
+      <nav<?php print $links_attributes; ?>><?php print $links; ?></nav>
     <?php endif; ?>
 
     <?php print render($content['comments']); ?>

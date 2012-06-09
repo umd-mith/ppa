@@ -72,24 +72,6 @@ function corolla_preprocess_block(&$vars) {
   }
 }
 
-/**
- * Override or insert vars into the field template.
- */
-//function corolla_preprocess_field(&$vars) {
-//  $element = $vars['element'];
-//  $vars['classes_array'][] = 'view-mode-' . $element['#view_mode'];
-//  $vars['field_view_mode'] = $element['#view_mode'] ? $element['#view_mode'] : '';
-//  if ($element['#field_type'] == 'image') {
-//    $vars['image_caption_teaser'] = FALSE;
-//    $vars['image_caption_full'] = FALSE;
-//    if (theme_get_setting('image_caption_teaser') == 1) {
-//      $vars['image_caption_teaser'] = TRUE;
-//    }
-//    if (theme_get_setting('image_caption_full') == 1) {
-//      $vars['image_caption_full'] = TRUE;
-//    }
-//  }
-//}
 
 /**
  * Returns HTML for a sort icon.

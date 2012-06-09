@@ -40,6 +40,7 @@
 #menu-bar .block {
   float: left;
   clear: none;
+  margin-bottom: 0;
 }
 #menu-bar  #block-system-user-menu {
   float: right;

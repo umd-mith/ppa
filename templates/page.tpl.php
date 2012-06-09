@@ -48,16 +48,23 @@
       </div>
     </div>
 
-    <?php if ($page['three_33_first'] || $page['three_33_second'] || $page['three_33_third']): ?>
+    <?php if (
+      $page['three_33_top'] ||
+      $page['three_33_first'] ||
+      $page['three_33_second'] ||
+      $page['three_33_third'] ||
+      $page['three_33_bottom']
+      ): ?>
       <div id="top-panels-wrapper">
         <div class="container clearfix">
-
-          <div class="three-3x33 at-panel gpanel clearfix">
+          <!-- Three column 3x33 Gpanel -->
+          <div class="at-panel gpanel panel-display three-3x33 clearfix">
+            <?php print render($page['three_33_top']); ?>
             <?php print render($page['three_33_first']); ?>
             <?php print render($page['three_33_second']); ?>
             <?php print render($page['three_33_third']); ?>
+            <?php print render($page['three_33_bottom']); ?>
           </div>
-
         </div>
       </div>
     <?php endif; ?>
@@ -170,9 +177,15 @@
       </div>
     <?php endif; ?>
 
-    <?php if ($page['four_first'] || $page['four_second'] || $page['four_third'] || $page['four_fourth']): ?>
+    <?php if (
+      $page['four_first'] ||
+      $page['four_second'] ||
+      $page['four_third'] ||
+      $page['four_fourth']
+      ): ?>
       <div id="footer-panels-wrapper">
         <div class="container clearfix">
+          <!-- Four column Gpanel -->
           <div class="at-panel gpanel panel-display four-4x25 clearfix">
             <div class="panel-row row-1 clearfix">
               <?php print render($page['four_first']); ?>

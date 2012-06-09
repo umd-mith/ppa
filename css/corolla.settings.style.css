@@ -603,7 +603,10 @@ body.bf-ms,
   -khtml-border-radius-bottomleft: 0;
   border-radius: 4px 4px 0 0;
 }
-.rct-6 #menu-bar .menu-wrapper > ul > li > a,
+
+.rct-6 .nav .block-menu li a,
+.rct-6 #menu-bar li.sf-depth-1,
+.rct-6 #menu-bar li.sf-depth-1 > a,
 .rct-6 .region-header .block-content > ul > li  > a {
   -moz-border-radius: 6px 6px 0 0;
   -webkit-border-top-left-radius: 6px;
@@ -616,6 +619,8 @@ body.bf-ms,
   -khtml-border-radius-bottomleft: 0;
   border-radius: 6px 6px 0 0;
 }
+
+
 .rct-8 #menu-bar .menu-wrapper > ul > li > a,
 .rct-8 .region-header .block-content > ul > li  > a {
   -moz-border-radius: 8px 8px 0 0;
