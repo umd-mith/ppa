@@ -603,6 +603,7 @@ function _biblio_sort_tabs() {
 }
 
 function _biblio_sort_tab($tab, $tabs = FALSE) {
+  $tab['attributes'] = array('rel' => 'nofollow');
   if ($tabs) {
     $text  = '<span class="a"><span class="b">' . $tab['text'] . $tab['arrow'] . '</span></span>';
     $class = (isset($tab['attributes']['class'])) ? 'class="active"' : '';

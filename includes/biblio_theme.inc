@@ -556,7 +556,7 @@ function theme_biblio_author_link($variables) {
 
   $uri = drupal_parse_url(request_uri());
   if (!isset($uri['attributes'])) {
-    $uri['attributes'] = array();
+    $uri['attributes'] = array('rel' => 'nofollow');
   }
   $path = $uri['path'];
   $uri['path'] = variable_get('biblio_base', 'biblio');
@@ -934,6 +934,8 @@ function theme_google_scholar_link($variables) {
     $attrs = array_merge($attrs, array('target '=> '_blank'));
   }
 
+  $attrs = array_merge($attrs, array('rel' => 'nofollow'));
+
   return array(
         'title'      => t('Google Scholar'),
         'href'       => 'http://scholar.google.com/scholar',
@@ -1002,6 +1004,7 @@ function theme_biblio_alpha_line($variables) {
     $uri['path'] = implode('/', $path_parts);
   }
 
+  $uri['attributes'] = array('rel' => 'nofollow');
   $all_uri = $uri;
   $current = '';
 
@@ -1077,10 +1080,37 @@ function theme_biblio_admin_author_edit_form($variables) {
 
 }
 
+function theme_biblio_admin_author_edit_merge_table($variables) {
+  $form = $variables['form'];
+  $headers = $form['#header'];
+
+  foreach (element_children($form['candidates']) as $key) {
+
+    // Build the table row.
+    $row = array();
+    $row[] = array('data' => drupal_render($form['candidates'][$key]['name']));
+    $row[] = drupal_render($form['candidates'][$key]['link']);
+    $row[] = drupal_render($form['candidates'][$key]['merge']);
+    $row[] = drupal_render($form['candidates'][$key]['retain']);
+    $rows[] = $row;
+  }
+
+  $output = theme('table', array('header' => $headers, 'rows' => $rows, 'attributes' => array('id' => $form['#id'])));
+
+  $row = $rows = array();
+  $row[] = array('data' => drupal_render($form['more_authors_search']) . drupal_render($form['more_authors_add']));
+  $rows[] = $row;
+  $output .= theme('table', array('header' => array(), 'rows' => $rows, 'attributes' => array('id' => $form['#id'])));
+
+  $output .= drupal_render_children($form);
+
+  return $output;
+}
+
 function _biblio_keyword_links($keywords, $base='biblio') {
   $uri = drupal_parse_url(request_uri());
   $uri['path'] = variable_get('biblio_base', 'biblio');;
-
+  $uri['attributes'] = array('rel' => 'nofollow');
   $html = "";
   if (!is_array($keywords)) {
     require_once(drupal_get_path('module', 'biblio') . '/includes/biblio.keywords.inc');

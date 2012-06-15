@@ -103,6 +103,9 @@ function biblio_ris_biblio_export_link($nid = NULL, $filter = array()) {
         'attributes' => array(
           'title' => t("Click to download the RIS formatted file")));
   }
+
+  $link['attributes'] += array('rel' => 'nofollow');
+
   $link['href']  = "$base/export/ris/$nid";
   $link['title'] = t('RIS');
 
