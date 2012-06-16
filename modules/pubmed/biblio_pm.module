@@ -376,3 +376,7 @@ function biblio_pm_check_md5($pmid, $md5) {
     return;
   }
 }
+
+function biblio_pm_views_api() {
+  return array('api' => 2);
+}
