@@ -120,11 +120,7 @@
                         </ul>
                       <?php endif; ?>
 
-                      <?php if ($breadcrumb): ?>
-                        <div id="breadcrumb-wrapper">
-                          <?php print $breadcrumb; ?>
-                        </div>
-                      <?php endif; ?>
+                      <?php if ($breadcrumb): print $breadcrumb; endif; ?>
 
                       <?php print render($title_prefix); ?>
 

@@ -43,11 +43,19 @@ ul.pager li.pager-ellipsis {
 }
 
 /* Breadcrumbs */
-#breadcrumb-wrapper {
+#breadcrumb {
   margin: 0 0 10px 0;
 }
-#breadcrumb-wrapper .separator {
+#breadcrumb .separator {
   margin: 0 5px;
+}
+.with-breadcrumb-label h2 {
+  display: inline;
+  font-size: 1em;
+  padding-right: 8px;
+}
+.with-breadcrumb-label h2:after {
+  content: ":";
 }
 .breadcrumb-wrapper {
   padding: 0;
@@ -56,6 +64,9 @@ ul.pager li.pager-ellipsis {
 .breadcrumb-wrapper ol {
   margin: 0;
   padding: 0;
+}
+.breadcrumb-wrapper.with-breadcrumb-label ol {
+  display: inline;
 }
 .breadcrumb-wrapper ol li {
   list-style: none;
