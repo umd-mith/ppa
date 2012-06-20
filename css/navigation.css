@@ -49,15 +49,15 @@ ul.pager li.pager-ellipsis {
 #breadcrumb-wrapper .separator {
   margin: 0 5px;
 }
-.breadcrumb {
+.breadcrumb-wrapper {
   padding: 0;
   margin: 0;
 }
-.breadcrumb ol {
+.breadcrumb-wrapper ol {
   margin: 0;
   padding: 0;
 }
-.breadcrumb ol li {
+.breadcrumb-wrapper ol li {
   list-style: none;
   display: inline;
 }
