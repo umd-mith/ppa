@@ -47,8 +47,8 @@ function biblio_get_cid_by_name($name) {
 
 function biblio_get_contributor_by_name($name) {
   $contributors = &drupal_static(__FUNCTION__);
-
-  if (!isset($contributors[$name])) {
+  $name = trim($name);
+  if (!isset($contributors[$name]) || $contributors[$name] === FALSE) {
     $query = db_select('biblio_contributor_data', 'bcd');
     $contributors[$name] = $query->fields('bcd')->condition('bcd.name', $name)->execute()->fetchObject();
   }
@@ -247,6 +247,9 @@ function biblio_update_contributors($node) {
 }
 
 function biblio_save_contributor(&$author) {
+  foreach ($author as $key => $value) {
+    $author[$key] = trim($value);
+  }
   return drupal_write_record('biblio_contributor_data', $author);
 }
 
@@ -311,7 +314,13 @@ function _save_contributors(&$contributors, $nid, $vid, $update = FALSE) {
 
       // if we still don't have a cid, then create a new entry in the biblio_contirbutor_data table
       if (empty($author['cid'])) {
-        $author = $name_parser->parseName($author);
+        try {
+          $author = $name_parser->parseName($author);
+        }
+        catch (Exception $e) {
+          drupal_set_message($e->getMessage(), 'error');
+        }
+
         $contributors[$key] = $author;
         biblio_save_contributor($author);
       }
