@@ -5,7 +5,7 @@
  */
 function biblio_token_info() {
   $schema = drupal_get_schema('biblio');
-  $fields = array_diff($schema['fields'], array('nid', 'vid'));
+  $fields = array_diff($schema['fields'], array('nid', 'vid', 'biblio_format'));
   $node_token['biblio']= array(
       'name' => t('Biblio'),
       'description' => t('Tokens related to the Biblio content type.'),
@@ -15,17 +15,17 @@ function biblio_token_info() {
     $name = str_replace('biblio_', '', $key);
     $name = str_replace('_', ' ', $name);
     $name = ucwords($name);
-    $tokens[$key] = array(
+    $biblio_tokens[$key] = array(
         'name' => t($name),
         'description' => (isset($value['description'])) ? t("!desc" , array('!desc' => $value['description'])) : '',
     );
   }
 
-  $tokens['biblio_first_author'] = array(
+  $biblio_tokens['biblio_first_author'] = array(
       'name' => t("Author - First"),
       'description' => 'First author of the publication',
   );
-  $tokens['biblio_type_name'] = array(
+  $biblio_tokens['biblio_type_name'] = array(
       'name' => t("Type Name"),
       'description' => t('The name of the publication type (i.e. Journal, Book, etc.'),
   );
@@ -37,11 +37,23 @@ function biblio_token_info() {
       'needs-data' => 'node',
   );
 
+/*
+  $types['biblio-authors'] = array(
+      'name' => t('Biblio Authors'),
+      'description' => t('Tokens related to Biblio node type.'),
+      'needs-data' => 'node',
+  );
+  $types['biblio-keywords'] = array(
+      'name' => t('Biblio Keywords'),
+      'description' => t('Tokens related to Biblio node type.'),
+      'needs-data' => 'node',
+  );
+*/
 
   return array(
       'types' => $types,
       'tokens' => array(
-          'biblio' => $tokens,
+          'biblio' => $biblio_tokens,
           'node'   => $node_token),
       );
 }
@@ -58,8 +70,7 @@ function biblio_tokens($type, $tokens, $data = array(), $options = array()) {
   if ($type == 'node' && !empty($data['node']) && $data['node']->type == 'biblio') {
     $sanitize = !empty($options['sanitize']);
     $node = $data['node'];
-    foreach ($tokens as $name => $original) {
-      $name = str_replace('biblio:', '', $name);
+    foreach (token_find_with_prefix($tokens, 'biblio') as $name => $original) {
       switch ($name) {
         case 'biblio_first_author':
           $replacements[$original] = $sanitize ? check_plain($node->biblio_contributors[0]['lastname']) : $node->biblio_contributors[0]['lastname'];
