@@ -13,6 +13,11 @@ function biblio_get_contributor($aid) {
   return $contributor[$aid];
 }
 
+/**
+ * @param array $contributors
+ * @param int $category
+ * @return array $authors
+ */
 function biblio_get_contributor_category($contributors, $category) {
   $authors = array();
   foreach ($contributors as $author) {
@@ -45,6 +50,10 @@ function biblio_get_cid_by_name($name) {
   return $cid;
 }
 
+/**
+ * @param unknown_type $name
+ * @return unknown
+ */
 function biblio_get_contributor_by_name($name) {
   $contributors = &drupal_static(__FUNCTION__);
   $name = trim($name);
@@ -56,6 +65,10 @@ function biblio_get_contributor_by_name($name) {
   return $contributors[$name];
 }
 
+/**
+ * @param unknown_type $vid
+ * @return Ambigous <NULL>
+ */
 function biblio_get_first_contributor($vid) {
   static $contributor = array();
   if (!isset($contributor[$vid])) {
@@ -79,6 +92,11 @@ function biblio_load_contributors($vid) {
   return biblio_load_contributors_multiple($vids);
 }
 
+/**
+ * @param unknown_type $vids
+ * @param unknown_type $auth_category
+ * @return multitype:|Ambigous <multitype:, array>
+ */
 function biblio_load_contributors_multiple($vids = array(), $auth_category = 0) {
   $contributors = array();
   if (empty($vids)) return $contributors;
@@ -128,6 +146,10 @@ function biblio_authors_add_etal(&$authors, $type) {
   return TRUE;
 }
 
+/**
+ * @param unknown_type $node
+ * @return unknown
+ */
 function biblio_delete_contributors($node) {
   $count = db_delete('biblio_contributor')
             ->condition('nid', $node->nid)
@@ -135,6 +157,10 @@ function biblio_delete_contributors($node) {
   return $count;
 }
 
+/**
+ * @param unknown_type $node
+ * @return unknown
+ */
 function biblio_delete_contributors_revision($node) {
   $count = db_delete('biblio_contributor')
             ->condition('vid', $node->vid)
@@ -142,6 +168,9 @@ function biblio_delete_contributors_revision($node) {
   return $count;
 }
 
+/**
+ * @param unknown_type $cid
+ */
 function biblio_delete_contributor($cid) {
     db_delete('biblio_contributor')
       ->condition('cid', $cid)
@@ -152,6 +181,10 @@ function biblio_delete_contributor($cid) {
             ->execute();
 
 }
+/**
+ * @param unknown_type $cid
+ * @param unknown_type $vid
+ */
 function biblio_delete_contributor_revision($cid, $vid) {
   return db_delete('biblio_contributor')
           ->condition('cid', $cid)
@@ -221,6 +254,9 @@ function biblio_get_orphan_author_ids() {
   return $orphans;
 }
 
+/**
+ * @param unknown_type $force
+ */
 function biblio_delete_orphan_authors($force = FALSE) {
   if (variable_get('biblio_auto_orphaned_author_delete', 0) || $force) {
     $orphans = biblio_get_orphan_author_ids();
@@ -232,12 +268,19 @@ function biblio_delete_orphan_authors($force = FALSE) {
   }
 }
 
+/**
+ * @param unknown_type $node
+ * @return Ambigous <success, boolean>
+ */
 function biblio_insert_contributors($node) {
   if (!empty($node->biblio_contributors)) {
     return _save_contributors($node->biblio_contributors, $node->nid, $node->vid);
   }
 }
 
+/**
+ * @param unknown_type $node
+ */
 function biblio_update_contributors($node) {
   if (!empty($node->biblio_contributors)) {
     _save_contributors($node->biblio_contributors, $node->nid, $node->vid, TRUE);
@@ -246,6 +289,9 @@ function biblio_update_contributors($node) {
 
 }
 
+/**
+ * @param unknown_type $author
+ */
 function biblio_save_contributor(&$author) {
   foreach ($author as $key => $value) {
     $author[$key] = trim($value);
@@ -253,6 +299,10 @@ function biblio_save_contributor(&$author) {
   return drupal_write_record('biblio_contributor_data', $author);
 }
 
+/**
+ * @param unknown_type $author
+ * @return boolean
+ */
 function biblio_update_contributor(&$author) {
   if (!isset($author['cid'])) return FALSE;
   return drupal_write_record('biblio_contributor_data', $author, 'cid');
@@ -270,6 +320,11 @@ function _biblio_contributor_sort(&$authors) {
   usort($authors, '_biblio_contributor_usort');
 }
 
+/**
+ * @param unknown_type $a
+ * @param unknown_type $b
+ * @return number
+ */
 function _biblio_contributor_usort($a, $b) {
   if(empty($a['name'])) return 1;
   if(empty($b['name'])) return -1;

@@ -1,24 +1,8 @@
 <?php
 /**
- *   biblio.module for Drupal
- *
- *   Copyright (C) 2006-2011  Ron Jerome
- *
- *   This program is free software; you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation; either version 2 of the License, or
- *   (at your option) any later version.
- *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
- *
- *   You should have received a copy of the GNU General Public License along
- *   with this program; if not, write to the Free Software Foundation, Inc.,
- *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- */
+* @file
+* Contains all keyword related functions
+*/
 
 /**
  * @param $name
@@ -67,6 +51,10 @@ function biblio_load_keywords($vid) {
   return biblio_load_keywords_multiple($vids);
 }
 
+/**
+ * @param unknown_type $vids
+ * @return multitype:
+ */
 function biblio_load_keywords_multiple($vids = array()) {
   $keywords = array();
   if (empty($vids)) return $keywords;
@@ -237,37 +225,59 @@ function biblio_save_keyword(&$keyword) {
   return $status;
 }
 
+/**
+ * @return multitype:
+ */
+function biblio_get_orphaned_keyword_ids() {
+  $orphans = $active_kids = $all_kids = array();
+
+  $query = db_select('biblio_keyword', 'bk');
+  $active_kids = $query
+    ->fields('bk', array('kid'))
+    ->groupBy('kid')
+    ->execute()
+    ->fetchCol();
+
+  $query = db_select('biblio_keyword_data', 'bkd');
+  $all_kids = $query
+    ->fields('bkd', array('kid'))
+    ->execute()
+    ->fetchCol();
+
+  $orphans = array_diff($all_kids, $active_kids);
+
+  return $orphans;
+}
+
+/**
+ * Deletes orphaned keywords
+ *
+ * Deletion only occurs if the Drupal Variable "biblio_keyword_orphan_autoclean"
+ * is true OR if the $force argument is TRUE
+ *
+ * @param  bool $force
+ *   Forces deletion to occur even if autoclean is turned off
+ * @return int $count
+ *   The number of orphans removed
+ */
 function biblio_delete_orphan_keywords($force = FALSE) {
+  $count = 0;
+
   if (variable_get('biblio_keyword_orphan_autoclean', 0) || $force) {
-      $query = db_select('biblio_keyword', 'bk');
-    $active_kids = $query
-      ->fields('bk', array('kid'))
-      ->groupBy('kid')
-      ->execute()
-      ->fetchCol();
-
-    $query = db_select('biblio_keyword_data', 'bkd');
-    $all_kids = $query
-      ->fields('bkd', array('kid'))
-      ->groupBy('kid')
-      ->execute()
-      ->fetchCol();
-
-    $orphans = array_diff($all_kids, $active_kids);
-
+    $orphans = biblio_get_orphaned_keyword_ids();
     if (!empty($orphans)) {
-      db_delete('biblio_keyword_data')
+      $count = db_delete('biblio_keyword_data')
         ->condition('kid', $orphans, 'IN')
         ->execute();
     }
   }
-  return;
+  return $count;
 }
+
 /**
- * Delete all keywords references from a given node, but the actual keywords remain in the biblio_keyword_data table
- * Also remove orphan keywords if this option is enabled.  Orphan keywords
- * are keywords which remain in the biblio_keyword_data table but are not refferenced
- * by any nodes through the biblio_keyword table.
+ * Delete all keywords references for a given node.
+ *
+ * The actual keywords remain in the biblio_keyword_data table
  *
  * @param $node
  * @return
@@ -294,8 +304,11 @@ function biblio_delete_revision_keywords($node) {
 }
 
 /**
- * Delete multiple keywords from both the biblio_keyword and biblio_keyword_data tables
- * This will remove the keywords referenced by the supplied ID's from ALL nodes which reference them.
+ * Delete multiple keywords.
+ *
+ * Removes from both the biblio_keyword and biblio_keyword_data tables
+ * This will remove the keywords referenced by the supplied ID's from
+ * ALL nodes which reference them.
  *
  * @param array $keywords
  *   An array of keyword id's to delete
@@ -328,6 +341,10 @@ function biblio_delete_keyword($keyword_id) {
             ->execute();
 }
 
+/**
+ * @param unknown_type $string
+ * @return multitype:string
+ */
 function biblio_explode_keywords($string) {
   $sep = variable_get('biblio_keyword_sep', ',');
   $regexp = '%(?:^|' . $sep . '\ *)("(?>[^"]*)(?>""[^"]* )*"|(?: [^"' . $sep . ']*))%x';
@@ -346,6 +363,11 @@ function biblio_explode_keywords($string) {
   }
   return $keywords;
 }
+/**
+ * @param unknown_type $keywords
+ * @param unknown_type $sep
+ * @return Ambigous <string, unknown>
+ */
 function biblio_implode_keywords($keywords, $sep = '') {
 
   if (empty($sep)) $sep = variable_get('biblio_keyword_sep', ',');
