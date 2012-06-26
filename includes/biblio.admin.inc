@@ -417,21 +417,38 @@ function biblio_admin_settings() {
     '#default_value' => variable_get('biblio_link_title_url', 0),
     '#description' => t('Selecting this links the titles to the supplied URL (if available) rather than the "node" view.')
   );
-  $form['links']['biblio_author_links'] = array(
+  $form['links']['author'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#title' => t('Author Links')
+  );
+  $form['links']['author']['biblio_author_links'] = array(
     '#type' => 'checkbox',
     '#title' => t('Hyperlink author names'),
     '#return_value' => 1,
     '#default_value' => variable_get('biblio_author_links', 1),
     '#description' => t('This creates a hyperlink on author names which, when clicked, will select entries which contain that author')
   );
-  $form['links']['biblio_author_link_profile'] = array(
+  $form['links']['author']['biblio_author_link_profile'] = array(
     '#type' => 'checkbox',
     '#title' => t('Hyperlink author names to author profile page'),
     '#return_value' => 1,
     '#default_value' => variable_get('biblio_author_link_profile', 0),
     '#description' => t('This creates a hyperlink on author names which, when clicked, will take the user to the authors profile page')
   );
-  $form['openurl'] = array(
+  $form['links']['author']['biblio_author_link_profile_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Path to profile page'),
+    '#default_value' => variable_get('biblio_author_link_profile_path', 'user/[user:uid]'),
+    '#description' => t('Do not include a leading "/"')
+  );
+
+  $form['links']['author']['token_tree'] = array(
+      '#theme' => 'token_tree',
+      '#token_types' => 'all',
+  );
+    $form['openurl'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
