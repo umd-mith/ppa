@@ -387,3 +387,8 @@ div.messages {
   margin-left: -10px;
   margin-right: -10px;
 }
+
+/* Contextual links */
+a.contextual-links-trigger:hover {
+  border-bottom: none;
+}

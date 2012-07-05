@@ -312,7 +312,7 @@
 
   ; Font size
   settings[base_font_size]          = '1em'
-  settings[site_name_font_size]     = '2em'
+  settings[site_name_font_size]     = '3.5em'
   settings[site_slogan_font_size]   = '1.2em'
   settings[page_title_font_size]    = '2em'
   settings[node_title_font_size]    = '1.6em'

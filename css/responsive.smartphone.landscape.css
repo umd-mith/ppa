@@ -38,36 +38,14 @@
   margin-bottom: 0;
   font-size: 1em;
 }
-#menu-bar-wrapper,
-#menu-bar {
-  min-height: 3em;
-  height: auto;
+#menu-bar .block > ul > li {
+  margin: 0 1px 1px 0;
 }
-#menu-bar {
-  padding: 0 2px;
-}
-#menu-bar .block {
-  clear: both;
-  float: none;
-}
-#menu-bar .menu-wrapper ul li {
-  display: block;
-  float: none;
-  margin: 0;
-  overflow: hidden;
-}
-#menu-bar .menu-wrapper ul li a {
-  padding: 6px 10px 8px;
-  -moz-border-radius: 0 !important;
-  -webkit-border-radius: 0 !important;
-  border-radius: 0 !important;
-}
-#menu-bar .sf-menu {
-  height: auto;
-  padding: 2px 0;
-}
-#menu-bar .menu-wrapper ul ul {
-  display: none !important;
+#menu-bar-wrapper .nav .block-menu li a,
+#menu-bar-wrapper #menu-bar li.sf-depth-1,
+#menu-bar-wrapper #menu-bar li.sf-depth-1 > a,
+#menu-bar-wrapper .region-header .block-content > ul > li > a {
+  border-radius: 6px 6px 6px 0;
 }
 .region-header .block {
   overflow: hidden;

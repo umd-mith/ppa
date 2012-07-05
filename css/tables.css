@@ -74,7 +74,6 @@ tr:first-child td.container {
   border-top-width: 0;
 }
 #forum {
-  overflow-x: scroll;
 }
 body.page-forum ul.action-links {
   margin: 9px 0;

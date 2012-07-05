@@ -87,6 +87,7 @@ li a.active:focus {
    if we really need to */
 .sf-menu.sf-style-default a {
    border: 0;
+   color: #fcfcfc;
 }
 .sf-menu.sf-style-default li.last a {
 }
@@ -114,7 +115,7 @@ li a.active:focus {
 }
 .sf-menu.sf-style-default li a,
 .sf-menu.sf-style-default li a:visited {
-  color: #2e2e2d;
+  color: #fcfcfc;
 }
 .sf-menu.sf-style-default li:hover,
 .sf-menu.sf-style-default li.sfHover,

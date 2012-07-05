@@ -42,7 +42,7 @@
   clear: none;
   margin-bottom: 0;
 }
-#menu-bar  #block-system-user-menu {
+#menu-bar #block-system-user-menu {
   float: right;
 }
 .block .item-list ul  {
@@ -55,3 +55,23 @@
   list-style: none;
   margin: 0 0.5em 0 0;
 }
+
+/* Horizontal login in the menu bar */
+#menu-bar .lb-h label {
+  color: #fff;
+}
+#menu-bar #block-user-login.lb-h .item-list {
+  margin-top: 3px;
+  font-size: 0.9em;
+  line-height: 1em;
+}
+#menu-bar #block-user-login.lb-h .item-list li {
+  float: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+#menu-bar #block-user-login.lb-h .form-actions {
+  padding-top: 2px;
+}
+

@@ -89,7 +89,6 @@ ul.pager li.pager-ellipsis {
   float: left;
 }
 .nav .block-menu ul ul {
-  display: none; /* If the user does not slice the menu hide the children */
 }
 .nav .block-menu ul a {
   padding: 0.75em 1em;

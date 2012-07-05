@@ -1,11 +1,21 @@
 /* HTML Elements */
 html {
-  font-size: 81.3%; /* 16px x 81.3% = 13px */
+  font-size: 100%; /* 16px x 81.3% = 13px */
   word-wrap: break-word;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  height: 100%;
+  overflow-y: scroll;
 }
 body {
   font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
   line-height: 1.5; /* Unit-less line-height means line height can scale. */
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility\9; /* Only IE, can mess with Android */
 }
 h1,
 h2,
@@ -194,12 +204,10 @@ video {
   max-width: none !important;
 }
 
-/* Improve IE's resizing of images */
 svg:not(:root) {
   overflow: hidden;
 }
 
-/* Corrects inline-block display not defined in IE6/7/8/9 & FF3 */
 audio,
 canvas,
 video {
@@ -208,7 +216,10 @@ video {
   *zoom: 1;
 }
 
-/* Prevents modern browsers from displaying 'audio' without controls */
 audio:not([controls]) {
+  display: none;
+}
+
+[hidden] {
   display: none;
 }
