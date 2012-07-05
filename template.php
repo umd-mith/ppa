@@ -6,29 +6,16 @@
  */
 function corolla_preprocess_html(&$vars) {
   global $theme_key;
-
-  $theme_name = 'corolla';
-
-  // Load the media queries styles
-  $media_queries_css = array(
-    $theme_name . '.responsive.style.css',
-  );
-  load_subtheme_media_queries($media_queries_css, $theme_name);
-
-  // Load IE specific stylesheets
-  $ie_files = array(
-    'lte IE 9' => 'ie-lte-9.css',
-  );
-  load_subtheme_ie_styles($ie_files, $theme_name);
+  $theme_name = $theme_key;
 
   // Add a class for the active color scheme
   if (module_exists('color')) {
-    $class = check_plain(get_color_scheme_name($theme_key));
+    $class = check_plain(get_color_scheme_name($theme_name));
     $vars['classes_array'][] = 'color-scheme-' . drupal_html_class($class);
   }
 
   // Add class for the active theme
-  $vars['classes_array'][] = drupal_html_class($theme_key);
+  $vars['classes_array'][] = drupal_html_class($theme_name);
 
   // Add theme settings classes
   $settings_array = array(
@@ -39,7 +26,7 @@ function corolla_preprocess_html(&$vars) {
     'tabs_corner_radius',
   );
   foreach ($settings_array as $setting) {
-    $vars['classes_array'][] = theme_get_setting($setting);
+    $vars['classes_array'][] = at_get_setting($setting);
   }
 }
 

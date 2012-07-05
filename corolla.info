@@ -33,12 +33,8 @@
   ;
   ; Syntax: ie_stylesheets[media][condition] = path/to/file (path must be
   ; relative to your theme root). The file name is not important.
-  ;
-  ; For example if you want to load a stylesheet just for IE7 use the following
-  ; example (note: you need to create "ie7.css" in the /css/ directory):
-  ;
-  ; ie_stylesheets[screen][IE 7] = css/ie7.css
 
+  ie_stylesheets[screen][lte IE 9] = css/ie-lte-9.css
 
 
 ;----------// Scripts
@@ -262,24 +258,22 @@
   settings[enable_custom_media_queries]   = 0
   settings[global_default_layout]         = 'smartphone-portrait'
   settings[global_default_layout_toggle]  = 0
+  settings[global_files_path]             = 'public_files'
 
 
   ; Polyfills
   settings[load_html5js]       = 1
   settings[load_respondjs]     = 0
-  settings[load_ltie8css]      = 1
-  settings[load_pie]           = 0
-  settings[which_pie]          = 'PIE.htc'
-  settings[disble_pie_for_ie9] = 0
-  settings[load_selectivizr]   = 0
-  settings[load_scalefixjs]    = 1
+  settings[load_ltie8css]      = 0
+  settings[load_scalefixjs]    = 0
 
 
   ; Debug
-  settings[expose_regions]     = 0
-  settings[load_all_panels]    = 0
-  settings[show_window_size]   = 0
-  settings[rebuild_theme_data] = 0
+  settings[expose_regions]              = 0
+  settings[load_all_panels]             = 0
+  settings[load_all_panels_no_sidebars] = 0
+  settings[show_window_size]            = 0
+  settings[rebuild_theme_data]          = 0
 
 
   ; Enable extensions
@@ -287,15 +281,12 @@
   settings[enable_font_settings]       = 1
   settings[enable_heading_settings]    = 1
   settings[enable_image_settings]      = 1
-  settings[enable_breadcrumb_settings] = 1
-  settings[enable_search_settings]     = 0
-  settings[enable_loginblock_settings] = 0
-  settings[enable_polyfills]           = 1
-  settings[enable_markup_overides]     = 1
-  settings[enable_mobile_metatags]     = 1
   settings[enable_apple_touch_icons]   = 0
   settings[enable_exclude_css]         = 0
   settings[enable_custom_css]          = 0
+  settings[enable_context_regions]     = 0
+  settings[enable_float_region_blocks] = 0
+  settings[enable_markup_overides]     = 1
 
 
   ; Font type
@@ -374,14 +365,18 @@
 
 
   ; Breadcrumb
-  settings[breadcrumb_display]   = 'yes'
-  settings[breadcrumb_separator] = ' &#187; '
+  settings[breadcrumb_display]   = 1
   settings[breadcrumb_home]      = 0
+  settings[breadcrumb_label]     = 0
+  settings[breadcrumb_title]     = 0
+  settings[breadcrumb_separator] = ' &#187; '
 
 
   ; Login block options
-  settings[horizontal_login_block]        = 0
   settings[horizontal_login_block_enable] = 'on'
+  settings[horizontal_login_block]    = 0
+  settings[login_block_remove_links]  = 0
+  settings[login_block_remove_openid] = 0
 
 
   ; Design
@@ -404,6 +399,7 @@
   settings[comments_hide_title]           = 0
   settings[feed_icons]                    = 0
   settings[unset_block_system_main_front] = 0
+  settings[unset_menu_titles]             = 0
 
 
   ; Accessibility
