@@ -1,6 +1,6 @@
 /* HTML Elements */
 html {
-  font-size: 100%; /* 16px x 81.3% = 13px */
+  font-size: 100%;
   word-wrap: break-word;
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;

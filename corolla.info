@@ -34,7 +34,7 @@
   ; Syntax: ie_stylesheets[media][condition] = path/to/file (path must be
   ; relative to your theme root). The file name is not important.
 
-  ie_stylesheets[screen][lte IE 9] = css/ie-lte-9.css
+  ie_stylesheets[screen][lte IE 9][] = css/ie-lte-9.css
 
 
 ;----------// Scripts
