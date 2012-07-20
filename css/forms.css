@@ -64,6 +64,9 @@ input.form-file,
   max-width: 240px;
   width: 100%;
 }
+#block-search-form input.form-text {
+  width: auto;
+}
 input.form-button,
 input.form-submit {
   background: url(images/button.png) repeat-x left top transparent;
