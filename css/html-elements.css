@@ -193,14 +193,16 @@ video {
   max-width: none;
 }
 
-/* Override max-width 100% for map displays, as much as possible anyway... */
+/* Override max-width 100% for map displays and widgets */
 #map img,
 .gmap img,
 .view-gmap img,
 .openlayers-map img,
 #getlocations_map_canvas img,
 #locationmap_map img,
-.geofieldMap img {
+.geofieldMap img,
+.views_horizontal_slider img,
+.field-widget-imagefield-crop-widget img {
   max-width: none !important;
 }
 

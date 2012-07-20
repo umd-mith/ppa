@@ -82,7 +82,6 @@ li a.active:focus {
   background-color: #f8f8f8;
 }
 
-
 /* Superfish Skin - we keep the Superfish skin seperate so we can special case
    if we really need to */
 .sf-menu.sf-style-default a {
