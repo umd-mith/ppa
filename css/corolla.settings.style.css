@@ -2,7 +2,6 @@
 
 
 /* Left */
-
 .hl-l #branding {
   float: left;
   margin: 0 20px;
@@ -47,7 +46,6 @@
 
 
 /* Centered */
-
 .hl-c #branding {
   float: none;
   margin: auto;
@@ -78,17 +76,29 @@
 
 
 /* Image Alignment */
-
-.ia-l .field-type-image {
-  margin: 4px 15px 0 0;
+.ia-l .field-type-image figure,
+.iat-l .field-type-image figure {
+  margin: 6px 15px 5px 0;
 }
 
-.ia-r .field-type-image {
-  margin: 4px 0 0 15px;
+.ia-l .field-type-image figcaption,
+.iat-l .field-type-image figcaption {
+  margin: 5px 0;
+}
+
+.ia-r .field-type-image figure,
+.iat-r .field-type-image figure {
+  margin: 6px 0 5px 15px;
+}
+.ia-r .field-type-image figcaption,
+.iat-r .field-type-image figcaption {
+  margin: 5px 0;
 }
 
 .ia-c .field-type-image figure,
-.ia-n .field-type-image figure {
+.ia-n .field-type-image figure,
+.iat-c .field-type-image figure,
+.iat-n .field-type-image figure {
   border: none;
   padding: 10px 0;
 }

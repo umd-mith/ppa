@@ -24,22 +24,20 @@
 .field-label-inline .field-items {
   display: inline;
 }
-.field-type-image figure,
-.field-type-image figcaption {
+.field-type-image figure {
   margin: 0;
+  padding: 0;
+}
+.field-type-image figcaption {
+  margin: 0 0 10px;
   padding: 0;
 }
 .field-type-image figure img {
   margin: auto;
-  padding: 2px;
-  text-align: center;
 }
 .field-type-image figcaption {
   font-size: 0.823em;
   font-style: italic;
-  margin: auto;
-  max-width: 75%;
-  text-align: center;
 }
 table .field-type-image img {
   width: 100%;

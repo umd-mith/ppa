@@ -51,9 +51,6 @@ function corolla_preprocess_block(&$vars) {
   if ($vars['block']->module == 'superfish' || $vars['block']->module == 'nice_menu') {
     $vars['content_attributes_array']['class'][] = 'clearfix';
   }
-  if (!$vars['block']->subject) {
-    $vars['content_attributes_array']['class'][] = 'no-title';
-  }
   if ($vars['block']->region == 'menu_bar' || $vars['block']->region == 'header') {
     $vars['title_attributes_array']['class'][] = 'element-invisible';
   }

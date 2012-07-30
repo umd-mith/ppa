@@ -11,9 +11,9 @@ body.corolla .color-form {
 body,
 #site-name a,
 h1.page-title,
-.article h2.article-title,
-.article h1.article-title a,
-.article h2.article-title a,
+.node h2.node-title,
+.node h1.node-title a,
+.node h2.node-title a,
 .comment h3.comment-title a,
 .tabs ul.tabs li a,
 pre,
@@ -30,10 +30,10 @@ table.system-status-report tr {
 #site-name a::selection {
   background-color: #2e2e2e;
 }
-.article-title a::-moz-selection {
+.node-title a::-moz-selection {
   background-color: #2e2e2e;
 }
-.article-title a::selection {
+.node-title a::selection {
   background-color: #2e2e2e;
 }
 
@@ -58,8 +58,8 @@ li a.active:focus {
   color: #e25401;
   border-bottom-color: #e25401;
 }
-.article h1.article-title a:hover,
-.article h2.article-title a:hover {
+.node h1.node-title a:hover,
+.node h2.node-title a:hover {
   color: #e25401;
 }
 

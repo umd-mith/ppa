@@ -9,7 +9,6 @@ html {
 }
 body {
   font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
-  line-height: 1.5; /* Unit-less line-height means line height can scale. */
   min-height: 100%;
   margin: 0;
   padding: 0;
@@ -45,10 +44,6 @@ h4 {
 h5,
 h6 {
   font-size: 1em;
-}
-img {
-  max-width: 100%;
-  height: auto;
 }
 a img {
   border:none;
@@ -178,7 +173,6 @@ img {
 }
 
 /* /ht Ethan Marcotte - http://front.ie/l8rJaA */
-img,
 embed,
 object,
 video {
@@ -190,7 +184,7 @@ video {
 .lt-ie9 object,
 .lt-ie9 embed,
 .lt-ie9 video {
-  max-width: none;
+  max-width: none !important;
 }
 
 /* Override max-width 100% for map displays and widgets */
