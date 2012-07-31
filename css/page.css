@@ -377,6 +377,7 @@ div.messages {
 .breadcrumb-wrapper,
 .attribution,
 .at-panel .rounded-corner,
+.block-panels-mini > .block-title,
 div.messages {
   margin-left: 10px;
   margin-right: 10px;
