@@ -2,40 +2,32 @@
 function biblio_citeproc_style_manager_form($form, &$form_state) {
   $form = array();
   $options = array();
+  $tree = array();
 
-  if ($has_curl = function_exists('curl_init')) {
-    $cache = cache_get('github_csl_repo');
-    if (!$cache || $cache->expire < time()) {
-      module_load_include('php', 'biblio_citeproc', '/Github/Autoloader');
-      Github_Autoloader::register();
-      $github = new Github_Client();
-      $branches = $github->getRepoApi()->getRepoBranches('citation-style-language', 'styles');
-      $tree = $github->getObjectApi()->listBlobs('citation-style-language', 'styles', $branches['master']);
+  $cache = cache_get('github_csl_repo');
+  if (!$cache || $cache->expire < time()) {
+    $treeURL = 'https://api.github.com/repos/citation-style-language/styles/contents';
+    $result = drupal_http_request($treeURL);
 
-      $tree = array_flip($tree);
-      $options = array();
-      foreach ($tree as $sha => $file) {
-        if (strstr($file, '.csl')) {
-          $options[$sha] =  basename($file);
-        }
-      }
-      if (!empty($options)) {
-        $expire = time()+86400; //one day from now
-        cache_set('github_csl_repo', $options, 'cache', $expire);
+    if ($result->code == 200) {
+      $tree = json_decode($result->data);
+    }
+
+    foreach ($tree as $file) {
+      if (strstr($file->name, '.csl')) {
+        $options[$file->path] =  basename($file->name);
       }
     }
-    else {
-      $options = $cache->data;
+
+    if (!empty($options)) {
+      $expire = time()+86400; //one day from now
+      cache_set('github_csl_repo', $options, 'cache', $expire);
     }
   }
-
-  if (!$has_curl) {
-    $message = t('Additional styles cannot be '
-        . 'installed because the PHP <a href="@curl_url">cURL</a> library is '
-        . 'not available.',
-        array('@curl_url' => 'http://www.php.net/manual/en/book.curl.php'));
-    drupal_set_message($message, 'warning');
+  else {
+    $options = $cache->data;
   }
+
 
   $form['remote_names'] = array(
     '#type' => 'value',
@@ -48,19 +40,16 @@ function biblio_citeproc_style_manager_form($form, &$form_state) {
     '#title' => t('Available styles'),
     '#size' => 15,
     '#multiple' => TRUE,
-    '#disabled' => !$has_curl,
     '#description' => t('Choose the styles you would like to download and install.'),
   );
 
   $form['install'] = array(
     '#type'        => 'submit',
-    '#disabled'    => !$has_curl,
     '#value'       => '<--',
     '#description' => t('Install the selected styles from GitHub'),
   );
   $form['remove'] = array(
     '#type'        => 'submit',
-    '#disabled'    => !$has_curl,
     '#value'       => '-->',
     '#description' => t('Un-install the selected styles'),
   );
@@ -74,7 +63,6 @@ function biblio_citeproc_style_manager_form($form, &$form_state) {
   );
   $form['install_all'] = array(
     '#type'     => 'submit',
-    '#disabled' => !$has_curl,
     '#value'    => t('Install all')
   );
 
@@ -163,12 +151,19 @@ function biblio_citeproc_style_manager_form_validate($form, &$form_state) {
 }
 function biblio_citeproc_style_manager_form_submit($form, &$form_state) {
   if ($form_state['clicked_button']['#value'] == '<--' && count( $form_state['values']['avialable_styles'])) {
-    module_load_include('php', 'biblio_citeproc', '/Github/Autoloader');
-    Github_Autoloader::register();
-    $github = new Github_Client();
-    foreach ( $form_state['values']['avialable_styles'] as $sha) {
-      $csl = $github->getObjectApi()->getRawData('citation-style-language', 'styles', $sha);
-      _install_csl($form_state['values']['remote_names'][$sha], $csl, $sha);
+    $github_URL = 'https://api.github.com/repos/citation-style-language/styles/contents/';
+    foreach ( $form_state['values']['avialable_styles'] as $path) {
+      $URL = $github_URL . $path;
+      $result = drupal_http_request($URL);
+      if ($result->code == 200) {
+        $file  = json_decode($result->data);
+        switch ($file->encoding) {
+          case 'base64':
+            $csl = base64_decode($file->content);
+            break;
+        }
+      _install_csl($file->name, $csl, $file->sha);
+      }
     }
   }
 
