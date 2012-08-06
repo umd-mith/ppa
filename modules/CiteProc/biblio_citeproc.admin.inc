@@ -6,18 +6,8 @@ function biblio_citeproc_style_manager_form($form, &$form_state) {
 
   $cache = cache_get('github_csl_repo');
   if (!$cache || $cache->expire < time()) {
-    $treeURL = 'https://api.github.com/repos/citation-style-language/styles/contents';
-    $result = drupal_http_request($treeURL);
+    $options = _get_github_repo_tree();
 
-    if ($result->code == 200) {
-      $tree = json_decode($result->data);
-    }
-
-    foreach ($tree as $file) {
-      if (strstr($file->name, '.csl')) {
-        $options[$file->path] =  basename($file->name);
-      }
-    }
 
     if (!empty($options)) {
       $expire = time()+86400; //one day from now
@@ -107,7 +97,7 @@ function biblio_citeproc_style_manager_form($form, &$form_state) {
   );
 
   $form['current_default'] = array(
-    '#markup' => empty($titles) ? '' : $titles[variable_get('biblio_citeproc_style', 'cse.csl')],
+    '#markup' => empty($titles) ? '' : $titles[variable_get('biblio_citeproc_style', 'ieee.csl')],
   );
 
   return $form;
@@ -151,25 +141,17 @@ function biblio_citeproc_style_manager_form_validate($form, &$form_state) {
 }
 function biblio_citeproc_style_manager_form_submit($form, &$form_state) {
   if ($form_state['clicked_button']['#value'] == '<--' && count( $form_state['values']['avialable_styles'])) {
-    $github_URL = 'https://api.github.com/repos/citation-style-language/styles/contents/';
     foreach ( $form_state['values']['avialable_styles'] as $path) {
-      $URL = $github_URL . $path;
-      $result = drupal_http_request($URL);
-      if ($result->code == 200) {
-        $file  = json_decode($result->data);
-        switch ($file->encoding) {
-          case 'base64':
-            $csl = base64_decode($file->content);
-            break;
-        }
-      _install_csl($file->name, $csl, $file->sha);
-      }
+      _install_csl_from_github($path);
     }
   }
 
   if ($form_state['clicked_button']['#value'] == '-->' && count( $form_state['values']['installed_styles'])) {
     foreach ($form_state['values']['installed_styles'] as $id) {
       db_delete('biblio_citeproc_styles')->condition('filename', $id)->execute();
+      if (variable_get('biblio_citeproc_style', 'ieee.csl') == $id) {
+        variable_del('biblio_citeproc_style');
+      }
     }
   }
 
@@ -200,7 +182,7 @@ function biblio_citeproc_style_manager_form_submit($form, &$form_state) {
       'file' => './' . drupal_get_path('module', 'biblio_citeproc') . '/biblio_citeproc.admin.inc'
     );
     batch_set($batch_op);
-    batch_process('admin/config/content/biblio/styles');
+    batch_process('admin/config/content/biblio/citeproc');
 
   }
 
@@ -222,15 +204,50 @@ function biblio_citeproc_csl_file_import_submit($form, &$form_state) {
   }
 
 }
+function _get_github_repo_tree($path = '') {
+  $options = array();
+    $treeURL = 'https://api.github.com/repos/citation-style-language/styles/contents';
+    if (!empty($path)) {
+      $treeURL .= '/' . $path;
+    }
+
+    $result=  drupal_http_request($treeURL);
+    if ($result->code == 200) {
+      $tree = json_decode($result->data);
+    }
+    else {
+      $message = t('Attempt to get list of styles from GitHub resulted in an HTTP error: !code. ', array('!code' => $result->code));
+      if ($cache) {
+        $message .= t('I will use cached data instead.');
+        $mess_type = 'warning';
+        $options = $cache->data;
+      }
+      else {
+        $message .= t('I have no cached data, so you will not be able to install new styles at this time.');
+        $mess_type = 'error';
+      }
+      drupal_set_message($message, $mess_type);
+    }
+
+    foreach ($tree as $file) {
+      if ($file->type == 'file' && strstr($file->name, '.csl')) {
+        $options[$file->path] =  basename($file->name);
+      }
+      elseif ($file->type == 'dir') {
+        $options = array_merge($options, _get_github_repo_tree($file->name));
+      }
+    }
+  return $options;
+}
 
 function _install_csl($name, $csl, $sha = NULL, $all = FALSE) {
   static  $installed = array();
 
   if (empty($installed)) {
     $result = db_select('biblio_citeproc_styles', 'csl')
-        ->fields('csl', array('filename', 'id', 'sha1', 'title'))
-        ->orderBy('filename', 'ASC')
-        ->execute();
+    ->fields('csl', array('filename', 'id', 'sha1', 'title'))
+    ->orderBy('filename', 'ASC')
+    ->execute();
 
     $installed = array();
     foreach ($result as $style) {
@@ -241,43 +258,43 @@ function _install_csl($name, $csl, $sha = NULL, $all = FALSE) {
   $xml = simplexml_load_string($csl);
 
   if ($xml) {
-  $parent = '';
-  foreach ($xml->info->link as $link) {
-    $attrs = $link->attributes();
-    if (isset($attrs['rel']) && $attrs['rel'] == 'independent-parent') {
-      $parent = (string)$attrs['href'];
+    $parent = '';
+    foreach ($xml->info->link as $link) {
+      $attrs = $link->attributes();
+      if (isset($attrs['rel']) && $attrs['rel'] == 'independent-parent') {
+        $parent = (string)$attrs['href'];
+      }
     }
-  }
-  if (!$all && !empty($parent)) {
-    $csl_file_contents = db_query("SELECT csl FROM biblio_citeproc_styles WHERE id = :parent", array(':parent' => $parent))->fetchField();
-    if (!$csl_file_contents) {
-      drupal_set_message(t('You do not have the parent style file: !parent_id installed. You must install !parent_id before you can use !csl_id', array('!parent_id' => basename($parent), '!csl_id' => $name)), 'error');
+    if (!$all && !empty($parent)) {
+      $csl_file_contents = db_query("SELECT csl FROM biblio_citeproc_styles WHERE id = :parent", array(':parent' => $parent))->fetchField();
+      if (!$csl_file_contents) {
+        _install_csl_from_github(basename($parent) . '.csl');
+      }
     }
-  }
 
-  $sha1 = (isset($sha)) ? $sha : sha1($csl);
+    $sha1 = (isset($sha)) ? $sha : sha1($csl);
 
-  $record  = array(
-    'filename' => $name,
-    'parent'   => $parent,
-    'title'    => trim((string)$xml->info->title),
-    'summary'  => (string)$xml->info->summary,
-    'csl'      => $csl,
-    'sha1'     => $sha1,
-    'id'       => (string)$xml->info->id,
-  );
+    $record  = array(
+        'filename' => $name,
+        'parent'   => $parent,
+        'title'    => trim((string)$xml->info->title),
+        'summary'  => (string)$xml->info->summary,
+        'csl'      => $csl,
+        'sha1'     => $sha1,
+        'id'       => (string)$xml->info->id,
+    );
 
-  if (!array_key_exists($record['id'], $installed)) {
-    db_insert('biblio_citeproc_styles')->fields($record)->execute();
-    $installed[$record['id']] = TRUE;
-  }
-  elseif ($record['sha1'] != $installed[$record['id']]->sha1) {
-    db_update('biblio_citeproc_styles')->condition('id', $record['id'])->fields($record)->execute();
-  }
-  elseif(($record['sha1'] == $installed[$record['id']]->sha1)) {
-    $message = t('The CSL file you supplied: !name, is already installed', array('!name' => $name));
-    drupal_set_message($message, 'warning');
-  }
+    if (!array_key_exists($record['id'], $installed)) {
+      db_insert('biblio_citeproc_styles')->fields($record)->execute();
+      $installed[$record['id']] = TRUE;
+    }
+    elseif ($record['sha1'] != $installed[$record['id']]->sha1) {
+      db_update('biblio_citeproc_styles')->condition('id', $record['id'])->fields($record)->execute();
+    }
+    elseif(($record['sha1'] == $installed[$record['id']]->sha1)) {
+      $message = t('The CSL file you supplied: !name, is already installed', array('!name' => $name));
+      drupal_set_message($message, 'warning');
+    }
   }
   else {
     drupal_set_message(t('I could not parse the CSL provided as valid XML', 'error'));
@@ -293,11 +310,35 @@ function _get_zip_from_github(&$context = NULL) {
     variable_set('github_zip', $filename);
   }
 }
+
+function _install_csl_from_github($path) {
+  $csl = '';
+  $github_URL = 'https://api.github.com/repos/citation-style-language/styles/contents/';
+  $URL = $github_URL . $path;
+  $result = drupal_http_request($URL);
+  if ($result->code == 200) {
+    $file  = json_decode($result->data);
+    switch ($file->encoding) {
+      case 'base64':
+        $csl = base64_decode($file->content);
+        break;
+    }
+    _install_csl($file->name, $csl, $file->sha);
+  }
+  else {
+    $message = t('Attempt to get style: %name from GitHub resulted in an HTTP error: !code. ', array('%name' => $path, '!code' => $result->code));
+    $mess_type = 'error';
+    drupal_set_message($message, $mess_type);
+  }
+  return;
+}
+
 function _install_from_zip(&$context = NULL) {
 
   $destination = variable_get('github_zip', '');
 
   if (!empty($destination)) {
+    //variable_del('github_zip');
     $zip = zip_open($destination);
     $za = new ZipArchive();
 
