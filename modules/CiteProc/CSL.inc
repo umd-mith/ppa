@@ -1237,7 +1237,7 @@ class csl_group extends csl_format{
           //check to see if the delimiter is already the last character of the text string
           //if so, remove it so we don't have two of them when we paste together the group
           $stext = strip_tags(trim($text));
-          if((strrpos($stext, $delimiter[0])+1) == drupal_strlen($stext)) {
+          if((strrpos($stext, $delimiter[0])+1) == drupal_strlen($stext) && drupal_strlen($stext) > 1) {
             $text = str_replace($stext, '----REPLACE----', $text);
             $stext = drupal_substr($stext, 0, -1);
             $text = str_replace('----REPLACE----', $stext, $text);
