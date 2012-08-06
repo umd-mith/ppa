@@ -2091,7 +2091,7 @@ function biblio_get_style() {
   if (isset($user->data['biblio_user_style']) && $user->data['biblio_user_style'] != "system") {
     return $user->data['biblio_user_style'];
   }
-  return  module_exists('biblio_citeproc') ? variable_get('biblio_citeproc_style', 'cse.csl') : variable_get('biblio_style', 'cse');
+  return  module_exists('biblio_citeproc') ? variable_get('biblio_citeproc_style', 'ieee.csl') : variable_get('biblio_style', 'cse');
 }
 
 function biblio_get_styles() {
