@@ -96,6 +96,11 @@ function biblio_page() {
   $render['biblio_page']['header']  = biblio_page_header($filter);
   $render['biblio_page']['content'] = biblio_page_content($nids, $extras);
 
+  // if no content AND we have a filter give a hint on what to do...
+  if (isset($render['biblio_page']['content']['section_0']) && !empty($render['biblio_page']['header']['filter_status'])) {
+    $render['biblio_page']['content']['hint']['#markup'] = t('!modify_link or !remove_link your filters and try again.', array('!modify_link' => l(t('Modify'), "$base/filter"), '!remove_link' => l(t('remove'), "$base/filter/clear")));
+  }
+
   return $render;
 }
 function biblio_page_header($filter = array()) {
@@ -215,10 +220,7 @@ function biblio_page_content($nids = array(), $extras = array()) {
 
   $content['pager']['#markup'] = theme('pager');
   if ($count == 0) {
-    $content .= "<h3>" . t("No items found") . "</h3>";
-    if (strstr($content, "Filters:")) {
-      $content['message']['#markup'] = t('!modify_link or !remove_link your filters and try again.', array('!modify_link' => l(t('Modify'), "$base/filter"), '!remove_link' => l(t('remove'), "$base/filter/clear")));
-    }
+    $content['section_0']['#markup'] = "<h3>" . t("No items found") . "</h3>";
   }
   return $content;
 }
