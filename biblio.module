@@ -1578,8 +1578,8 @@ function biblio_insert($node) {
   biblio_insert_contributors($node);
   biblio_insert_keywords($node);
   $node->biblio_coins = biblio_coins($node);
-  drupal_write_record('biblio', $node);
   $duplicate = biblio_hash($node);
+  drupal_write_record('biblio', $node);
   if (isset($duplicate) && $duplicate != $node->nid) { // if this is a potential duplcate, write the nids of the pre-existing and new nodes
     $dup_map = array('vid' => $duplicate, 'did' => $node->nid);
     drupal_write_record('biblio_duplicates', $dup_map);
