@@ -1713,7 +1713,7 @@ function biblio_view($node, $buildmode = 'full') {
       switch (variable_get('biblio_node_layout', 'tabular')) {
         case 'orig' :
         case 'ft' :
-          $node->content['body']['#markup'] = theme('biblio_long', array('node' => $node, 'base' => $base, 'style' => $style));
+          $node->content['body']['#markup'] = theme('biblio_long', array('node' => $node, 'base' => $base, 'style_name' => $style));
           break;
         case 'tabular' :
         default :

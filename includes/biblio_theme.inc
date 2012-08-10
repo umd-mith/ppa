@@ -81,7 +81,11 @@ function theme_biblio_long($variables) {
 
   $output .= filter_xss($node->biblio_coins, array('span'));
   $layout = variable_get('biblio_node_layout', 'orig');
-  if (variable_get('biblio_node_layout', 'orig') == 'ft' && strlen(trim($node->body)) && user_access('view full text')) {
+
+  // Check body value.
+  $has_body = !empty($node->body);
+
+  if (variable_get('biblio_node_layout', 'orig') == 'ft' && $has_body && user_access('view full text')) {
     $output .= '<div class="biblio-head">' . theme('biblio_style', $variables) . '</div>';
     $annotation_field = variable_get('biblio_annotations', 'none');
     if ($annotation_field != 'none' && $node-> $annotation_field) {
@@ -89,7 +93,7 @@ function theme_biblio_long($variables) {
       $output .= filter_xss($node->$annotation_field, biblio_get_allowed_tags());
       $output .= '</div>';
     }
-    $output .= check_markup($node->body);
+    $output .= drupal_render(field_view_field('node', $node, 'body', array('label' => 'hidden')));
     if (biblio_access('export', $node)) {
       $output .= theme('biblio_export_links', array('node' => $node));
     }
