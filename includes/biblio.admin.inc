@@ -1478,6 +1478,7 @@ function biblio_admin_types_form() {
     )
   );
   $output .= theme('table', array('header' => $header, 'rows' => $rows));
+  $output .= l(t('Reset to defaults'), 'admin/config/content/biblio/pubtype/reset');
   return $output;
 }
 /**
@@ -1548,6 +1549,15 @@ function biblio_admin_types_add_form_submit($form, &$form_state) {
   biblio_locale_refresh_types($values['tid']);
   $form_state['redirect'] = 'admin/config/content/biblio/pubtype';
 
+}
+
+function biblio_admin_types_reset() {
+  module_load_include('install', 'biblio');
+
+  db_delete('biblio_types')
+      ->execute();
+  _add_publication_types();
+  drupal_goto('admin/config/content/biblio/pubtype');
 }
 /**
  *

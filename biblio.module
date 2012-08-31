@@ -805,6 +805,12 @@ function biblio_menu() {
     'type'              => MENU_LOCAL_TASK,
     'weight'            => -9
   );
+  $items['admin/config/content/biblio/pubtype/reset'] = array(
+    'page callback'     => 'biblio_admin_types_reset',
+    'access arguments'  => array('administer biblio'),
+    'file'              => '/includes/biblio.admin.inc',
+    'type'              => MENU_CALLBACK,
+  );
   $items['admin/config/content/biblio/fields/reset'] = array(
     'title'             => 'Reset all types to defaults',
     'page callback'     => 'drupal_get_form',
