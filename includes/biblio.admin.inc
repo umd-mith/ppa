@@ -695,7 +695,7 @@ function biblio_admin_settings() {
  * Form handler for biblio_admin_settings
  *
  */
-function biblio_admin_settings_form_submit($form, $form_state) {
+function biblio_admin_settings_form_submit($form, &$form_state) {
 //  if ($form_state['values']['biblio_keyword_freetagging'] && $form_state['values']['biblio_keyword_vocabulary']) {
 //    if ($vocabulary = taxonomy_vocabulary_load(variable_get('biblio_keyword_vocabulary', 0))) {
 //      $vocabulary = (array) $vocabulary;
@@ -1934,7 +1934,7 @@ function theme_biblio_admin_author_types_form($variables) {
  * @param unknown_type $form
  * @param unknown_type $form_state
  */
-function biblio_admin_author_types_form_submit($form, $form_state) {
+function biblio_admin_author_types_form_submit($form, &$form_state) {
 
   if ($form_state['triggering_element']['#value'] == t('Save') || $form_state['triggering_element']['#value'] == t('Create New Type')) {
     $record->title = $form_state['values']['title'];
