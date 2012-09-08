@@ -2011,7 +2011,7 @@ function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
   }
   $base = variable_get('biblio_base', 'biblio');
   $menu = menu_get_active_title();
-  $path = (strpos($_GET['q'], 'settings'))? 'admin/config/content/biblio/author' : $base . '/authors';
+  $path = (strpos($_GET['q'], 'config'))? 'admin/config/content/biblio/author/' : $base . '/authors/';
 
  // $form['#tree'] = TRUE;
   $form['cid'] = array(
@@ -2143,8 +2143,8 @@ function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
     if ($candidate) {
       $candidate = FALSE;
       $candidates[$other_author->cid]['name'] = array(
-          '#markup' => l($other_author->lastname . ($other_author->firstname ? ', ' . $other_author->firstname : ($other_author->initials?', ' . $other_author->initials:'')), $base . '/authors/' . $other_author->cid . '/edit/'),
-          '#markup' => l($other_author->name , $base . '/authors/' . $other_author->cid . '/edit/'),
+          '#markup' => l($other_author->lastname . ($other_author->firstname ? ', ' . $other_author->firstname : ($other_author->initials?', ' . $other_author->initials:'')), $path . $other_author->cid . '/edit/'),
+          '#markup' => l($other_author->name , $path . $other_author->cid . '/edit/'),
       );
       $candidates[$other_author->cid]['link'] = array(
           '#type' => 'checkbox',
