@@ -897,7 +897,7 @@ function biblio_schema() {
       'cid' => array(
         'type' => 'serial',
         'not null' => TRUE,
-        'unsigned' => FALSE,
+        'unsigned' => TRUE,
         'description' => 'Primary Key: Author ID',
         ),
       'aka' => array(
@@ -906,6 +906,13 @@ function biblio_schema() {
         'default'  => 0,
         'unsigned' => TRUE,
         'description' => 'Also known as, links this author entry with others so you can have variation on the name, but listing by cid will find all other (aka) author entries',
+        ),
+      'alt_form' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default'  => 0,
+        'unsigned' => TRUE,
+        'description' => 'Alternate form of an author name, this value points to the desired form (cid), this form is kept in the database so  that future imports of the same name will not create a new author.',
         ),
       'drupal_uid' => array(
         'type' => 'int',
@@ -986,7 +993,7 @@ function biblio_schema() {
         'columns' => array('drupal_uid' => 'uid'),
       ),
      ),
-  	'primary key' => array('cid', 'aka'),
+  	'primary key' => array('cid'),
     'indexes' => array(
       'lastname' => array('lastname'),
       'firstname' => array('firstname'),
@@ -2107,12 +2114,48 @@ function biblio_update_7018() {
  */
 
 function biblio_update_7019() {
-  $spec =  array(
-    'type' => 'serial',
-    'not null' => TRUE,
-    'unsigned' => FALSE,
-    'description' => 'Primary Key: Author ID',
-  );
-  db_change_field('biblio_contributor_data', 'cid', 'cid', $spec);
 
 }
+
+/**
+ *
+ *  Change the primary key of the biblio_contributor_data table
+ */
+function biblio_update_7020() {
+  db_drop_primary_key('biblio_contributor_data');
+  db_add_primary_key('biblio_contributor_data', array('cid'));
+}
+/**
+ *
+ *  Add alt_form column to the biblio_contributor_data table
+ */
+function biblio_update_7021() {
+  if (!db_field_exists('biblio_contributor_data', 'alt_form')) {
+    $spec = array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default'  => 0,
+        'unsigned' => TRUE,
+        'description' => 'Alternate form of an author name, this value points to the desired form (cid), this form is kept in the database so  that future imports of the same name will not create a new author.',
+    );
+    db_add_field('biblio_contributor_data', 'alt_form', $spec);
+  }
+}
+/**
+ *
+ *  Add alt_form column to the biblio_contributor_data table
+ */
+function biblio_update_7022() {
+  if (!db_field_exists('biblio_contributor', 'merge_cid')) {
+    $spec = array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default'  => 0,
+        'unsigned' => TRUE,
+        'description' => '',
+    );
+    db_add_field('biblio_contributor', 'merge_cid', $spec);
+  }
+}
+
+

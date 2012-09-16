@@ -1091,6 +1091,7 @@ function theme_biblio_admin_author_edit_form($variables) {
 function theme_biblio_admin_author_edit_merge_table($variables) {
   $form = $variables['form'];
   $headers = $form['#header'];
+  $rows = array();
 
   foreach (element_children($form['candidates']) as $key) {
 
