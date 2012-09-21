@@ -234,6 +234,8 @@ function _biblio_ris_import($file, $terms = array(), $batch = FALSE, $session_id
 
   while (!feof($fp)) {
     $line = fgets($fp);
+    // Remove any character other than: carriage return, line feed, tab, or ANSI/ASCII character codes 32-255
+    $line = preg_replace('/[^\r\n\t\x20-\xFF]/', '', $line);
     $line_len = strlen($line);
     if ($line_len > 3) {
       $start = strpos($line, '  -'); // There could be some unprintables at the beginning of the line so fine the location of the %
