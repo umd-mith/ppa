@@ -90,7 +90,7 @@ function biblio_page() {
     ));
   }
 
-  drupal_set_title(check_plain(variable_get('biblio_base_title', 'Biblio')));
+  drupal_set_title(t(check_plain(variable_get('biblio_base_title', 'Biblio'))));
   $filter = (isset($arg_list['f'])) ? array('f' => $arg_list['f']) : array();
 
   $render['biblio_page']['header']  = biblio_page_header($filter);
