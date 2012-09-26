@@ -258,7 +258,7 @@ class csl_format extends csl_rendering_element {
   function init_formatting() {
     $this->no_op = TRUE;
     $this->format  = '';
-    if (isset($this->quotes)) {
+    if (isset($this->quotes)  && strtolower($this->quotes) == "true") {
       $this->quotes = array();
       $this->quotes['punctuation-in-quote'] = $this->citeproc->get_locale('style_option', 'punctuation-in-quote');
       $this->quotes['open-quote'] = $this->citeproc->get_locale('term', 'open-quote');
@@ -291,6 +291,9 @@ class csl_format extends csl_rendering_element {
   function format($text) {
 
     if (empty($text) || $this->no_op) return $text;
+    $quotes = $this->quotes;
+    $quotes = is_array($quotes) ? $quotes : array();
+
     if (isset($this->{'text-case'})) {
       switch ($this->{'text-case'}) {
         case 'uppercase':
@@ -309,15 +312,16 @@ class csl_format extends csl_rendering_element {
       }
     }
 
-    $prefix = $this->prefix . $this->quotes['open-quote'];
+    $prefix = $this->prefix;
+    $prefix .= isset($quotes['open-quote']) ? $quotes['open-quote'] : '';
     $suffix = $this->suffix;
-    if ($this->quotes['close-quote'] && !empty($suffix) && $this->quotes['punctuation-in-quote']) {
+    if (isset($quotes['close-quote']) && !empty($suffix) && isset($quotes['punctuation-in-quote'])) {
       if (strpos($suffix, '.') !== FALSE || strpos($suffix, ',') !== FALSE) {
-        $suffix =  $suffix . $this->quotes['close-quote'];
+        $suffix =  $suffix . $quotes['close-quote'];
       }
     }
-    elseif ($this->quotes['close-quote']) {
-      $suffix =  $this->quotes['close-quote'] . $suffix;
+    elseif (isset($quotes['close-quote'])) {
+      $suffix =  $quotes['close-quote'] . $suffix;
     }
     if (!empty($suffix)) { // gaurd against repeaded suffixes...
       $no_tags = strip_tags($text);
@@ -468,7 +472,7 @@ class csl_name extends csl_format {
     if (!isset($this->{$part})) {
       $this->{$part} = array();
     }
-    if (isset($attribs['quotes'])) {
+    if (isset($attribs['quotes']) && strtolower($attribs['quotes']) == 'true') {
       $this->{$part}['open-quote'] = $this->citeproc->get_locale('term', 'open-quote');
       $this->{$part}['close-quote'] = $this->citeproc->get_locale('term', 'close-quote');
       $this->{$part}['open-inner-quote'] = $this->citeproc->get_locale('term', 'open-inner-quote');
