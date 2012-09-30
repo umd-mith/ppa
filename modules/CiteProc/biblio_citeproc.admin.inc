@@ -405,7 +405,7 @@ function biblio_citeproc_example_citation() {
   $node->biblio_volume          = 1;
   $node->biblio_issue           = 2;
   $node->biblio_secondary_title = 'Journal of Fantastic Articles';
-  $node->biblio_pages           = '	424-31';
+  $node->biblio_pages           = '424-31';
   $node->biblio_coins           = '';
   return theme_biblio_citeproc_style(array('node' => $node));
 
