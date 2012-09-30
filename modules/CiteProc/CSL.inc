@@ -1633,7 +1633,6 @@ class csl_mapper {
           'translator'                  => 'biblio_contributors:3',
           'recipient'                   => ':',
           'interviewer'                 => ':',
-          'publisher'                   => 'biblio_publisher:',
           'composer'                    => ':',
       ));
     }
