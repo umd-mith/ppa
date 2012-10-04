@@ -298,10 +298,20 @@ function _biblio_ris_parse_line($tag, $data, $node, &$unmapped) {
                 'auth_category' => 1,
                 'auth_type' => _biblio_get_auth_type(1, $node->biblio_type));
       break;
+    case 'DA' :
+      if (!isset($node->biblio_year) || empty($node->biblio_year)) {
+        $node->biblio_year = ($end = strpos($data, "/")) ? substr($data, 0, $end) : $data;
+      }
+      $node->biblio_date = $data;
+      break;
     case 'Y1' :
     case 'PY' :
-      $node->biblio_year = ($end = strpos($data, "/")) ? substr($data, 0, $end) : $data;
-      $node->biblio_date = $data;
+      if (!isset($node->biblio_year) || empty($node->biblio_year)) {
+        $node->biblio_year = ($end = strpos($data, "/")) ? substr($data, 0, $end) : $data;
+      }
+      if (!isset($node->biblio_date) || empty($node->biblio_date)) {
+        $node->biblio_date = $data;
+      }
       break;
     case 'A2' :
     case 'ED' :
