@@ -227,7 +227,7 @@ function biblio_views_data() {
     );
   $data['drupal_uid'] =  array(
     'field'     => array('handler' => 'views_handler_field'),
-    'filter'    => array('handler' => 'views_handler_filter'),
+    'filter'    => array('handler' => 'biblio_handler_filter_contributor_uid'),
     'argument'  => array('handler' => 'views_handler_argument_numeric'),
     'relationship' => array(
       'handler' => 'views_handler_relationship',
