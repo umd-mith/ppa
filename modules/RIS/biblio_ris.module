@@ -184,6 +184,8 @@ function biblio_ris_biblio_export($nids) {
 function _biblio_ris_import_string($string) {
   $tag = '';
   $node = new stdClass();
+  $unmapped = array();
+
   $lines = preg_split('/[\r\n]/', $string, -1, PREG_SPLIT_NO_EMPTY);
   foreach ($lines as $line) {
     $line_len = strlen($line);
@@ -213,10 +215,19 @@ function _biblio_ris_import_string($string) {
         }
       }
       else {
-        _biblio_ris_parse_line($tag, $data, $node);
+        _biblio_ris_parse_line($tag, $data, $node, $unmapped);
       }
     }
   } // end while
+  if (!empty($unmapped)) {
+    $ignored_tags = array_unique($unmapped);
+    $message = t("The following elements were ignored because they do not map to any biblio fields: ");
+    $message .= implode(', ',$ignored_tags);
+    if (user_access('administer biblio')) {
+      $message .= '. ' . t('Click !url if you wish to check the field mapping', array('!url' => l(t('here'), 'admin/config/content/biblio/iomap/edit/ris')));
+    }
+    drupal_set_message($message, 'warning');
+  }
 }
 
 function _biblio_ris_import($file, $terms = array(), $batch = FALSE, $session_id = NULL) {
