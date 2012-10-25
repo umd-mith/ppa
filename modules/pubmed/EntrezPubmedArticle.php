@@ -119,6 +119,16 @@ class BiblioEntrezPubmedArticle
       if (!empty($doi)) {
         $this->biblio['biblio_doi'] = (string)$doi[0];
       }
+
+      $pmcid = $this->pubmeddata->xpath('.//ArticleId[@IdType="pmc"]/text()');
+      if (!empty($pmcid)) {
+        $this->biblio['biblio_pmcid'] = (string)$pmcid[0];
+      }
+
+      $grants = $this->grants();
+      if (!empty($grants)) {
+        $this->biblio['biblio_pm_grants'] = $grants;
+      }
     }
 
     return $this->biblio;
@@ -156,6 +166,20 @@ class BiblioEntrezPubmedArticle
     }
 
     return $contributors;
+  }
+
+  private function grants() {
+    $grants = array();
+    if (isset($this->article->Article->GrantList->Grant)) {
+      foreach ($this->article->Article->GrantList->Grant as $grant) {
+         $grants[] = array('grantid' => (string)$grant->GrantID,
+                           'acronym' => (string)$grant->Acronym,
+                           'agency'  => (string)$grant->Agency,
+                           'country' => (string)$grant->Country
+                     );
+      }
+    }
+    return $grants;
   }
 
   /**
