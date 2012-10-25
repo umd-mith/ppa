@@ -297,7 +297,11 @@ function biblio_theme($existing, $type, $theme, $path) {
         'file' => '/includes/biblio_theme.inc',
         'render element' => 'form',
     ),
-    );
+    'biblio_sort_tabs' => array(
+        'file' => 'includes/biblio_theme.inc',
+        'variables' => array(),
+    )
+  );
 }
 
 function biblio_autocomplete($field, $string = '') {

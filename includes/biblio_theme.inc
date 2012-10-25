@@ -1137,3 +1137,101 @@ function _biblio_keyword_links($keywords, $base='biblio') {
   }
   return implode("$sep ", $linked_keywords);
 }
+
+
+function template_preprocess_biblio_sort_tabs(&$vars) {
+  $vars['tabs_style'] = variable_get('biblio_sort_tabs_style', 0);
+
+  $uri = drupal_parse_url(request_uri());
+  $uri['path'] = $_GET['q'];
+  $uri['path'] = trim($uri['path'], '/');
+
+  $defaults = array(
+    'author' => 'asc',
+    'title' => 'asc',
+    'type' => 'asc',
+    'year' => 'desc',
+    'keyword' => 'asc',
+  );
+
+  if (isset($uri['query']['s'])) {
+    $sort = $uri['query']['s'];
+  }
+  else {
+    $sort = variable_get('biblio_sort', 'year');
+  }
+
+  if (isset($uri['query']['o'])) {
+    $order = strtolower($uri['query']['o']);
+  }
+  else {
+    $order = strtolower(variable_get('biblio_order', 'desc'));
+  }
+  // flip it
+  $order = ($order == 'desc') ? 'asc' : 'desc';
+  $path = drupal_get_path('module', 'biblio');
+  $order_arrow = ($order == 'asc') ? theme('image', array('path' => $path.'/misc/arrow-asc.png', 'alt' => '(Asc)')):
+                                     theme('image', array('path' => $path.'/misc/arrow-desc.png', 'alt' => '(Desc)'));
+
+  $sort_links =  array_filter(variable_get('biblio_sort_tabs', array('author' => 'author', 'title' => 'title', 'type' => 'type', 'year' => 'year', 'keyword' => 'keyword')));
+  ksort($sort_links);
+
+  $links = array();
+  foreach ($sort_links as $key => $title) {
+    $uri_copy = $uri;
+    $uri_copy['attributes'] = array("title" => t("Click a second time to reverse the sort order"));
+    $uri_copy['html'] = TRUE;
+    $uri_copy['text'] = t(ucfirst($title));
+    $uri_copy['query']['s'] = $title;
+    if ($key === $title && $title == $sort) {
+      $uri_copy['query']['o'] = $order;
+      $uri_copy['attributes']['class'][] = "active";
+      $uri_copy['active'] = TRUE;
+      $uri_copy['pfx'] = ' [ ';
+      $uri_copy['sfx'] = '] ';
+      $uri_copy['arrow'] = $order_arrow;
+
+    }
+    elseif ($key === $title ) {
+      $uri_copy['query']['o'] = $defaults[$title];
+      $uri_copy['active'] = FALSE;
+      $uri_copy['pfx'] = ' ';
+      $uri_copy['sfx'] = ' ';
+      $uri_copy['arrow'] = '';
+    }
+    $links[] = $uri_copy;
+  }
+  $vars['links'] = $links;
+}
+
+function theme_biblio_sort_tabs($vars) {
+  $links = $vars['links'];
+  $style = $vars['tabs_style'];
+  $output = '';
+
+  if ($style) {
+    $output = '<ul class="tabs secondary">';
+  }
+  foreach ($links as $l) {
+    $output .= _biblio_sort_tab($l, $style);
+  }
+
+  if ($style) {
+    $output .= '</ul>';
+  }
+
+  return $output;
+}
+
+function _biblio_sort_tab($tab, $tabs = FALSE) {
+  if ($tabs) {
+    $text  = '<span class="a"><span class="b">' . $tab['text'] . $tab['arrow'] . '</span></span>';
+    $class = ($tab['active']) ? 'class="active"':'';
+    $link  = l($text, $tab['path'], $tab);
+    return "<li $class >". $link . '</li>';
+  }
+  else {
+    return $tab['pfx'] . l($tab['text'], $tab['path'], $tab) . $tab['arrow'] . $tab['sfx'];
+  }
+  return;
+}
