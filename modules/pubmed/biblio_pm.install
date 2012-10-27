@@ -46,9 +46,8 @@ function biblio_pm_schema() {
         'not null' => TRUE
       ),
       'biblio_pmcid' => array(
-        'type'     => 'int',
-        'not null' => TRUE,
-        'default'  => 0,
+        'type'     => 'varchar',
+        'length' => 20,
       ),
         'nid' => array(
         'type' => 'int',
@@ -68,8 +67,51 @@ function biblio_pm_schema() {
     ),
     'primary key' => array('nid'),
   );
+
+  $schema['biblio_pubmed_grant_info'] = array(
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'nid' => array(
+        'type' => 'int',
+        'not null' => TRUE
+      ),
+        'biblio_pubmed_id' => array(
+        'type'     => 'int',
+        'not null' => TRUE
+      ),
+      'grantid' => array(
+        'type'     => 'varchar',
+        'length' => 255,
+      ),
+      'acronym' => array(
+        'type'     => 'varchar',
+        'length' => 2,
+      ),
+      'agency' => array(
+        'type'     => 'varchar',
+        'length' => 255,
+      ),
+      'country' => array(
+        'type'     => 'varchar',
+        'length' => 255,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
   return $schema;
 }
+
+
+/**
+*
+* UPDATES
+*
+*/
+
 
 /**
 *
@@ -91,5 +133,26 @@ function biblio_pm_update_7001() {
     'default'  => 0,
   );
   db_add_field('biblio_pubmed', 'biblio_pmcid', $spec);
+}
+/**
+*
+* change field type for biblio_pmcid field to the biblio_pubmed table
+*
+*/
 
+function biblio_pm_update_7002() {
+  $spec =  array(
+    'type'     => 'varchar',
+    'length'   => 20,
+    'not null' => FALSE,
+  );
+  db_change_field('biblio_pubmed', 'biblio_pmcid', 'biblio_pmcid', $spec);
+}
+/**
+ * Add a new table 'biblio_pubmed_grant_info'
+ */
+function biblio_pm_update_7004() {
+  $schema = biblio_pm_schema();
+  $spec = $schema['biblio_pubmed_grant_info'];
+  db_create_table('biblio_pubmed_grant_info', $spec);
 }

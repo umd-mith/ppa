@@ -259,7 +259,7 @@ function theme_biblio_tabular($variables) {
           if ($row['type'] == 'text_format') {
             $format = filter_default_format();
             if (!empty($node->biblio_formats) ) {
-              $formats = unserialize($node->biblio_formats);
+              $formats = $node->biblio_formats;
               $format  = isset($formats[$row['name']]) ? $formats[$row['name']] : $format;
             }
             $data = check_markup($node->$row['name'], $format);
@@ -286,6 +286,9 @@ function theme_biblio_tabular($variables) {
     );
 
   }
+  // let other modules add rows if desired...
+  drupal_alter('biblio_node_table_rows', $rows, $node);
+
   $output = '<div id="biblio-node">';
   $output .= filter_xss($node->biblio_coins, array('span'));
   $header = array();

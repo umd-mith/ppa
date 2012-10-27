@@ -127,7 +127,7 @@ class BiblioEntrezPubmedArticle
 
       $grants = $this->grants();
       if (!empty($grants)) {
-        $this->biblio['biblio_pm_grants'] = $grants;
+        $this->biblio['biblio_pubmed_grants'] = $grants;
       }
     }
 
@@ -225,12 +225,12 @@ class BiblioEntrezPubmedArticle
     if (isset($this->article->Article->Abstract)) {
       $abst = '';
       foreach ($this->article->Article->Abstract->AbstractText  as $text) {
-        if (!empty($abst)) $abst .= "\n\n";
+        $abst .= "<p>";
         $attrs = $text->attributes();
         if (isset($attrs['Label'])) {
-          $abst .= $attrs['Label'] . ': ';
+          $abst .= '<b>' . $attrs['Label'] . ': </b>';
         }
-        $abst .=  (string)$text ;
+        $abst .=  (string)$text . '</p>';
       }
       return $abst;
     }
