@@ -5,6 +5,7 @@
  */
 function biblio_pm_cron() {
   if (variable_get('biblio_pm_auto_update', 0)) {
+    module_load_include('inc', 'biblio', 'includes/biblio.import.export');
     $interval    = variable_get('biblio_pm_update_interval', 3600);    // defaults to once per hour
     $count_limit = variable_get('biblio_pm_update_limit', 100);         // only update 100 at a time
     $age         = variable_get('biblio_pm_age_limit', 2419200); // defaults to one month since last update
