@@ -1071,6 +1071,12 @@ function biblio_admin_io_mapper_page() {
       l(t('edit'), 'admin/config/content/biblio/iomap/edit/' . $key),
     );
   }
+
+  if (count($rows) == 0) {
+    drupal_set_message(t('There are no import/export modules enabled. Please go to the !l page and enable at least one.',
+        array('!l' => l(t('modules'), "admin/modules"))));
+  }
+
   $header = array(t('Format'), t('Action'));
   return theme('table', array('header' => $header, 'rows' => $rows));
 }
