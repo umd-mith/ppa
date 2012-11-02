@@ -1725,6 +1725,9 @@ function biblio_view($node, $buildmode = 'full') {
         case 'ft' :
           $node->content['body']['#markup'] = theme('biblio_long', array('node' => $node, 'base' => $base, 'style_name' => $style));
           break;
+        case 'cite':
+          $node->content['body']['#markup'] = theme('biblio_style', array('node' => $node, 'base' => $base, 'style_name' => $style));
+          break;
         case 'tabular' :
         default :
           $node->content['body']['#markup'] = theme('biblio_tabular', array('node' => $node, 'base' => $base));

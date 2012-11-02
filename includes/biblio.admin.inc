@@ -636,7 +636,8 @@ function biblio_admin_settings() {
     '#options' => array(
       'orig'    => t('Original'),
       'ft'      => t('Only Fulltext if available'),
-      'tabular' => t('Tabular')
+      'tabular' => t('Tabular'),
+      'cite'    => t('Bibliographic style choosen above')
     ),
     '#description' => t('This alters the layout of the "node" (full) view.')
   );
