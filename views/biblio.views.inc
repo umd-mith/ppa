@@ -82,7 +82,12 @@ function biblio_views_data() {
   }
   $data['biblio_year']['argument']  = array('handler' => 'views_handler_argument_numeric');  // biblio_year is an int
   $data['biblio_year']['filter']    = array('handler' => 'views_handler_filter_numeric');  // biblio_year is an int
-  unset($data['biblio_keywords']); // keywords are in a separate table which has it's own handlers
+
+  $data['biblio_keywords']['field'] = array('handler' => 'biblio_handler_field_keyword');
+  $data['biblio_keywords']['title'] = 'Keywords';
+  $data['biblio_keywords']['help']  = t('All Keywords associated with the biblio node');
+
+
   $data['biblio_sort_title'] = array(
       'title'     => 'Sort Title',
       'help'      => t('Sort Title is a normalized version of the Title with leading special characters and stop words removed, use for sorting only.'),
@@ -338,6 +343,7 @@ function biblio_views_data() {
       'handler' => 'biblio_handler_filter_biblio_keyword_kid',
       'numeric' => TRUE,
     ),
+    'skip base' => array('node', 'node_revision'),
     );
 
   $viewsdata['biblio_keyword'] = $data;
@@ -385,7 +391,8 @@ function biblio_views_data() {
     'argument'  => array('handler' => 'views_handler_argument_string'),
     'sort'      => array('handler' => 'views_handler_sort'),
     'title'     => t('Keyword'),
-  //  'skip base' => array('node', 'node_revision'),
+    'help'      => t('A single keyword related to a biblio node'),
+    //'skip base' => array('node', 'node_revision'),
   );
   $data['kid'] =  array(
     'field'     => array('handler' => 'views_handler_field_numeric'),
