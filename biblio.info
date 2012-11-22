@@ -14,6 +14,7 @@ files[] = includes/Name.php
 files[] = includes/Parser.php
 
 files[] = views/biblio_handler_citation.inc
+files[] = views/biblio_handler_field_keyword.inc
 files[] = views/biblio_handler_field_biblio_keyword_data_word.inc
 files[] = views/biblio_handler_field_biblio_keyword_kid.inc
 files[] = views/biblio_handler_field_biblio_type.inc
