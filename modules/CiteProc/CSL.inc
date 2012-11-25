@@ -28,6 +28,7 @@ class citeproc {
   private   $info;
   protected $locale;
   protected $style_locale;
+  public    $quash;
   private   $mapper;
 
   function __construct($csl = NULL, $lang = 'en') {
@@ -38,6 +39,7 @@ class citeproc {
 
   function init($csl, $lang) {
     $this->mapper = new csl_mapper();
+    $this->quash = array();
 
     $csl_doc = new DOMDocument();
 
@@ -176,6 +178,9 @@ class csl_element extends csl_collection {
     $null = NULL;
     if (array_key_exists($name, $this->attributes)) {
       return $this->attributes[$name];
+    }
+    if (isset($this->{$name})) {
+      return $this->{$name};
     }
     return $null;
 
@@ -798,8 +803,9 @@ class csl_names extends csl_format {
   }
 
   function render($data, $mode = NULL) {
-    $matches = 0;
+    $matches = array();
     $variable_parts = array();
+
     if (!isset($this->delimiter)) {
       $style_delimiter = $this->citeproc->style->{'names-delimiter'};
       $mode_delimiter = $this->citeproc->{$mode}->{'names-delimiter'};
@@ -807,43 +813,51 @@ class csl_names extends csl_format {
     }
 
     $variables  = explode(' ', $this->variable);
+
     foreach ($variables as $var) {
+      if (in_array($var, $this->citeproc->quash)) continue;
       list($contributor, $category) = explode(':', $var);
       if (!empty($contributor) && $this->_get_category($data->{$contributor}, $category) ) {
-        $matches++;
-        break;
+        $matches[] =  $var;
       }
     }
 
-    if (!$matches) { // we don't have any primary suspects, so lets check the substitutes...
+    if (empty($matches)) { // we don't have any primary suspects, so lets check the substitutes...
       if (isset($this->substitutes)) {
         foreach ($this->substitutes->elements as $element) {
           if (($element instanceof csl_names)) { //test to see if any of the other names variables has content
-            $variables  = explode(' ', $element->variable);
-            foreach ($variables as $var) {
+            $sub_variables  = explode(' ', $element->variable);
+            foreach ($sub_variables as $var) {
               list($contributor, $category) = explode(':', $var);
               if (!empty($contributor) && $this->_get_category($data->{$contributor}, $category)) {
-                $matches++;
-                break;
+                $matches[] =  $var;
+                $this->citeproc->quash[] = $var;
               }
             }
           }
           else { // if it's not a "names" element, just render it
-            return $element->render($data, $mode);
+            $text  = $element->render($data, $mode);
+            $this->citeproc->quash[] = isset($element->variable) ? $element->variable : $element->var;
+            if (!empty($text)) $variable_parts[] = $text;
           }
+          if (!empty($matches)) break;
         }
       }
     }
 
-    foreach ($variables as $var) {
+    foreach ($matches as $var) {
+      if (in_array($var, $this->citeproc->quash) && in_array($var, $variables)) continue;
       $text = '';
       list($contributor, $category) = explode(':', $var);
       if (!empty($contributor) && $authors = $this->_get_category($data->{$contributor}, $category)) {
         foreach ($this->elements as $element) {
           if (is_a($element, 'csl_label')) {
-            $data->{$var}['variable'] = $var;
+            $authors['variable'] = $this->_get_csl_name_variable($category);
+            $text .= $element->render($authors, $mode);
           }
-          $text .= $element->render($authors, $mode);
+          elseif (is_a($element, 'csl_name')) {
+            $text .= $element->render($authors, $mode);
+          }
         }
       }
       if (!empty($text)) $variable_parts[] = $text;
@@ -867,6 +881,20 @@ class csl_names extends csl_format {
     return count($authors) ? $authors : FALSE;
   }
 
+  private function _get_csl_name_variable($category) {
+    switch ($category) {
+      case 1:
+        return 'author';
+        break;
+      case 2:
+        return 'editor';
+        break;
+      case 3:
+        return 'translator';
+        break;
+      default:
+    }
+  }
 }
 
 class csl_date extends csl_format {
@@ -1109,6 +1137,7 @@ class csl_text extends csl_format {
 
   function render($data = NULL, $mode = NULL) {
     $text = '';
+    if (in_array($this->var, $this->citeproc->quash)) return;
 
     switch ($this->source) {
       case 'variable':
@@ -1345,6 +1374,7 @@ class csl_bibliography  extends csl_format {
   }
 
   function render($data, $mode = NULL) {
+    $this->citeproc->quash = array();
     $text = $this->layout->render($data, 'bibliography');
     if ($this->{'hanging-indent'} == 'true') {
       $text = '<div style="  text-indent: -25px; padding-left: 25px;">' . $text . '</div>';
@@ -1638,6 +1668,7 @@ class csl_mapper {
           'composer'                    => ':',
       ));
     }
+
     $vars = explode(' ', $field);
     foreach ($vars as $key => $value) {
       $vars[$key] = (!empty($this->field_map[$value])) ? $this->field_map[$value] : '';
