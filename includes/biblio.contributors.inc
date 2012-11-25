@@ -43,7 +43,7 @@ function biblio_get_cid_by_name($name) {
     if ($auth->cid > 0) {
       $cid = $auth->cid;
     }
-    if ($auth->cid < 0 && $auth->aka > 0) {
+    if ($auth->aka > 0 && $auth->alt_form > 0) {
       $cid = $auth->aka;
     }
   }
@@ -245,7 +245,7 @@ function biblio_get_orphan_author_ids() {
   $query = db_select('biblio_contributor_data', 'bcd');
   $all_cids = $query
     ->fields('bcd', array('cid'))
-    ->condition('cid', 0, '>')
+    ->condition(db_and()->condition('bcd.cid', 0, '>')->condition('bcd.alt_form', 0, '='))
     ->execute()
     ->fetchCol();
 

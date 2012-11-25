@@ -2401,7 +2401,9 @@ function biblio_admin_author_edit_form_submit($form, &$form_state) {
         (!empty($form_state['values']['suffix']) ? $form_state['values']['suffix'] :'') ;
       $form_state['values']['name'] = trim($form_state['values']['name']);
       $form_state['values']['md5'] = md5($form_state['values']['name']);
+
       drupal_write_record('biblio_contributor_data',  $form_state['values'], 'cid');
+
       if (isset($form_state['values']['candidates']) && !empty($form_state['values']['candidates'])) {
         biblio_admin_author_edit_form_merge_link($form_state);
       }
