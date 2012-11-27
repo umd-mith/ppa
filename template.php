@@ -56,7 +56,6 @@ function corolla_preprocess_block(&$vars) {
   }
 }
 
-
 /**
  * Returns HTML for a sort icon.
  *

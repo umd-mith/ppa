@@ -25,14 +25,14 @@
               <?php endif; ?>
 
               <?php if ($site_name || $site_slogan): ?>
-                <hgroup id="name-and-slogan"<?php print $hgroup_attributes; ?>>
+                <hgroup<?php print $hgroup_attributes; ?>>
 
                   <?php if ($site_name): ?>
-                    <h1 id="site-name"<?php print $site_name_attributes; ?>><?php print $site_name; ?></h1>
+                    <h1<?php print $site_name_attributes; ?>><?php print $site_name; ?></h1>
                   <?php endif; ?>
 
                   <?php if ($site_slogan): ?>
-                    <h2 id="site-slogan"<?php print $site_slogan_attributes; ?>><?php print $site_slogan; ?></h2>
+                    <h2<?php print $site_slogan_attributes; ?>><?php print $site_slogan; ?></h2>
                   <?php endif; ?>
 
                 </hgroup>
@@ -124,7 +124,7 @@
 
                       <?php print render($title_prefix); ?>
 
-                      <?php if ($title && !isset($node)): ?>
+                      <?php if ($title): ?>
                         <header class="clearfix">
                           <h1 id="page-title">
                             <?php print $title; ?>

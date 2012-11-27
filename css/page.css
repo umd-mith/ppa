@@ -65,9 +65,8 @@
 h1#page-title,
 .in-maintenance h1#page-title {
   border-bottom: none;
-  font-size: 2.1em;
   line-height: 1;
-  margin: 0 0 1em;
+  margin: 0 0 10px;
   padding: 0;
 }
 h1.page-title {
@@ -115,11 +114,11 @@ h1.page-title {
 }
 .poll .percent {
   float: right;
-  font-size: 0.833em;
+  font-size: 0.8em;
   padding: 1px 3px 0 0;
 }
 .block-poll .poll .percent {
-  font-size: 0.692em;
+  font-size: 0.7em;
 }
 .poll .bar {
   background-color: #fafafa;
@@ -242,7 +241,7 @@ body.overlay #content {
   border: none;
 }
 .overlay .ui-dialog-title {
-  font-size: 2.333em;
+  font-size: 2em;
   padding: 0 0 6px;
 }
 form#dblog-filter-form .form-item {

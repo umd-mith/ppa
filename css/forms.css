@@ -10,7 +10,7 @@ input {
   margin: 0;
 }
 input.title {
-  font-size: 1.385em;
+  font-size: 1.3em;
 }
 input.text,
 input.title,
@@ -100,7 +100,7 @@ input {
 .form-item .description,
 fieldset .description,
 .fieldset-layout-settings dd {
-  font-size: 0.846em;
+  font-size: 0.85em;
 }
 #article-admin-filter ul {
   padding: .5em 0;
@@ -303,7 +303,7 @@ fieldset .filter-help {
   padding: 0 15px 5px;
 }
 .filter-guidelines {
-  font-size: .923em;
+  font-size: .9em;
   margin: 0;
   padding: 5px 18px 10px;
 }
@@ -328,7 +328,7 @@ fieldset.filter-wrapper {
 }
 .filter-guidelines {
   padding-top: 6px;
-  font-size: 0.84em;
+  font-size: 0.8em;
 }
 .filter-guidelines ul {
   margin: 0;
@@ -425,7 +425,7 @@ div.form-item div.password-suggestions {
 #password-strength-text,
 .password-strength-title,
 div.password-confirm {
-  font-size: 0.833em;
+  font-size: 0.8em;
 }
 #password-strength-text {
   margin-top: 0.2em;

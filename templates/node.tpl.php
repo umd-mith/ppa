@@ -7,13 +7,9 @@
     <?php if ($title || $display_submitted): ?>
       <header<?php print $header_attributes; ?>>
 
-        <?php if ($title): ?>
+        <?php if ($title && !$page): ?>
           <h1<?php print $title_attributes; ?>>
-            <?php if (!$page): ?>
               <a href="<?php print $node_url; ?>" rel="bookmark"><?php print $title; ?></a>
-            <?php elseif ($page): ?>
-              <?php print $title; ?>
-            <?php endif; ?>
           </h1>
         <?php endif; ?>
 
