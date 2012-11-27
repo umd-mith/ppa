@@ -123,7 +123,7 @@ li a.active:focus {
 .sf-menu.sf-style-default a:active {
   background-color: #e25402;
 }
-.sf-menu.sf-style-default .active-trail.sf-depth-1,
+.sf-menu.sf-style-default .active-trail > a.sf-depth-1,
 .sf-menu.sf-style-default .sf-depth-1 > a.active {
   color: #2e2e2d;
   background-color: transparent;
