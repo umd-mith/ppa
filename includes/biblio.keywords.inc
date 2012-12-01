@@ -104,7 +104,6 @@ function biblio_update_keywords($node) {
  *   An array of keyword ID's from this node
  */
 function biblio_insert_keywords($node, $update = FALSE) {
-  if (empty($node->biblio_keywords)) return;
   $kw_vocab = variable_get('biblio_keyword_vocabulary', 0);
   $freetagging = variable_get('biblio_keyword_freetagging', 0);
   $taxo_terms = $typed_keywords = array();
@@ -123,6 +122,7 @@ function biblio_insert_keywords($node, $update = FALSE) {
             ->condition($and)
             ->execute();
   }
+  if (empty($node->biblio_keywords)) return;
   $vocabularies = module_invoke('taxonomy', 'get_vocabularies', 'biblio');
   $vid = variable_get('biblio_keyword_vocabulary', 0);
   if (variable_get('biblio_keyword_freetagging', 0) && $vid) {
