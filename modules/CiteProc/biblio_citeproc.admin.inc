@@ -25,7 +25,7 @@ function biblio_citeproc_style_manager_form($form, &$form_state) {
   );
 
   asort($options);
-  $form['avialable_styles'] = array(
+  $form['available_styles'] = array(
     '#type' => 'select',
     '#title' => t('Available styles'),
     '#size' => 15,
@@ -85,7 +85,7 @@ function biblio_citeproc_style_manager_form($form, &$form_state) {
       unset($options[$sha]);
     }
   }
-  $form['avialable_styles']['#options'] = $options;
+  $form['available_styles']['#options'] = $options;
 
   $form['installed_styles'] = array(
     '#type' => 'select',
@@ -117,7 +117,7 @@ function theme_biblio_citeproc_style_manager_form($variables) {
   $rows[] = array(
               array('data' => drupal_render($form['installed_styles']) . '<br>' . drupal_render($form['default']) . drupal_render($form['edit'])),
               array('data' => drupal_render($form['install']) . '<br>' . drupal_render($form['remove'])),
-              array('data' => drupal_render($form['avialable_styles']) . '<br>' . drupal_render($form['install_all'])
+              array('data' => drupal_render($form['available_styles']) . '<br>' . drupal_render($form['install_all'])
               ),
             );
   $rows[] = array(array('data' => drupal_render($form['import_csl_file']) .  drupal_render($form['import']),'colspan' => 3) );
@@ -128,10 +128,10 @@ function theme_biblio_citeproc_style_manager_form($variables) {
 
 }
 function biblio_citeproc_style_manager_form_validate($form, &$form_state) {
-  if ($form_state['clicked_button']['#value'] == '<--' && count( $form_state['values']['avialable_styles'])) {
-    if (count($form_state['values']['avialable_styles']) > 60) {
+  if ($form_state['clicked_button']['#value'] == '<--' && count( $form_state['values']['available_styles'])) {
+    if (count($form_state['values']['available_styles']) > 60) {
       $message = t('You may not select more than 60 styles for installation at one time');
-      form_error($form['avialable_styles'], $message);
+      form_error($form['available_styles'], $message);
     }
   }
  if ($form_state['clicked_button']['#value'] ==  t('Set as site default') && !count( $form_state['values']['installed_styles'])) {
@@ -140,8 +140,8 @@ function biblio_citeproc_style_manager_form_validate($form, &$form_state) {
 
 }
 function biblio_citeproc_style_manager_form_submit($form, &$form_state) {
-  if ($form_state['clicked_button']['#value'] == '<--' && count( $form_state['values']['avialable_styles'])) {
-    foreach ( $form_state['values']['avialable_styles'] as $path) {
+  if ($form_state['clicked_button']['#value'] == '<--' && count( $form_state['values']['available_styles'])) {
+    foreach ( $form_state['values']['available_styles'] as $path) {
       _install_csl_from_github($path);
     }
   }
