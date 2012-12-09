@@ -564,11 +564,13 @@ function theme_biblio_format_authors($variables) {
 
 function theme_biblio_author_link($variables) {
   $author = $variables['author'];
+  $options = isset($variables['options']) ? $variables['options'] : array();
 
   $link_to_profile = variable_get('biblio_author_link_profile', 0);
   $link_to_profile_path = variable_get('biblio_author_link_profile_path', 'user/[user:uid]');
 
   $uri = drupal_parse_url(request_uri());
+  $uri = array_merge($uri, $options);
   if (!isset($uri['attributes'])) {
     $uri['attributes'] = array('rel' => 'nofollow');
   }
@@ -872,12 +874,24 @@ function theme_biblio_download_links($variables) {
         if (module_exists('filefield_paths')) {
           $alias =  drupal_get_path_alias('filefield_paths/alias/' . $item['fid']);
         }
-        $file_links[] = array(
-          theme('file_link', array('file' => (object) $item)),
-          format_size($item['filesize']),
-        );
+        $link_type = variable_get('biblio_file_link_type', 'text');
+        if ($link_type == 'icon') {
+          $url = file_create_url($item['uri']);
+          $icon = theme('file_icon', array('file' => (object) $item));
+          $options['html'] = TRUE;
+          $options['attributes']['title'] = check_plain($item['filename']);
+          $file_links[] = array(
+              l($icon, $url, $options),
+              format_size($item['filesize']),
+          );
+        }
+        elseif ($link_type == 'text') {
+          $file_links[] = array(
+              theme('file_link', array('file' => (object) $item)),
+              format_size($item['filesize']),
+          );
+        }
       }
-
     }
   }
   $files = '';

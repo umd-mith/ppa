@@ -363,6 +363,23 @@ function biblio_admin_settings() {
     '#options' => $options,
     '#description' => t('You can select which export links to display here.')
   );
+  $form['links']['file_attachments'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#title' => t('File Attachments')
+  );
+  $form['links']['file_attachments']['biblio_file_link_type'] = array(
+    '#type' => 'radios',
+    '#title' => t('File attachment display'),
+    '#default_value' => variable_get('biblio_file_link_type', 'text'),
+    '#options' => array(
+      'text' => t('Text'),
+      'icon' => t('Icon'),
+    ),
+    '#description' => t('Display file attachments as either the file name or an icon')
+  );
+
   $form['links']['google'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
