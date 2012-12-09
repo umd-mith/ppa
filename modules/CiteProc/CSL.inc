@@ -445,6 +445,11 @@ class csl_name extends csl_format {
 
   function init_attrs($mode) {
  //   $and = $this->get_attributes('and');
+    if (isset($this->citeproc)) {
+      $style_attrs = $this->citeproc->style->get_hier_attributes();
+      $mode_attrs = $this->citeproc->{$mode}->get_hier_attributes();
+      $this->attributes = array_merge($style_attrs, $mode_attrs, $this->attributes);
+    }
     if (isset($this->and)) {
       if ($this->and == 'text') {
         $this->and = $this->citeproc->get_locale('term', 'and');
@@ -452,11 +457,6 @@ class csl_name extends csl_format {
        elseif ($this->and == 'symbol') {
         $this->and = '&';
        }
-    }
-    if (isset($this->citeproc)) {
-      $style_attrs = $this->citeproc->style->get_hier_attributes();
-      $mode_attrs = $this->citeproc->{$mode}->get_hier_attributes();
-      $this->attributes = array_merge($style_attrs, $mode_attrs, $this->attributes);
     }
     if (!isset($this->delimiter)) {
       $this->delimiter =  $this->{'name-delimiter'} ;
@@ -469,7 +469,10 @@ class csl_name extends csl_format {
     }
     $this->dpl = $this->{'delimiter-precedes-last'};
     $this->sort_separator = isset($this->{'sort-separator'}) ? $this->{'sort-separator'} : ', ';
-    $this->form = isset($this->form) ? $this->form : 'long';
+
+    $this->delimiter = isset($this->{'name-delimiter'}) ? $this->{'name-delimiter'} : (isset($this->delimiter) ? $this->delimiter : ', ');
+
+    $this->form = isset($this->{'name-form'}) ? $this->{'name-form'} : (isset($this->form) ? $this->form : 'long');
     $this->attr_init = $mode;
   }
 
@@ -555,9 +558,10 @@ class csl_name extends csl_format {
     $count = 0;
     $auth_count = 0;
     $et_al_triggered = FALSE;
-    $initialize_with = $this->{'initialize-with'};
 
     if (!$this->attr_init || $this->attr_init != $mode) $this->init_attrs($mode);
+
+    $initialize_with = $this->{'initialize-with'};
 
     foreach ($names as $rank => $name) {
       if (empty($name['literal'])) {
@@ -623,10 +627,16 @@ class csl_name extends csl_format {
           }
           $text = $this->format($text);
           $name['name'] = $text;
+          if (strstr($text, 'div') || strstr($text, 'span')) {
+            $options = array('html' => TRUE);
+          }
+          else {
+            $options = array('html' => FALSE);
+          }
         }
       }
       if (variable_get('biblio_author_links', 1)) {
-        $text = theme('biblio_author_link', array('author' => $name));
+        $text = theme('biblio_author_link', array('author' => $name, 'options' => $options));
       }
 
       $authors[] = $text;
@@ -644,10 +654,10 @@ class csl_name extends csl_format {
         }
       }
       if ($this->etal) {
-        $authors[] = $this->etal->render();
+        $etal = $this->etal->render();
       }
       else {
-        $authors[] = $this->citeproc->get_locale('term', 'et-al');
+        $etal = $this->citeproc->get_locale('term', 'et-al');
       }
       $et_al_triggered = TRUE;
     }
@@ -658,7 +668,21 @@ class csl_name extends csl_format {
         $authors[$auth_count-1] = $this->and . ' ' . $authors[$auth_count-1]; //stick an "and" in front of the last author if "and" is defined
       }
     }
+
     $text = implode($this->delimiter, $authors);
+
+    if (!empty($authors) && $et_al_triggered) {
+      switch($this->{'delimiter-precedes-et-al'}) {
+        case 'never':
+          $text = $text . " $etal";
+          break;
+        case 'always':
+          $text = $text . "$this->delimiter$etal";
+          break;
+        default:
+          $text = count($authors) == 1 ? $text . " $etal" : $text . "$this->delimiter$etal";
+      }
+    }
 
    if ($this->form == 'count') {
      if (!$et_al_triggered) {
@@ -852,7 +876,7 @@ class csl_names extends csl_format {
       if (!empty($contributor) && $authors = $this->_get_category($data->{$contributor}, $category)) {
         foreach ($this->elements as $element) {
           if (is_a($element, 'csl_label')) {
-            $authors['variable'] = $this->_get_csl_name_variable($category);
+            $element->variable = $this->_get_csl_name_variable($category);
             $text .= $element->render($authors, $mode);
           }
           elseif (is_a($element, 'csl_name')) {
@@ -1198,29 +1222,56 @@ class csl_label extends csl_format {
         break;
       case 'contextual':
       default:
-        if (count($data) == 1) {
-          $plural = 'single';
-        }
-        elseif (count($data) > 1) {
-          $plural = 'multiple';
-        }
     }
-    if (is_array($data) && isset($data['variable'])) {
-      $text = $this->citeproc->get_locale('term', $data['variable'], $form, $plural);
-    }
-    if (empty($text)) {
     foreach ($variables as $variable) {
       $field = $this->citeproc->map_field($variable);
-
-      if ((isset($data->$field) && !empty($data->$field)) && ($term = $this->citeproc->get_locale('term', $variable, $form, $plural))) {
-        $text = $term;
-        break;
+      if (isset($data->{$field})  && !empty($data->{$field})) {
+        if (!isset($this->plural) && empty($plural) && is_array($data->{$field})) {
+          $count = count($data->{$field});
+          if ($count == 1) {
+            $plural = 'single';
+          }
+          elseif ($count > 1) {
+            $plural = 'multiple';
+          }
+        }
+        else {
+          $plural = $this->evaluateStringPluralism($data, $variable);
+        }
+        if (($term = $this->citeproc->get_locale('term', $variable, $form, $plural))) {
+          $text = $term;
+          break;
+        }
       }
     }
-    }
+
     if (empty($text)) return;
     if ($this->{'strip-periods'}) $text = str_replace('.', '', $text);
     return $this->format($text);
+  }
+
+  function evaluateStringPluralism($data, $variable) {
+    $field = $this->citeproc->map_field($variable);
+    $str = $data->{$field};
+    $plural = 'single';
+
+    if (!empty($str)) {
+//      $regex = '/(?:[0-9],\s*[0-9]|\s+and\s+|&|([0-9]+)\s*[\-\x2013]\s*([0-9]+))/';
+      switch ($variable) {
+        case 'page':
+          $page_regex = "/([a-zA-Z]*)([0-9]+)\s*(?:–|-)\s*([a-zA-Z]*)([0-9]+)/";
+          $err = preg_match($page_regex, $str, $m);
+          if ($err !== FALSE && count($m) == 0) {
+            $plural = 'single';
+          }
+          elseif ($err !== FALSE && count($m)) {
+            $plural = 'multiple';
+          }
+          break;
+        default:
+      }
+    }
+    return $plural;
   }
 }
 
@@ -1343,6 +1394,8 @@ class csl_citation extends csl_format{
   }
 
   function render($data, $mode = NULL) {
+    $this->citeproc->quash = array();
+
     $text = $this->layout->render($data, 'citation');
 
     return $this->format($text);
@@ -1573,6 +1626,7 @@ class csl_locale  {
         $term = '';
         $form = $arg2 ? " and @form='$arg2'" : '';
         $plural = $arg3 ? "/cs:$arg3" : '';
+        if ($arg2 == 'verb' || $arg2 == 'verb-short') $plural = '';
         if ($this->style_locale) {
           $term = @$this->style_locale->xpath("//locale[@xml:lang='en']/terms/term[@name='$arg1'$form]$plural");
           if (!$term) {
