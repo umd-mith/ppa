@@ -2025,6 +2025,7 @@ function biblio_admin_author_type_delete_confirm_submit($form, &$form_state) {
  * @return void|multitype:string NULL
  */
 function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
+  module_load_include('inc', 'biblio', 'includes/biblio.contributors');
   $merge_options = $linked = array();
   $base = variable_get('biblio_base', 'biblio');
 
@@ -2139,6 +2140,16 @@ function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
                    ->orderBy('lastname')
                    ->execute();
 
+  $query = db_select('biblio_contributor', 'bc');
+  $merged_authors = $query->fields('bc')
+                      ->condition('merge_cid', 0, '>')
+                      ->execute();
+  foreach ($merged_authors as $auth) {
+    $merged[$auth->merge_cid] = $auth->cid;
+  }
+
+  $linked = biblio_get_linked_contributors($author->cid);
+
   $radio_options = array('link' => '', 'merge' => '');
   $candidate = FALSE;
   $candidates = array();
@@ -2149,20 +2160,14 @@ function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
     $merge_def = $link_def = 0;
     $link_disable = $merge_disable = $retain_disable = FALSE;
 
-    if ((soundex($other_author->lastname) == $this_soundx) &&
-        $author->aka != $other_author->cid )
-       {
+    if ((soundex($other_author->lastname) == $this_soundx) || (isset($merged[$other_author->cid]) && $merged[$other_author->cid] == $author->cid)) {
       $candidate = TRUE;
       $merge_def = ($other_author->alt_form && $other_author->aka) ? $author->cid : FALSE;
       $retain_def = $other_author->alt_form ? $author->cid : FALSE;
       $retain_disable = $other_author->alt_form ? TRUE : FALSE;
     }
 
-    if ($other_author->cid > 0 &&
-        $other_author->aka != 0 &&
-        $other_author->alt_form == 0 &&
-        $author->cid == $other_author->aka ||
-        $author->aka == $other_author->cid) {
+    if (in_array($other_author->cid, $linked)) {
       $candidate = TRUE;
       $link_def = $author->cid;
       $retain_def =  0;
@@ -2220,7 +2225,7 @@ function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
       '#type' => 'fieldset',
       '#theme' => 'biblio_admin_author_edit_merge_table',
       '#title' => t('Author Link / Merge'),
-      '#description' => t('Select other author names which will be linked or merged.  Merging removes all the selected authors, then replaces any references to these authors with the author being edited above.  You should only do this if you are sure the other authors represent the same author as the one being edited. <B>THIS CANNOT BE UNDONE!</B>'),
+      '#description' => t('Select other author names which will be linked or merged.  Merging removes all the selected authors, then replaces any references to these authors with the author being edited above.  You should only do this if you are sure the other authors represent the same author as the one being edited. <B>IF you do not select "Retain as alternate form" then THIS CANNOT BE UNDONE!</B>'),
       '#weight' => 5,
       '#collapsible' => TRUE,
       '#collapsed' => !count($candidates),
@@ -2287,7 +2292,7 @@ function biblio_admin_author_edit_form_merge_link($form_state) {
           'aka' => 0,
           'alt_form' => 0,
       ))
-      ->condition('cid', $ccid)
+      ->condition(db_or()->condition('cid', $cid)->condition('cid', $ccid))
       ->execute();
     }
 

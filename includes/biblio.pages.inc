@@ -430,21 +430,19 @@ function biblio_build_query($arg_list) {
           $query->condition("bc$bcc.cid", $value);
           break;
         case 'author':
+          module_load_include('inc', 'biblio', 'includes/biblio.contributors');
           $bcc++;
           if (array_search('bc', $tables) === FALSE) {
             $query->innerJoin('biblio_contributor', 'bc', 'n.vid = bc.vid');
           }
           if (is_numeric($value)) {
-            $cids = db_query('SELECT cid FROM {biblio_contributor_data}
-                              WHERE cid = :cid OR
-                              (aka = (SELECT aka FROM {biblio_contributor_data} WHERE cid = :cdid AND aka != 0))',
-                              array(':cid' => $value, ':cdid' => $value));
-
+            $cids = biblio_get_linked_contributors($value);
+            $cids[] = $value;
             $cid_count = 0;
             $or = db_or();
 
             foreach ($cids as $cid) {
-              $or->condition("bc.cid", $cid->cid);
+              $or->condition("bc.cid", $cid);
               $cid_count++;
             }
 

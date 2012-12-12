@@ -3,6 +3,31 @@
  * @param $aid
  * @return unknown_type
  */
+function biblio_get_linked_contributors($aid) {
+  $related = &drupal_static(__FUNCTION__);
+
+  if (!isset($related[$aid])) {
+    $aka = db_query('SELECT aka FROM {biblio_contributor_data} WHERE cid = :cid', array(':cid' => $aid))->fetchField();
+    if ($aka == 0) {
+      $query = db_select('biblio_contributor_data', 'bcd');
+      $cids = $query->fields('bcd', array('cid'))
+                    ->condition(db_and()->condition('bcd.aka', $aid, '=')->condition('bcd.alt_form', 0, '='))
+                    ->execute()
+                    ->fetchCol();
+    }
+    else {
+      $query = db_select('biblio_contributor_data', 'bcd');
+      $and = db_and()->condition('bcd.aka', $aka, '=')->condition('bcd.alt_form', 0, '=')->condition('bcd.cid', $aid, '<>');
+      $cids = $query->fields('bcd', array('cid'))
+                    ->condition(db_or()->condition('bcd.cid', $aka)->condition('bcd.aka', $aid)->condition($and))
+                    ->execute()
+                    ->fetchCol();
+    }
+    $related[$aid] = $cids;
+  }
+  return $related[$aid];
+}
+
 function biblio_get_contributor($aid) {
   $contributor = &drupal_static(__FUNCTION__);
 
