@@ -536,7 +536,7 @@ function biblio_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
         '#title' => t('Biblio settings'),
         '#weight' => 5,
         '#collapsible' => TRUE,
-        '#collapsed' => TRUE,
+        '#collapsed' => FALSE,
       );
       if ($admin_show_form || variable_get('biblio_show_user_profile_form', '1')) {
         $form['biblio_fieldset'] += _biblio_get_user_profile_form($account);
