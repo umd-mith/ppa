@@ -1139,8 +1139,11 @@ function _biblio_get_authors($filter = NULL) {
 
   $suspects = array();
   $query = db_select('biblio_contributor_data', 'bcd')
-              ->fields('bcd', array('lastname'))
+              ->fields('bcd', array('lastname', 'firstname', 'initials', 'alt_form'))
               ->groupBy('lastname')
+              ->groupBy('firstname')
+              ->groupBy('initials')
+              ->groupBy('alt_form')
               ->having('COUNT(*) > 1');
 
   if ($filter) {
