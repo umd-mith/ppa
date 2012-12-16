@@ -217,6 +217,9 @@ function _get_github_repo_tree($path = '') {
     }
     else {
       $message = t('Attempt to get list of styles from GitHub resulted in an HTTP error: !code. ', array('!code' => $result->code));
+
+      $cache = cache_get('github_csl_repo');
+
       if ($cache) {
         $message .= t('I will use cached data instead.');
         $mess_type = 'warning';
@@ -227,6 +230,7 @@ function _get_github_repo_tree($path = '') {
         $mess_type = 'error';
       }
       drupal_set_message($message, $mess_type);
+      return $options;
     }
 
     foreach ($tree as $file) {
