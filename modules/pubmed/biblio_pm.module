@@ -52,11 +52,11 @@ function biblio_pm_cron() {
             ->execute();
         }
       }
-
-      $message = t('There were no PubMed entries older than @age to check.', array(
-          '@age' => format_interval($age),
-        )
-      );
+      else {
+        $message = t('There were no PubMed entries older than @age to check.', array(
+                     '@age' => format_interval($age),)
+                    );
+      }
       watchdog('biblio_pm', $message, array(), WATCHDOG_INFO);
       variable_set('biblio_pm_update_next_execution', time() + $interval);
     }
@@ -310,7 +310,10 @@ function _biblio_pm_create_node_from_xml($xml, $terms, $batch, $session_id) {
         $node->nid = -$dup;
         $node->revision = 1;
         $curr_date = format_date(time());
-        $node->log = t("Automatically updated on !date due to changes at source", array('!date' => $curr_date));
+        $node->log = t('Automatically updated by the Biblio PubMed module on !date due to changes at !url', array(
+                       '!date' => $curr_date,
+                       '!url' => l('PubMed', 'http://www.ncbi.nlm.nih.gov/pubmed/'. $node->biblio_pubmed_id),
+                       ));
         $dup = NULL;
       }
       if ($dup < 0 && $action == 'replace') { //entry has be imported before, but may have changed
@@ -480,15 +483,17 @@ function biblio_pm_views_api() {
 }
 
 function biblio_pm_biblio_node_table_rows_alter(&$rows, $node) {
-  $rows[] = array(
-      array(
-        'data' => t('PubMed ID'),
-        'class' => array('biblio-row-title')
-      ),
-      array(
-        'data' =>  l($node->biblio_pubmed_id, 'http://www.ncbi.nlm.nih.gov/pubmed/' . $node->biblio_pubmed_id . '?dopt=Abstract')
-      )
+  if (isset($node->biblio_pubmed_id) && !empty($node->biblio_pubmed_id)) {
+    $rows[] = array(
+        array(
+            'data' => t('PubMed ID'),
+            'class' => array('biblio-row-title')
+        ),
+        array(
+            'data' =>  l($node->biblio_pubmed_id, 'http://www.ncbi.nlm.nih.gov/pubmed/' . $node->biblio_pubmed_id . '?dopt=Abstract')
+        )
     );
+  }
   if (isset($node->biblio_pmcid) && !empty($node->biblio_pmcid)) {
     $rows[] = array(
         array(
