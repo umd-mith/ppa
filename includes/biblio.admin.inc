@@ -2027,6 +2027,9 @@ function biblio_admin_author_type_delete_confirm_submit($form, &$form_state) {
 function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
   module_load_include('inc', 'biblio', 'includes/biblio.contributors');
   $merge_options = $linked = array();
+  if (!isset($form_state['biblio_add_merge_author'])) {
+    $form_state['biblio_add_merge_author'] = array();
+  }
   $base = variable_get('biblio_base', 'biblio');
 
   $author = db_query('SELECT * FROM {biblio_contributor_data} b WHERE b.cid = :aid ', array(':aid' => $author_id))->fetchObject();
@@ -2160,7 +2163,9 @@ function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
     $merge_def = $link_def = 0;
     $link_disable = $merge_disable = $retain_disable = FALSE;
 
-    if ((soundex($other_author->lastname) == $this_soundx) || (isset($merged[$other_author->cid]) && $merged[$other_author->cid] == $author->cid)) {
+    if ((soundex($other_author->lastname) == $this_soundx) ||
+        (isset($merged[$other_author->cid]) && $merged[$other_author->cid] == $author->cid) ||
+        in_array($other_author->cid, $form_state['biblio_add_merge_author']))  {
       $candidate = TRUE;
       $merge_def = ($other_author->alt_form && $other_author->aka) ? $author->cid : FALSE;
       $retain_def = $other_author->alt_form ? $author->cid : FALSE;
@@ -2175,6 +2180,8 @@ function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
 
     if ($candidate) {
       $candidate = FALSE;
+      $form_state['biblio_add_merge_author'][$other_author->cid] = $other_author->cid;
+
       $candidates[$other_author->cid]['name'] = array(
           '#markup' => l($other_author->lastname . ($other_author->firstname ? ', ' . $other_author->firstname : ($other_author->initials?', ' . $other_author->initials:'')), $path . $other_author->cid . '/edit/'),
           '#markup' => l($other_author->name , $path . $other_author->cid . '/edit/'),
@@ -2231,6 +2238,9 @@ function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
       '#collapsed' => !count($candidates),
       '#header' => array(t('Author name'), t('Link'), t('Merge'), t('Retain as "alternate form"')),
       'candidates' => $candidates,
+      '#prefix' => '<div id="biblio-author-edit-merge-table">',
+      '#suffix' => '</div>',
+
   );
   $form['merge']['more_authors_search'] = array(
       '#type' => 'textfield',
@@ -2243,8 +2253,12 @@ function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
       '#type'     => 'submit',
       '#value'    => t('Add author'),
       '#weight' => 15,
-      '#validate' => array('biblio_admin_author_edit_form_link_validate'),
-      '#submit'   => array('biblio_admin_author_edit_form_link_submit'),
+      '#submit'   => array('biblio_admin_author_edit_add_candidate'),
+      '#ajax'   => array(
+          'callback' => 'biblio_admin_author_edit_add_candidate_callback',
+          'wrapper'  => 'biblio-author-edit-merge-table',
+      ),
+
   );
 
   $form['submit'] = array(
@@ -2257,6 +2271,36 @@ function biblio_admin_author_edit_form($form, &$form_state, $author_id) {
   );
 
   return $form;
+}
+
+function biblio_admin_author_edit_add_candidate($form, &$form_state) {
+  module_load_include('inc', 'biblio', 'includes/biblio.contributors');
+  if (!empty($form_state['values']['more_authors_search'])) {
+    if ($cid = biblio_get_cid_by_name($form_state['values']['more_authors_search'])) {
+      if ($cid == $form_state['values']['cid']) { // we don't want to merge with ourselves :-(
+        drupal_set_message(t('You cannot merge an author with itself'), 'error');
+      }
+      elseif (in_array($cid, $form_state['biblio_add_merge_author'])) {
+        drupal_set_message(t('Author already exists in the merge list'), 'warning');
+      }
+      else {
+        $form_state['biblio_add_merge_author'][$cid] = $cid;
+      }
+    }
+    else {
+      drupal_set_message(t('The Author was not found in the database.  You must select an Author from the "auto-complete" list of the Keyword search box.'), 'error');
+    }
+  }
+  else {
+    drupal_set_message(t('Cannot add an empty value'), 'error');
+  }
+
+  $form_state['rebuild'] = TRUE;
+
+}
+
+function biblio_admin_author_edit_add_candidate_callback($form, $form_state) {
+  return $form['merge'];
 }
 
 /**
