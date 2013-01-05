@@ -5,7 +5,7 @@
  */
 function biblio_token_info() {
   $schema = drupal_get_schema('biblio');
-  $fields = array_diff($schema['fields'], array('nid', 'vid', 'biblio_format'));
+  $fields = array_diff_key($schema['fields'], array('nid' => '', 'vid' => '', 'biblio_formats' => ''));
   $node_token['biblio']= array(
       'name' => t('Biblio'),
       'description' => t('Tokens related to the Biblio content type.'),
