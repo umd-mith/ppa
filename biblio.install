@@ -387,7 +387,7 @@ function biblio_schema() {
       'biblio_date' => array(
         'type' => 'varchar',
         'not null' => FALSE,
-        'length' => '16',
+        'length' => '64',
         'description' => '',
       ),
       'biblio_isbn' => array(
