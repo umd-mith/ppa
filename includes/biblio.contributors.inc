@@ -398,7 +398,10 @@ function _save_contributors(&$contributors, $nid, $vid, $update = FALSE) {
           $author = $name_parser->parseName($author);
         }
         catch (Exception $e) {
-          drupal_set_message($e->getMessage(), 'error');
+          $link = l('in node ' . $nid, 'node/' . $nid);
+          $message = $e->getMessage() . ' ' . $link;
+          drupal_set_message($message , 'error');
+          watchdog('biblio', $message, array(), WATCHDOG_ERROR);
         }
 
         $contributors[$key] = $author;

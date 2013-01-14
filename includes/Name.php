@@ -53,7 +53,7 @@ class HumanNameParser_Name {
     if ($subset){
       $this->str = preg_replace($regex, ' ', $this->str, -1, $numReplacements);
       if ($numReplacements > 1){
-        throw new Exception("The regex being used to find the name has multiple matches.");
+        throw new Exception("The regex being used to find the name: '$this->str' has multiple matches.");
       }
       $this->norm();
       return $subset;
@@ -79,7 +79,7 @@ class HumanNameParser_Name {
       $this->norm();
     }
     else if (count($substrings) > 2) {
-      throw new Exception("Can't flip around multiple '$flipAroundChar' characters in namestring.");
+      throw new Exception("Can't flip around multiple '$flipAroundChar' characters in: '$this->str'.");
     }
     return true; // if there's 1 or 0 $flipAroundChar found
   }
