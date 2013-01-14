@@ -5,6 +5,18 @@
 */
 
 /**
+ * Gets a keyword ID using keyword text as the key.
+ *
+ * @param $name
+ * @return int Keyword ID
+ */
+function biblio_get_kid_by_name($name) {
+  $kw = biblio_get_keyword_by_name($name);
+  if ($kw) {
+    return $kw->kid;
+  }
+}
+/**
  * @param $name
  * @return array of keywords
  */
@@ -43,8 +55,10 @@ function biblio_get_keyword_by_id($kid) {
 }
 
 /**
- * @param $node
- * @return unknown_type
+ * Load keywords for a single node
+ *
+ * @param $vid
+ * @return keywords for a given node->vid
  */
 function biblio_load_keywords($vid) {
   $vids = (isset($vid) ? array($vid) : array());
@@ -52,7 +66,9 @@ function biblio_load_keywords($vid) {
 }
 
 /**
- * @param unknown_type $vids
+ * Load keywords for multiple nodes
+ *
+ * @param array $vids
  * @return multitype:
  */
 function biblio_load_keywords_multiple($vids = array()) {
