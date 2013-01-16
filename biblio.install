@@ -859,7 +859,14 @@ function biblio_schema() {
       'unsigned' => TRUE,
       'default' => 0,
       'description' => 'Position of the author name on the publication (first,second,third...)',
-    )
+    ),
+    'merge_cid' =>  array(
+      'type' => 'int',
+      'not null' => TRUE,
+      'default'  => 0,
+      'unsigned' => TRUE,
+      'description' => '',
+    ),
    ),
    'foreign keys' => array(
      'node_revision' => array(
@@ -2164,5 +2171,14 @@ function biblio_update_7022() {
  */
 function biblio_update_7023() {
   biblio_update_7014();
+}
+/**
+ *
+ * Re-apply update 7022 in case the install happened after 7022 was implemented.  The main scheme definition was not changed at that time to match the update resulting a schema mismatch.
+ *
+ */
+
+function biblio_update_7024() {
+  biblio_update_7022();
 }
 
