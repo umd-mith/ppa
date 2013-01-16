@@ -2157,4 +2157,12 @@ function biblio_update_7022() {
   }
 }
 
+/**
+ *
+ * Re-apply update 7014 in case the install happened after 7014 was implemented.  The main scheme definition was not changed at that time to match the update resulting a schema mismatch.
+ *
+ */
+function biblio_update_7023() {
+  biblio_update_7014();
+}
 
