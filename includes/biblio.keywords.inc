@@ -121,7 +121,6 @@ function biblio_update_keywords($node) {
  */
 function biblio_insert_keywords($node, $update = FALSE) {
   $kw_vocab = variable_get('biblio_keyword_vocabulary', 0);
-  $freetagging = variable_get('biblio_keyword_freetagging', 0);
   $taxo_terms = $typed_keywords = array();
   $freetag_vocab = FALSE;
   if (!is_array($node->biblio_keywords)) {
@@ -138,12 +137,16 @@ function biblio_insert_keywords($node, $update = FALSE) {
             ->condition($and)
             ->execute();
   }
+
   if (empty($node->biblio_keywords)) return;
-  $vocabularies = module_invoke('taxonomy', 'get_vocabularies', 'biblio');
+
+  $vocabularies = module_invoke('taxonomy', 'get_vocabularies');
   $vid = variable_get('biblio_keyword_vocabulary', 0);
+
   if (variable_get('biblio_keyword_freetagging', 0) && $vid) {
     $freetag_vocab = $vocabularies[variable_get('biblio_keyword_vocabulary', 0)];
   }
+
   if (isset($node->taxonomy) && is_array($node->taxonomy) && variable_get('biblio_copy_taxo_terms_to_keywords', 0)) { //add any taxonomy terms to our keyword list
     foreach ($node->taxonomy as $vid => $term) {
       if ($vid == 'copy_to_biblio' && $term == 0 ) {// don't copy if user overrides the default to copy, just set the $taxo_terms to an empty array and break out of the for loop
@@ -195,19 +198,51 @@ function biblio_insert_keywords($node, $update = FALSE) {
   }
 
   // now if we are saving keywords into a taxonomy freetagging vocabulary, then create the tags string and add it to the node object.
+  $vocabularies = module_invoke('taxonomy', 'get_vocabularies');
+  $vid          = variable_get('biblio_keyword_vocabulary', 0);
+  $freetagging  = variable_get('biblio_keyword_freetagging', 0);
+
+  if ($freetagging && $vid) {
+    $freetag_vocab = $vocabularies[$vid];
+    $term_refs     = biblio_get_term_ref_fields();
+    $ft_field      = 'field_' . $freetag_vocab->machine_name . '_ref';
+    if (!isset($term_refs[$ft_field])) {
+      biblio_create_term_ref($freetag_vocab);
+    }
+  }
+
 
   if ($freetagging && $freetag_vocab ) {
     $tids = array();
-    $ft_field = 'field_' . $freetag_vocab->machine_name;
     $lang = isset($freetag_vocab->language) ? $freetag_vocab->language : 'und';
     if (isset($node->{$ft_field}[$lang])) {
       foreach($node->{$ft_field}[$lang] as $tag) {
         $tids[] = $tag['tid'];
       }
     }
+
+    if (is_array($typed_keywords) && !empty($typed_keywords)) {
+      $query = new EntityFieldQuery();
+      $query
+      ->entityCondition('entity_type', 'taxonomy_term')
+      ->propertyCondition('vid', $vid)
+      ->propertyCondition('name', $typed_keywords);
+
+      $result = $query->execute();
+
+      if (isset($result['taxonomy_term'])) {
+        $existing_tids  = array_keys($result['taxonomy_term']);
+        $existing_terms = taxonomy_term_load_multiple($existing_tids);
+        $existing_words = array();
+        foreach ($existing_terms as $term) {
+          $existing_words[$term->name] = $term;
+        }
+      }
+    }
+
     foreach ($typed_keywords as $kw) {
-      if ($possibilities = taxonomy_term_load_multiple(array(), array('name' => trim($kw), 'vid' => $freetag_vocab->vid))) {
-        $term = array_pop($possibilities);
+      if (isset($existing_words[$kw])) {
+        $term = $existing_words[$kw];
       }
       else {
         $term = new stdClass();
@@ -398,4 +433,54 @@ function biblio_implode_keywords($keywords, $sep = '') {
     }
   }
   return $string;
+}
+
+function biblio_get_term_ref_fields() {
+  $termfields = array();
+  foreach (field_info_instances('node', 'biblio') as $instance) {
+    $field = field_info_field_by_id($instance['field_id']);
+    if ($field['type'] == 'taxonomy_term_reference') {
+      $termfields[$field['field_name']] = $instance['label'];
+    }
+  }
+  return $termfields;
+}
+
+function biblio_create_term_ref($vocabulary) {
+  $field_name = 'field_'. $vocabulary->machine_name . '_ref';
+
+  $field = array(
+      'field_name' => $field_name,
+      'type' => 'taxonomy_term_reference',
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+      'settings' => array(
+          'allowed_values' => array(
+              array(
+                  'vocabulary' => $vocabulary->machine_name,
+                  'parent' => 0
+              ),
+          ),
+      ),
+  );
+
+  field_create_field($field);
+
+
+  $instance = array(
+      'field_name' => $field_name,
+      'entity_type' => 'node',
+      'label' => $vocabulary->name,
+      'bundle' => 'biblio',
+      'required' => false,
+      'widget' => array(
+          'type' => 'options_select',
+          'cardinality' => -1
+      ),
+      'display' => array(
+          'default' => array('type' => 'hidden'),
+          'teaser' => array('type' => 'hidden')
+      )
+  );
+
+  field_create_instance($instance);
 }
