@@ -54,7 +54,7 @@ class biblio_handler_citation extends views_handler_field {
       $this->biblio_base = variable_get('biblio_base', 'biblio');
     }
 
-    $item = node_load($values->{$this->aliases['nid']});
+    $item = node_load($values->nid);
     if ($item->type != 'biblio') return;
 
     $langcode = $GLOBALS['language_content']->language;
