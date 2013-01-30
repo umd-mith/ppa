@@ -110,8 +110,8 @@ function theme_biblio_citeproc_style($variables) {
     }
   }
   $styled_node = $citeproc->render($node);
-
-  return ($styled_node . filter_xss($node->biblio_coins, array('span')));
+  $coins_data = isset($node->biblio_coins) ? filter_xss($node->biblio_coins, array('span')) : '';
+  return ($styled_node . $coins_data);
 }
 
 function biblio_citeproc_csl_map_reset($type = NULL) {
