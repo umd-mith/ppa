@@ -891,10 +891,10 @@ function biblio_schema() {
      ),
    ),
    'primary key' => array(
-   		'vid',
-   		'cid',
-   		'auth_type',
-   		'rank'
+       'vid',
+       'cid',
+       'auth_type',
+       'rank'
     ),
    );
 
@@ -1000,7 +1000,7 @@ function biblio_schema() {
         'columns' => array('drupal_uid' => 'uid'),
       ),
      ),
-  	'primary key' => array('cid'),
+    'primary key' => array('cid'),
     'indexes' => array(
       'lastname' => array('lastname'),
       'firstname' => array('firstname'),
@@ -1375,15 +1375,15 @@ function _add_publication_types() {
   $types[] = array(100, 'Book', NULL, 1);
   $types[] = array(101, 'Book Chapter', NULL, 2);
   $types[] = array(102, 'Journal Article', NULL, 3);
-  $types[] = array(131,'Journal',NULL,3);
+  $types[] = array(131,'Journal', NULL, 3);
   $types[] = array(103, 'Conference Paper', NULL, 4);
   $types[] = array(104, 'Conference Proceedings', NULL, 5);
   $types[] = array(105, 'Newspaper Article', NULL, 6);
   $types[] = array(106, 'Magazine Article', NULL, 7);
   $types[] = array(107, 'Web Article', NULL, 8);
-  $types[] = array(132,'Website',NULL,8);
-  $types[] = array(133,'Web service',NULL,8);
-  $types[] = array(134,'Web project page',NULL,8);
+  $types[] = array(132,'Website', NULL, 8);
+  $types[] = array(133,'Web service', NULL, 8);
+  $types[] = array(134,'Web project page', NULL, 8);
   $types[] = array(108, 'Thesis', NULL, 9);
   $types[] = array(109, 'Report', NULL, 10);
   $types[] = array(110, 'Film', NULL, 11);
@@ -1405,9 +1405,9 @@ function _add_publication_types() {
   $types[] = array(126, 'Government Report', NULL, 27);
   $types[] = array(127, 'Classical'  , NULL, 28);
   $types[] = array(128, 'Legal Ruling', NULL, 29);
-  $types[] = array(129, 'Miscellaneous',NULL, 30);
+  $types[] = array(129, 'Miscellaneous', NULL, 30);
   $types[] = array(130, 'Miscellaneous Section', NULL, 31);
-  $types[] = array(135,'Presentation',NULL,8);
+  $types[] = array(135,'Presentation', NULL, 8);
 
   foreach ($types as $record) {
 //    $result[] = update_sql("INSERT INTO {biblio_types} (tid, name, description, weight) VALUES ('" . implode("', '", $record) . "')");
@@ -1722,8 +1722,8 @@ function biblio_update_6024() {
    you need to get the last inserted record from biblio_fields and increment it by one
    so you don't step on customized fields added via the user online interface */
 
-  $sql = 'SELECT fid FROM {biblio_fields} ORDER BY fid DESC LIMIT 1';
-  $lastfid = db_result(db_query($sql));
+  $sql = 'SELECT fid FROM {biblio_fields} ORDER BY fid DESC';
+  $lastfid = db_result(db_query_range($sql, 0, 1));
   $newfid  = $lastfid + 1;
 
   $result[] = update_sql("INSERT INTO {biblio_fields} (fid, name, type, size, maxsize) VALUES
@@ -1828,21 +1828,22 @@ function biblio_update_6030() {
 
 function biblio_update_6031() {
   $result = array();
-  $types[] = array(131,'Journal',NULL,3);
-  $types[] = array(132,'Web site',NULL,8);
-  $types[] = array(133,'Web service','e.g. Google, Yahoo',8);
-  $types[] = array(134,'Web project page',NULL,8);
-  $types[] = array(135,'Presentation',NULL,8);
-  $types[] = array(136,'Newspaper',NULL,8);
+  $types[] = array(131, 'Journal', NULL, 3);
+  $types[] = array(132, 'Web site', NULL, 8);
+  $types[] = array(133, 'Web service','e.g. Google, Yahoo', 8);
+  $types[] = array(134, 'Web project page', NULL, 8);
+  $types[] = array(135, 'Presentation', NULL, 8);
+  $types[] = array(136, 'Newspaper', NULL, 8);
 
-  foreach($types as $record)
-  {
+  foreach ($types as $record) {
     db_query("INSERT INTO {biblio_types} (tid, name, description, weight) VALUES ('" . implode("', '", $record) . "')");
   }
-    db_query("DELETE FROM {biblio_types} WHERE tid=-1");
+
+  db_query("DELETE FROM {biblio_types} WHERE tid=-1");
 
  return $result;
 }
+
 function biblio_update_6032() {
   $spec = array(
         'type' => 'varchar',
@@ -1878,7 +1879,7 @@ function biblio_update_7001() {
         'not null' => TRUE,
         'default'  => 0,
         'unsigned' => TRUE,
-        'description' =>'Determines if the author name is allowed to be reformated by the variaous styles or should be used literally.',
+        'description' => 'Determines if the author name is allowed to be reformated by the variaous styles or should be used literally.',
         );
     db_add_field('biblio_contributor_data', 'literal', $spec);
   }
@@ -1902,7 +1903,8 @@ function biblio_update_7003() {
     biblio_update_6031();
   }
 }
-function _biblio_update_field_link_data($range, $vtabs = FALSE){
+
+function _biblio_update_field_link_data($range, $vtabs = FALSE) {
   $csv_file = drupal_get_path('module', 'biblio') . '/misc/biblio.field.link.data.csv';
 
   if ($handle = fopen($csv_file, "r")) {
@@ -2090,7 +2092,7 @@ function biblio_update_7016() {
 function biblio_update_7017() {
   $dirs = array('bibtexParse', 'endnote', 'RIS', 'rtf');
   foreach ($dirs as $dir) {
-    $path = drupal_get_path('module', 'biblio') . '/modules/'.$dir.'/views';
+    $path = drupal_get_path('module', 'biblio') . '/modules/' . $dir . '/views';
     if (is_dir($path)) {
       $message = t('You have an inconsistancy in your installation, the directory: @path, should not exist!', array('@path' => $path));
       drupal_set_message($message, 'error');

@@ -592,8 +592,8 @@ function biblio_save_node($node, $terms = array(), $batch = FALSE, $session_id =
     $validation_errors = biblio_save_node_validate($node);
     node_save($node);
     if (!empty($validation_errors)) {
-      foreach($validation_errors as $field => $value) {
-        $message = $field . t(' was truncated to fit into the database column');
+      foreach ($validation_errors as $field => $value) {
+        $message = $field . ' ' . t('was truncated to fit into the database column');
         $link = l('node/' . $node->nid, 'node/' . $node->nid);
         drupal_set_message($message . '; ' . $link, 'warning');
         watchdog('biblio - import', $message, array(), WATCHDOG_ALERT, $link);
@@ -618,7 +618,7 @@ function biblio_save_node_validate($node) {
     $node->title = substr($node->title, 0, 255);
   }
   if (isset($node->biblio_keywords) && is_array($node->biblio_keywords)) {
-    foreach($node->biblio_keywords as $key => $word) {
+    foreach ($node->biblio_keywords as $key => $word) {
       if (strlen($word) > 255) {
         $error['keyword'] = $word;
         $node->biblio_keywords[$key] = substr($word, 0, 255);
@@ -626,7 +626,7 @@ function biblio_save_node_validate($node) {
     }
   }
   if (isset($node->biblio_contributors) && is_array($node->biblio_contributors)) {
-    foreach($node->biblio_contributors as $key => $author) {
+    foreach ($node->biblio_contributors as $key => $author) {
       if (strlen($author['name']) > 255) {
         $error['author'] = $author['name'];
         $node->biblio_contributors[$key]['name'] = substr($author['name'], 0, 255);
