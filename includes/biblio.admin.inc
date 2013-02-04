@@ -450,7 +450,7 @@ function biblio_admin_settings() {
 
   $form['links']['author']['token_tree'] = array(
       '#theme' => 'token_tree',
-      '#token_types' => 'all',
+      '#token_types' => array('user'),
   );
 
   $form['openurl'] = array(
