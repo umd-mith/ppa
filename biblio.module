@@ -541,11 +541,11 @@ function biblio_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
       if ($admin_show_form || variable_get('biblio_show_user_profile_form', '1')) {
         $form['biblio_fieldset'] += _biblio_get_user_profile_form($account);
       }
-      if ($admin_show_form || variable_get('biblio_show_openurl_profile_form', '1')) {
-        $form['biblio_fieldset'] += _biblio_get_user_openurl_form($account);
-      }
       else {
         $form['biblio_fieldset'] += _biblio_drupal_author_user_map($account);
+      }
+      if ($admin_show_form || variable_get('biblio_show_openurl_profile_form', '1')) {
+        $form['biblio_fieldset'] += _biblio_get_user_openurl_form($account);
       }
       if ($admin_show_form || variable_get('biblio_show_crossref_profile_form', '1')) {
         $form['biblio_fieldset'] += _biblio_get_user_doi_form($account);
