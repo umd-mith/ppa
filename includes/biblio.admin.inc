@@ -1684,7 +1684,6 @@ function biblio_admin_types_reset_form_submit($form, & $form_state) {
  *   - if $user is set, then it is being called from the user profile page
  */
 function _biblio_get_user_profile_form($profile_user = FALSE) {
-  global $user;
   $form = array();
   $allow_edit = variable_get('biblio_show_user_profile_form', '1');
   $allow_edit = $allow_edit || user_access('administer biblio');
@@ -1745,7 +1744,8 @@ function _biblio_get_user_profile_form($profile_user = FALSE) {
   return $form;
 }
 
-function _biblio_drupal_author_user_map($user, $allow_edit = TRUE) {
+function _biblio_drupal_author_user_map($profile_user, $allow_edit = TRUE) {
+  global $user;
 
   $db_result = db_query("SELECT cd.lastname, cd.firstname, cd.initials, cd.cid FROM {biblio_contributor_data} cd
       ORDER by cd.lastname ASC ");
