@@ -66,7 +66,7 @@ class biblio_handler_citation extends views_handler_field {
         entity_prepare_view('node',  $nodes, $langcode);
 
         foreach ($values as $key => $result) {
-          $values[$key]->node = $nodes[$result->nid];
+          $values[$key]->node = $nodes[$result->{$this->aliases['nid']}];
         }
 
       }
