@@ -2131,7 +2131,8 @@ function biblio_update_7019() {
  *  Change the primary key of the biblio_contributor_data table
  */
 function biblio_update_7020() {
-  db_query("ALTER TABLE {biblio_contributor_data} DROP PRIMARY KEY, ADD PRIMARY KEY (cid)");
+  db_drop_primary_key('biblio_contributor_data');
+  db_add_primary_key('biblio_contributor_data', array('cid'));
 }
 /**
  *
@@ -2183,4 +2184,3 @@ function biblio_update_7023() {
 function biblio_update_7024() {
   biblio_update_7022();
 }
-
