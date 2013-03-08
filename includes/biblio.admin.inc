@@ -790,31 +790,35 @@ function biblio_admin_types_edit_form($form, &$form_state, $tid = 0) {
   foreach ($result as $row) {
     $fields[$row['fid']] = $row;
   }
-  $types = db_query("SELECT * from {biblio_types} ORDER BY name ASC");
+  $types = db_query("SELECT * from {biblio_types} WHERE visible=1 ORDER BY name ASC");
   $types_options[0] = t('Common');
   foreach ($types as $type) {
     $types_options[$type->tid] = $type->name;
   }
-    $form['pub_type'] = array(
+
+  $form['pub_type'] = array(
       '#title' => t('Publication type'),
       '#type' => 'select',
       '#options' => $types_options,
       '#attributes' =>  array('onchange' => 'document.getElementById(\'edit-change-type\').click()'),
       '#default_value' => $tid,
-    );
-  $form['change_type'] = array(
-      '#type'   => 'submit',
-      '#value'  =>  t('Change Publication Type'),
-      '#weight' => -10,
   );
+  if (!isset($_COOKIE['has_js']) || empty($_COOKIE['has_js'])) {
+    $form['change_type'] = array(
+        '#type'   => 'submit',
+        '#value'  =>  t('Change Publication Type'),
+        '#weight' => -10,
+    );
+  }
 
-    $form['biblio_tabs'] = array(
+  $form['biblio_tabs'] = array(
       '#type' => 'vertical_tabs',
       '#weight' => 0,
-    );
-    $form['biblio_tabs'] += biblio_node_form_vtabs();
+  );
 
- // $form['configured_flds'] = array('#tree' => 1);
+  $form['biblio_tabs'] += biblio_node_form_vtabs();
+
+  // $form['configured_flds'] = array('#tree' => 1);
   if ($tid) { // show an existing type
     $typename = $fields[1]['type_name'];
     $form['type_name'] = array(
