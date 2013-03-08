@@ -803,13 +803,16 @@ function biblio_admin_types_edit_form($form, &$form_state, $tid = 0) {
       '#attributes' =>  array('onchange' => 'document.getElementById(\'edit-change-type\').click()'),
       '#default_value' => $tid,
   );
-  if (!isset($_COOKIE['has_js']) || empty($_COOKIE['has_js'])) {
-    $form['change_type'] = array(
-        '#type'   => 'submit',
-        '#value'  =>  t('Change Publication Type'),
-        '#weight' => -10,
-    );
-  }
+
+  $no_js = (!isset($_COOKIE['has_js']) || empty($_COOKIE['has_js']));
+
+  $form['change_type'] = array(
+      '#type'   => 'submit',
+      '#value'  =>  t('Change Publication Type'),
+      '#weight' => -10,
+      '#prefix' => $no_js ? '' :  '<div style="display:none;">',
+      '#suffix' => $no_js ? '' :  '</div>',
+  );
 
   $form['biblio_tabs'] = array(
       '#type' => 'vertical_tabs',
