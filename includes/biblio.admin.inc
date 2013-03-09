@@ -1559,6 +1559,7 @@ function biblio_admin_types_add_form_submit($form, &$form_state) {
   $result = db_query('SELECT * FROM {biblio_field_type} WHERE tid=0', array(), array('fetch' => PDO::FETCH_ASSOC));
   foreach ($result as $row) {
     $row['tid'] = $values['tid'];
+    $row['visible'] = 1;
     db_insert('biblio_field_type')
       ->fields($row)
       ->execute();
