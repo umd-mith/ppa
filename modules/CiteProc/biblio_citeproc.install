@@ -76,8 +76,18 @@ function biblio_citeproc_schema() {
         'length' => 40,
         'not null' => TRUE,
         'default' => ''
-       )
        ),
+       'changed' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+       ),
+       'updated' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+       ),
+    ),
     'primary key' => array('id')
   );
 
@@ -89,13 +99,15 @@ function biblio_citeproc_install_default_styles() {
   $dir = drupal_get_path('module', 'biblio_citeproc') . '/style';
   $files = file_scan_directory($dir, '/..*.csl$/');
 
-  $query = db_insert('biblio_citeproc_styles')->fields(array('id', 'title', 'filename', 'summary', 'csl', 'sha1'));
-
   foreach ($files as $file) {
     $csl = file_get_contents($file->uri);
     $name = basename($file->filename);
     biblio_citeproc_install_style($name, $csl);
   }
+}
+
+function biblio_citeproc_update_default_styles() {
+  biblio_citeproc_install_default_styles();
 }
 
 function _get_csl_type_map() {
@@ -290,4 +302,24 @@ function _reset_csl_map($type = NULL) {
  */
 function biblio_citeproc_update_7001() {
   _reset_csl_map();
+}
+/**
+ *
+ * Updates the default CSL styles
+ */
+function biblio_citeproc_update_7002() {
+  biblio_citeproc_update_default_styles();
+}
+/**
+ * Adds "changed" and "updated" columns
+ *
+ */
+function biblio_citeproc_update_7003() {
+  $spec = array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+       );
+   db_add_field('biblio_citeproc_styles', 'changed', $spec);
+   db_add_field('biblio_citeproc_styles', 'updated', $spec);
 }
