@@ -562,6 +562,7 @@ class csl_name extends csl_format {
     if (!$this->attr_init || $this->attr_init != $mode) $this->init_attrs($mode);
 
     $initialize_with = $this->{'initialize-with'};
+    $options = array('html' => FALSE);
 
     foreach ($names as $rank => $name) {
       if (empty($name['literal'])) {
@@ -990,11 +991,15 @@ class csl_date extends csl_format {
 
   function render($data, $mode = NULL) {
     $date_parts = array();
-    $date = '';
     $text = '';
 
     if (($var = $this->variable) && isset($data->{$var})) {
-      $date[] = $data->{$var};
+      if (is_array($data->{$var})) {
+        $date = $data->{$var};
+      }
+      else {
+        $date = array($data->{$var});
+      }
       foreach ($this->elements as $element) {
         $date_parts[] = $element->render($date, $mode);
       }
