@@ -3,7 +3,7 @@ function biblio_citeproc_style_manager_form($form, &$form_state) {
   $form = array();
   $options = array();
 
-  $cache = cache_get('github_csl_repo');
+  $cache = cache_get('biblio_citeproc_styles');
 
   if (!$cache || $cache->expire < time()) {
     if (!($style_zip_file = variable_get('biblio_citeproc_styles_zip_file', FALSE))) {
@@ -16,8 +16,9 @@ function biblio_citeproc_style_manager_form($form, &$form_state) {
     }
 
     if (!empty($options)) {
-      $expire = time()+86400; //one day from now
-      cache_set('github_csl_repo', $options, 'cache', $expire);
+      //expire 30 days from now
+      $expire = time() + 2592000;
+      cache_set('biblio_citeproc_styles', $options, 'cache', $expire);
     }
   }
   else {
@@ -351,8 +352,12 @@ function _get_zip_from_github() {
   $zip_url = 'https://github.com/citation-style-language/styles/zipball/master';
   $destination = file_build_uri('Biblio-CiteProc-Styles.zip');
   $zip_file = system_retrieve_file($zip_url, $destination, TRUE, FILE_EXISTS_REPLACE);
+  $usage = file_usage_list($zip_file);
+  if (empty($usage)) {
+    file_usage_add($zip_file, 'biblio_citeproc', 'csl', 0);
+  }
   variable_set('biblio_citeproc_styles_zip_file', $zip_file);
-  cache_clear_all('github_csl_repo', 'cache');
+  cache_clear_all('biblio_citeproc_styles', 'cache');
   return $zip_file;
 }
 
@@ -665,8 +670,9 @@ function biblio_citeproc_update_installed_batch(&$context = NULL) {
 
     for ($i = $start; $i < $end; $i++) {
       $name = $context['sandbox']['installed'][$i]->filename;
+      $changed = $context['sandbox']['installed'][$i]->changed;
       if (($index = $za->locateName($name, ZIPARCHIVE::FL_NOCASE|ZIPARCHIVE::FL_NODIR))  !== FALSE) {
-        if ($csl = $za->getFromIndex($index)) {
+        if ($csl = $za->getFromIndex($index) && !$changed) {
           $ret = _install_csl($name, $csl, NULL, NULL, TRUE);
           if ($ret == 2) {
             $context['results']['updated'][] = $name;
