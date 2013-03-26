@@ -1003,7 +1003,7 @@ class csl_date extends csl_format {
       foreach ($this->elements as $element) {
         $date_parts[] = $element->render($date, $mode);
       }
-      $text = implode('', $date_parts);
+      $text = implode($this->delimiter, $date_parts);
     }
 //    else {
 //      $text = $this->citeproc->get_locale('term', 'no date');
