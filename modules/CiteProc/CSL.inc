@@ -1170,7 +1170,7 @@ class csl_text extends csl_format {
 
     switch ($this->source) {
       case 'variable':
-        if (!isset($data->{$this->variable}) || empty($data->{$this->variable})) return;
+        if (!isset($data->{$this->variable}) || empty($data->{$this->variable}) || trim($data->{$this->variable}) == FALSE) return;
         if ($this->variable == 'biblio_url') {
           $text = l($data->{$this->variable},  $data->{$this->variable});
         }
