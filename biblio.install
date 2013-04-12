@@ -1393,6 +1393,9 @@ function biblio_reset_types() {
   db_drop_table('biblio_contributor_type');
   db_drop_table('biblio_contributor_type_data');
 
+  db_query('DELETE FROM {biblio_types} WHERE tid>999');
+  db_query('UPDATE {biblio_types} SET visible=1 WHERE visible=0');
+
   $schema = biblio_schema();
   db_create_table('biblio_field_type_data', $schema['biblio_field_type_data']);
   db_create_table('biblio_field_type', $schema['biblio_field_type']);
@@ -1405,6 +1408,7 @@ function biblio_reset_types() {
   _add_db_field_data();
   _add_custom_field_data();
 }
+
 function _biblio_add_vtabs() {
   $vtabs = array(
     array('tab_id' => 1, 'weight' => 1, 'title' => 'Authors', 'description' => ''),
