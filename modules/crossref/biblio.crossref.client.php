@@ -147,14 +147,19 @@ class BiblioCrossRefClient
       case 'sup':
         $this->unixref_characterData(NULL, ' <' . $name . '>');
         break;
+      case 'doi_data':
+        $this->doi_data = TRUE;
+        break;
       default :
         $this->element = $name;
     }
 
   }
+
   function unixref_decode(&$item, $key) {
     $item = html_entity_decode($item, NULL, 'UTF-8');
   }
+
   function unixref_endElement($parser, $name) {
     switch ($name) {
       case 'doi_record' :
@@ -226,6 +231,9 @@ class BiblioCrossRefClient
       case 'sup':
         $this->unixref_characterData(NULL, '</' . $name . '> ');
         break;
+      case 'doi_data':
+        $this->doi_data = FALSE;
+        break;
       default :
     }
   }
@@ -262,6 +270,19 @@ class BiblioCrossRefClient
             }
           }
           break;
+        case 'doi':
+          if ($this->doi_data) {
+            if ($field = $this->_unixref_field_map(trim($this->element))) {
+              $this->_set_data($field, $data);
+            }
+          }
+          break;
+        case 'resource':
+          if ($this->doi_data) {
+              $this->_set_data('biblio_url', $data);
+          }
+          break;
+
         default:
           if ($field = $this->_unixref_field_map(trim($this->element))) {
             $this->_set_data($field, $data);
