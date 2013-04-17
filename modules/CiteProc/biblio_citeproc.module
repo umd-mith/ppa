@@ -55,6 +55,22 @@ function biblio_citeproc_theme() {
   );
 }
 
+/**
+ * Implements hook_biblio_map_alter().
+ */
+function biblio_citeproc_biblio_map_alter(&$map, $type, $format) {
+  if ($type == 'field_map' && $format == 'csl') {
+    $map = array_merge($map, array(
+      'author'                      => 'biblio_contributors:1',
+      'editor'                      => 'biblio_contributors:2',
+      'translator'                  => 'biblio_contributors:3',
+      'recipient'                   => ':',
+      'interviewer'                 => ':',
+      'composer'                    => ':',
+    ));
+  }
+}
+
 function biblio_citeproc_theme_registry_alter(&$theme_registry) {
   $theme_registry['biblio_style'] = $theme_registry['biblio_citeproc_style'];
 }

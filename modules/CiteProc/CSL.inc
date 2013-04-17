@@ -1718,14 +1718,6 @@ class csl_mapper {
   function map_field($field) {
     if (!isset($this->field_map)) {
       $this->field_map = biblio_get_map('field_map', 'csl');
-      $this->field_map = array_merge($this->field_map, array(
-          'author'                      => 'biblio_contributors:1',
-          'editor'                      => 'biblio_contributors:2',
-          'translator'                  => 'biblio_contributors:3',
-          'recipient'                   => ':',
-          'interviewer'                 => ':',
-          'composer'                    => ':',
-      ));
     }
 
     $vars = explode(' ', $field);

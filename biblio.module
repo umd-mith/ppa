@@ -2183,14 +2183,18 @@ function biblio_get_map($type, $format) {
     ->condition('format', $format)
     ->execute()
     ->fetchField();
+
   $map = unserialize($result);
+
   if ($type == 'export_map' && empty($map)) {
     $schema = drupal_get_schema('biblio');
     $fieldnames = array_keys($schema['fields']);
     asort($fieldnames);
     $map = array_fill_keys($fieldnames, 1);
   }
- return $map;
+
+  drupal_alter('biblio_map', $map, $type, $format);
+  return $map;
 }
 
 function biblio_save_map($maps) {
