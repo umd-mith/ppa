@@ -336,9 +336,9 @@ class csl_format extends csl_rendering_element {
     }
 
     if (!empty($this->format) || !empty($this->span_class)) {
-      $style = (!empty($this->format)) ? 'style="' . $this->format . '" ' : '';
+      $style = (!empty($this->format)) ? 'style="' . $this->format . '"' : '';
       $class = (!empty($this->span_class)) ? 'class="' . $this->span_class . '"' : '';
-      $text = '<span ' . $class . $style . '>' . $text . '</span>';
+      $text = '<span ' . implode(' ', array($class, $style)) . '>' . $text . '</span>';
     }
     $div_class = $div_style = '';
     if (!empty($this->div_class)) {
