@@ -67,6 +67,11 @@ class BiblioCrossRefClient
       return;
     }
     $sxml = @simplexml_load_string($result->data);
+    if (!isset($sxml->doi_record)) {
+    	drupal_set_message(t('Failed to retrieve data for doi ') . $this->doi, 'error');
+      return;
+    }
+
     if ($error = (string)$sxml->doi_record->crossref->error) {
       drupal_set_message($error,'error');
       return;
