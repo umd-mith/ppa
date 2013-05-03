@@ -265,6 +265,22 @@ function  _biblio_marc_export($node) {
   //             $node->biblio_year = substr($data, 7, 4);
   //             $node->biblio_lang = substr($data, 35, 3);
   //             break;
+  $leader = $record->leader();
+  if ($node->biblio_type == 100) {
+    $type = 'nam a';
+  }
+  else {
+    $type = 'nas a';
+  }
+  $record->leader(substr_replace($leader, $type, 5, 5));
+
+  $rec_eight = str_repeat(' ', 40);
+  $rec_eight = substr_replace($rec_eight, $node->biblio_year, 7, 4);
+  $rec_eight = substr_replace($rec_eight, $node->biblio_lang, 35, 3);
+  $rec_eight = substr_replace($rec_eight, 'd', 39, 1);
+  $field = new Field("008", $rec_eight);
+  $record->append_fields($field);
+
   if (!empty($node->biblio_isbn)) {
     $field = new Field("020", "", "", array("a" => $node->biblio_isbn));
     $record->append_fields($field);
