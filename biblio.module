@@ -1158,6 +1158,10 @@ function biblio_user_presave(&$edit, $account, $catagory) {
  */
 function biblio_form($node, &$form_state) {
   global $user;
+  $path = drupal_get_path('module', 'biblio');
+  if (variable_get('biblio_button_hide', 1) == 1) {
+    drupal_add_js($path . '/misc/biblio.nodeformbuttonhide.js', 'file');
+  }
   $fields = array();
   $form['biblio_tabs'] = $tabs = array();
 
@@ -1193,7 +1197,6 @@ function biblio_form($node, &$form_state) {
         '#type'   => 'submit',
         '#value'  => $step_two ? t('Change Publication Type') : t('Next'),
         '#limit_validation_errors' => array(),
-        '#attributes' =>  array('style' => array('display: none;')),
         '#weight' => -10,
         '#submit' => array(),
     );

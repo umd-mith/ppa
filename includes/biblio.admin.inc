@@ -65,6 +65,13 @@ function biblio_admin_settings() {
     '#default_value' => variable_get('biblio_view_only_own', 0),
     '#description' => t('This option restricts the users capability to view biblio entries.  They will only be able to see the entries which they have created and own.')
   );
+  $form['general']['biblio_button_hide'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Hide next button in node form'),
+    '#return_value' => 1,
+    '#default_value' => variable_get('biblio_button_hide', 1),
+    '#description' => t('If checkbox is set a javascript adds the accesible system class "element-invisible" to the next button in node form. The next button is not needed if javascript is available and listening on changes.')
+  );
   $form['authors'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
