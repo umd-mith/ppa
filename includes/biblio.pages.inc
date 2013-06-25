@@ -1200,7 +1200,7 @@ function _biblio_format_author_page($path, $filter, $authors) {
       $header_ext = ' ' . t('whose last name begins with the letter') . ': ' . $filter;
     }
     $checkbox = array(
-      '#title' => t('Hightlight possible duplicates'),
+      '#title' => t('Highlight possible duplicates'),
       '#type'  => 'checkbox',
       '#id'    => 'biblio-highlight',
     );
