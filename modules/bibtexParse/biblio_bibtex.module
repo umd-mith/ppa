@@ -269,6 +269,11 @@ function _biblio_bibtex_import($entries, $terms = array(), $batch = FALSE, $sess
     $node->biblio_issn            = (!empty($entry['issn'])) ? $entry['issn'] : NULL;
     $node->biblio_url             = (!empty($entry['url'])) ? $entry['url'] : NULL;
     $node->biblio_doi             = (!empty($entry['doi'])) ? $entry['doi'] : NULL;
+    if (module_exists('biblio_pm')) {
+      $node->biblio_pubmed_id     = (!empty($entry['pmid'])) ? $entry['pmid'] : NULL;
+      $node->biblio_pubmed_md5 = '';
+    }
+
     $node->biblio_bibtex_md5      = md5(serialize($node));
     $node->biblio_import_type     = 'bibtex';
 
