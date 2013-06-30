@@ -1893,11 +1893,11 @@ function biblio_get_db_fields() {
  *******************************************/
 function _biblio_citekey_print($citekey) {
 
-  $nid = db_query("SELECT nid FROM {biblio} WHERE biblio_citekey = :key", array(':key' => $citekey))->fetchObject();
-  if ($nid->nid > 0) {
+  $nid = db_query("SELECT nid FROM {biblio} WHERE biblio_citekey = :key", array(':key' => $citekey))->fetchField();
+  if ($nid) {
     $style = biblio_get_style();
     $base = variable_get('biblio_base', 'biblio');
-    $node = node_load($nid->nid);
+    $node = node_load($nid);
     return theme('biblio_style', array('node' => $node, 'base' => $base, 'style' => $style));
   }
   else {
