@@ -372,11 +372,10 @@ function biblio_build_query($arg_list) {
       $query->addField('n', 'title');
       $query->orderBy($type_name, $order);
       $query->orderBy('biblio_sort_title', $order);
-            break;
+      break;
     case 'title':
       $query->addField('n', 'title');
       $query->orderBy('biblio_sort_title', $order);
-
       break;
     case 'author':
       //$last_name = $query->addField('bcd', 'lastname');
