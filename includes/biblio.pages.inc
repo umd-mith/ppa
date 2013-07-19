@@ -430,7 +430,7 @@ function biblio_build_query($arg_list) {
         case 'ag': //selects entries whoose authors firstname starts with the letter provided
           $query->where(" UPPER(substring(bcd.lastname,1,1)) = :letter ", array(':letter' => $value));
           //$where['bc-rank'] = "bc.rank=0";
-          if ($arg_list['s'] != 'author') {
+          if ($sort != 'author') {
             $query->innerJoin('biblio_contributor', 'bc', 'b.vid = bc.vid');
             $query->innerJoin('biblio_contributor_data', 'bcd', 'bc.cid = bcd.cid');
           }
