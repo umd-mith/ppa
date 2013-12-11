@@ -4,10 +4,10 @@
 }
 #branding,
 #logo,
-#branding hgroup {
+#branding .h-group {
   float: left;
 }
-.site-name-hidden #branding hgroup {
+.site-name-hidden #branding .h-group {
   clear: left;
 }
 .article .user-picture {

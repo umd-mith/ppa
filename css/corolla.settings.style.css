@@ -321,8 +321,11 @@
   border-radius: 10px;
 }
 
-.rct-4 #menu-bar .menu-wrapper > ul > li > a,
-.rct-4 .region-header .block-content > ul > li  > a {
+.rct-4 .nav .block-menu li a,
+.rct-4 #menu-bar li.sf-depth-1,
+.rct-4 #menu-bar li.sf-depth-1 > a,
+.rct-4 .region-header .block ul.menu > li,
+.rct-4 .region-header .block ul.menu > li > a {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-top-left-radius: 4px;
   -webkit-border-top-right-radius: 4px;
@@ -338,7 +341,8 @@
 .rct-6 .nav .block-menu li a,
 .rct-6 #menu-bar li.sf-depth-1,
 .rct-6 #menu-bar li.sf-depth-1 > a,
-.rct-6 .region-header .block-content > ul > li  > a {
+.rct-6 .region-header .block ul.menu > li,
+.rct-6 .region-header .block ul.menu > li  > a {
   -moz-border-radius: 6px 6px 0 0;
   -webkit-border-top-left-radius: 6px;
   -webkit-border-top-right-radius: 6px;
@@ -351,8 +355,11 @@
   border-radius: 6px 6px 0 0;
 }
 
-.rct-8 #menu-bar .menu-wrapper > ul > li > a,
-.rct-8 .region-header .block-content > ul > li  > a {
+.rct-8 .nav .block-menu li a,
+.rct-8 #menu-bar li.sf-depth-1,
+.rct-8 #menu-bar li.sf-depth-1 > a,
+.rct-8 .region-header .block ul.menu > li,
+.rct-8 .region-header .block ul.menu > li  > a {
   -moz-border-radius: 8px 8px 0 0;
   -webkit-border-top-left-radius: 8px;
   -webkit-border-top-right-radius: 8px;
@@ -365,8 +372,11 @@
   border-radius: 8px 8px 0 0;
 }
 
-.rct-10 #menu-bar .menu-wrapper > ul > li > a,
-.rct-10 .region-header .block-content > ul > li  > a {
+.rct-10 .nav .block-menu li a,
+.rct-10 #menu-bar li.sf-depth-1,
+.rct-10 #menu-bar li.sf-depth-1 > a,
+.rct-10 .region-header .block ul.menu > li,
+.rct-10 .region-header .block ul.menu > li  > a {
   -moz-border-radius: 10px 10px 0 0;
   -webkit-border-top-left-radius: 10px;
   -webkit-border-top-right-radius: 10px;
@@ -379,8 +389,11 @@
   border-radius: 10px 10px 0 0;
 }
 
-.rct-12 #menu-bar .menu-wrapper > ul > li > a,
-.rct-12 .region-header .block-content > ul > li  > a {
+.rct-12 .nav .block-menu li a,
+.rct-12 #menu-bar li.sf-depth-1,
+.rct-12 #menu-bar li.sf-depth-1 > a,
+.rct-12 .region-header .block ul.menu > li,
+.rct-12 .region-header .block ul.menu > li  > a {
   -moz-border-radius: 12px 12px 0 0;
   -webkit-border-top-left-radius: 12px;
   -webkit-border-top-right-radius: 12px;

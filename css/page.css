@@ -24,7 +24,7 @@
   padding: 0 15px 0 0;
   vertical-align: middle;
 }
-#branding hgroup {
+#branding .h-group {
   display: table-cell;
   vertical-align: middle;
 }
@@ -43,7 +43,7 @@
   font-weight: 400;
 }
 .site-name-hidden #logo,
-.site-name-hidden #branding hgroup {
+.site-name-hidden #branding .h-group {
   display: block;
 }
 #secondary-content-wrapper,

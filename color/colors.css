@@ -84,6 +84,9 @@ li a.active:focus {
 
 /* Superfish Skin - we keep the Superfish skin seperate so we can special case
    if we really need to */
+.sf-menu.sf-style-default ul {
+  margin-left: 0;
+}
 .sf-menu.sf-style-default a {
    border: 0;
    color: #fcfcfc;
@@ -108,6 +111,7 @@ li a.active:focus {
 }
 .sf-menu.sf-style-default li {
   background: transparent;
+  margin: 0;
 }
 .sf-menu.sf-style-default.sf-navbar {
   background: #2e2e2d;
@@ -138,8 +142,9 @@ li a.active:focus {
 
 /* Region header menus */
 .region-header .block-menu li a,
-.region-header .sf-depth-1 > a {
+.region-header .sf-menu.sf-style-default .sf-depth-1 > a {
   border-bottom: 3px solid #c4c4c4;
+  color: #2e2e2d;
 }
 .region-header .block-menu ul li a,
 .region-header .block-menu ul li a:visited {
