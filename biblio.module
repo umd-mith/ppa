@@ -1601,8 +1601,16 @@ function biblio_insert($node) {
   $duplicate = biblio_hash($node);
   drupal_write_record('biblio', $node);
   if (isset($duplicate) && $duplicate != $node->nid) { // if this is a potential duplcate, write the nids of the pre-existing and new nodes
-    $dup_map = array('vid' => $duplicate, 'did' => $node->nid);
-    drupal_write_record('biblio_duplicates', $dup_map);
+    $record = db_select('biblio_duplicates', 'bd')
+       ->fields('bd')
+       ->condition('vid', $duplicate)
+       ->condition('did', $node->nid)
+       ->execute()->fetch();
+
+    if (!$record) {
+      $dup_map = array('vid' => $duplicate, 'did' => $node->nid);
+      drupal_write_record('biblio_duplicates', $dup_map);
+    }
   }
 
 }
@@ -1761,6 +1769,23 @@ function biblio_block_info() {
   $blocks['recent'] = array(
     'info' => t('Recent publications'),
   );
+
+  $blocks['collection'] = array(
+    'info' => t('Collection list')
+  );
+
+  $blocks['facet_collection'] = array(
+    'info' => t('Collection facet')
+  );
+
+  $blocks['facet_author'] = array(
+    'info' => t('Author facet')
+  );
+
+  $blocks['facet_city'] = array(
+    'info' => t('City facet')
+  );
+
   return $blocks;
 }
 
@@ -1835,6 +1860,37 @@ function biblio_block_view($delta = '') {
       $block['content'] .= l(t('More...'), $base);
       $block['content'] .= '</div>';
 
+      return $block;
+      break;
+    case 'collection':
+      $block = array();
+      $block['subject'] = 'Collections';
+      $block['content'] = '<div class="item-list"><ul>';
+      $vocabulary = taxonomy_vocabulary_machine_name_load('collection');
+      $taxonomy = taxonomy_get_tree($vocabulary->vid);
+      foreach ($taxonomy as $term) {
+        $alias = drupal_lookup_path('alias', 'taxonomy/term/' . $term->tid);
+        $block['content'] .= '<li>' . l(t($term->name), $alias) . '</li>';
+      }
+      $block['content'] .= '</ul></div>';
+      return $block;
+      break;
+    case 'facet_collection':
+      $block = array();
+      $block['subject'] = 'Collections';
+      $block['content'] = '<div id="facet_collection"></div>';
+      return $block;
+      break;
+    case 'facet_author':
+      $block = array();
+      $block['subject'] = 'Authors';
+      $block['content'] = '<div id="facet_author"></div>';
+      return $block;
+      break;
+    case 'facet_city':
+      $block = array();
+      $block['subject'] = 'Cities';
+      $block['content'] = '<div id="facet_city"></div>';
       return $block;
       break;
   }

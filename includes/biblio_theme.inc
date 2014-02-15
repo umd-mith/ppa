@@ -6,6 +6,7 @@
  *
  */
 module_load_include('inc', 'biblio', 'biblio.pages');
+module_load_include('inc', 'biblio', 'includes/biblio.ht_items');
 
 
 /**
@@ -209,7 +210,7 @@ function theme_biblio_tabular($variables) {
   $fields = _biblio_get_field_information($node->biblio_type, TRUE);
   $rows[] = array(
     array('data' => t('Title'), 'class' => array('biblio-row-title')),
-    array('data' => filter_xss($node->title, biblio_get_allowed_tags()))
+    array('data' => filter_xss($node->biblio_full_title, biblio_get_allowed_tags()))
   );
 
   if (!isset($node->biblio_type_name) && isset($node->biblio_type)) { // needed for preview
@@ -218,10 +219,10 @@ function theme_biblio_tabular($variables) {
     }
   }
 
-  $rows[] = array(
+  /*$rows[] = array(
     array('data' => t('Publication Type'), 'class' => array('biblio-row-title')),
     array('data' => $node->biblio_type_name)
-  );
+  );*/
 
   $attrib = (variable_get('biblio_links_target_new_window', FALSE)) ? array('target' => '_blank') : array();
 
@@ -241,7 +242,7 @@ function theme_biblio_tabular($variables) {
     if ($row['type'] == 'contrib_widget' && ($authors = biblio_get_contributor_category($node->biblio_contributors, $row['fid']))) {
       $data = biblio_format_authors($authors);
     }
-    elseif (empty ($node->$row['name']) || $row['name'] == 'biblio_coins') {
+    elseif (empty ($node->$row['name']) || $row['name'] == 'biblio_coins' || $row['name'] == 'biblio_full_title') {
       continue;
     }
     else {
@@ -286,6 +287,29 @@ function theme_biblio_tabular($variables) {
     );
 
   }
+
+  $ht_item_rows = array();
+  $ht_item_header = array();
+
+  $ht_items = biblio_get_ht_items_by_nid($node->nid);
+  foreach ($ht_items as $htid => $enumcron) {
+    $enumcronString = '[No label provided]';
+
+    if (!empty($enumcron)) {
+      $enumcronString = $enumcron;
+    }
+
+    $ht_item_rows[] = array(
+      array(
+        'data' => $enumcronString,
+        'class' => array('biblio-row-title')
+      ),
+      array(
+        'data' => l($htid, 'http://hdl.handle.net/2027/' . $htid),
+      )
+    );
+  }
+
   // let other modules add rows if desired...
   drupal_alter('biblio_node_table_rows', $rows, $node);
 
@@ -293,6 +317,8 @@ function theme_biblio_tabular($variables) {
   $output .= filter_xss($node->biblio_coins, array('span'));
   $header = array();
   $output .= theme('table', array('header' => $header, 'rows' => $rows));
+  $output .= '<h2>HathiTrust Volumes</h2>';
+  $output .= theme('table', array('header' => $ht_item_header, 'rows' => $ht_item_rows));
   $output .= '</div>';
 
   return $output;

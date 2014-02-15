@@ -189,7 +189,8 @@ class HumanNameParser_Parser {
     // get the last name
     $this->last = $this->name->chopWithRegex($lastRegex, 0);
     if (!$this->last){
-      throw new Exception("Couldn't find a last name in '{$this->name->getStr()}'.");
+      $this->last = $this->getName()->getStr();
+      //throw new Exception("Couldn't find a last name in '{$this->name->getStr()}'.");
     }
 
     // get the first initial, if there is one
@@ -198,7 +199,8 @@ class HumanNameParser_Parser {
     // get the first name
     $this->first = $this->name->chopWithRegex($firstRegex, 0);
     if (!$this->first && $this->category != 5){
-      throw new Exception("Couldn't find a first name in '{$this->name->getStr()}'");
+      $this->first = '';
+      //throw new Exception("Couldn't find a first name in '{$this->name->getStr()}'");
     }
 
     // if anything's left, that's the middle name

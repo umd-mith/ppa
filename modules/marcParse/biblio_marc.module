@@ -75,7 +75,14 @@ function biblio_marc_biblio_import($file, $terms = array(), $batch = FALSE, $ses
             $node->biblio_short_title = str_replace(' /', '', $field->subfield('a'));
             break;
           case '245':
-            $node->title = str_replace(' /', '', $field->subfield('a')) . ' ' . $field->subfield('b');
+            $node->biblio_full_title = str_replace(' /', '', $field->subfield('a'));
+            $value = $field->subfield('b');
+            if (!empty($value)) {
+              $node->biblio_secondary_title = str_replace(' /', '', $value);
+            }
+            break;
+          case '246':
+            $node->title = str_replace(' /', '', $field->subfield('a'));
             break;
           case '250':
             $node->biblio_edition = $field->subfield('a');
@@ -89,7 +96,13 @@ function biblio_marc_biblio_import($file, $terms = array(), $batch = FALSE, $ses
             $node->biblio_pages = $field->subfield('a');
             break;
           case '490':
+            $value = $field->subfield('a');
+            if (!empty($value)) {
+              $node->biblio_tertiary_title = str_replace(' /', '', $value);
+            }
+
             $node->biblio_volume = $field->subfield('v');
+
             break;
           case ($tagnum >= 500 && $tagnum <= 599):
             $value = $field->subfield('a');
@@ -138,6 +151,7 @@ function biblio_marc_biblio_import($file, $terms = array(), $batch = FALSE, $ses
         if (!empty($node->nid)) $nids[] = $node->nid;
       }
       else {
+        watchdog(WATCHDOG_INFO, $node->biblio_uri . '');
         $dups[] = $dup;
       }
     }

@@ -188,7 +188,7 @@ function biblio_style_chicago($node) {
 
       $publication = preg_replace("/[ \r\n]*\(Eds?:[^\)\r\n]*\)/", "", $node->biblio_secondary_title);
       if (!empty($publication))      // publication
-      $output .= " In <i>$publication</i>";
+      //$output .= " In <i>$publication</i>";
 
 
       // From here on we'll assume that at least either the 'author' or the 'title' field did contain some contents
@@ -329,7 +329,7 @@ function biblio_style_chicago($node) {
       }
       $publication = preg_replace("/[ \r\n]*\(Eds?:[^\)\r\n]*\)/", "", $node->biblio_secondary_title);
       if (!empty($publication))      // publication
-      $output .= " In <i>$publication</i>";
+      //$output .= " In <i>$publication</i>";
 
       if (!empty($editors))      // editor (if different from author, see note above regarding the check for ' (ed)' or ' (eds)')
       {

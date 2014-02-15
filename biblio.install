@@ -390,6 +390,12 @@ function biblio_schema() {
         'length' => '64',
         'description' => 'A normalized version of the title, used for sorting on titles. (only first 64 characters saved)',
       ),
+      'biblio_full_title' => array(
+        'type' => 'varchar',
+        'not null' => FALSE,
+        'length' => '1023',
+        'description' => '',
+      ),
       'biblio_secondary_title' => array(
         'type' => 'varchar',
         'not null' => FALSE,
@@ -1128,6 +1134,48 @@ function biblio_schema() {
     ),
     'primary key' => array('auth_type'),
    );
+
+    $schema['biblio_ht_item'] = array(
+      'description' => 'Relational table linking HathiTrust volumes to biblio nodes',
+      'fields' => array(
+        'iid' => array(
+          'type' => 'serial',
+          'not null' => TRUE,
+          'unsigned' => TRUE,
+          'description' => 'Primary Key: The {biblio_ht_item}.iid of the item of the node.',
+        ),
+        'nid' => array(
+          'type' => 'int',
+          'not null' => TRUE,
+          'unsigned' => TRUE,
+          'default' => 0,
+          'description' => 'The {node}.nid of the node.',
+        ),
+        'enumcron' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+          'description' => 'The HathiTrust enumcron',
+        ),
+        'htid' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+          'description' => 'The HathiTrust identifier',
+        ),
+    ),
+    'foreign keys' => array(
+     'node' => array(
+       'table' => 'node',
+       'columns' => array('nid' => 'nid'),
+     ),
+    ),
+    'primary key' => array('iid'),
+      'indexes' => array(
+           'nid' => array('nid'),
+           'htid' => array('htid'),
+        ),
+        );
 
     $schema['biblio_keyword'] = array(
       'description' => 'Relational table linking keywords to biblio nodes',
