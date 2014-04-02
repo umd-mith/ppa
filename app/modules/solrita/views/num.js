@@ -38,7 +38,7 @@ define([
         var per = $(e.target).val();
         this.collection.perPage = per;
 
-        Backbone.history.navigate("search?" + this.collection.getCurrentParams(), true);
+        Backbone.history.navigate("search/text#?" + this.collection.getCurrentParams(), true);
       }
 
     });

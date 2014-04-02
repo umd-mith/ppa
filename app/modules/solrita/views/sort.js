@@ -38,7 +38,7 @@ define([
         var sortFieldSelected = $(e.target).val();
         this.collection.sortField = sortFieldSelected;
 
-        Backbone.history.navigate("search?" + this.collection.getCurrentParams(), true);
+        Backbone.history.navigate("search/text#?" + this.collection.getCurrentParams(), true);
       }
 
     });

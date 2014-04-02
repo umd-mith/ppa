@@ -2,6 +2,15 @@
 // configuration file, which you can learn more about here:
 // https://github.com/cowboy/grunt/blob/master/docs/configuring.md
 module.exports = function(grunt) {
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-jst');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-cssjoin');
 
   grunt.initConfig({
 
@@ -13,7 +22,7 @@ module.exports = function(grunt) {
     // JavaScript through JSHint and report any errors.  You can change the
     // options for this task, by reading this:
     // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md
-    lint: {
+    jshint: {
       files: [
         "build/config.js", "app/**/*.js"
       ]
@@ -22,11 +31,11 @@ module.exports = function(grunt) {
     // The jshint option for scripturl is set to lax, because the anchor
     // override inside main.js needs to test for them so as to not accidentally
     // route.
-    jshint: {
+    /*jshint: {
       options: {
         scripturl: true
       }
-    },
+    },*/
 
     // The jst task compiles all application templates into JavaScript
     // functions with the underscore.js template function from 1.2.4.  You can
@@ -75,36 +84,47 @@ module.exports = function(grunt) {
     // order and concatenate them into a single CSS file named index.css.  It
     // also minifies all the CSS as well.  This is named index.css, because we
     // only want to load one stylesheet in index.html.
-    mincss: {
-      "dist/release/index.css": [
-        "dist/debug/index.css"
-      ]
+    cssmin: {
+      minify: {
+        files: {
+          "dist/release/index.css": [
+            "dist/debug/index.css"
+          ]
+        }
+      }
     },
 
     // This task simplifies working with CSS inside Backbone Boilerplate
     // projects.  Instead of manually specifying your stylesheets inside the
     // configuration, you can use `@imports` and this task will concatenate
     // only those paths.
-    styles: {
+    cssjoin: {
       // Out the concatenated contents of the following styles into the below
       // development file path.
-      "dist/debug/index.css": {
-        // Point this to where your `index.css` file is location.
-        src: "assets/css/index.css",
+      development: {
+        options: {
+          // The relative path to use for the @imports.
+          paths: ["assets/css"]
+        },
+        files: {
+          "dist/debug/index.css": [
+            // Point this to where your `index.css` file is location.
+            "assets/css/index.css",
 
-        // The relative path to use for the @imports.
-        paths: ["assets/css"],
-
-        // Additional production-only stylesheets here.
-				additional: ["assets/css/production-fixes.css"]
+            // Additional production-only stylesheets here.
+	  		  	"assets/css/production-fixes.css"
+          ]
+        }
       }
     },
 
     // Takes the built require.js file and minifies it for filesize benefits.
-    min: {
-      "dist/release/require.js": [
-        "dist/debug/require.js"
-      ]
+    uglify: {
+      files: {
+        "dist/release/require.js": [
+          "dist/debug/require.js"
+        ]
+      }
     },
 
     // Running the server without specifying an action will run the defaults,
@@ -157,17 +177,32 @@ module.exports = function(grunt) {
     // This task uses James Burke's excellent r.js AMD build tool.  In the
     // future other builders may be contributed as drop-in alternatives.
     requirejs: {
-      // Include the main configuration file.
-      mainConfigFile: "app/config.js",
+      compile: {
+        options: {
+          optimize: 'none',
 
-      // Output file.
-      out: "dist/debug/require.js",
+          // Include the main configuration file.
+          mainConfigFile: "app/config.js",
 
-      // Root application module.
-      name: "config",
+          // Output file.
+          out: "dist/debug/require.js",
 
-      // Do not wrap everything in an IIFE.
-      wrap: false
+          // Root application module.
+          name: "config",
+
+          // Do not wrap everything in an IIFE.
+          wrap: false
+        }
+      }
+    },
+
+    connect: {
+      server: {
+        options: {
+          port: 9001,
+          base: '.'
+        }
+      }
     },
 
     // The headless QUnit testing environment is provided for "free" by Grunt.
@@ -187,8 +222,8 @@ module.exports = function(grunt) {
     // available to compile CSS if you are unable to use the runtime compiler
     // (use if you have a custom server, PhoneGap, Adobe Air, etc.)
     watch: {
-      files: ["grunt.js", "assets/**/*", "app/**/*"],
-      tasks: "styles"
+      files: ["Gruntfile.js", "assets/**/*", "app/**/*"],
+      tasks: "cssjoin"
     }
 
   });
@@ -198,10 +233,10 @@ module.exports = function(grunt) {
   // dist/debug/templates.js, compile all the application code into
   // dist/debug/require.js, and then concatenate the require/define shim
   // almond.js and dist/debug/templates.js into the require.js file.
-  grunt.registerTask("debug", "clean lint jst requirejs concat styles");
+  grunt.registerTask("default", ['jshint', 'jst', 'requirejs', 'concat', 'cssjoin']);
 
   // The release task will run the debug tasks and then minify the
   // dist/debug/require.js file and CSS files.
-  grunt.registerTask("release", "debug min mincss");
+  grunt.registerTask("release", ['default', 'uglify', 'cssmin']);
 
 };

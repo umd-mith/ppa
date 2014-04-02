@@ -1,0 +1,33 @@
+        <div class="block-content content">
+          <div class= view-display-id-block">
+            <div class="view-content">
+              <div class="item-list">
+                <ul>
+                  <%
+                    var collectionName = '';
+                    var collectionUri = '';
+                    var collectionCount = 0;
+                    if (facetCounts.facet_fields !== undefined && facetCounts.facet_fields['city'] !== undefined) {
+                      for (var i = 0; i < facetCounts.facet_fields['city'].length; i++) {
+                        var facetValue = facetCounts.facet_fields['city'][i];
+                        var collectionCount = facetValue[1];
+                        var constraintUri = infoSolr.currentParams + '&fq=city:%22' + escape(facetValue[0]) + '%22'
+                  %>
+                  <li class="views-row">
+                    <div class="views-field views-field-name">
+                      <span class="field-content">
+                        <a href="/search/text#?<%= constraintUri %>" data-route><%= facetValue[0] %></a>
+                        (<%= facetValue[1].toLocaleString() %> pages)
+                      </span>
+                    </div>
+                  </li>
+                  <%
+                      }  
+                    }
+                  %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+

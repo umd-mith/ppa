@@ -4,9 +4,9 @@ define([
   'backbone'
   ], function ($, _, Backbone) {
 
-  var FacetsView = Backbone.View.extend({
-
-    template: 'facets',
+  var FacetCollectionView = Backbone.View.extend({
+    el: $('#facet_collection'),
+    template: 'facet-collection',
 
     initialize: function () {
       this.collection.on('reset', this.render, this);
@@ -18,6 +18,6 @@ define([
 
   });
 
-  return FacetsView;
+  return FacetCollectionView;
 
 });

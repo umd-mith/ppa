@@ -9,17 +9,20 @@ define([
     var AppRouter = Backbone.Router.extend({
 
       collection: {},
+      records: {},
 
       initialize: function (options) {
         this.collection = options.collection;
+        this.records = options.collection.records;
       },
 
       routes: {
-        'search*params': 'searchAction',
+        'search/text#?*params': 'searchAction',
         '*actions': 'defaultAction'
       },
 
       defaultAction: function (actions) {
+        //alert(actions);
         this.reset();
         this.collection.query = app.defaultQuery;
         this.collection.facetQueries = [];
@@ -27,6 +30,7 @@ define([
       },
 
       searchAction: function (params) {
+        //alert(params);
         this.reset();
         params = this._getParamsFromArguments(arguments);
         this.collection.query = this._getQueryFromParams(params);
@@ -46,6 +50,9 @@ define([
         var main = app.useLayout({
           template: "layouts/main",
           views: {
+            "#records": new Solrita.Views.RecordsView({
+              model: self.records
+            }),
             "#search": new Solrita.Views.SearchView({
               collection: self.collection
             }),
@@ -55,7 +62,13 @@ define([
             "#results": new Solrita.Views.ResultsView({
               collection: self.collection
             }),
-            "#facets": new Solrita.Views.FacetsView({
+            "#facet_collection": new Solrita.Views.FacetCollectionView({
+              collection: self.collection
+            }),
+            "#facet_author": new Solrita.Views.FacetAuthorView({
+              collection: self.collection
+            }),
+            "#facet_city": new Solrita.Views.FacetCityView({
               collection: self.collection
             }),
             "#filters": new Solrita.Views.FiltersView({
@@ -65,7 +78,9 @@ define([
               collection: self.collection
             })
           }
-        }).render();
+        });
+
+        main.render();
       },
 
       _getQueryFromParams: function (params) {
@@ -135,6 +150,9 @@ define([
       reset: function () {
         if (this.collection.length) {
           this.collection.reset();
+        }
+        if (this.records.length) {
+          this.records.reset();
         }
       }
 

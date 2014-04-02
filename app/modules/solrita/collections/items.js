@@ -9,13 +9,15 @@ define([
 
     var SolrPaginatedCollection = Backbone.Paginator.requestPager.extend({
 
-      initialize: function () {
+      initialize: function (models, options) {
+        this.records = options.records;
         this.facetFields = app.defaultFacetFieldsArray;
         this.facetQueries = [];
         this.facetCounts = {};
       },
 
       model: model,
+      records: {},
 
       paginator_core: {
         url: app.solrURL,
@@ -29,18 +31,31 @@ define([
         sortField: app.defaultSortField
       },
 
+      getRows: function () {
+        for (var i = 0; i < this.facetQueries.length; i++) {
+          if (this.facetQueries[i].match("^nid:")) {
+            return this.perPage;
+          }
+        }
+        return 0;
+      },
+
       server_api: {
         'q': function () {
           return this.query;
         },
         'rows': function () {
-          return this.perPage;
+          return this.getRows();
         },
         'start': function () {
           return this.currentPage * this.perPage;
         },
         'sort': function () {
-          return this.sortField;
+          if (this.query !== '') {
+            return '';
+          } else {
+            return this.sortField;
+          }
         },
         'wt': 'json',
         'facet': 'true',
@@ -57,8 +72,10 @@ define([
         'hl.fl': function () {
           return '*';
         },
+        'hl.fragsize': 2000,
         'hl.simple.pre': app.hlSimplePre,
-        'hl.simple.pro': app.hlSimplePro
+        'hl.simple.post': app.hlSimplePro,
+        'json.nl': 'arrarr'
       },
 
       query: app.defaultQuery,
@@ -81,13 +98,31 @@ define([
         noResultsFound: false
       },
 
-      parse: function (response) {
+      parse: function (response, xhr) {
         this.total = response.response.numFound;
         this.totalPages = Math.ceil(this.total / this.perPage);
-        this.solrStatus = response.responseHeader.status;
-        this.qTime = response.responseHeader.QTime;
+        this.solrStatus = xhr.status;
+        this.qTime = xhr.QTime;
         this.facetCounts = response.facet_counts;
+
+        /*var nids = [];
+        for (var i = 0; i < this.facetCounts.facet_fields.nid.length; i++) {
+          nids.push(this.facetCounts.facet_fields.nid[i][0]);
+        }*/
         this.infoSolr = this.getInfoSolr();
+
+        if (this.total > 0) {
+          var r = this.records;
+          this.records.set({ nid_counts: this.facetCounts.facet_fields.nid, infoSolr: this.infoSolr });
+          this.records.fetch({
+            success: function() {
+              r.trigger("reset");
+            }
+          });
+        } else {
+          this.records.set({ nodes: [], nid_counts: [], infoSolr: this.infoSolr });
+          this.records.trigger("reset");
+        }
         var docs = this._getDocsWithValueAndValuehl(response.response.docs, response.highlighting);
         this.trigger("parse");
         return docs;
@@ -157,7 +192,7 @@ define([
         if (info.firstPage === undefined) {
           info.firstPage = 0;
         }
-        info.searchBase = "search?" + info.currentParams;
+        info.searchBase = "/search/text#?" + info.currentParams;
         info.isFirstPage = (info.firstPage === info.currentPage);
         info.isLastPage = (info.currentPage + 1 === info.totalPages);
         info.noResultsFound = (this.total === 0);
@@ -168,7 +203,7 @@ define([
       removeFacetQuery: function (facetQuery) {
         var index = $.inArray(facetQuery, this.facetQueries);
         if (index != -1) {
-          this.facetQueries.splice(index, (this.facetQueries.length - index));
+          this.facetQueries.splice(index, 1);
         }
       },
 
@@ -176,6 +211,8 @@ define([
         if (!_.isObject(options)) {
           options = {};
         }
+        this.records.set({});
+        this.records.trigger("reset");
         return this.pager(options);
       },
 
@@ -192,7 +229,7 @@ define([
         if (this.perPage !== undefined && this.perPage !== app.defaultPerPage) {
           params = params + '&num=' + this.perPage;
         }
-        if (this.sortField !== undefined && this.sortField !== app.defaultSortField) {
+        if (this.sortField !== undefined && this.sortField !== '' && this.sortField !== app.defaultSortField) {
           params = params + '&sort=' + this.sortField;
         }
         return params;

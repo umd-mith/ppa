@@ -383,232 +383,365 @@ var requirejs, require, define;
         jQuery: true
     };
 }());
-;this["JST"] = this["JST"] || {};
 
-this["JST"]["app/templates/facets.html"] = function(obj){
-var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
-with(obj||{}){
-__p+='<div class="well side-bar-nav">\n\t<!--Sidebar content-->\n\t<ul class="nav nav-list">\n\n\t\t<li><h5>Field Facet</h5></li>\n\n\t\t';
- for(var i=0;i<facetFields.length; i++){ 
-		var currentFacetField = facetFields[i];
-		var currentFacetFieldValues = [];
-		if (facetCounts.facet_fields !== undefined 
-			&& facetCounts.facet_fields[currentFacetField] !== undefined){
-			currentFacetFieldValues =  facetCounts.facet_fields[currentFacetField];
-			}
-		
-;__p+='\n\t\t';
- if (i>0) {
-;__p+='\n\t\t\t<li class="divider"/>\n\t\t';
- } 
-;__p+='\n\t\t<li class="nav-header">\n\t\t\t'+
-( currentFacetField )+
-'\n\t\t</li>\n\t\t';
- for (var j=0;j<currentFacetFieldValues.length;j++) { 
-;__p+='\n\t\t<li>\n\t\t<a id="'+
-((currentFacetField + ':' + j))+
-'" class="fq" \n\t\t\thref="search?'+
-(infoSolr.currentParams)+
-'&fq='+
-((currentFacetField + ':' + '%22' + escape(currentFacetFieldValues[j]) + '%22') )+
-'">\n\t\t\t\t<span class="badge badge-info">\n\t\t\t\t\t'+
-(currentFacetFieldValues[j+1])+
-'\n\t\t\t\t</span>&nbsp;\n\t\t\t\t'+
-(currentFacetFieldValues[j])+
-'\n\t\t\t</a>\n\t\t</li>\n\t\t';
- j++; } 
-;__p+='\n\t\t';
- } 
-;__p+='\n\t</ul>\n</div>\n';
+this["JST"] = this["JST"] || {};
+
+this["JST"]["app/templates/facet-author.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '        <div class="block-content content">\n          <div class= view-display-id-block">\n            <div class="view-content">\n              <div class="item-list">\n                <ul>\n                  ';
+
+                    var collectionName = '';
+                    var collectionUri = '';
+                    var collectionCount = 0;
+                    if (facetCounts.facet_fields !== undefined && facetCounts.facet_fields['author'] !== undefined) {
+                      for (var i = 0; i < facetCounts.facet_fields['author'].length; i++) {
+                        var facetValue = facetCounts.facet_fields['author'][i];
+                        var collectionCount = facetValue[1];
+                        var constraintUri = infoSolr.currentParams + '&fq=author:%22' + escape(facetValue[0]) + '%22'
+                  ;
+__p += '\n                  <li class="views-row">\n                    <div class="views-field views-field-name">\n                      <span class="field-content">\n                        <a href="/search/text#?' +
+((__t = ( constraintUri )) == null ? '' : __t) +
+'" data-route>' +
+((__t = ( facetValue[0] )) == null ? '' : __t) +
+'</a>\n                        (' +
+((__t = ( facetValue[1].toLocaleString() )) == null ? '' : __t) +
+' pages)\n                      </span>\n                    </div>\n                  </li>\n                  ';
+
+                      }  
+                    }
+                  ;
+__p += '\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n\n';
+
 }
-return __p;
+return __p
 };
 
-this["JST"]["app/templates/filters.html"] = function(obj){
-var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
-with(obj||{}){
-__p+='';
- if (facetQueries.length>0) { 
-;__p+='\n<div class="row-fluid">\n\t<div class="span12">\n\t\t<ul class="breadcrumb">\n\t\t\t<li>\n\t\t\t\t<span>Filters </span>\n\t\t\t</li>\n\t\t\t';
- for(var i=0; i<facetQueries.length; i++) { 
-;__p+='\n\t\t\t<li>\n\t\t\t\t<span class="divider">/</span>\n\t\t\t\t<a id="'+
-(facetQueries[i])+
-'" class="rfq" data-bypass href="#">\n\t\t\t\t\t'+
-(unescape(facetQueries[i]))+
+this["JST"]["app/templates/facet-city.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '        <div class="block-content content">\n          <div class= view-display-id-block">\n            <div class="view-content">\n              <div class="item-list">\n                <ul>\n                  ';
+
+                    var collectionName = '';
+                    var collectionUri = '';
+                    var collectionCount = 0;
+                    if (facetCounts.facet_fields !== undefined && facetCounts.facet_fields['city'] !== undefined) {
+                      for (var i = 0; i < facetCounts.facet_fields['city'].length; i++) {
+                        var facetValue = facetCounts.facet_fields['city'][i];
+                        var collectionCount = facetValue[1];
+                        var constraintUri = infoSolr.currentParams + '&fq=city:%22' + escape(facetValue[0]) + '%22'
+                  ;
+__p += '\n                  <li class="views-row">\n                    <div class="views-field views-field-name">\n                      <span class="field-content">\n                        <a href="/search/text#?' +
+((__t = ( constraintUri )) == null ? '' : __t) +
+'" data-route>' +
+((__t = ( facetValue[0] )) == null ? '' : __t) +
+'</a>\n                        (' +
+((__t = ( facetValue[1].toLocaleString() )) == null ? '' : __t) +
+' pages)\n                      </span>\n                    </div>\n                  </li>\n                  ';
+
+                      }  
+                    }
+                  ;
+__p += '\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n\n';
+
+}
+return __p
+};
+
+this["JST"]["app/templates/facet-collection.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '        <div class="block-content content">\n          <div class="view view-view-collection view-id-view_collection view-display-id-block">\n            <div class="view-content">\n              <div class="item-list">\n                <ul>\n                  ';
+
+                    var collectionName = '';
+                    var collectionUri = '';
+                    var collectionCount = 0;
+                    if (facetCounts.facet_fields !== undefined && facetCounts.facet_fields['tid'] !== undefined) {
+                      for (var i = 0; i < facetCounts.facet_fields['tid'].length; i++) {
+                        var facetValue = facetCounts.facet_fields['tid'][i];
+                        var collectionCount = facetValue[1];
+                        var constraintUri = infoSolr.currentParams + '&fq=tid:%22' + escape(facetValue[0]) + '%22'
+                        switch (facetValue[0]) {
+                          case '3':
+                            collectionName = 'Subject Search';
+                            collectionUri = '/collection/subject-search';
+                            break;
+                          case '2':
+                            collectionName = 'Prosody Archive';
+                            collectionUri = '/collection/prosody-archive';
+                            break;
+                          case '4':
+                            collectionName = 'Brogan&#039;s English Versification';
+                            collectionUri = '/collection/brogans';
+                            break;
+                          case '1':
+                            collectionName = 'Graphically / Typographically Unique';
+                            collectionUri = '/collection/unique';
+                            break;
+                        }
+                  ;
+__p += '\n                  <li class="views-row">\n                    <div class="views-field views-field-name">\n                      <span class="field-content">\n                        <a href="/search/text#?' +
+((__t = ( constraintUri )) == null ? '' : __t) +
+'" data-route>' +
+((__t = ( collectionName )) == null ? '' : __t) +
+'</a>\n                        (' +
+((__t = ( facetValue[1].toLocaleString() )) == null ? '' : __t) +
+' pages)\n                      </span>\n                    </div>\n                  </li>\n                  ';
+
+                      }  
+                    }
+                  ;
+__p += '\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n\n';
+
+}
+return __p
+};
+
+this["JST"]["app/templates/filters.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+
+ if (facetQueries.length>0) { ;
+__p += '\n<div class="row-fluid">\n\t<div class="span12">\n\t\t<div>Filters </div>\n\t\t<ul class="breadcrumb">\n\t\t\t';
+ for(var i=0; i<facetQueries.length; i++) { ;
+__p += '\n\t\t\t<li>\n\t\t\t\t<span class="divider">x</span>\n\t\t\t\t<a id="' +
+((__t = (facetQueries[i])) == null ? '' : __t) +
+'" class="rfq" href="#">\n\t\t\t\t\t';
+
+            var fq = facetQueries[i];
+            var fn = fq;
+            if (fq.match("^tid:")) {
+              switch (fq.substring(7, 10)) {
+                case '3':
+                  fn = 'collection:"Subject Search"';
+                  break;
+                case '2':
+                  fn = 'collection:"Prosody Archive"';
+                  break;
+                case '4':
+                  fn = 'collection:"Brogan&#039;s English Versification"';
+                  break;
+                case '1':
+                  fn = 'collection:"Graphically / Typographically Unique"';
+                  break;
+              }
+            }
+            if (fq.match("^nid:")) {
+              fn = 'work:' + fq.substring(4);
+            }
+          ;
+__p += '\n          ' +
+((__t = ( unescape(fn) )) == null ? '' : __t) +
 '\n\t\t\t\t</a> \n\t\t\t</li>\n\t\t\t';
- } 
-;__p+='\n\t\t</ul>\n\t</div>\n</div>\n';
- } 
-;__p+='\n';
+ } ;
+__p += '\n\t\t</ul>\n\t</div>\n</div>\n';
+ } ;
+__p += '\n';
+
 }
-return __p;
+return __p
 };
 
-this["JST"]["app/templates/layouts/main.html"] = function(obj){
-var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
-with(obj||{}){
-__p+='<header class="row-fluid">\n  <div class="span12">\n    <ul class="nav nav-pills pull-right">\n      <li class="active">\n        <a href="#">Demo</a>\n      </li>\n      <li>\n        <a href="https://github.com/jbarroso/solritajs">Source</a>\n      </li>\n    </ul>\n    <h2>\n      <a class="brand" href="#">Solrita.js</a>\n      <small id="subtitle">Backbone.js client for\n        <a href="http://lucene.apache.org/solr/">Apache Solr</a>\n      </small>\n    </h2>\n  </div>\n</header>\n<div class="row-fluid">\n  <div class="span12">\n    <div id="search"></div>\n  </div>\n</div>\n<div id="filters"></div>\n<div class="row-fluid">\n  <div class="span9">\n    <div class="row-fluid">\n      <div class="span12">\n          <div id="results-header" class="row-fluid"></div>\n      </div>\n    </div>\n    <div id="results" class="row-fluid"/>\n    <div id="pagination" class="row-fluid"></div>\n  </div>\n  <div id="facets" class="span3"></div>\n</div>\n<hr/>\n<footer>\n  <p class="muted credit">\n    <a href="https://github.com/jbarroso">Jose Angel Barroso</a>| MIT Licence</p>\n</footer>\n';
+this["JST"]["app/templates/layouts/main.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="row-fluid">\n  <div class="span12">\n    <div id="search"></div>\n  </div>\n</div>\n<div id="filters"></div>\n<div class="row-fluid">\n  <div class="span9">\n    <div class="row-fluid">\n      <div class="span12">\n          <div id="results-header" class="row-fluid"></div>\n      </div>\n    </div>\n    <div id="records"></div>\n    <div id="results" class="row-fluid"/>\n    <div id="pagination" class="row-fluid"></div>\n  </div>\n</div>\n';
+
 }
-return __p;
+return __p
 };
 
-this["JST"]["app/templates/pagination.html"] = function(obj){
-var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
-with(obj||{}){
-__p+='';
-if (total>0 && totalPages>1) { 
-;__p+='\n<div class="navbar">\n\t<div class="navbar-inner">\n\t\t<div class="pagination pagination-centered">\n\t\t\t<ul>\n\t\t\t\t<li '+
-((isFirstPage) ? 'class="disabled"':'' )+
-'>\n\t\t\t\t<a '+
-((isFirstPage) ? 'data-bypass':'')+
-' \n\t\t\t\t\thref="'+
-((isFirstPage) ? '#' : searchBase + '&start=0')+
-'" class="serverfirst">«</a>\n\t\t\t\t</li>\n\n\t\t\t\t<li '+
-((isFirstPage) ? 'class="disabled"':'' )+
-'>\n\t\t\t\t<a '+
-((isFirstPage) ? 'data-bypass':'')+
-' \n\t\t\t\t\thref="'+
-((isFirstPage) ? '#' : searchBase + '&start='+(perPage*(currentPage-1)))+
+this["JST"]["app/templates/pagination.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+
+if (total>0 && totalPages>1) { ;
+__p += '\n<div class="navbar">\n\t<div class="navbar-inner">\n\t\t<div class="pagination pagination-centered">\n\t\t\t<ul style="list-style-type: none; margin: 0px; padding: 0px;">\n\t\t\t\t<li ' +
+((__t = ((isFirstPage) ? 'class="disabled"':'' )) == null ? '' : __t) +
+' style="display: inline;">\n\t\t\t\t<a ' +
+((__t = ((isFirstPage) ? 'data-bypass':'')) == null ? '' : __t) +
+' data-route\n\t\t\t\t\thref="' +
+((__t = ((isFirstPage) ? '#' : searchBase + '&start=0')) == null ? '' : __t) +
+'" class="serverfirst">«</a>\n\t\t\t\t</li>\n\n\t\t\t\t<li ' +
+((__t = ((isFirstPage) ? 'class="disabled"':'' )) == null ? '' : __t) +
+' style="display: inline;">\n\t\t\t\t<a ' +
+((__t = ((isFirstPage) ? 'data-bypass':'')) == null ? '' : __t) +
+' data-route \n\t\t\t\t\thref="' +
+((__t = ((isFirstPage) ? '#' : searchBase + '&start='+(perPage*(currentPage-1)))) == null ? '' : __t) +
 '" \n\t\t\t\t\tclass="serverprevious">&lt;</a>\n\t\t\t\t</li>\n\n\t\t\t\t';
- for(p=beginIndex;p<endIndex;p++){ 
-;__p+='\n\t\t\t\t';
- var isCurrentPage = (currentPage === p);
-;__p+='\n\t\t\t\t<li '+
-((isCurrentPage)? 'class="active"': '' )+
-'>\n\t\t\t\t<a '+
-((isCurrentPage) ? 'data-bypass':'')+
-'  \n\t\t\t\t\thref="'+
-((isCurrentPage) ? '#': searchBase + '&start=' + (perPage*p))+
-'" class="page">'+
-(p+1)+
+ for(p=beginIndex;p<endIndex;p++){ ;
+__p += '\n\t\t\t\t';
+ var isCurrentPage = (currentPage === p);;
+__p += '\n\t\t\t\t<li ' +
+((__t = ((isCurrentPage)? 'class="active"': '' )) == null ? '' : __t) +
+' style="display: inline;">\n\t\t\t\t<a ' +
+((__t = ((isCurrentPage) ? 'data-bypass':'')) == null ? '' : __t) +
+' data-route\n\t\t\t\t\thref="' +
+((__t = ((isCurrentPage) ? '#': searchBase + '&start=' + (perPage*p))) == null ? '' : __t) +
+'" class="page">' +
+((__t = (p+1)) == null ? '' : __t) +
 '</a>\n\t\t\t\t</li>\n\t\t\t\t';
- } 
-;__p+='\t\n\n\t\t\t\t<li '+
-((isLastPage) ? 'class="disabled"': '')+
-'>\n\t\t\t\t<a '+
-((isLastPage) ? 'data-bypass':'')+
-' \n\t\t\t\t\thref="'+
-((isLastPage) ? '#' : searchBase + '&start=' + (perPage*(currentPage+1)))+
-'" \n\t\t\t\t\tclass="servernext">&gt;</a>\n\t\t\t\t</li>\n\t\t\t\t<li '+
-((isLastPage) ? 'class="disabled"': '')+
-'>\n\t\t\t\t<a '+
-((isLastPage) ? 'data-bypass':'')+
-' \n\t\t\t\t\thref="'+
-((isLastPage) ? '#' : searchBase + '&start=' + (perPage*(totalPages-1)))+
+ } ;
+__p += '\t\n\n\t\t\t\t<li ' +
+((__t = ((isLastPage) ? 'class="disabled"': '')) == null ? '' : __t) +
+' style="display: inline;">\n\t\t\t\t<a ' +
+((__t = ((isLastPage) ? 'data-bypass':'')) == null ? '' : __t) +
+' data-route\n\t\t\t\t\thref="' +
+((__t = ((isLastPage) ? '#' : searchBase + '&start=' + (perPage*(currentPage+1)))) == null ? '' : __t) +
+'" \n\t\t\t\t\tclass="servernext">&gt;</a>\n\t\t\t\t</li>\n\t\t\t\t<li ' +
+((__t = ((isLastPage) ? 'class="disabled"': '')) == null ? '' : __t) +
+' style="display: inline;">\n\t\t\t\t<a ' +
+((__t = ((isLastPage) ? 'data-bypass':'')) == null ? '' : __t) +
+' data-route\n\t\t\t\t\thref="' +
+((__t = ((isLastPage) ? '#' : searchBase + '&start=' + (perPage*(totalPages-1)))) == null ? '' : __t) +
 '" \n\t\t\t\t\tclass="serverlast">»</a>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</div>\n';
+};
+__p += '\n';
+
 }
-;__p+='\n';
-}
-return __p;
+return __p
 };
 
-this["JST"]["app/templates/result.html"] = function(obj){
-var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
-with(obj||{}){
-__p+='<div class="well result">\n\t<div class="title">\n\t\t';
- if (typeof compName_s!=="undefined") { 
-;__p+=' \n\t\t<h4>'+
-( compName_s.valuehl )+
-'</h4>\n\t\t';
- } else {
-;__p+='\n\t\t<h4>'+
-( name.valuehl )+
-'</h4>\n\t\t';
- } 
-;__p+='\n\t</div>\n\t<dl class="dl-horizontal" style="margin:0">\n\t\t';
- if (typeof price_c!=="undefined") { 
-;__p+=' \n\t\t<dt>Price</dt>\n\t\t<dd>'+
-(price_c.valuehl)+
-'</dd>\n\t\t';
- } 
-;__p+='\n\t\t';
- if (typeof features!=="undefined") { 
-;__p+=' \n\t\t\t<dt>Features</dt>\n\t\t\t';
- for(var i=0; i< features.length; i++) { 
-;__p+='\n\t\t\t\t<dd>'+
-(features[i].valuehl)+
-'</dd>\n\t\t\t';
- } 
-;__p+='\n\t\t';
- } 
-;__p+='\n\t\t';
- if (typeof inStock!=="undefined") { 
-;__p+=' \n\t\t<dt>In Stock<dt>\n\t\t<dd>'+
-(inStock.valuehl)+
-'</dd>\n\t\t';
- } 
-;__p+='\n\t\t';
- if (typeof cat!=="undefined") { 
-;__p+=' \n\t\t<dt>Categories</dt>\n\t\t\t';
- for(var i=0; i< cat.length; i++) { 
-;__p+='\n\t\t\t\t<dd>'+
-(cat[i].valuehl)+
-'</dd>\n\t\t\t';
- } 
-;__p+='\n\t\t';
- } 
-;__p+='\n\t\t';
- if (typeof manu!=="undefined") { 
-;__p+=' \n\t\t<dt>Manufactory</dt>\n\t\t<dd>'+
-(manu.valuehl)+
-'</dd>\n\t\t';
- } 
-;__p+='\n\t\t';
- if (typeof address_s!=="undefined") { 
-;__p+=' \n\t\t<dt>Address</dt>\n\t\t<dd>'+
-(address_s.valuehl)+
-'</dd>\n\t\t';
- } 
-;__p+='\n\t</dl>\n</div>\n';
+this["JST"]["app/templates/records.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '<div class="records">\n  ';
+
+    if (nodes !== undefined) {
+      for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
+        var nodeParams = infoSolr.currentParams + '&fq=nid:%22' + escape(node.nid) + '%22';
+  ;
+__p += '\n  <article class="node node-biblio node-promoted node-teaser contextual-links-region article even iat-n clearfix">\n  <div class="node-inner">\n    <header class="node-header">\n      <h1 property="dc:title" datatype="" class="node-title" rel="nofollow">\n        <a href="/search/text#?' +
+((__t = ( nodeParams )) == null ? '' : __t) +
+'" rel="bookmark" data-route>\n          <h4>' +
+((__t = ( node.title )) == null ? '' : __t) +
+' (' +
+((__t = ( node.count.toLocaleString() )) == null ? '' : __t) +
+' pages)</h4>\n        </a>\n      </h1>\n      <p class="submitted">\n    </header>\n    <div class="node-content">\n      <span class="biblio-authors">\n        ';
+
+          for (var j = 0; j < node.biblio_contributors.length; j++) {
+            var name = node.biblio_contributors[j].name;
+            var nameParams = infoSolr.currentParams + '&fq=author:%22' + escape(name) + '%22';
+        ;
+__p += '\n        <a href="/search/text#?' +
+((__t = ( nameParams )) == null ? '' : __t) +
+'" data-route>' +
+((__t = ( name )) == null ? '' : __t) +
+'</a>';
+
+          if (j != node.biblio_contributors.length - 1) {
+        ;
+__p += ', and ';
+ } else { ;
+__p += '.';
+ } ;
+__p += '\n        ';
+
+          }
+        ;
+__p += '\n      </span>\n      \n     <span class="biblio-title-chicago">\n       ' +
+((__t = ( node.biblio_edition )) == null ? '' : __t);
+ if (node.biblio_edition == '') { ;
+__p += ',';
+ } ;
+__p += '\n       ' +
+((__t = ( node.biblio_publisher )) == null ? '' : __t) +
+'\n       ' +
+((__t = ( node.biblio_place_published )) == null ? '' : __t) +
+', ' +
+((__t = ( node.biblio_year )) == null ? '' : __t) +
+'.\n    </div>\n  </div>\n</article>\n  ';
+
+      }
+    }
+  ;
+__p += '\n</div>\n';
+
 }
-return __p;
+return __p
 };
 
-this["JST"]["app/templates/results-header.html"] = function(obj){
-var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
-with(obj||{}){
-__p+='';
- if (total > 0) { 
-;__p+='\n  <div class="navbar span12">\n    <div class="navbar-inner">\n      <div class="container">\n        <ul class="nav pull-left">\n          <li>\n            <p class="navbar-text"><span><strong>'+
-(total)+
-' </strong>results found in '+
-(qTime)+
-'ms</span></p>\n          </li>\n        </ul>\n\t\t\t\t<a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">\n\t\t\t\t\t\t<span class="icon-bar"></span>\n\t\t\t\t\t\t<span class="icon-bar"></span>\n\t\t\t\t\t\t<span class="icon-bar"></span>\n\t\t\t\t</a>\n        <ul class="nav pull-right">\n          <li>\n            <ul class="pager navbar-text" style="margin:0">\n              <li class="'+
-((isFirstPage) ? ' disabled':'' )+
-'">\n                <a '+
-((isFirstPage) ? 'data-bypass':'')+
-' \n\t\t\t\t\t\t\t\t\thref="'+
-((isFirstPage) ? '#' : searchBase + '&start='+(perPage*(currentPage-1)))+
-'"><</a>\n              </li>\n              <li>\n                <strong>Page '+
-(currentPage+1)+
-' </strong>of '+
-(totalPages)+
-'\n              </li>\n              <li class="'+
-((isLastPage) ? ' disabled':'' )+
-'">\n\t\t\t\t\t\t\t<a '+
-((isLastPage) ? 'data-bypass':'')+
-' \n\t\t\t\t\t\t\t\thref="'+
-((isLastPage) ? '#' : searchBase + '&start=' + (perPage*(currentPage+1)))+
-'">></a>\n              </li>\n            </ul>\n          </li>\n        </ul>\n\t\t\t\t<div class="nav-collapse collapse pull-right">\n          <form class="form-inline" style="margin:0px">\n            <ul class="nav pull-right">\n              <li>\n\t\t\t\t\t\t\t\t<div class="pull-left">\n\t\t\t\t\t\t\t\t\t<label class="navbar-text" for="num">Items per page:</label>\n\t\t\t\t\t\t\t\t\t<div id="num" style="display: inline-block" />\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class="pull-left" style="margin-left:5px">\n\t\t\t\t\t\t\t\t\t<label class="navbar-text" for="sort">Sort by:</label>\n\t\t\t\t\t\t\t\t\t<div id="sort" style="display: inline-block" />\n\t\t\t\t\t\t\t\t</div>\n              </li>\n              <li class="divider-vertical" />\n            </ul>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n';
- } 
-;__p+='\n';
- if (noResultsFound) { 
-;__p+='\n\t<div class="alert alert-warn" class="span12">No results found</div>\n';
- } 
-;__p+='\n';
+this["JST"]["app/templates/result.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '<article class="node node-biblio node-promoted node-teaser contextual-links-region article even iat-n clearfix">\n  ';
+ if (doc.htid !== undefined) { ;
+__p += '\n  <div class="node-inner">\n    <header class="node-header">\n      <h1 property="dc:title" datatype="" class="node-title" rel="nofollow">\n        Page ';
+ if (doc.number === undefined || doc.number.value == '') { ;
+__p += 'sequence number ' +
+((__t = ( doc.seq.value )) == null ? '' : __t);
+ } else { ;
+__p +=
+((__t = ( doc.number.value )) == null ? '' : __t);
+ } ;
+__p += '\n      </h1>\n      <nav class="clearfix" style="margin-bottom: 10px;">\n        <ul class="links inline">\n          <li class="node-readmore first">\n            <a href="http://babel.hathitrust.org/cgi/pt?id=' +
+((__t = ( doc.htid.value )) == null ? '' : __t) +
+';view=1up;seq=' +
+((__t = ( doc.seq.value )) == null ? '' : __t) +
+'" target="_blank">\n            View page at HathiTrust\n            </a>\n          </li><li class="last"><a href="/record/' +
+((__t = ( doc.record.value )) == null ? '' : __t) +
+'">Metadata</a></li>\n        </ul>\n      </nav>\n    </header>\n    <div class="node-content">\n      ';
+ if (typeof content!=="undefined") { ;
+__p += '\n        <p class="search-snippet">' +
+((__t = (doc.content.valuehl)) == null ? '' : __t) +
+'</p>\n      ';
+ } ;
+__p += '\n    </div>\n  </div>\n  ';
+ } ;
+__p += '\n</article>\n\n';
+
 }
-return __p;
+return __p
 };
 
-this["JST"]["app/templates/search.html"] = function(obj){
-var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
-with(obj||{}){
-__p+='<form id="search-form" class="form-search">\n  <div class="control-group well">\n    <div class="controls">\n      <input id="search-query" type="text" value="'+
-(printQuery)+
+this["JST"]["app/templates/results-header.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+
+ if (total > 0) { ;
+__p += '\n  <div class="navbar span12">\n    <div class="navbar-inner">\n      <div class="container">\n        <ul class="nav pull-left">\n          <li>\n            <p class="navbar-text"><span><strong>' +
+((__t = (total.toLocaleString() )) == null ? '' : __t) +
+' </strong>pages found</span></p>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n';
+ } ;
+__p += '\n';
+ if (noResultsFound) { ;
+__p += '\n\t<div class="alert alert-warn" class="span12">No results found</div>\n';
+ } ;
+__p += '\n';
+
+}
+return __p
+};
+
+this["JST"]["app/templates/search.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<form id="search-form" class="form-search">\n  <div class="control-group well">\n    <div class="controls">\n      <input id="search-query" type="text" value="' +
+((__t = (printQuery)) == null ? '' : __t) +
 '" style="width: 47%" class="search-query">\n      <button type="submit" class="btn">\n        <i class="icon-search"></i> Search</button>\n    </div>\n  </div>\n</form>\n';
+
 }
-return __p;
-};;
+return __p
+};
 /*!
  * jQuery JavaScript Library v1.8.2
  * http://jquery.com/
@@ -18487,16 +18620,16 @@ define('app',[
       root: "/",
       pushState: true,
       //solrURL: "http://localhost:8983/solr/select",
-      solrURL: "http://solritajs-server.herokuapp.com/solr/select",
-      defaultQuery: "*:*",
-      defaultFacetFieldsArray: ["cat", "manu_exact"],
-      defaultPerPage: 5,
-      defaultSortField: "price desc",
+      solrURL: "http://prosody-dev.princeton.edu/solr/volumes/select",
+      defaultQuery: "",
+      defaultFacetFieldsArray: ["author", "city", "tid", "nid"],
+      defaultPerPage: 20,
+      defaultSortField: "seq asc",
       paginationSize: 2,
       perPageArray: [3, 5, 10, 15, 20, 50],
-      sortFieldArray: ["price asc", "price desc"],
-      hlSimplePre: "<em>",
-      hlSimplePro: "</em>"
+      sortFieldArray: ["year asc", "city desc"],
+      hlSimplePre: "<strong>",
+      hlSimplePro: "</strong>"
     };
 
     // Localize or create a new JavaScript Template object.
@@ -18541,11 +18674,15 @@ define('app',[
       useLayout: function (options) {
         // Create a new Layout with options.
         var layout = new Backbone.Layout(_.extend({
-          el: "body"
+          el: $("#searchapp")
+          //tagName: "div"
         }, options));
+        //var layout = new Backbone.Layout(options);
+        //$("#searchapp").empty().append(layout.el);
 
         // Cache the refererence.
-        return this.layout = layout;
+        this.layout = layout;
+        return layout;
       }
     }, Backbone.Events);
 
@@ -18555,9 +18692,52 @@ define('modules/solrita/models/item',[
   'backbone'
   ], function (Backbone) {
 
-    var SolrItem = Backbone.Model.extend({});
+    var SolrItem = Backbone.Model.extend({
+      defaults: {
+        doc: {}
+      }
+    });
 
     return SolrItem;
+  });
+
+define('modules/solrita/models/record',[
+  'jquery',
+  'lodash',
+  'backbone'
+  ], function ($, _, Backbone) {
+
+    var SolrRecord = Backbone.Model.extend({
+      url: function() {
+        var value = '/api/node/';
+        var nid_counts = this.get("nid_counts");
+        var nids = _.map(nid_counts, function(nid_count) { return nid_count[0]; });
+        return value + nids.join(',');
+      },
+
+      defaults: {
+        'nodes': [],
+        'infoSolr': {}
+      },
+
+      parse: function (response) {
+        var nodes = [];
+        if (Array.isArray(response)) {
+          nodes = response;
+        } else {
+          nodes = [ response ];
+        }
+
+        var nid_counts = this.get('nid_counts');
+        for (var i = 0; i < nid_counts.length; i++) {
+          nodes[i].count = nid_counts[i][1];
+        }
+
+        return { 'nodes': nodes, 'infoSolr': this.get('infoSolr') };
+      }
+    });
+
+    return SolrRecord;
   });
 
 /*! backbone.paginator - v0.5.1-dev - 2/13/2013
@@ -19612,13 +19792,15 @@ define('modules/solrita/collections/items',[
 
     var SolrPaginatedCollection = Backbone.Paginator.requestPager.extend({
 
-      initialize: function () {
+      initialize: function (models, options) {
+        this.records = options.records;
         this.facetFields = app.defaultFacetFieldsArray;
         this.facetQueries = [];
         this.facetCounts = {};
       },
 
       model: model,
+      records: {},
 
       paginator_core: {
         url: app.solrURL,
@@ -19632,18 +19814,31 @@ define('modules/solrita/collections/items',[
         sortField: app.defaultSortField
       },
 
+      getRows: function () {
+        for (var i = 0; i < this.facetQueries.length; i++) {
+          if (this.facetQueries[i].match("^nid:")) {
+            return this.perPage;
+          }
+        }
+        return 0;
+      },
+
       server_api: {
         'q': function () {
           return this.query;
         },
         'rows': function () {
-          return this.perPage;
+          return this.getRows();
         },
         'start': function () {
           return this.currentPage * this.perPage;
         },
         'sort': function () {
-          return this.sortField;
+          if (this.query !== '') {
+            return '';
+          } else {
+            return this.sortField;
+          }
         },
         'wt': 'json',
         'facet': 'true',
@@ -19660,8 +19855,10 @@ define('modules/solrita/collections/items',[
         'hl.fl': function () {
           return '*';
         },
+        'hl.fragsize': 2000,
         'hl.simple.pre': app.hlSimplePre,
-        'hl.simple.pro': app.hlSimplePro
+        'hl.simple.post': app.hlSimplePro,
+        'json.nl': 'arrarr'
       },
 
       query: app.defaultQuery,
@@ -19684,13 +19881,31 @@ define('modules/solrita/collections/items',[
         noResultsFound: false
       },
 
-      parse: function (response) {
+      parse: function (response, xhr) {
         this.total = response.response.numFound;
         this.totalPages = Math.ceil(this.total / this.perPage);
-        this.solrStatus = response.responseHeader.status;
-        this.qTime = response.responseHeader.QTime;
+        this.solrStatus = xhr.status;
+        this.qTime = xhr.QTime;
         this.facetCounts = response.facet_counts;
+
+        /*var nids = [];
+        for (var i = 0; i < this.facetCounts.facet_fields.nid.length; i++) {
+          nids.push(this.facetCounts.facet_fields.nid[i][0]);
+        }*/
         this.infoSolr = this.getInfoSolr();
+
+        if (this.total > 0) {
+          var r = this.records;
+          this.records.set({ nid_counts: this.facetCounts.facet_fields.nid, infoSolr: this.infoSolr });
+          this.records.fetch({
+            success: function() {
+              r.trigger("reset");
+            }
+          });
+        } else {
+          this.records.set({ nodes: [], nid_counts: [], infoSolr: this.infoSolr });
+          this.records.trigger("reset");
+        }
         var docs = this._getDocsWithValueAndValuehl(response.response.docs, response.highlighting);
         this.trigger("parse");
         return docs;
@@ -19760,7 +19975,7 @@ define('modules/solrita/collections/items',[
         if (info.firstPage === undefined) {
           info.firstPage = 0;
         }
-        info.searchBase = "search?" + info.currentParams;
+        info.searchBase = "/search/text#?" + info.currentParams;
         info.isFirstPage = (info.firstPage === info.currentPage);
         info.isLastPage = (info.currentPage + 1 === info.totalPages);
         info.noResultsFound = (this.total === 0);
@@ -19771,7 +19986,7 @@ define('modules/solrita/collections/items',[
       removeFacetQuery: function (facetQuery) {
         var index = $.inArray(facetQuery, this.facetQueries);
         if (index != -1) {
-          this.facetQueries.splice(index, (this.facetQueries.length - index));
+          this.facetQueries.splice(index, 1);
         }
       },
 
@@ -19779,6 +19994,8 @@ define('modules/solrita/collections/items',[
         if (!_.isObject(options)) {
           options = {};
         }
+        this.records.set({});
+        this.records.trigger("reset");
         return this.pager(options);
       },
 
@@ -19795,7 +20012,7 @@ define('modules/solrita/collections/items',[
         if (this.perPage !== undefined && this.perPage !== app.defaultPerPage) {
           params = params + '&num=' + this.perPage;
         }
-        if (this.sortField !== undefined && this.sortField !== app.defaultSortField) {
+        if (this.sortField !== undefined && this.sortField !== '' && this.sortField !== app.defaultSortField) {
           params = params + '&sort=' + this.sortField;
         }
         return params;
@@ -19863,7 +20080,7 @@ define('modules/solrita/views/result',[
       tagName: 'div',
 
       data: function () {
-        return this.model.toJSON();
+        return { doc: this.model.toJSON() };
       }
 
     });
@@ -20239,15 +20456,36 @@ define('modules/solrita/views/results',[
     return ResultsView;
   });
 
-define('modules/solrita/views/facets',[
+define('modules/solrita/views/records',[
   'jquery',
   'lodash',
   'backbone'
   ], function ($, _, Backbone) {
 
-  var FacetsView = Backbone.View.extend({
+    var RecordsView = Backbone.View.extend({
+      template: 'records',
 
-    template: 'facets',
+      initialize: function () {
+        this.model.on('reset', this.render, this);
+      },
+
+      data: function () {
+        return this.model.toJSON();
+      }
+    });
+
+    return RecordsView;
+  });
+
+define('modules/solrita/views/facet-collection',[
+  'jquery',
+  'lodash',
+  'backbone'
+  ], function ($, _, Backbone) {
+
+  var FacetCollectionView = Backbone.View.extend({
+    el: $('#facet_collection'),
+    template: 'facet-collection',
 
     initialize: function () {
       this.collection.on('reset', this.render, this);
@@ -20259,7 +20497,55 @@ define('modules/solrita/views/facets',[
 
   });
 
-  return FacetsView;
+  return FacetCollectionView;
+
+});
+
+define('modules/solrita/views/facet-author',[
+  'jquery',
+  'lodash',
+  'backbone'
+  ], function ($, _, Backbone) {
+
+  var FacetAuthorView = Backbone.View.extend({
+    el: $('#facet_author'),
+    template: 'facet-author',
+
+    initialize: function () {
+      this.collection.on('reset', this.render, this);
+    },
+
+    data: function () {
+      return this.collection;
+    }
+
+  });
+
+  return FacetAuthorView;
+
+});
+
+define('modules/solrita/views/facet-city',[
+  'jquery',
+  'lodash',
+  'backbone'
+  ], function ($, _, Backbone) {
+
+  var FacetCityView = Backbone.View.extend({
+    el: $('#facet_city'),
+    template: 'facet-city',
+
+    initialize: function () {
+      this.collection.on('reset', this.render, this);
+    },
+
+    data: function () {
+      return this.collection;
+    }
+
+  });
+
+  return FacetCityView;
 
 });
 
@@ -20286,7 +20572,7 @@ define('modules/solrita/views/filters',[
         var filterQuery = $(e.target).attr("id");
         this.collection.removeFacetQuery(filterQuery);
         this.collection.search();
-        Backbone.history.navigate("search?" + this.collection.getCurrentParams(), true);
+        Backbone.history.navigate("search/text#?" + this.collection.getCurrentParams(), true);
       },
 
       data: function () {
@@ -20370,7 +20656,7 @@ define('modules/solrita/views/num',[
         var per = $(e.target).val();
         this.collection.perPage = per;
 
-        Backbone.history.navigate("search?" + this.collection.getCurrentParams(), true);
+        Backbone.history.navigate("search/text#?" + this.collection.getCurrentParams(), true);
       }
 
     });
@@ -20418,7 +20704,7 @@ define('modules/solrita/views/sort',[
         var sortFieldSelected = $(e.target).val();
         this.collection.sortField = sortFieldSelected;
 
-        Backbone.history.navigate("search?" + this.collection.getCurrentParams(), true);
+        Backbone.history.navigate("search/text#?" + this.collection.getCurrentParams(), true);
       }
 
     });
@@ -20499,13 +20785,17 @@ define('modules/solrita',[
   "app",
   // Model
   'modules/solrita/models/item',
+  'modules/solrita/models/record',
   // Collections
   'modules/solrita/collections/items',
   // Views
   'modules/solrita/views/search',
   'modules/solrita/views/results',
   'modules/solrita/views/result',
-  'modules/solrita/views/facets',
+  'modules/solrita/views/records',
+  'modules/solrita/views/facet-collection',
+  'modules/solrita/views/facet-author',
+  'modules/solrita/views/facet-city',
   'modules/solrita/views/filters',
   'modules/solrita/views/results-header',
   'modules/solrita/views/pagination',
@@ -20513,19 +20803,25 @@ define('modules/solrita',[
   'modules/solrita/views/num',
   'modules/solrita/views/sort'
 
-  ], function (app, SolrItem, SolrPaginatedCollection, SearchView, ResultsView, ResultView, FacetsView, FiltersView, ResultsHeaderView, PaginationView, OptionView, NumView, SortView) {
+  ], function (app, SolrItem, SolrRecord, SolrPaginatedCollection,
+    SearchView, ResultsView, ResultView, RecordsView,
+    FacetCollectionView, FacetAuthorView, FacetCityView, FiltersView, ResultsHeaderView, PaginationView, OptionView, NumView, SortView) {
 
     // Create a new module
     var Solrita = app.module();
 
     Solrita.SolrItem = SolrItem;
+    Solrita.SolrRecord = SolrRecord;
     Solrita.SolrPaginatedCollection = SolrPaginatedCollection;
 
     Solrita.Views = {};
     Solrita.Views.SearchView = SearchView;
     Solrita.Views.ResultsView = ResultsView;
     Solrita.Views.ResultView = ResultView;
-    Solrita.Views.FacetsView = FacetsView;
+    Solrita.Views.RecordsView = RecordsView;
+    Solrita.Views.FacetCollectionView = FacetCollectionView;
+    Solrita.Views.FacetAuthorView = FacetAuthorView;
+    Solrita.Views.FacetCityView = FacetCityView;
     Solrita.Views.FiltersView = FiltersView;
     Solrita.Views.ResultsHeaderView = ResultsHeaderView;
     Solrita.Views.PaginationView = PaginationView;
@@ -20548,17 +20844,20 @@ define('router',[
     var AppRouter = Backbone.Router.extend({
 
       collection: {},
+      records: {},
 
       initialize: function (options) {
         this.collection = options.collection;
+        this.records = options.collection.records;
       },
 
       routes: {
-        'search*params': 'searchAction',
+        'search/text#?*params': 'searchAction',
         '*actions': 'defaultAction'
       },
 
       defaultAction: function (actions) {
+        //alert(actions);
         this.reset();
         this.collection.query = app.defaultQuery;
         this.collection.facetQueries = [];
@@ -20566,6 +20865,7 @@ define('router',[
       },
 
       searchAction: function (params) {
+        //alert(params);
         this.reset();
         params = this._getParamsFromArguments(arguments);
         this.collection.query = this._getQueryFromParams(params);
@@ -20585,6 +20885,9 @@ define('router',[
         var main = app.useLayout({
           template: "layouts/main",
           views: {
+            "#records": new Solrita.Views.RecordsView({
+              model: self.records
+            }),
             "#search": new Solrita.Views.SearchView({
               collection: self.collection
             }),
@@ -20594,7 +20897,13 @@ define('router',[
             "#results": new Solrita.Views.ResultsView({
               collection: self.collection
             }),
-            "#facets": new Solrita.Views.FacetsView({
+            "#facet_collection": new Solrita.Views.FacetCollectionView({
+              collection: self.collection
+            }),
+            "#facet_author": new Solrita.Views.FacetAuthorView({
+              collection: self.collection
+            }),
+            "#facet_city": new Solrita.Views.FacetCityView({
               collection: self.collection
             }),
             "#filters": new Solrita.Views.FiltersView({
@@ -20604,7 +20913,9 @@ define('router',[
               collection: self.collection
             })
           }
-        }).render();
+        });
+
+        main.render();
       },
 
       _getQueryFromParams: function (params) {
@@ -20675,6 +20986,9 @@ define('router',[
         if (this.collection.length) {
           this.collection.reset();
         }
+        if (this.records.length) {
+          this.records.reset();
+        }
       }
 
     });
@@ -20687,29 +21001,37 @@ require([
   "app",
   "router",
   "modules/solrita"
-  ], function (app, Router, Solrita) {
+  ], function (app, AppRouter, Solrita) {
 
-    var solrPaginatedCollection = new Solrita.SolrPaginatedCollection();
+    var solrRecords = new Solrita.SolrRecord();
+    var solrPaginatedCollection = new Solrita.SolrPaginatedCollection({}, { records: solrRecords });
 
     // Define your master router on the application namespace and trigger all
     // navigation from this instance.
-    app.router = new Router({
+    app.router = new AppRouter({
       collection: solrPaginatedCollection
     });
 
     app.router.initLayout();
 
+    //alert(location.href);
     // Trigger the initial route and enable HTML5 History API support, set the
     // root folder to '/' by default.  Change in app.js.
     Backbone.history.start({
       pushState: app.pushState,
-      root: app.root
+      root: app.root,
+      hashChange: false
     });
+
+    
+    //Backbone.history.start();
+
+    //Backbone.history.navigate('search/text#?q=tree', { trigger: true, replace: true});
 
     // All navigation that is relative should be passed through the navigate
     // method, to be processed by the router. If the link has a `data-bypass`
     // attribute, bypass the delegation completely.
-    $(document).on("click", "a[href]:not([data-bypass])", function (evt) {
+    $(document).on("click", "a[href][data-route]", function (evt) {
       // Get the absolute anchor href.
       var href = {
         prop: $(this).prop("href"),
@@ -20772,3 +21094,4 @@ require.config({
 });
 
 define("config", function(){});
+

@@ -29,16 +29,16 @@ define([
       root: "/",
       pushState: true,
       //solrURL: "http://localhost:8983/solr/select",
-      solrURL: "http://solritajs-server.herokuapp.com/solr/select",
-      defaultQuery: "*:*",
-      defaultFacetFieldsArray: ["cat", "manu_exact"],
-      defaultPerPage: 5,
-      defaultSortField: "price desc",
+      solrURL: "http://prosody-dev.princeton.edu/solr/volumes/select",
+      defaultQuery: "",
+      defaultFacetFieldsArray: ["author", "city", "tid", "nid"],
+      defaultPerPage: 20,
+      defaultSortField: "seq asc",
       paginationSize: 2,
       perPageArray: [3, 5, 10, 15, 20, 50],
-      sortFieldArray: ["price asc", "price desc"],
-      hlSimplePre: "<em>",
-      hlSimplePro: "</em>"
+      sortFieldArray: ["year asc", "city desc"],
+      hlSimplePre: "<strong>",
+      hlSimplePro: "</strong>"
     };
 
     // Localize or create a new JavaScript Template object.
@@ -83,11 +83,15 @@ define([
       useLayout: function (options) {
         // Create a new Layout with options.
         var layout = new Backbone.Layout(_.extend({
-          el: "body"
+          el: $("#searchapp")
+          //tagName: "div"
         }, options));
+        //var layout = new Backbone.Layout(options);
+        //$("#searchapp").empty().append(layout.el);
 
         // Cache the refererence.
-        return this.layout = layout;
+        this.layout = layout;
+        return layout;
       }
     }, Backbone.Events);
 

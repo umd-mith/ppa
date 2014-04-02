@@ -1,39 +1,26 @@
-<div class="well result">
-	<div class="title">
-		<% if (typeof compName_s!=="undefined") { %> 
-		<h4><%= compName_s.valuehl %></h4>
-		<% } else {%>
-		<h4><%= name.valuehl %></h4>
-		<% } %>
-	</div>
-	<dl class="dl-horizontal" style="margin:0">
-		<% if (typeof price_c!=="undefined") { %> 
-		<dt>Price</dt>
-		<dd><%=price_c.valuehl%></dd>
-		<% } %>
-		<% if (typeof features!=="undefined") { %> 
-			<dt>Features</dt>
-			<% for(var i=0; i< features.length; i++) { %>
-				<dd><%=features[i].valuehl%></dd>
-			<% } %>
-		<% } %>
-		<% if (typeof inStock!=="undefined") { %> 
-		<dt>In Stock<dt>
-		<dd><%=inStock.valuehl%></dd>
-		<% } %>
-		<% if (typeof cat!=="undefined") { %> 
-		<dt>Categories</dt>
-			<% for(var i=0; i< cat.length; i++) { %>
-				<dd><%=cat[i].valuehl%></dd>
-			<% } %>
-		<% } %>
-		<% if (typeof manu!=="undefined") { %> 
-		<dt>Manufactory</dt>
-		<dd><%=manu.valuehl%></dd>
-		<% } %>
-		<% if (typeof address_s!=="undefined") { %> 
-		<dt>Address</dt>
-		<dd><%=address_s.valuehl%></dd>
-		<% } %>
-	</dl>
-</div>
+<article class="node node-biblio node-promoted node-teaser contextual-links-region article even iat-n clearfix">
+  <% if (doc.htid !== undefined) { %>
+  <div class="node-inner">
+    <header class="node-header">
+      <h1 property="dc:title" datatype="" class="node-title" rel="nofollow">
+        Page <% if (doc.number === undefined || doc.number.value == '') { %>sequence number <%= doc.seq.value %><% } else { %><%= doc.number.value %><% } %>
+      </h1>
+      <nav class="clearfix" style="margin-bottom: 10px;">
+        <ul class="links inline">
+          <li class="node-readmore first">
+            <a href="http://babel.hathitrust.org/cgi/pt?id=<%= doc.htid.value %>;view=1up;seq=<%= doc.seq.value %>" target="_blank">
+            View page at HathiTrust
+            </a>
+          </li><li class="last"><a href="/record/<%= doc.record.value %>">Metadata</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="node-content">
+      <% if (typeof content!=="undefined") { %>
+        <p class="search-snippet"><%=doc.content.valuehl%></p>
+      <% } %>
+    </div>
+  </div>
+  <% } %>
+</article>
+

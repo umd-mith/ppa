@@ -11,7 +11,7 @@ define([
       tagName: 'div',
 
       data: function () {
-        return this.model.toJSON();
+        return { doc: this.model.toJSON() };
       }
 
     });

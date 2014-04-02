@@ -21,7 +21,7 @@ define([
         var filterQuery = $(e.target).attr("id");
         this.collection.removeFacetQuery(filterQuery);
         this.collection.search();
-        Backbone.history.navigate("search?" + this.collection.getCurrentParams(), true);
+        Backbone.history.navigate("search/text#?" + this.collection.getCurrentParams(), true);
       },
 
       data: function () {

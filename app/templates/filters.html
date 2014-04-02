@@ -1,15 +1,36 @@
 <% if (facetQueries.length>0) { %>
 <div class="row-fluid">
 	<div class="span12">
+		<div>Filters </div>
 		<ul class="breadcrumb">
-			<li>
-				<span>Filters </span>
-			</li>
 			<% for(var i=0; i<facetQueries.length; i++) { %>
 			<li>
-				<span class="divider">/</span>
-				<a id="<%=facetQueries[i]%>" class="rfq" data-bypass href="#">
-					<%=unescape(facetQueries[i])%>
+				<span class="divider">x</span>
+				<a id="<%=facetQueries[i]%>" class="rfq" href="#">
+					<%
+            var fq = facetQueries[i];
+            var fn = fq;
+            if (fq.match("^tid:")) {
+              switch (fq.substring(7, 10)) {
+                case '3':
+                  fn = 'collection:"Subject Search"';
+                  break;
+                case '2':
+                  fn = 'collection:"Prosody Archive"';
+                  break;
+                case '4':
+                  fn = 'collection:"Brogan&#039;s English Versification"';
+                  break;
+                case '1':
+                  fn = 'collection:"Graphically / Typographically Unique"';
+                  break;
+              }
+            }
+            if (fq.match("^nid:")) {
+              fn = 'work:' + fq.substring(4);
+            }
+          %>
+          <%= unescape(fn) %>
 				</a> 
 			</li>
 			<% } %>

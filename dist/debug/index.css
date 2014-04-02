@@ -5838,6 +5838,7 @@ button.close {
     overflow: visible !important;
   }
 }
+
 body {
 	margin: 0px 15px 0px 15px
 }
@@ -5896,6 +5897,8 @@ body {
 	}
 
 }
+
+
 
 
 [class^="icon-"] {
