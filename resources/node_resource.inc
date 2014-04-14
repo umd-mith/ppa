@@ -21,6 +21,23 @@ function _node_resource_definition() {
           'access arguments' => array('view'),
           'access arguments append' => TRUE,
         ),
+        'retrieve_some' => array(
+          'help' => 'Retrieve nodes',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
+          'callback' => '_nodes_resource_retrieve',
+          'args' => array(
+            array(
+              'name' => 'nids',
+              'optional' => FALSE,
+              'source' => array('path' => 0),
+              'type' => 'string',
+              'description' => 'The nids of the nodes to retrieve',
+            ),
+          ),
+          'access callback' => '_nodes_resource_access',
+          'access arguments' => array('view'),
+          'access arguments append' => TRUE,
+        ),
         'create' => array(
           'help' => 'Create a node',
           'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
@@ -260,6 +277,19 @@ function _node_resource_retrieve($nid) {
     unset($node->uri);
   }
   return $node;
+}
+
+function _nodes_resource_retrieve($nids) {
+  $result = array();
+
+  $nid_values = explode(",", $nids);
+
+  foreach ($nid_values as $nid) {
+    $node = _node_resource_retrieve($nid);
+    $result[] = $node;
+  }
+
+  return $result;
 }
 
 /**
@@ -517,6 +547,16 @@ function _node_resource_access($op = 'view', $args = array()) {
   else {
     return services_error(t('Node @nid could not be found', array('@nid' => $args[0]->nid)), 404);
   }
+}
+
+function _nodes_resource_access($op = 'view', $args = array()) {
+  $nid_values = explode(",", $args[0]);
+
+  foreach ($nid_values as $arg) {
+    $result = _node_resource_access($op, $args);
+    if (!$result) return FALSE;
+  }
+  return TRUE;
 }
 
 /**

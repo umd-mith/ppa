@@ -514,7 +514,11 @@ class RESTServer {
         && !empty($canonical_path_array[0])
       ) {
       $operation_type = 'operations';
-      $operation = 'retrieve';
+      if (strpos($canonical_path_array[0], ',')) {
+        $operation = 'retrieve_some';
+      } else {
+        $operation = 'retrieve';
+      }
     }
 
     // 'relationships'
