@@ -1,4 +1,13 @@
 <?php // Corolla ?>
+<?php
+  //if (isset($node) && $node->vid == 5369) {
+    //$block = module_invoke('biblio', 'block_view', 'facet_author');
+    //die(print_r(theme('block', $block), TRUE));
+    //die(print_r($page['sidebar_second'], TRUE));
+    //array_unshift($page['sidebar_second'], theme('block', $block));
+    //$page['sidebar_second']['views_view_collection-block']['#markup'] .= theme('block', $block);
+  //}
+?>
 <div id="page-wrapper">
   <div id="page" class="<?php print $classes; ?>">
 
@@ -25,17 +34,17 @@
               <?php endif; ?>
 
               <?php if ($site_name || $site_slogan): ?>
-                <div<?php print $hgroup_attributes; ?>>
+                <hgroup id="name-and-slogan"<?php print $hgroup_attributes; ?>>
 
                   <?php if ($site_name): ?>
-                    <h1<?php print $site_name_attributes; ?>><?php print $site_name; ?></h1>
+                    <h1 id="site-name"<?php print $site_name_attributes; ?>><?php print $site_name; ?></h1>
                   <?php endif; ?>
 
                   <?php if ($site_slogan): ?>
-                    <h2<?php print $site_slogan_attributes; ?>><?php print $site_slogan; ?></h2>
+                    <h2 id="site-slogan"<?php print $site_slogan_attributes; ?>><?php print $site_slogan; ?></h2>
                   <?php endif; ?>
 
-                </div>
+                </hgroup>
               <?php endif; ?>
 
             </div>
@@ -124,7 +133,7 @@
 
                       <?php print render($title_prefix); ?>
 
-                      <?php if ($title): ?>
+                      <?php if ($title && !isset($node)): ?>
                         <header class="clearfix">
                           <h1 id="page-title">
                             <?php print $title; ?>
@@ -158,7 +167,6 @@
 
             <?php print render($page['sidebar_first']); ?>
             <?php print render($page['sidebar_second']); ?>
-
           </div>
         </div>
 
@@ -192,6 +200,10 @@
               <?php print render($page['four_fourth']); ?>
             </div>
           </div>
+        <div class="container clearfix">
+          <footer class="clearfix" role="contentinfo">
+            <?php print render($page['footer']); ?>
+          </footer>
         </div>
       </div>
     <?php endif; ?>
@@ -209,3 +221,4 @@
 
   </div>
 </div>
+

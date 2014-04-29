@@ -1,20 +1,15 @@
 /**
- * Smalltouch / Smartphone landscape
+ * Do not delete or rename this file, if you do not use it leave it blank.
  */
-#admin-menu-wrapper {display: none;}
-
 #branding {
   padding: 15px 0 0 0;
 }
-
 .region-header {
   padding: 0 0 10px;
 }
-
-#branding .h-group {
+#branding hgroup {
   margin-top: 1em;
 }
-
 #branding,
 .region-header {
   float: none;
@@ -22,20 +17,16 @@
   text-align: center;
   display: table;
 }
-
 .with-logo #site-name,
 .with-logo #site-slogan {
   text-align: left;
 }
-
 #site-name {
   font-size: 3em;
 }
-
 .content-style {
   padding: 10px;
 }
-
 #secondary-content-wrapper,
 #top-panels-wrapper,
 #content-wrapper,
@@ -43,83 +34,32 @@
 #tertiary-content-wrapper {
   margin-bottom: 10px;
 }
-
 .region-secondary-content .block {
   margin-bottom: 0;
   font-size: 1em;
 }
-
-#menu-bar .menu-wrapper,
-#primary-menu-bar .menu-wrapper,
-#menu-bar .sf-menu,
-#menu-bar .sf-menu ul {
-  margin: 0;
-  padding: 0;
-  width: 100% !important;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-#menu-bar .menu-wrapper,
-#primary-menu-bar .menu-wrapper {
-  padding: 0 10px;
-}
-
-#menu-toggle {
-  padding-bottom: 10px;
-}
-
 #menu-bar .block > ul > li {
   margin: 0 1px 1px 0;
 }
-
 #menu-bar-wrapper .nav .block-menu li a,
 #menu-bar-wrapper #menu-bar li.sf-depth-1,
 #menu-bar-wrapper #menu-bar li.sf-depth-1 > a,
 #menu-bar-wrapper .region-header .block-content > ul > li > a {
   border-radius: 6px 6px 6px 0;
-  display: block;
-  float: none;
 }
-
 .region-header .block {
   overflow: hidden;
 }
-
 .region-header .block ul li {
   display: block;
   text-align: center;
   float: none;
 }
-
 .region-header .block ul li a {
   -moz-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
   border-radius: 0 !important;
 }
-
-.node-title {
+.article-title {
   font-size: 1.5em;
-}
-
-
-#tasks {
-  margin: 10px 10px 2px;
-}
-
-ul.primary {
-  white-space: normal;
-  border: 0;
-}
-
-ul.primary li a {
-  border-radius: 6px;
-  line-height: 2em;
-  padding: 0 10px;
-  white-space: nowrap;
-  border: 0 !important;
-  display: block;
-  float: left;
-  margin: 0 5px 5px 0;
 }

@@ -121,8 +121,8 @@ header {
   margin: 0 !important;
   float:none !important;
 }
-.h-group a:link,
-.h-group a:visited {
+hgroup a:link,
+hgroup a:visited {
   text-decoration: none;
 }
 

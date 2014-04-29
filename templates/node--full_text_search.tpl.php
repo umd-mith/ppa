@@ -1,6 +1,5 @@
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <div class="node-inner">
-
     <?php print $unpublished; ?>
 
     <?php print render($title_prefix); ?>
@@ -27,11 +26,8 @@
 
     <div<?php print $content_attributes; ?>>
     <?php print $user_picture; ?>
-    <?php
-      hide($content['comments']);
-      hide($content['links']);
-      print render($content);
-    ?>
+      <script data-main="app/config" src="/sites/default/files/solr-search/require.js"></script>
+      <div id="searchapp"></div>
     </div>
 
     <?php if ($links = render($content['links'])): ?>

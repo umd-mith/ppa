@@ -30,6 +30,12 @@ function corolla_preprocess_html(&$vars) {
   }
 }
 
+function corolla_preprocess_page(&$vars) {
+  if ($vars['is_front']) {
+    drupal_goto('search/text');
+  }
+}
+
 /**
  * Hook into the color module.
  */
@@ -41,6 +47,21 @@ function corolla_process_html(&$vars) {
 function corolla_process_page(&$vars) {
   if (module_exists('color')) {
     _color_page_alter($vars);
+  }
+
+  $blocks = array();
+  if (isset($vars['node']) && $vars['node']->type === 'full_text_search') {
+    $blocks[] = block_load('biblio', 'facet_collection');
+    $blocks[] = block_load('biblio', 'facet_author');
+    $blocks[] = block_load('biblio', 'facet_city');
+  } else {
+    $blocks[] = block_load('biblio', 'collection');
+  }
+
+  foreach (array_reverse($blocks) as $block) {
+    $renderable_block = _block_get_renderable_array(_block_render_blocks(array($block)));
+
+    array_unshift($vars['page']['sidebar_second'], $renderable_block);
   }
 }
 
@@ -55,6 +76,7 @@ function corolla_preprocess_block(&$vars) {
     $vars['title_attributes_array']['class'][] = 'element-invisible';
   }
 }
+
 
 /**
  * Returns HTML for a sort icon.

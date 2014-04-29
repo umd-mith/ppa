@@ -24,7 +24,7 @@
   padding: 0 15px 0 0;
   vertical-align: middle;
 }
-#branding .h-group {
+#branding hgroup {
   display: table-cell;
   vertical-align: middle;
 }
@@ -43,7 +43,7 @@
   font-weight: 400;
 }
 .site-name-hidden #logo,
-.site-name-hidden #branding .h-group {
+.site-name-hidden #branding hgroup {
   display: block;
 }
 #secondary-content-wrapper,
@@ -65,8 +65,9 @@
 h1#page-title,
 .in-maintenance h1#page-title {
   border-bottom: none;
+  font-size: 2.1em;
   line-height: 1;
-  margin: 0 0 10px;
+  margin: 0 0 1em;
   padding: 0;
 }
 h1.page-title {
@@ -114,11 +115,11 @@ h1.page-title {
 }
 .poll .percent {
   float: right;
-  font-size: 0.8em;
+  font-size: 0.833em;
   padding: 1px 3px 0 0;
 }
 .block-poll .poll .percent {
-  font-size: 0.7em;
+  font-size: 0.692em;
 }
 .poll .bar {
   background-color: #fafafa;
@@ -241,7 +242,7 @@ body.overlay #content {
   border: none;
 }
 .overlay .ui-dialog-title {
-  font-size: 2em;
+  font-size: 2.333em;
   padding: 0 0 6px;
 }
 form#dblog-filter-form .form-item {
