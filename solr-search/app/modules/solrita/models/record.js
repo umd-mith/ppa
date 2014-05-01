@@ -29,6 +29,7 @@ define([
         for (var i = 0; i < nid_counts.length; i++) {
           nodes[i].count = nid_counts[i][1];
         }
+        this.trigger("parse");
 
         return { 'nodes': nodes, 'infoSolr': this.get('infoSolr') };
       }

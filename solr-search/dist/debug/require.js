@@ -18732,6 +18732,7 @@ define('modules/solrita/models/record',[
         for (var i = 0; i < nid_counts.length; i++) {
           nodes[i].count = nid_counts[i][1];
         }
+        this.trigger("parse");
 
         return { 'nodes': nodes, 'infoSolr': this.get('infoSolr') };
       }
@@ -19896,6 +19897,7 @@ define('modules/solrita/collections/items',[
 
         if (this.total > 0) {
           var r = this.records;
+          this.records.trigger("fetch");
           this.records.set({ nid_counts: this.facetCounts.facet_fields.nid, infoSolr: this.infoSolr });
           this.records.fetch({
             success: function() {
@@ -20459,18 +20461,38 @@ define('modules/solrita/views/results',[
 define('modules/solrita/views/records',[
   'jquery',
   'lodash',
-  'backbone'
-  ], function ($, _, Backbone) {
+  'backbone',
+  'plugins/spin'
+  ], function ($, _, Backbone, Spinner) {
 
     var RecordsView = Backbone.View.extend({
+      spinner: {},
+
       template: 'records',
 
       initialize: function () {
         this.model.on('reset', this.render, this);
+        this.model.on('fetch', this.start, this);
+        this.model.on('parse', this.stop, this);
+        this.spinner = new Spinner({
+          color: "#777"
+        });
       },
 
       data: function () {
         return this.model.toJSON();
+      },
+
+      start: function () {
+        this.spinner.spin(document.getElementById('results-header'));
+      },
+
+      stop: function () {
+        this.spinner.stop();
+      },
+
+      cleanup: function () {
+        this.model.off(null, null, this);
       }
     });
 

@@ -113,6 +113,7 @@ define([
 
         if (this.total > 0) {
           var r = this.records;
+          this.records.trigger("fetch");
           this.records.set({ nid_counts: this.facetCounts.facet_fields.nid, infoSolr: this.infoSolr });
           this.records.fetch({
             success: function() {
