@@ -12,6 +12,10 @@ first as an independent contractor and then in his role as Assistant Director
 at the [Maryland Institute for Technology in the Humanities](http://mith.umd.edu/)
 as part of a partnership between the Princeton Prosody Archive and MITH.
 
+Most of the code developed for the project has been moved from this repository
+to [a more general HathiTrust utilities project](https://github.com/umd-mith/hathi)
+maintained by MITH (all Prosody Archive-specific code remains here).
+
 Technology Overview
 -------------------
 
@@ -47,7 +51,7 @@ The Prosody Archive has developed generalized code for one-legged
 OAuth authentication in both Haskell (built on the
 [`http-conduit`](http://hackage.haskell.org/package/http-conduit) library)
 and [Scala](blob/master/http://hackage.haskell.org/package/http-conduit) (built on
-[Dispatch](http://dispatch.databinder.net/Dispatch.html).
+[Dispatch](http://dispatch.databinder.net/Dispatch.html)).
 
 ### Bibliographic API
 
