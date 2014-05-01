@@ -15,7 +15,8 @@ define([
         this.model.on('fetch', this.start, this);
         this.model.on('parse', this.stop, this);
         this.spinner = new Spinner({
-          color: "#777"
+          color: "#777",
+          top: '32'
         });
       },
 
@@ -24,7 +25,7 @@ define([
       },
 
       start: function () {
-        this.spinner.spin(document.getElementById('results-header'));
+        this.spinner.spin(document.getElementById('searchapp'));
       },
 
       stop: function () {

@@ -20428,7 +20428,8 @@ define('modules/solrita/views/results',[
         this.collection.on('fetch', this.start, this);
         this.collection.on('parse', this.stop, this);
         this.spinner = new Spinner({
-          color: "#777"
+          color: "#777",
+          top: '32'
         });
       },
 
@@ -20442,7 +20443,7 @@ define('modules/solrita/views/results',[
       },
 
       start: function () {
-        this.spinner.spin(this.el);
+        this.spinner.spin(document.getElementById('searchapp'));
       },
 
       stop: function () {
@@ -20475,7 +20476,8 @@ define('modules/solrita/views/records',[
         this.model.on('fetch', this.start, this);
         this.model.on('parse', this.stop, this);
         this.spinner = new Spinner({
-          color: "#777"
+          color: "#777",
+          top: '32'
         });
       },
 
@@ -20484,7 +20486,7 @@ define('modules/solrita/views/records',[
       },
 
       start: function () {
-        this.spinner.spin(document.getElementById('results-header'));
+        this.spinner.spin(document.getElementById('searchapp'));
       },
 
       stop: function () {
