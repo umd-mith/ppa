@@ -14,15 +14,15 @@ define([
       initialize: function (options) {
         this.collection = options.collection;
         this.records = options.collection.records;
+        Backbone.history.start();
       },
 
       routes: {
         'search/text#?*params': 'searchAction',
-        '*actions': 'defaultAction'
+        '*params': 'searchAction'
       },
 
       defaultAction: function (actions) {
-        //alert(actions);
         this.reset();
         this.collection.query = app.defaultQuery;
         this.collection.facetQueries = [];
@@ -30,7 +30,6 @@ define([
       },
 
       searchAction: function (params) {
-        //alert(params);
         this.reset();
         params = this._getParamsFromArguments(arguments);
         this.collection.query = this._getQueryFromParams(params);
