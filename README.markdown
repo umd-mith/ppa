@@ -122,6 +122,11 @@ instead of through Drupal over HTTP. This process is much more efficient and les
 Licensing
 ---------
 
-All code will be released under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
-At the current moment this repository is not publicly available, however.
+The [HathiTrust utilities library](https://github.com/umd-mith/hathi) and the `core`
+project in this repository are released under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+The customized theme and modules in the `drupal` repository are released under the
+[GNU General Public License, Version 2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
+The modified Javascript application in the `client` directory is released under the
+[MIT License](http://opensource.org/licenses/MIT). Please see the individual projects
+in these directories for full information about copyright and licensing.
 
