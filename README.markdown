@@ -122,7 +122,7 @@ You should have an installation of Drupal 7 available (there is currently a conf
 but unloaded backup of the database in `/home/drupal/backup/empty.sql`).
 The Drupal theme and module in the
 `drupal` directory should be copied to the appropriate location (generally `sites/all/themes/`
-and `sites/all/modules` and enabled via [Drush](https://drupal.org/project/drush).
+and `sites/all/modules`) and enabled via [Drush](https://drupal.org/project/drush).
 The `solr-search/assets` directory should be copied to `sites/default/files/`, and
 the `solr-search` `require.js` file to `sites/default/files/solr-search/`.
 
