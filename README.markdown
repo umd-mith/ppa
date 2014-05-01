@@ -82,12 +82,6 @@ stack trace.
 ### Drupal 7
 
 The user-facing parts of the Archive are built on [Drupal 7](https://drupal.org/drupal-7.0).
-Currently the Drupal repository (and module repositories) are linked here as a
-[Git submodule](http://git-scm.com/book/en/Git-Tools-Submodules); this is an approach
-that MITH is experimenting with following our experiences with the development and
-deployment of the [Shelley-Godwin Archive](http://shelleygodwinarchive.org/), which is
-also built on Drupal 7.
-
 The first version of the Drupal site (developed for the May workshop) ran on the
 [Apache web server](http://httpd.apache.org/) and the [MySQL](http://www.mysql.com/)
 database. Given MITH's experiences with the Shelley-Godwin Archive, the current
@@ -98,13 +92,10 @@ but allow the site to run more smoothly on less powerful hardware.
 ### Bibliography Module
 
 The Prosody Archive site uses the Drupal [Bibliography Module](https://drupal.org/project/biblio)
-to provide the Drupal data model and views for its contents. In the first version
-of the site, we extracted the MARC XML records, enriched them with additional metadata
-from the METS files and Bibliographic API JSON, and loaded them into Drupal via the
-Bibliography Modules import functionality. This has proven much too slow and error-prone
-for large data sets, however (taking up to hours for even two or three thousand records,
-many of which failed for no apparent reason). In the current version of the site, we use
-Scala code to write the Scala model of the data directly to the Drupal database.
+to provide the Drupal data model and views for its contents.
+We extracted the MARC XML records, enrich them with additional metadata
+from the METS files and Bibliographic API JSON, and load them into Drupal via the
+Bibliography Module's import functionality.
 
 ### Full-Text Indexing
 
@@ -115,9 +106,8 @@ at the scale of several thousand volumes, and difficult to integrate with the fa
 search provided by the Bibliography Module. In the current version we have followed the
 model that MITH used in the development of the Shelley-Godwin Archive, in which the
 search functionality is mostly managed on the client side in a [Backbone.js](http://backbonejs.org/)
-application, which communicates with Solr through a very thin web service. All data and metadata
-are loaded into Solr by Scala code via the [embedded Solr server API](http://wiki.apache.org/solr/Solrj#EmbeddedSolrServer)
-instead of through Drupal over HTTP. This process is much more efficient and less error-prone.
+application, which communicates with Solr through a proxy that only allows read-only
+queries.
 
 Licensing
 ---------
@@ -126,7 +116,7 @@ The [HathiTrust utilities library](https://github.com/umd-mith/hathi) and the `c
 project in this repository are released under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 The customized theme and modules in the `drupal` repository are released under the
 [GNU General Public License, Version 2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
-The modified Javascript application in the `client` directory is released under the
+The modified Javascript application in the `solr-search` directory is released under the
 [MIT License](http://opensource.org/licenses/MIT). Please see the individual projects
 in these directories for full information about copyright and licensing.
 
