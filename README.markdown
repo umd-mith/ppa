@@ -83,12 +83,6 @@ stack trace.
 ### Drupal 7
 
 The user-facing parts of the Archive are built on [Drupal 7](https://drupal.org/drupal-7.0).
-The first version of the Drupal site (developed for the May workshop) ran on the
-[Apache web server](http://httpd.apache.org/) and the [MySQL](http://www.mysql.com/)
-database. Given MITH's experiences with the Shelley-Godwin Archive, the current
-version of the Prosody Archive site runs on [Nginx](http://nginx.org/) and
-[MariaDB](https://mariadb.org/). These changes are not visible to site visitors,
-but allow the site to run more smoothly on less powerful hardware.
 
 ### Bibliography Module
 
