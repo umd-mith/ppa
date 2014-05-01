@@ -9,7 +9,15 @@ import scala.collection.JavaConverters._
 trait MarcGenerator extends CleaningUtils { this: PpaProcessor =>
   def writeMarc(): Unit = getRecordsMetadata.grouped(1000).zipWithIndex.foreach {
     case (records, i) =>
-      val stream = new BufferedOutputStream(new FileOutputStream("output/records-%04d.mrc".format(i)))
+      val output = new File("output")
+      if (!output.exists) output.mkdir()
+
+      val stream = new BufferedOutputStream(
+        new FileOutputStream(
+          new File(output, "records-%04d.mrc".format(i))
+        )
+      )
+
       val writer = new MarcStreamWriter(stream, "UTF-8")
 
       records.foreach {
@@ -54,3 +62,4 @@ trait CleaningUtils {
       s.substring(0, iterator.preceding(n)).trim + "..."
     } else s
 }
+

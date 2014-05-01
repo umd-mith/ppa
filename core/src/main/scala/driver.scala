@@ -12,13 +12,18 @@ trait DevServer extends PpaProcessor with FromDrupalConfig {
 
 object PpaDriver extends App {
   if (args.length != 2) sys.error(
-    "Please provide two arguments: the command (--itemize or --index) and the spreadsheet path."
+    "Please provide two arguments: the command (--marc, --itemize, or --index) and the spreadsheet path."
   )
 
   val command = args(0)
   val spreadsheetPath = args(1)
 
   command match {
+    case "--marc" => 
+      val marcGenerator = new MarcGenerator with SpreadsheetReader with DevServer {
+        val spreadsheetFile = new File(spreadsheetPath)
+      }
+      marcGenerator.writeMarc()
     case "--itemize" => 
       val itemizer = new Itemizer with SpreadsheetReader with DevServer {
         val spreadsheetFile = new File(spreadsheetPath)
