@@ -105,7 +105,7 @@ trait Indexer extends DatabaseUtils { this: PpaProcessor =>
                 doc.addField("id", "%s-%04d".format(item.htid, i + 1))
                 doc.addField("nid", item.nid)
                 //doc.addField("tid", collectionTermIds(idxs.min))
-                idxs.foreach(doc.addField("tid", _))
+                idxs.foreach(idx => doc.addField("tid", collectionTermIds(idx)))
                 doc.addField("htid", item.htid)
                 //doc.addField("record", item.record.toInt)
                 doc.addField("record", item.record)
