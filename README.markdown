@@ -6,7 +6,8 @@ to browse, search, correct, and annotate a collection of several thousand
 works on the study of poetic meter and verse form. The current version of
 the the archive includes mostly monographs written in English that are in
 the public domain in the United States. The code in this repository (and
-related repositories) was developed by [Travis Brown](https://twitter.com/travisbrown)
+[related repositories](https://github.com/umd-mith/hathi)) was developed by
+[Travis Brown](https://twitter.com/travisbrown)
 first as an independent contractor and then in his role as Assistant Director
 at the [Maryland Institute for Technology in the Humanities](http://mith.umd.edu/)
 as part of a partnership between the Princeton Prosody Archive and MITH.
@@ -109,10 +110,74 @@ search functionality is mostly managed on the client side in a [Backbone.js](htt
 application, which communicates with Solr through a proxy that only allows read-only
 queries.
 
+Installation
+------------
+
+In order to set up a new installation, you need to have the HathiTrust Pairtree structures
+and Bibliographic API JSON metadata saved locally. You also need a spreadsheet that
+lists the volumes that you want to be included in the archive (and which collections they
+should be included in). See the `metadata` directory for the Prosody Archive spreadsheet,
+and see [the MITH HathiTrust utilities repository](https://github.com/umd-mith/hathi) for
+information about how to access the Bibliographic API, etc.
+
+You should have an installation of Drupal 7 available (there is currently a configured
+but unloaded backup of the database in `/home/drupal/backup/empty.sql`).
+The Drupal theme and module in the
+`drupal` directory should be copied to the appropriate location (generally `sites/all/themes/`
+and `sites/all/modules` and enabled via [Drush](https://drupal.org/project/drush).
+The `solr-search/assets` directory should be copied to `sites/default/files/`, and
+the `solr-search` `require.js` file to `sites/default/files/solr-search/`.
+
+Next you'll need to create the MARC record files for import. First compile the application:
+
+``` bash
+./sbt assembly
+```
+
+And then run the MARC generation:
+
+``` bash
+java -jar core/target/scala-2.10/ppa-assembly-0.0.0-SNAPSHOT.jar \
+  --marc metadata/ppa-volumes.xlsx
+```
+
+Next you'll need to navigate to the Drupal installation and run the Drush script
+to perform the import:
+
+``` bash
+drush php-script ~/code/projects/prosody/scripts/import-marc.php
+```
+
+This will take a few minutes (and will display some warnings).
+Next run the following to add the relationships
+between records, volumes, and collections:
+
+```
+java -jar core/target/scala-2.10/ppa-assembly-0.0.0-SNAPSHOT.jar \
+  --itemize metadata/ppa-volumes.xlsx
+```
+
+And finally run the Solr indexer:
+
+```
+java -jar core/target/scala-2.10/ppa-assembly-0.0.0-SNAPSHOT.jar \
+  --index metadata/ppa-volumes.xlsx
+```
+
+This will take up to several hours, so you may want to use `nohup` to avoid
+broken connection errors:
+
+```
+nohup java -jar core/target/scala-2.10/ppa-assembly-0.0.0-SNAPSHOT.jar \
+  --index metadata/ppa-volumes.xlsx &
+```
+
+And then the installation will be ready for use.
+
 Licensing
 ---------
 
-The [HathiTrust utilities library](https://github.com/umd-mith/hathi) and the `core`
+The [MITH HathiTrust utilities library](https://github.com/umd-mith/hathi) and the `core`
 project in this repository are released under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 The customized theme and modules in the `drupal` repository are released under the
 [GNU General Public License, Version 2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
