@@ -1,0 +1,51 @@
+        <div class="block-content content">
+          <div class="view view-view-collection view-id-view_collection view-display-id-block">
+            <div class="view-content">
+              <div class="item-list">
+                <ul>
+                  <%
+                    var collectionName = '';
+                    var collectionUri = '';
+                    var collectionCount = 0;
+                    if (facetCounts.facet_fields !== undefined && facetCounts.facet_fields['tid'] !== undefined) {
+                      for (var i = 0; i < facetCounts.facet_fields['tid'].length; i++) {
+                        var facetValue = facetCounts.facet_fields['tid'][i];
+                        var collectionCount = facetValue[1];
+                        var constraintUri = infoSolr.currentParams + '&fq=tid:%22' + escape(facetValue[0]) + '%22'
+                        switch (facetValue[0]) {
+                          case '3':
+                            collectionName = 'Subject Search';
+                            collectionUri = '/collection/subject-search';
+                            break;
+                          case '2':
+                            collectionName = 'Prosody Archive';
+                            collectionUri = '/collection/prosody-archive';
+                            break;
+                          case '4':
+                            collectionName = 'Brogan&#039;s English Versification';
+                            collectionUri = '/collection/brogans';
+                            break;
+                          case '1':
+                            collectionName = 'Graphically / Typographically Unique';
+                            collectionUri = '/collection/unique';
+                            break;
+                        }
+                  %>
+                  <li class="views-row">
+                    <div class="views-field views-field-name">
+                      <span class="field-content">
+                        <a href="/search/text#?<%= constraintUri %>" data-route><%= collectionName %></a>
+                        (<%= facetValue[1].toLocaleString() %> pages)
+                      </span>
+                    </div>
+                  </li>
+                  <%
+                      }  
+                    }
+                  %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+

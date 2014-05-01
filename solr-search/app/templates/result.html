@@ -1,0 +1,26 @@
+<article class="node node-biblio node-promoted node-teaser contextual-links-region article even iat-n clearfix">
+  <% if (doc.htid !== undefined) { %>
+  <div class="node-inner">
+    <header class="node-header">
+      <h1 property="dc:title" datatype="" class="node-title" rel="nofollow">
+        Page <% if (doc.number === undefined || doc.number.value == '') { %>sequence number <%= doc.seq.value %><% } else { %><%= doc.number.value %><% } %>
+      </h1>
+      <nav class="clearfix" style="margin-bottom: 10px;">
+        <ul class="links inline">
+          <li class="node-readmore first">
+            <a href="http://babel.hathitrust.org/cgi/pt?id=<%= doc.htid.value %>;view=1up;seq=<%= doc.seq.value %>" target="_blank">
+            View page at HathiTrust
+            </a>
+          </li><li class="last"><a href="/record/<%= doc.record.value %>">Metadata</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="node-content">
+      <% if (typeof content!=="undefined") { %>
+        <p class="search-snippet"><%=doc.content.valuehl%></p>
+      <% } %>
+    </div>
+  </div>
+  <% } %>
+</article>
+

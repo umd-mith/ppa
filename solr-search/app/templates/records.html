@@ -1,0 +1,44 @@
+<div class="records">
+  <%
+    if (nodes !== undefined) {
+      for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
+        var nodeParams = infoSolr.currentParams + '&fq=nid:%22' + escape(node.nid) + '%22';
+  %>
+  <article class="node node-biblio node-promoted node-teaser contextual-links-region article even iat-n clearfix">
+  <div class="node-inner">
+    <header class="node-header">
+      <h1 property="dc:title" datatype="" class="node-title" rel="nofollow">
+        <a href="/search/text#?<%= nodeParams %>" rel="bookmark" data-route>
+          <h4><%= node.title %> (<%= node.count.toLocaleString() %> pages)</h4>
+        </a>
+      </h1>
+      <p class="submitted">
+    </header>
+    <div class="node-content">
+      <span class="biblio-authors">
+        <%
+          for (var j = 0; j < node.biblio_contributors.length; j++) {
+            var name = node.biblio_contributors[j].name;
+            var nameParams = infoSolr.currentParams + '&fq=author:%22' + escape(name) + '%22';
+        %>
+        <a href="/search/text#?<%= nameParams %>" data-route><%= name %></a><%
+          if (j != node.biblio_contributors.length - 1) {
+        %>, and <% } else { %>.<% } %>
+        <%
+          }
+        %>
+      </span>
+      
+     <span class="biblio-title-chicago">
+       <%= node.biblio_edition %><% if (node.biblio_edition == '') { %>,<% } %>
+       <%= node.biblio_publisher %>
+       <%= node.biblio_place_published %>, <%= node.biblio_year %>.
+    </div>
+  </div>
+</article>
+  <%
+      }
+    }
+  %>
+</div>
