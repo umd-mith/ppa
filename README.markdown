@@ -172,6 +172,23 @@ nohup java -jar core/target/scala-2.10/ppa-assembly-0.0.0-SNAPSHOT.jar \
 
 And then the installation will be ready for use.
 
+Note about version control
+--------------------------
+
+This repository uses [Git subtrees](http://git-scm.com/book/en/Git-Tools-Subtree-Merging)
+to include the history of customized third-party projects (the Drupal theme and
+modules and the Solr client application). This allows upstream changes to be
+incorporated with (relative) ease—just check out the relevant branch, pull from
+the upstream repository, handle any conflicts, etc., switch back to `master`, and
+merge:
+
+``` bash
+git merge --squash -s subtree --no-commit subproject-branch
+```
+
+See the [documentation](http://git-scm.com/book/en/Git-Tools-Subtree-Merging)
+for more information about how subtrees work.
+
 Licensing
 ---------
 
